@@ -12,7 +12,6 @@ export default function ConnectIntentForm() {
     email: '',
     notes: '',
     preferredContact: 'whatsapp' as 'whatsapp' | 'call',
-    // Intent-specific fields (Excalidraw §03.5 & §6.5 spec)
     isConfidential: false,
     preferredMinistry: 'kids',
     preferredContactTime: 'morning',
@@ -24,7 +23,7 @@ export default function ConnectIntentForm() {
     {
       id: 'new' as IntentType,
       title: 'Saya Jemaat Baru',
-      description: 'Ingin berkenalan, mengenal gereja lebih dekat, atau merencanakan kunjungan ibadah.',
+      description: 'Ingin berkenalan, mengenal gereja lebih dekat, atau menjadwalkan kunjungan ibadah.',
       icon: UserCheck,
     },
     {
@@ -36,7 +35,7 @@ export default function ConnectIntentForm() {
     {
       id: 'serve' as IntentType,
       title: 'Ingin Melayani',
-      description: 'Rindu mempersembahkan talenta di tim musik, multimedia, anak, atau aksi diakonia.',
+      description: 'Rindu mempersembahkan talenta di tim musik, multimedia, anak, atau diakonia sosial.',
       icon: HandHeart,
     },
     {
@@ -54,23 +53,23 @@ export default function ConnectIntentForm() {
   };
 
   return (
-    <section id="koneksi" className="py-20 bg-slate-50 relative">
+    <section id="koneksi" className="py-24 bg-black text-white relative">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-semibold uppercase tracking-wider mb-3">
-            <span>Terhubung Dengan Kami</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 mb-4">
-            Kami Rindu Menyapa & Melayani Anda
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="text-[11px] font-bold tracking-[0.3em] uppercase text-zinc-400 block mb-2">
+            TERHUBUNG DENGAN KELUARGA ALLAH
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase mb-4">
+            Connect With Us
           </h2>
-          <p className="text-slate-600 text-base leading-relaxed">
-            Pilihlah salah satu kebutuhan Anda di bawah ini agar tim pastoral kami dapat merespons secara personal, tepat, dan penuh kasih.
+          <p className="text-zinc-400 text-sm sm:text-base leading-relaxed font-light">
+            Pilihlah salah satu kebutuhan Anda di bawah ini agar tim pastoral kami dapat melayani dan terhubung secara pribadi.
           </p>
         </div>
 
-        {/* 4 Intent Cards Grid (Component 2.8 spec) */}
+        {/* 4 Intent Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
           {intentCards.map((item) => {
             const Icon = item.icon;
@@ -83,32 +82,32 @@ export default function ConnectIntentForm() {
                   setSelectedIntent(item.id);
                   setIsSubmitted(false);
                 }}
-                className={`p-5 rounded-2xl text-left border-2 transition-all flex flex-col justify-between min-h-[160px] ${
+                className={`p-6 rounded-2xl text-left border transition-all flex flex-col justify-between min-h-[170px] ${
                   isSelected
-                    ? 'border-blue-600 bg-blue-50/80 shadow-md ring-2 ring-blue-500/20'
-                    : 'border-slate-200 bg-white hover:border-slate-300 hover:shadow-sm'
+                    ? 'border-white bg-zinc-900 shadow-2xl ring-1 ring-white/30'
+                    : 'border-white/10 bg-zinc-950 hover:border-white/25 hover:bg-zinc-900/60'
                 }`}
                 aria-pressed={isSelected}
               >
-                <div className="flex items-center justify-between w-full mb-3">
+                <div className="flex items-center justify-between w-full mb-4">
                   <div
-                    className={`w-10 h-10 rounded-xl flex items-center justify-center ${
+                    className={`w-10 h-10 rounded-lg flex items-center justify-center ${
                       isSelected
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-slate-100 text-slate-600'
+                        ? 'bg-white text-black'
+                        : 'bg-white/10 text-white'
                     }`}
                   >
                     <Icon className="w-5 h-5" />
                   </div>
                   {isSelected && (
-                    <span className="w-2.5 h-2.5 rounded-full bg-blue-600" />
+                    <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
                   )}
                 </div>
                 <div>
-                  <h3 className={`font-bold text-base mb-1 ${isSelected ? 'text-blue-900' : 'text-slate-900'}`}>
+                  <h3 className={`font-bold text-sm sm:text-base mb-1.5 ${isSelected ? 'text-white' : 'text-zinc-200'}`}>
                     {item.title}
                   </h3>
-                  <p className="text-xs text-slate-500 leading-relaxed">
+                  <p className="text-xs text-zinc-400 leading-relaxed font-light line-clamp-2">
                     {item.description}
                   </p>
                 </div>
@@ -118,19 +117,19 @@ export default function ConnectIntentForm() {
         </div>
 
         {/* Form Container */}
-        <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xl p-6 sm:p-10 relative overflow-hidden">
+        <div className="bg-zinc-950 rounded-2xl border border-white/10 shadow-2xl p-6 sm:p-10 relative overflow-hidden">
           {isSubmitted ? (
             <div className="py-12 flex flex-col items-center text-center animate-in fade-in zoom-in-95 duration-300">
-              <div className="w-16 h-16 rounded-full bg-green-100 text-green-600 flex items-center justify-center mb-4">
-                <CheckCircle2 className="w-10 h-10" />
+              <div className="w-16 h-16 rounded-full bg-white text-black flex items-center justify-center mb-4 shadow-xl">
+                <CheckCircle2 className="w-8 h-8" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-2">
+              <h3 className="text-2xl font-bold text-white mb-2">
                 Terima Kasih, {formData.fullName}!
               </h3>
-              <p className="text-slate-600 text-sm max-w-md mb-6 leading-relaxed">
-                Pesan dan data Anda telah kami terima. Tim Pastoral Care Gereja Baitani akan segera menghubungi Anda melalui{' '}
-                <span className="font-semibold text-slate-800">
-                  {formData.preferredContact === 'whatsapp' ? 'WhatsApp' : 'Panggilan Telepon'} ({formData.phone})
+              <p className="text-zinc-400 text-sm max-w-md mb-6 leading-relaxed font-light">
+                Pesan Anda telah kami terima. Tim Pastoral Care Gereja Baitani akan segera menghubungi Anda melalui{' '}
+                <span className="font-semibold text-white">
+                  {formData.preferredContact === 'whatsapp' ? 'WhatsApp' : 'Panggilan Suara'} ({formData.phone})
                 </span>.
               </p>
               <button
@@ -149,29 +148,29 @@ export default function ConnectIntentForm() {
                     preferredServiceVisit: 'raya-1',
                   });
                 }}
-                className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition-colors min-h-[44px]"
+                className="px-8 py-3 rounded-full bg-white hover:bg-zinc-200 text-black text-xs font-bold tracking-wider uppercase transition-all min-h-[44px]"
               >
-                Kirim Formulir Lainnya
+                KIRIM PESAN LAINNYA
               </button>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="border-b border-slate-100 pb-4 mb-2 flex items-center justify-between">
+              <div className="border-b border-white/10 pb-4 mb-2 flex items-center justify-between">
                 <div>
-                  <h3 className="text-lg font-bold text-slate-900">
+                  <h3 className="text-base font-bold text-white tracking-wide uppercase">
                     Formulir: {intentCards.find((c) => c.id === selectedIntent)?.title}
                   </h3>
-                  <p className="text-xs text-slate-500">
+                  <p className="text-xs text-zinc-400 font-light mt-0.5">
                     Data Anda dijaga kerahasiaannya dan hanya digunakan untuk keperluan pelayanan pastoral.
                   </p>
                 </div>
               </div>
 
-              {/* Standard Common Contact Fields */}
+              {/* Standard Inputs */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="fullName" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2">
-                    Nama Lengkap <span className="text-blue-600">*</span>
+                  <label htmlFor="fullName" className="block text-xs font-bold uppercase tracking-wider text-zinc-300 mb-2">
+                    Nama Lengkap <span className="text-blue-400">*</span>
                   </label>
                   <input
                     id="fullName"
@@ -180,13 +179,13 @@ export default function ConnectIntentForm() {
                     value={formData.fullName}
                     onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                     placeholder="Contoh: Budi Santoso"
-                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-sm bg-slate-50/50"
+                    className="w-full px-4 py-3 rounded-lg border border-white/15 bg-black text-white focus:outline-none focus:border-white text-sm"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="phone" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2">
-                    Nomor WhatsApp / HP <span className="text-blue-600">*</span>
+                  <label htmlFor="phone" className="block text-xs font-bold uppercase tracking-wider text-zinc-300 mb-2">
+                    Nomor WhatsApp / HP <span className="text-blue-400">*</span>
                   </label>
                   <input
                     id="phone"
@@ -195,14 +194,14 @@ export default function ConnectIntentForm() {
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     placeholder="Contoh: 081234567890"
-                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-sm bg-slate-50/50"
+                    className="w-full px-4 py-3 rounded-lg border border-white/15 bg-black text-white focus:outline-none focus:border-white text-sm"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="email" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2">
+                  <label htmlFor="email" className="block text-xs font-bold uppercase tracking-wider text-zinc-300 mb-2">
                     Alamat Email (Opsional)
                   </label>
                   <input
@@ -211,53 +210,53 @@ export default function ConnectIntentForm() {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="budi@example.com"
-                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-sm bg-slate-50/50"
+                    className="w-full px-4 py-3 rounded-lg border border-white/15 bg-black text-white focus:outline-none focus:border-white text-sm"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-zinc-300 mb-2">
                     Metode Kontak Pilihan
                   </label>
                   <div className="grid grid-cols-2 gap-3">
                     <button
                       type="button"
                       onClick={() => setFormData({ ...formData, preferredContact: 'whatsapp' })}
-                      className={`flex items-center justify-center gap-2 py-3 px-3 rounded-lg border text-xs font-medium transition-colors min-h-[44px] ${
+                      className={`flex items-center justify-center gap-2 py-3 px-3 rounded-lg border text-xs font-bold uppercase tracking-wider transition-all min-h-[44px] ${
                         formData.preferredContact === 'whatsapp'
-                          ? 'border-blue-600 bg-blue-50 text-blue-800 font-semibold'
-                          : 'border-slate-200 text-slate-600 hover:bg-slate-50'
+                          ? 'border-white bg-white text-black'
+                          : 'border-white/15 bg-black text-zinc-400 hover:text-white'
                       }`}
                     >
-                      <MessageSquare className="w-4 h-4 text-green-600" />
+                      <MessageSquare className="w-4 h-4 text-green-500" />
                       <span>WhatsApp</span>
                     </button>
                     <button
                       type="button"
                       onClick={() => setFormData({ ...formData, preferredContact: 'call' })}
-                      className={`flex items-center justify-center gap-2 py-3 px-3 rounded-lg border text-xs font-medium transition-colors min-h-[44px] ${
+                      className={`flex items-center justify-center gap-2 py-3 px-3 rounded-lg border text-xs font-bold uppercase tracking-wider transition-all min-h-[44px] ${
                         formData.preferredContact === 'call'
-                          ? 'border-blue-600 bg-blue-50 text-blue-800 font-semibold'
-                          : 'border-slate-200 text-slate-600 hover:bg-slate-50'
+                          ? 'border-white bg-white text-black'
+                          : 'border-white/15 bg-black text-zinc-400 hover:text-white'
                       }`}
                     >
-                      <span>Telepon Suara</span>
+                      <span>Telepon</span>
                     </button>
                   </div>
                 </div>
               </div>
 
-              {/* DYNAMIC INTENT-SPECIFIC FIELDS (§03.5 & §6.5 SPEC) */}
+              {/* Dynamic Contextual Inputs */}
               {selectedIntent === 'new' && (
                 <div>
-                  <label htmlFor="serviceVisit" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2">
+                  <label htmlFor="serviceVisit" className="block text-xs font-bold uppercase tracking-wider text-zinc-300 mb-2">
                     Rencana Kehadiran Ibadah
                   </label>
                   <select
                     id="serviceVisit"
                     value={formData.preferredServiceVisit}
                     onChange={(e) => setFormData({ ...formData, preferredServiceVisit: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm bg-slate-50/50"
+                    className="w-full px-4 py-3 rounded-lg border border-white/15 bg-black text-white focus:outline-none focus:border-white text-sm"
                   >
                     <option value="raya-1">Ibadah Raya 1 (Minggu pk 07:30 WIB)</option>
                     <option value="raya-2">Ibadah Raya 2 (Minggu pk 10:30 WIB)</option>
@@ -269,14 +268,14 @@ export default function ConnectIntentForm() {
 
               {selectedIntent === 'serve' && (
                 <div>
-                  <label htmlFor="preferredMinistry" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2">
+                  <label htmlFor="preferredMinistry" className="block text-xs font-bold uppercase tracking-wider text-zinc-300 mb-2">
                     Bidang Pelayanan yang Diminati
                   </label>
                   <select
                     id="preferredMinistry"
                     value={formData.preferredMinistry}
                     onChange={(e) => setFormData({ ...formData, preferredMinistry: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm bg-slate-50/50"
+                    className="w-full px-4 py-3 rounded-lg border border-white/15 bg-black text-white focus:outline-none focus:border-white text-sm"
                   >
                     <option value="kids">Baitani Kids (Sekolah Minggu)</option>
                     <option value="youth">Youth & Remaja</option>
@@ -290,14 +289,14 @@ export default function ConnectIntentForm() {
 
               {selectedIntent === 'counseling' && (
                 <div>
-                  <label htmlFor="contactTime" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2">
+                  <label htmlFor="contactTime" className="block text-xs font-bold uppercase tracking-wider text-zinc-300 mb-2">
                     Waktu Konseling yang Paling Nyaman Dihubungi
                   </label>
                   <select
                     id="contactTime"
                     value={formData.preferredContactTime}
                     onChange={(e) => setFormData({ ...formData, preferredContactTime: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm bg-slate-50/50"
+                    className="w-full px-4 py-3 rounded-lg border border-white/15 bg-black text-white focus:outline-none focus:border-white text-sm"
                   >
                     <option value="morning">Pagi Hari (pk 09:00 - 12:00 WIB)</option>
                     <option value="afternoon">Siang Hari (pk 13:00 - 16:00 WIB)</option>
@@ -306,9 +305,8 @@ export default function ConnectIntentForm() {
                 </div>
               )}
 
-              {/* Message / Notes area */}
               <div>
-                <label htmlFor="notes" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2">
+                <label htmlFor="notes" className="block text-xs font-bold uppercase tracking-wider text-zinc-300 mb-2">
                   {selectedIntent === 'prayer'
                     ? 'Pokok Doa / Kebutuhan yang Ingin Didukung'
                     : selectedIntent === 'serve'
@@ -331,22 +329,21 @@ export default function ConnectIntentForm() {
                       ? 'Tuliskan secara singkat topik yang ingin dikonsultasikan bersama pastor...'
                       : 'Apakah ada hal khusus yang ingin Anda tanyakan kepada kami?'
                   }
-                  className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-sm bg-slate-50/50"
+                  className="w-full px-4 py-3 rounded-lg border border-white/15 bg-black text-white focus:outline-none focus:border-white text-sm font-light"
                 />
               </div>
 
-              {/* Confidential Checkbox for Prayer (§03.5 Spec) */}
               {selectedIntent === 'prayer' && (
-                <div className="flex items-start gap-3 p-4 rounded-xl bg-slate-50 border border-slate-200">
+                <div className="flex items-start gap-3 p-4 rounded-xl bg-black border border-white/15">
                   <input
                     id="confidentialCheck"
                     type="checkbox"
                     checked={formData.isConfidential}
                     onChange={(e) => setFormData({ ...formData, isConfidential: e.target.checked })}
-                    className="mt-0.5 h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
+                    className="mt-0.5 h-4 w-4 rounded border-zinc-700 bg-zinc-900 text-white focus:ring-white cursor-pointer"
                   />
-                  <label htmlFor="confidentialCheck" className="text-xs text-slate-700 cursor-pointer flex items-center gap-1.5 font-medium">
-                    <Lock className="w-3.5 h-3.5 text-blue-600 flex-shrink-0" />
+                  <label htmlFor="confidentialCheck" className="text-xs text-zinc-300 cursor-pointer flex items-center gap-1.5 font-light">
+                    <Lock className="w-3.5 h-3.5 text-blue-400 flex-shrink-0" />
                     <span>
                       Pokok doa ini bersifat <strong>rahasia</strong> (hanya dibagikan ke Gembala Sidang & Tim Pendoa Syafaat Inti).
                     </span>
@@ -357,10 +354,10 @@ export default function ConnectIntentForm() {
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm shadow-lg shadow-blue-600/30 active:scale-98 transition-all min-h-[48px]"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white hover:bg-zinc-200 text-black font-bold text-xs tracking-[0.18em] uppercase transition-all shadow-xl active:scale-95 min-h-[48px]"
                 >
                   <Send className="w-4 h-4" />
-                  <span>Kirim Formulir Terhubung</span>
+                  <span>KIRIM FORMULIR TERHUBUNG</span>
                 </button>
               </div>
             </form>

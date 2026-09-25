@@ -1,39 +1,41 @@
 @import "tailwindcss";
 
 :root {
-  --color-bg-dark: #0f172a;
-  --color-bg-light: #ffffff;
-  --color-bg-gray: #f8fafc;
+  --color-bg-dark: #000000;
+  --color-bg-surface: #09090b;
+  --color-bg-card: #121215;
+  --color-border: rgba(255, 255, 255, 0.08);
   --color-accent: #2563eb;
-  --color-accent-hover: #1d4ed8;
-  --color-accent-subtle: #eff6ff;
-  --color-text-main: #0f172a;
-  --color-text-muted: #64748b;
-  --color-text-light: #f8fafc;
+  --color-accent-glow: rgba(37, 99, 235, 0.35);
+  --color-text-main: #ffffff;
+  --color-text-muted: #a1a1aa;
 }
 
 @theme {
-  --color-church-dark: #0f172a;
-  --color-church-light: #ffffff;
-  --color-church-gray: #f8fafc;
-  --color-church-accent: #2563eb;
-  --color-church-accent-hover: #1d4ed8;
-  --color-church-accent-subtle: #eff6ff;
-  --color-church-muted: #64748b;
+  --color-gms-black: #000000;
+  --color-gms-obsidian: #09090b;
+  --color-gms-surface: #121215;
+  --color-gms-card: #18181b;
+  --color-gms-border: rgba(255, 255, 255, 0.08);
+  --color-gms-accent: #2563eb;
+  --color-gms-muted: #a1a1aa;
 }
 
 html {
   scroll-behavior: smooth;
+  color-scheme: dark;
 }
 
 body {
-  background-color: var(--color-bg-light);
-  color: var(--color-text-main);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: #000000;
+  color: #ffffff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   overflow-x: hidden;
+  letter-spacing: -0.01em;
 }
 
-@keyframes marquee {
+/* GMS Stark Infinite Running Ticker */
+@keyframes marquee-infinite {
   0% {
     transform: translateX(0%);
   }
@@ -42,17 +44,17 @@ body {
   }
 }
 
-.animate-marquee {
+.animate-marquee-gms {
   display: flex;
   width: max-content;
-  animation: marquee 35s linear infinite;
+  animation: marquee-infinite 30s linear infinite;
 }
 
-.animate-marquee:hover {
+.animate-marquee-gms:hover {
   animation-play-state: paused;
 }
 
-/* Reduced motion accessibility support (WCAG 2.1 AA §03.8) */
+/* Reduced motion accessibility (WCAG 2.1 AA) */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -61,7 +63,7 @@ body {
     scroll-behavior: auto !important;
   }
   
-  .animate-marquee {
+  .animate-marquee-gms {
     animation: none !important;
     transform: none !important;
     width: auto !important;
@@ -69,7 +71,7 @@ body {
   }
 }
 
-/* Custom Hide Scrollbar for Carousels */
+/* Custom Scrollbar */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }

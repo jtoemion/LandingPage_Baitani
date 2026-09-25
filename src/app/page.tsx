@@ -2,46 +2,54 @@ import Navbar from '@/components/common/Navbar';
 import Footer from '@/components/common/Footer';
 import HeroSection from '@/components/sections/HeroSection';
 import MarqueeTicker from '@/components/sections/MarqueeTicker';
-import ServiceSchedule from '@/components/sections/ServiceSchedule';
 import EventsCarousel from '@/components/sections/EventsCarousel';
-import MinistryShowcase from '@/components/sections/MinistryShowcase';
-import LeadershipGrid from '@/components/sections/LeadershipGrid';
+import IdentitySection from '@/components/sections/IdentitySection';
+import CampusLocator from '@/components/sections/CampusLocator';
+import ConnectGroupSection from '@/components/sections/ConnectGroupSection';
+import PastorProfile from '@/components/sections/PastorProfile';
+import HighlightsGallery from '@/components/sections/HighlightsGallery';
 import GivingSection from '@/components/sections/GivingSection';
 import ConnectIntentForm from '@/components/sections/ConnectIntentForm';
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-white">
-      {/* Sticky Global Navigation */}
+    <div className="min-h-screen flex flex-col bg-black text-white selection:bg-white selection:text-black">
+      {/* 1. Global Minimalist Sticky Header */}
       <Navbar />
 
       <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none">
-        {/* 1. Full-Bleed Hero Section */}
+        {/* 2. Full-Screen Cinematic Hero ("WELCOME HOME") */}
         <HeroSection />
 
-        {/* 2. Announcement Running Marquee Ticker */}
+        {/* 3. Campaign Marquee Strip ("TAHUN PERSATUAN & SORGA YANG TERBUKA") */}
         <MarqueeTicker />
 
-        {/* 3. Live Service Schedule & Countdown Timer */}
-        <ServiceSchedule />
-
-        {/* 4. Upcoming Events & Seminars Carousel */}
+        {/* 4. Events Carousel ("ACARA KITA") */}
         <EventsCarousel />
 
-        {/* 5. Ministries & Community Groups */}
-        <MinistryShowcase />
+        {/* 5. GMS-Style Identity Section (Visi, Misi & Credo) */}
+        <IdentitySection />
 
-        {/* 6. Pastoral & Leadership Team */}
-        <LeadershipGrid />
+        {/* 6. Region / Campus Locator with Indonesia Map Graphic */}
+        <CampusLocator />
 
-        {/* 7. Giving, Tithes & Offerings (QRIS & Bank Transfer) */}
+        {/* 7. Connect Group Section ("A Home for Everyone") */}
+        <ConnectGroupSection />
+
+        {/* 8. Pastor Profile (Lead Pastor Dignified Portrait & Biography) */}
+        <PastorProfile />
+
+        {/* 9. Highlights Gallery ("SOROTAN") */}
+        <HighlightsGallery />
+
+        {/* 10. Giving & Penatalayanan (Rekening Resmi & QRIS) */}
         <GivingSection />
 
-        {/* 8. Connect & Prayer Intent Form */}
+        {/* 11. Connect With Us Intent Form */}
         <ConnectIntentForm />
       </main>
 
-      {/* Global Footer */}
+      {/* 12. Global Footer with Affiliations Logo Strip */}
       <Footer />
     </div>
   );
