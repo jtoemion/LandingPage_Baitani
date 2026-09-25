@@ -6,6 +6,7 @@ import ServiceSchedule from '@/components/sections/ServiceSchedule';
 import EventsCarousel from '@/components/sections/EventsCarousel';
 import MinistryShowcase from '@/components/sections/MinistryShowcase';
 import LeadershipGrid from '@/components/sections/LeadershipGrid';
+import GivingSection from '@/components/sections/GivingSection';
 import ConnectIntentForm from '@/components/sections/ConnectIntentForm';
 
 export default function Home() {
@@ -14,7 +15,7 @@ export default function Home() {
       {/* Sticky Global Navigation */}
       <Navbar />
 
-      <main className="flex-1">
+      <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none">
         {/* 1. Full-Bleed Hero Section */}
         <HeroSection />
 
@@ -33,7 +34,10 @@ export default function Home() {
         {/* 6. Pastoral & Leadership Team */}
         <LeadershipGrid />
 
-        {/* 7. Connect & Prayer Intent Form */}
+        {/* 7. Giving, Tithes & Offerings (QRIS & Bank Transfer) */}
+        <GivingSection />
+
+        {/* 8. Connect & Prayer Intent Form */}
         <ConnectIntentForm />
       </main>
 

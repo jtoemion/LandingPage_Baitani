@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { UserCheck, HandHeart, HeartHandshake, HelpCircle, Send, CheckCircle2, MessageSquare } from 'lucide-react';
+import { UserCheck, HandHeart, HeartHandshake, HelpCircle, Send, CheckCircle2, MessageSquare, Lock } from 'lucide-react';
 import { IntentType } from '@/types';
 
 export default function ConnectIntentForm() {
@@ -12,6 +12,11 @@ export default function ConnectIntentForm() {
     email: '',
     notes: '',
     preferredContact: 'whatsapp' as 'whatsapp' | 'call',
+    // Intent-specific fields (Excalidraw §03.5 & §6.5 spec)
+    isConfidential: false,
+    preferredMinistry: 'kids',
+    preferredContactTime: 'morning',
+    preferredServiceVisit: 'raya-1',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -19,7 +24,7 @@ export default function ConnectIntentForm() {
     {
       id: 'new' as IntentType,
       title: 'Saya Jemaat Baru',
-      description: 'Ingin berkenalan, mengenal gereja lebih dekat, atau menjadwalkan kunjungan ibadah.',
+      description: 'Ingin berkenalan, mengenal gereja lebih dekat, atau merencanakan kunjungan ibadah.',
       icon: UserCheck,
     },
     {
@@ -31,7 +36,7 @@ export default function ConnectIntentForm() {
     {
       id: 'serve' as IntentType,
       title: 'Ingin Melayani',
-      description: 'Rindu mempersembahkan talenta di tim musik, multimedia, anak, atau diakonia sosial.',
+      description: 'Rindu mempersembahkan talenta di tim musik, multimedia, anak, atau aksi diakonia.',
       icon: HandHeart,
     },
     {
@@ -45,8 +50,6 @@ export default function ConnectIntentForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.fullName || !formData.phone) return;
-    
-    // Simulate instant success
     setIsSubmitted(true);
   };
 
@@ -63,7 +66,7 @@ export default function ConnectIntentForm() {
             Kami Rindu Menyapa & Melayani Anda
           </h2>
           <p className="text-slate-600 text-base leading-relaxed">
-            Pilihlah salah satu kebutuhan Anda di bawah ini agar tim pastoral kami dapat terhubung secara tepat dan personal.
+            Pilihlah salah satu kebutuhan Anda di bawah ini agar tim pastoral kami dapat merespons secara personal, tepat, dan penuh kasih.
           </p>
         </div>
 
@@ -125,7 +128,7 @@ export default function ConnectIntentForm() {
                 Terima Kasih, {formData.fullName}!
               </h3>
               <p className="text-slate-600 text-sm max-w-md mb-6 leading-relaxed">
-                Pesan Anda telah kami terima. Tim Pastoral Care Gereja Baitani akan segera menghubungi Anda melalui{' '}
+                Pesan dan data Anda telah kami terima. Tim Pastoral Care Gereja Baitani akan segera menghubungi Anda melalui{' '}
                 <span className="font-semibold text-slate-800">
                   {formData.preferredContact === 'whatsapp' ? 'WhatsApp' : 'Panggilan Telepon'} ({formData.phone})
                 </span>.
@@ -140,24 +143,31 @@ export default function ConnectIntentForm() {
                     email: '',
                     notes: '',
                     preferredContact: 'whatsapp',
+                    isConfidential: false,
+                    preferredMinistry: 'kids',
+                    preferredContactTime: 'morning',
+                    preferredServiceVisit: 'raya-1',
                   });
                 }}
                 className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition-colors min-h-[44px]"
               >
-                Kirim Pesan Lainnya
+                Kirim Formulir Lainnya
               </button>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="border-b border-slate-100 pb-4 mb-2">
-                <h3 className="text-lg font-bold text-slate-900">
-                  Formulir: {intentCards.find((c) => c.id === selectedIntent)?.title}
-                </h3>
-                <p className="text-xs text-slate-500">
-                  Data Anda dijaga kerahasiaannya dan hanya digunakan untuk keperluan pelayanan pastoral.
-                </p>
+              <div className="border-b border-slate-100 pb-4 mb-2 flex items-center justify-between">
+                <div>
+                  <h3 className="text-lg font-bold text-slate-900">
+                    Formulir: {intentCards.find((c) => c.id === selectedIntent)?.title}
+                  </h3>
+                  <p className="text-xs text-slate-500">
+                    Data Anda dijaga kerahasiaannya dan hanya digunakan untuk keperluan pelayanan pastoral.
+                  </p>
+                </div>
               </div>
 
+              {/* Standard Common Contact Fields */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="fullName" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2">
@@ -237,13 +247,75 @@ export default function ConnectIntentForm() {
                 </div>
               </div>
 
+              {/* DYNAMIC INTENT-SPECIFIC FIELDS (§03.5 & §6.5 SPEC) */}
+              {selectedIntent === 'new' && (
+                <div>
+                  <label htmlFor="serviceVisit" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2">
+                    Rencana Kehadiran Ibadah
+                  </label>
+                  <select
+                    id="serviceVisit"
+                    value={formData.preferredServiceVisit}
+                    onChange={(e) => setFormData({ ...formData, preferredServiceVisit: e.target.value })}
+                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm bg-slate-50/50"
+                  >
+                    <option value="raya-1">Ibadah Raya 1 (Minggu pk 07:30 WIB)</option>
+                    <option value="raya-2">Ibadah Raya 2 (Minggu pk 10:30 WIB)</option>
+                    <option value="youth">Baitani Youth Movement (Sabtu pk 17:00 WIB)</option>
+                    <option value="undecided">Belum menentukan / Ingin bertanya lebih dulu</option>
+                  </select>
+                </div>
+              )}
+
+              {selectedIntent === 'serve' && (
+                <div>
+                  <label htmlFor="preferredMinistry" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2">
+                    Bidang Pelayanan yang Diminati
+                  </label>
+                  <select
+                    id="preferredMinistry"
+                    value={formData.preferredMinistry}
+                    onChange={(e) => setFormData({ ...formData, preferredMinistry: e.target.value })}
+                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm bg-slate-50/50"
+                  >
+                    <option value="kids">Baitani Kids (Sekolah Minggu)</option>
+                    <option value="youth">Youth & Remaja</option>
+                    <option value="worship">Worship Team (Singer / Pemain Musik)</option>
+                    <option value="multimedia">Multimedia, Visual & Sound System</option>
+                    <option value="diakonia">Diakonia Kasih & Aksi Sosial</option>
+                    <option value="usher">Penerima Tamu / Usher / Hospitality</option>
+                  </select>
+                </div>
+              )}
+
+              {selectedIntent === 'counseling' && (
+                <div>
+                  <label htmlFor="contactTime" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2">
+                    Waktu Konseling yang Paling Nyaman Dihubungi
+                  </label>
+                  <select
+                    id="contactTime"
+                    value={formData.preferredContactTime}
+                    onChange={(e) => setFormData({ ...formData, preferredContactTime: e.target.value })}
+                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm bg-slate-50/50"
+                  >
+                    <option value="morning">Pagi Hari (pk 09:00 - 12:00 WIB)</option>
+                    <option value="afternoon">Siang Hari (pk 13:00 - 16:00 WIB)</option>
+                    <option value="evening">Malam Hari (pk 18:30 - 20:30 WIB)</option>
+                  </select>
+                </div>
+              )}
+
+              {/* Message / Notes area */}
               <div>
                 <label htmlFor="notes" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2">
                   {selectedIntent === 'prayer'
-                    ? 'Pokok Doa / Permohonan Anda'
+                    ? 'Pokok Doa / Kebutuhan yang Ingin Didukung'
                     : selectedIntent === 'serve'
-                    ? 'Bidang Pelayanan yang Diminati & Pengalaman'
-                    : 'Catatan atau Pertanyaan'}
+                    ? 'Pengalaman atau Talenta yang Dimiliki'
+                    : selectedIntent === 'counseling'
+                    ? 'Garis Besar Situasi / Topik Konseling'
+                    : 'Catatan Tambahan atau Pertanyaan Anda'}
                 </label>
                 <textarea
                   id="notes"
@@ -252,12 +324,35 @@ export default function ConnectIntentForm() {
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                   placeholder={
                     selectedIntent === 'prayer'
-                      ? 'Tuliskan pokok doa atau kebutuhan Anda di sini...'
-                      : 'Ceritakan sedikit tentang Anda...'
+                      ? 'Tuliskan pokok doa, pergumulan, atau kondisi kesehatan Anda di sini...'
+                      : selectedIntent === 'serve'
+                      ? 'Ceritakan alat musik yang bisa dimainkan, pengalaman melayani sebelumnya, dll...'
+                      : selectedIntent === 'counseling'
+                      ? 'Tuliskan secara singkat topik yang ingin dikonsultasikan bersama pastor...'
+                      : 'Apakah ada hal khusus yang ingin Anda tanyakan kepada kami?'
                   }
                   className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-sm bg-slate-50/50"
                 />
               </div>
+
+              {/* Confidential Checkbox for Prayer (§03.5 Spec) */}
+              {selectedIntent === 'prayer' && (
+                <div className="flex items-start gap-3 p-4 rounded-xl bg-slate-50 border border-slate-200">
+                  <input
+                    id="confidentialCheck"
+                    type="checkbox"
+                    checked={formData.isConfidential}
+                    onChange={(e) => setFormData({ ...formData, isConfidential: e.target.checked })}
+                    className="mt-0.5 h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
+                  />
+                  <label htmlFor="confidentialCheck" className="text-xs text-slate-700 cursor-pointer flex items-center gap-1.5 font-medium">
+                    <Lock className="w-3.5 h-3.5 text-blue-600 flex-shrink-0" />
+                    <span>
+                      Pokok doa ini bersifat <strong>rahasia</strong> (hanya dibagikan ke Gembala Sidang & Tim Pendoa Syafaat Inti).
+                    </span>
+                  </label>
+                </div>
+              )}
 
               <div className="pt-2">
                 <button

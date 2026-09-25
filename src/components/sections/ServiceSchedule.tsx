@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { scheduleData } from '@/data/scheduleData';
-import { Clock, MapPin, Video, Users, Navigation, AlertCircle } from 'lucide-react';
+import { ScheduleItem } from '@/types';
+import { Clock, MapPin, Video, Users, Navigation, AlertCircle, Sparkles } from 'lucide-react';
 
 export default function ServiceSchedule() {
   const [activeFilter, setActiveFilter] = useState<'all' | 'Sunday' | 'Saturday' | 'Wednesday'>('all');
@@ -11,39 +12,90 @@ export default function ServiceSchedule() {
     hours: 0,
     minutes: 0,
     seconds: 0,
-    targetName: 'Ibadah Raya 1',
+    targetName: 'Ibadah Raya 1 (Pagi)',
+    dayName: 'Minggu',
+    timeStr: '07:30 WIB',
+    isHappeningNow: false,
   });
 
-  // Calculate live countdown to the next Sunday 07:30 WIB
+  // Dynamic next service resolver
   useEffect(() => {
-    const calculateCountdown = () => {
-      const now = new Date();
-      // Target next upcoming Sunday 07:30 WIB (UTC+7)
-      const day = now.getDay(); // 0 is Sunday
-      const diffDays = (7 - day) % 7;
-      
-      const targetDate = new Date(now);
-      targetDate.setDate(now.getDate() + (diffDays === 0 && (now.getHours() > 7 || (now.getHours() === 7 && now.getMinutes() >= 30)) ? 7 : diffDays));
-      targetDate.setHours(7, 30, 0, 0);
+    const dayMap: Record<string, number> = {
+      Sunday: 0,
+      Monday: 1,
+      Tuesday: 2,
+      Wednesday: 3,
+      Thursday: 4,
+      Friday: 5,
+      Saturday: 6,
+    };
 
-      const diffMs = targetDate.getTime() - now.getTime();
+    const updateCountdown = () => {
+      const now = new Date();
+      const currentDay = now.getDay();
+      let nearestDiff = Infinity;
+      let targetService: ScheduleItem = scheduleData[0];
+      let nearestDate = new Date();
+
+      for (const service of scheduleData) {
+        const serviceDay = dayMap[service.dayOfWeek];
+        const dayDiff = (serviceDay - currentDay + 7) % 7;
+
+        const candidate = new Date(now);
+        candidate.setDate(now.getDate() + dayDiff);
+        candidate.setHours(service.targetHour, service.targetMinute, 0, 0);
+
+        // Check if service is currently happening (within 90 minutes of start time)
+        const timeSinceStart = now.getTime() - candidate.getTime();
+        if (dayDiff === 0 && timeSinceStart >= 0 && timeSinceStart < 90 * 60 * 1000) {
+          setCountdown({
+            days: 0,
+            hours: 0,
+            minutes: 0,
+            seconds: 0,
+            targetName: service.name,
+            dayName: service.dayNameIndo,
+            timeStr: service.time,
+            isHappeningNow: true,
+          });
+          return;
+        }
+
+        // If time has passed today, schedule for next week (+7 days)
+        if (candidate.getTime() <= now.getTime()) {
+          candidate.setDate(candidate.getDate() + 7);
+        }
+
+        const diff = candidate.getTime() - now.getTime();
+        if (diff < nearestDiff) {
+          nearestDiff = diff;
+          targetService = service;
+          nearestDate = candidate;
+        }
+      }
+
+      const diffMs = nearestDate.getTime() - now.getTime();
       if (diffMs > 0) {
         const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
         const hours = Math.floor((diffMs / (1000 * 60 * 60)) % 24);
         const minutes = Math.floor((diffMs / 1000 / 60) % 60);
         const seconds = Math.floor((diffMs / 1000) % 60);
+
         setCountdown({
           days,
           hours,
           minutes,
           seconds,
-          targetName: 'Ibadah Raya Minggu (Sesi 1)',
+          targetName: targetService.name,
+          dayName: targetService.dayNameIndo,
+          timeStr: targetService.time,
+          isHappeningNow: false,
         });
       }
     };
 
-    calculateCountdown();
-    const interval = setInterval(calculateCountdown, 1000);
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
     return () => clearInterval(interval);
   }, []);
 
@@ -68,54 +120,74 @@ export default function ServiceSchedule() {
           </p>
         </div>
 
-        {/* Live Countdown Banner (Component 2.4 Spec) */}
-        <div className="mb-14 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-blue-900/40 via-slate-800 to-slate-900 border border-blue-500/30 shadow-2xl relative overflow-hidden">
+        {/* Dynamic Countdown Banner (Component 2.4 Spec) */}
+        <div className="mb-14 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-blue-950/60 via-slate-800 to-slate-900 border border-blue-500/30 shadow-2xl relative overflow-hidden">
           <div className="absolute -right-10 -bottom-10 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
           
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
             <div>
               <div className="flex items-center gap-2 text-blue-400 text-xs sm:text-sm font-semibold uppercase tracking-wider mb-2">
-                <Clock className="w-4 h-4 animate-spin-slow" />
-                <span>HITUNG MUNDUR IBADAH TERDEKAT</span>
+                <Clock className="w-4 h-4" />
+                <span>
+                  {countdown.isHappeningNow ? 'STATUS IBADAH SAAT INI' : 'HITUNG MUNDUR IBADAH TERDEKAT'}
+                </span>
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-1">
-                {countdown.targetName}
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-1 flex items-center gap-2.5">
+                <span>{countdown.targetName}</span>
+                {countdown.isHappeningNow && (
+                  <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-red-600 text-white text-xs font-bold animate-pulse">
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>SEDANG BERLANGSUNG</span>
+                  </span>
+                )}
               </h3>
               <p className="text-slate-400 text-sm">
-                Setiap Minggu pukul 07:30 WIB — Main Sanctuary Lt. 2
+                {countdown.dayName} pukul {countdown.timeStr} — Main Sanctuary Gedung Baitani
               </p>
             </div>
 
             {/* Countdown Blocks */}
-            <div className="flex items-center gap-2 sm:gap-4">
-              <div className="flex flex-col items-center bg-slate-950/70 border border-slate-700/60 rounded-xl px-4 py-3 min-w-[64px] sm:min-w-[76px]">
-                <span className="text-2xl sm:text-3xl font-extrabold text-blue-400 font-mono">
-                  {String(countdown.days).padStart(2, '0')}
-                </span>
-                <span className="text-[11px] uppercase tracking-wider text-slate-400 font-medium">Hari</span>
+            {!countdown.isHappeningNow ? (
+              <div className="flex items-center gap-2 sm:gap-4">
+                <div className="flex flex-col items-center bg-slate-950/80 border border-slate-700/60 rounded-xl px-4 py-3 min-w-[64px] sm:min-w-[76px]">
+                  <span className="text-2xl sm:text-3xl font-extrabold text-blue-400 font-mono">
+                    {String(countdown.days).padStart(2, '0')}
+                  </span>
+                  <span className="text-[11px] uppercase tracking-wider text-slate-400 font-medium">Hari</span>
+                </div>
+                <span className="text-xl font-bold text-slate-600">:</span>
+                <div className="flex flex-col items-center bg-slate-950/80 border border-slate-700/60 rounded-xl px-4 py-3 min-w-[64px] sm:min-w-[76px]">
+                  <span className="text-2xl sm:text-3xl font-extrabold text-white font-mono">
+                    {String(countdown.hours).padStart(2, '0')}
+                  </span>
+                  <span className="text-[11px] uppercase tracking-wider text-slate-400 font-medium">Jam</span>
+                </div>
+                <span className="text-xl font-bold text-slate-600">:</span>
+                <div className="flex flex-col items-center bg-slate-950/80 border border-slate-700/60 rounded-xl px-4 py-3 min-w-[64px] sm:min-w-[76px]">
+                  <span className="text-2xl sm:text-3xl font-extrabold text-white font-mono">
+                    {String(countdown.minutes).padStart(2, '0')}
+                  </span>
+                  <span className="text-[11px] uppercase tracking-wider text-slate-400 font-medium">Menit</span>
+                </div>
+                <span className="text-xl font-bold text-slate-600">:</span>
+                <div className="flex flex-col items-center bg-slate-950/80 border border-slate-700/60 rounded-xl px-4 py-3 min-w-[64px] sm:min-w-[76px]">
+                  <span className="text-2xl sm:text-3xl font-extrabold text-blue-400 font-mono">
+                    {String(countdown.seconds).padStart(2, '0')}
+                  </span>
+                  <span className="text-[11px] uppercase tracking-wider text-slate-400 font-medium">Detik</span>
+                </div>
               </div>
-              <span className="text-xl font-bold text-slate-600">:</span>
-              <div className="flex flex-col items-center bg-slate-950/70 border border-slate-700/60 rounded-xl px-4 py-3 min-w-[64px] sm:min-w-[76px]">
-                <span className="text-2xl sm:text-3xl font-extrabold text-white font-mono">
-                  {String(countdown.hours).padStart(2, '0')}
-                </span>
-                <span className="text-[11px] uppercase tracking-wider text-slate-400 font-medium">Jam</span>
-              </div>
-              <span className="text-xl font-bold text-slate-600">:</span>
-              <div className="flex flex-col items-center bg-slate-950/70 border border-slate-700/60 rounded-xl px-4 py-3 min-w-[64px] sm:min-w-[76px]">
-                <span className="text-2xl sm:text-3xl font-extrabold text-white font-mono">
-                  {String(countdown.minutes).padStart(2, '0')}
-                </span>
-                <span className="text-[11px] uppercase tracking-wider text-slate-400 font-medium">Menit</span>
-              </div>
-              <span className="text-xl font-bold text-slate-600">:</span>
-              <div className="flex flex-col items-center bg-slate-950/70 border border-slate-700/60 rounded-xl px-4 py-3 min-w-[64px] sm:min-w-[76px]">
-                <span className="text-2xl sm:text-3xl font-extrabold text-blue-400 font-mono">
-                  {String(countdown.seconds).padStart(2, '0')}
-                </span>
-                <span className="text-[11px] uppercase tracking-wider text-slate-400 font-medium">Detik</span>
-              </div>
-            </div>
+            ) : (
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-sm shadow-lg shadow-red-600/30 transition-all min-h-[48px]"
+              >
+                <Video className="w-5 h-5" />
+                <span>Masuk Live Streaming Sekarang</span>
+              </a>
+            )}
           </div>
         </div>
 
@@ -126,7 +198,7 @@ export default function ServiceSchedule() {
             onClick={() => setActiveFilter('all')}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors min-h-[44px] ${
               activeFilter === 'all'
-                ? 'bg-blue-600 text-white'
+                ? 'bg-blue-600 text-white font-semibold'
                 : 'bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white'
             }`}
           >
@@ -137,7 +209,7 @@ export default function ServiceSchedule() {
             onClick={() => setActiveFilter('Sunday')}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors min-h-[44px] ${
               activeFilter === 'Sunday'
-                ? 'bg-blue-600 text-white'
+                ? 'bg-blue-600 text-white font-semibold'
                 : 'bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white'
             }`}
           >
@@ -148,7 +220,7 @@ export default function ServiceSchedule() {
             onClick={() => setActiveFilter('Saturday')}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors min-h-[44px] ${
               activeFilter === 'Saturday'
-                ? 'bg-blue-600 text-white'
+                ? 'bg-blue-600 text-white font-semibold'
                 : 'bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white'
             }`}
           >
@@ -159,7 +231,7 @@ export default function ServiceSchedule() {
             onClick={() => setActiveFilter('Wednesday')}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors min-h-[44px] ${
               activeFilter === 'Wednesday'
-                ? 'bg-blue-600 text-white'
+                ? 'bg-blue-600 text-white font-semibold'
                 : 'bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white'
             }`}
           >
@@ -210,7 +282,7 @@ export default function ServiceSchedule() {
                   href="https://maps.google.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-300 hover:text-white transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-300 hover:text-white transition-colors min-h-[44px]"
                 >
                   <Navigation className="w-3.5 h-3.5 text-blue-400" />
                   <span>Petunjuk Arah</span>
@@ -220,7 +292,7 @@ export default function ServiceSchedule() {
                     href={schedule.livestreamUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold shadow-sm transition-colors min-h-[36px]"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold shadow-sm transition-colors min-h-[44px]"
                   >
                     <Video className="w-3.5 h-3.5" />
                     <span>Tonton Live</span>

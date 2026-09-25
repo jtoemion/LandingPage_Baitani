@@ -3,8 +3,8 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Gereja Baitani — Rumah Kasih, Pemulihan, & Pertumbuhan Rohani',
-  description: 'Selamat datang di Gereja Baitani. Temukan jadwal ibadah mingguan, komunitas sel, agenda kegiatan jemaat, dan pelayanan permohonan doa.',
-  keywords: ['Gereja Baitani', 'Ibadah Kristen', 'Jadwal Ibadah', 'Youth Church', 'Sunday Service', 'Komunitas Jemaat'],
+  description: 'Selamat datang di Gereja Baitani. Temukan jadwal ibadah mingguan, komunitas sel, agenda kegiatan jemaat, persembahan digital, dan pelayanan permohonan doa.',
+  keywords: ['Gereja Baitani', 'Ibadah Kristen', 'Jadwal Ibadah', 'Youth Church', 'Sunday Service', 'Komunitas Jemaat', 'Persembahan Gereja'],
   openGraph: {
     title: 'Gereja Baitani — Welcome Home',
     description: 'Sebuah keluarga rohani yang bertumbuh bersama dalam kasih Kristus.',
@@ -23,6 +23,13 @@ export default function RootLayout({
   return (
     <html lang="id" className="h-full">
       <body className="min-h-full flex flex-col bg-white text-slate-900 antialiased selection:bg-blue-100 selection:text-blue-900">
+        {/* Skip to Content Link (WCAG 2.1 AA §03.8) */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2.5 focus:bg-blue-600 focus:text-white focus:font-semibold focus:rounded-lg focus:shadow-xl focus:outline-none focus:ring-2 focus:ring-white"
+        >
+          Lewati ke Konten Utama
+        </a>
         {children}
       </body>
     </html>

@@ -25,6 +25,7 @@ export default function Navbar() {
     { label: 'Agenda', href: '#agenda' },
     { label: 'Pelayanan', href: '#pelayanan' },
     { label: 'Pastoral', href: '#tim' },
+    { label: 'Persembahan', href: '#persembahan' },
     { label: 'Koneksi & Doa', href: '#koneksi' },
   ];
 

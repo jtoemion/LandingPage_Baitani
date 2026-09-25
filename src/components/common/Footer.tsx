@@ -99,6 +99,11 @@ export default function Footer() {
                 </a>
               </li>
               <li>
+                <a href="#persembahan" className="hover:text-blue-400 transition-colors inline-block py-1">
+                  Persembahan & QRIS
+                </a>
+              </li>
+              <li>
                 <a href="#koneksi" className="hover:text-blue-400 transition-colors inline-block py-1">
                   Formulir Doa & Jemaat Baru
                 </a>

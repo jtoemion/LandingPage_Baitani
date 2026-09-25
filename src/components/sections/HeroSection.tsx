@@ -9,6 +9,8 @@ export default function HeroSection() {
         <img
           src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=2000&auto=format&fit=crop"
           alt="Gereja Baitani Worship Atmosphere"
+          loading="eager"
+          decoding="async"
           className="w-full h-full object-cover object-center opacity-30 transform scale-105 transition-transform duration-1000"
         />
         {/* Gradients for text contrast */}
