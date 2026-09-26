@@ -1,5 +1,20 @@
 export type DayOfWeek = 'Sunday' | 'Saturday' | 'Wednesday' | 'Friday';
 
+export interface HeroSlide {
+  id: string;
+  badge: string;
+  title: string;
+  titleAccent?: string;
+  subtitle: string;
+  description: string;
+  primaryCtaText: string;
+  primaryCtaHref: string;
+  secondaryCtaText?: string;
+  secondaryCtaHref?: string;
+  imageUrl: string;
+  altText: string;
+}
+
 export interface ScheduleItem {
   id: string;
   name: string;
