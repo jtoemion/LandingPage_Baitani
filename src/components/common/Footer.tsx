@@ -148,7 +148,7 @@ export default function Footer() {
             </h3>
             <div className="space-y-3 text-xs">
               <div className="flex items-start gap-2.5">
-                <Clock className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
+                <Clock className="w-4 h-4 text-[#d4af37] mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="text-white font-semibold">Ibadah Raya Minggu</p>
                   <p className="text-zinc-400">Sesi 1: 07:30 WIB</p>
@@ -156,14 +156,14 @@ export default function Footer() {
                 </div>
               </div>
               <div className="flex items-start gap-2.5">
-                <Clock className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
+                <Clock className="w-4 h-4 text-[#d4af37] mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="text-white font-semibold">Youth Movement</p>
                   <p className="text-zinc-400">Sabtu pk 17:00 WIB</p>
                 </div>
               </div>
               <div className="flex items-start gap-2.5">
-                <Clock className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
+                <Clock className="w-4 h-4 text-[#d4af37] mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="text-white font-semibold">Mezbah Doa Malam</p>
                   <p className="text-zinc-400">Rabu pk 19:00 WIB</p>
@@ -179,13 +179,13 @@ export default function Footer() {
             </h3>
             <div className="space-y-3 text-xs leading-relaxed">
               <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[#d4af37] flex-shrink-0 mt-0.5" />
                 <span>
                   Jl. Baitani Raya No. 77, Komp. Rumah Doa, Jakarta — Indonesia
                 </span>
               </div>
               <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-blue-400 flex-shrink-0" />
+                <Phone className="w-4 h-4 text-[#d4af37] flex-shrink-0" />
                 <a
                   href="https://wa.me/6281234567890"
                   target="_blank"
@@ -196,7 +196,7 @@ export default function Footer() {
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-blue-400 flex-shrink-0" />
+                <Mail className="w-4 h-4 text-[#d4af37] flex-shrink-0" />
                 <a
                   href="mailto:sekretariat@gerejabaitani.org"
                   className="hover:text-white transition-colors"

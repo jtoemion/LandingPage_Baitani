@@ -89,7 +89,7 @@ export default function EventsCarousel() {
               {/* Event Content */}
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2 leading-snug group-hover:text-blue-400 transition-colors">
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2 leading-snug group-hover:text-[#d4af37] transition-colors">
                     {event.title}
                   </h3>
                   <p className="text-zinc-400 text-xs sm:text-sm line-clamp-3 leading-relaxed mb-6 font-light">
@@ -103,7 +103,7 @@ export default function EventsCarousel() {
                   </span>
                   <a
                     href="#koneksi"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold tracking-wider uppercase text-white hover:text-blue-400 transition-colors min-h-[44px]"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold tracking-wider uppercase text-white hover:text-[#d4af37] transition-colors min-h-[44px]"
                   >
                     <span>DAFTAR</span>
                     <ArrowUpRight className="w-4 h-4" />

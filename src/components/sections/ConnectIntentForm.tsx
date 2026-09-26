@@ -100,7 +100,7 @@ export default function ConnectIntentForm() {
                     <Icon className="w-5 h-5" />
                   </div>
                   {isSelected && (
-                    <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+                    <span className="w-2 h-2 rounded-full bg-[#d4af37] animate-pulse" />
                   )}
                 </div>
                 <div>
@@ -343,7 +343,7 @@ export default function ConnectIntentForm() {
                     className="mt-0.5 h-4 w-4 rounded border-zinc-700 bg-zinc-900 text-white focus:ring-white cursor-pointer"
                   />
                   <label htmlFor="confidentialCheck" className="text-xs text-zinc-300 cursor-pointer flex items-center gap-1.5 font-light">
-                    <Lock className="w-3.5 h-3.5 text-blue-400 flex-shrink-0" />
+                    <Lock className="w-3.5 h-3.5 text-[#d4af37] flex-shrink-0" />
                     <span>
                       Pokok doa ini bersifat <strong>rahasia</strong> (hanya dibagikan ke Gembala Sidang & Tim Pendoa Syafaat Inti).
                     </span>
@@ -354,9 +354,9 @@ export default function ConnectIntentForm() {
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white hover:bg-zinc-200 text-black font-bold text-xs tracking-[0.18em] uppercase transition-all shadow-xl active:scale-95 min-h-[48px]"
+                  className="btn-magnetic w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white hover:bg-[#f3e5ab] text-black font-bold text-xs tracking-[0.18em] uppercase transition-all shadow-xl active:scale-95 min-h-[48px]"
                 >
-                  <Send className="w-4 h-4" />
+                  <Send className="w-4 h-4 text-black" />
                   <span>KIRIM FORMULIR TERHUBUNG</span>
                 </button>
               </div>

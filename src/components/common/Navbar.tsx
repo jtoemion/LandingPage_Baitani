@@ -65,7 +65,7 @@ export default function Navbar() {
                 className="text-[12px] font-semibold tracking-[0.16em] text-zinc-300 hover:text-white transition-colors py-1 relative group"
               >
                 <span>{link.label}</span>
-                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-blue-500 group-hover:w-full transition-all duration-300" />
+                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#d4af37] group-hover:w-full transition-all duration-300" />
               </a>
             ))}
           </nav>
@@ -73,12 +73,12 @@ export default function Navbar() {
           {/* Right Action Buttons */}
           <div className="hidden sm:flex items-center gap-4">
             <div className="hidden xl:flex items-center gap-1.5 text-xs text-zinc-400 font-semibold px-2 py-1 border border-white/10 rounded">
-              <Globe className="w-3.5 h-3.5" />
+              <Globe className="w-3.5 h-3.5 text-[#d4af37]" />
               <span>ID</span>
             </div>
             <a
               href="#koneksi"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white hover:bg-zinc-200 text-black text-xs font-bold tracking-wider uppercase transition-all shadow-lg active:scale-95"
+              className="btn-magnetic inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white hover:bg-[#f3e5ab] text-black text-xs font-bold tracking-wider uppercase transition-all shadow-lg active:scale-95"
             >
               <span>SAYA BARU</span>
               <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />

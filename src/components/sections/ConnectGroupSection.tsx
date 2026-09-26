@@ -103,7 +103,7 @@ export default function ConnectGroupSection() {
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
               
               <div className="absolute bottom-4 left-4 right-4">
-                <span className="text-[10px] font-bold tracking-widest uppercase text-blue-400 block mb-1">
+                <span className="text-[10px] font-bold tracking-widest uppercase text-[#d4af37] block mb-1">
                   {item.category}
                 </span>
                 <h3 className="text-sm sm:text-base font-bold text-white leading-tight">
@@ -121,7 +121,7 @@ export default function ConnectGroupSection() {
           </p>
           <a
             href="#koneksi"
-            className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-white hover:bg-zinc-200 text-black font-bold text-xs tracking-[0.18em] uppercase transition-all shadow-xl active:scale-95 min-h-[48px]"
+            className="btn-magnetic inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-white hover:bg-[#f3e5ab] text-black font-bold text-xs tracking-[0.18em] uppercase transition-all shadow-xl active:scale-95 min-h-[48px]"
           >
             <HeartHandshake className="w-4 h-4" />
             <span>BERGABUNG DENGAN CONNECT GROUP</span>

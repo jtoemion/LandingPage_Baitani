@@ -109,24 +109,24 @@ export default function ServiceSchedule() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 text-xs font-semibold uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#d4af37]/10 text-[#d4af37] text-xs font-semibold uppercase tracking-wider mb-3 border border-[#d4af37]/30">
             <span>Waktu Ibadah Jemaat</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">
             Jadwal Ibadah & Pertemuan Rutin
           </h2>
-          <p className="text-slate-400 text-base leading-relaxed">
+          <p className="text-zinc-400 text-base leading-relaxed font-light">
             Hadiri ibadah kami secara tatap muka (onsite) di gedung gereja atau ikuti siaran langsung dari mana pun Anda berada.
           </p>
         </div>
 
         {/* Dynamic Countdown Banner (Component 2.4 Spec) */}
-        <div className="mb-14 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-blue-950/60 via-slate-800 to-slate-900 border border-blue-500/30 shadow-2xl relative overflow-hidden">
-          <div className="absolute -right-10 -bottom-10 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="mb-14 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-stone-950 via-zinc-900 to-stone-950 border border-[#d4af37]/30 shadow-2xl relative overflow-hidden">
+          <div className="absolute -right-10 -bottom-10 w-64 h-64 bg-[#d4af37]/5 rounded-full blur-3xl pointer-events-none" />
           
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
             <div>
-              <div className="flex items-center gap-2 text-blue-400 text-xs sm:text-sm font-semibold uppercase tracking-wider mb-2">
+              <div className="flex items-center gap-2 text-[#d4af37] text-xs sm:text-sm font-semibold uppercase tracking-wider mb-2">
                 <Clock className="w-4 h-4" />
                 <span>
                   {countdown.isHappeningNow ? 'STATUS IBADAH SAAT INI' : 'HITUNG MUNDUR IBADAH TERDEKAT'}
@@ -141,7 +141,7 @@ export default function ServiceSchedule() {
                   </span>
                 )}
               </h3>
-              <p className="text-slate-400 text-sm">
+              <p className="text-zinc-400 text-sm">
                 {countdown.dayName} pukul {countdown.timeStr} — Main Sanctuary Gedung Baitani
               </p>
             </div>
@@ -149,32 +149,32 @@ export default function ServiceSchedule() {
             {/* Countdown Blocks */}
             {!countdown.isHappeningNow ? (
               <div className="flex items-center gap-2 sm:gap-4">
-                <div className="flex flex-col items-center bg-slate-950/80 border border-slate-700/60 rounded-xl px-4 py-3 min-w-[64px] sm:min-w-[76px]">
-                  <span className="text-2xl sm:text-3xl font-extrabold text-blue-400 font-mono">
+                <div className="flex flex-col items-center bg-black/80 border border-white/10 rounded-xl px-4 py-3 min-w-[64px] sm:min-w-[76px]">
+                  <span className="text-2xl sm:text-3xl font-extrabold text-[#d4af37] font-mono">
                     {String(countdown.days).padStart(2, '0')}
                   </span>
-                  <span className="text-[11px] uppercase tracking-wider text-slate-400 font-medium">Hari</span>
+                  <span className="text-[11px] uppercase tracking-wider text-zinc-400 font-medium">Hari</span>
                 </div>
-                <span className="text-xl font-bold text-slate-600">:</span>
-                <div className="flex flex-col items-center bg-slate-950/80 border border-slate-700/60 rounded-xl px-4 py-3 min-w-[64px] sm:min-w-[76px]">
+                <span className="text-xl font-bold text-zinc-600">:</span>
+                <div className="flex flex-col items-center bg-black/80 border border-white/10 rounded-xl px-4 py-3 min-w-[64px] sm:min-w-[76px]">
                   <span className="text-2xl sm:text-3xl font-extrabold text-white font-mono">
                     {String(countdown.hours).padStart(2, '0')}
                   </span>
-                  <span className="text-[11px] uppercase tracking-wider text-slate-400 font-medium">Jam</span>
+                  <span className="text-[11px] uppercase tracking-wider text-zinc-400 font-medium">Jam</span>
                 </div>
-                <span className="text-xl font-bold text-slate-600">:</span>
-                <div className="flex flex-col items-center bg-slate-950/80 border border-slate-700/60 rounded-xl px-4 py-3 min-w-[64px] sm:min-w-[76px]">
+                <span className="text-xl font-bold text-zinc-600">:</span>
+                <div className="flex flex-col items-center bg-black/80 border border-white/10 rounded-xl px-4 py-3 min-w-[64px] sm:min-w-[76px]">
                   <span className="text-2xl sm:text-3xl font-extrabold text-white font-mono">
                     {String(countdown.minutes).padStart(2, '0')}
                   </span>
-                  <span className="text-[11px] uppercase tracking-wider text-slate-400 font-medium">Menit</span>
+                  <span className="text-[11px] uppercase tracking-wider text-zinc-400 font-medium">Menit</span>
                 </div>
-                <span className="text-xl font-bold text-slate-600">:</span>
-                <div className="flex flex-col items-center bg-slate-950/80 border border-slate-700/60 rounded-xl px-4 py-3 min-w-[64px] sm:min-w-[76px]">
-                  <span className="text-2xl sm:text-3xl font-extrabold text-blue-400 font-mono">
+                <span className="text-xl font-bold text-zinc-600">:</span>
+                <div className="flex flex-col items-center bg-black/80 border border-white/10 rounded-xl px-4 py-3 min-w-[64px] sm:min-w-[76px]">
+                  <span className="text-2xl sm:text-3xl font-extrabold text-[#d4af37] font-mono">
                     {String(countdown.seconds).padStart(2, '0')}
                   </span>
-                  <span className="text-[11px] uppercase tracking-wider text-slate-400 font-medium">Detik</span>
+                  <span className="text-[11px] uppercase tracking-wider text-zinc-400 font-medium">Detik</span>
                 </div>
               </div>
             ) : (

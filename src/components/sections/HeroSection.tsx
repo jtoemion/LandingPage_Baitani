@@ -109,8 +109,8 @@ export default function HeroSection() {
             >
               {/* Slide Badge Pill */}
               <div className="mb-6 inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-md">
-                <span className="w-2 h-2 rounded-full bg-blue-500 animate-ping" />
-                <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.25em] text-zinc-300 uppercase">
+                <span className="w-2 h-2 rounded-full bg-[#d4af37] animate-ping" />
+                <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.25em] text-[#e5c07b] uppercase">
                   {slide.badge}
                 </span>
               </div>
@@ -136,9 +136,9 @@ export default function HeroSection() {
               <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
                 <a
                   href={slide.primaryCtaHref}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-white hover:bg-zinc-200 text-black font-extrabold text-xs tracking-[0.16em] uppercase shadow-2xl transition-all duration-300 active:scale-95 min-h-[50px]"
+                  className="btn-magnetic w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-white hover:bg-[#f3e5ab] text-black font-extrabold text-xs tracking-[0.16em] uppercase shadow-2xl transition-all duration-300 active:scale-95 min-h-[50px]"
                 >
-                  <Compass className="w-4 h-4" />
+                  <Compass className="w-4 h-4 text-black" />
                   <span>{slide.primaryCtaText}</span>
                 </a>
                 {slide.secondaryCtaText && (
@@ -195,23 +195,23 @@ export default function HeroSection() {
                   aria-current={isActive}
                 >
                   {/* Progress Line */}
-                  <div className="w-full h-[2px] bg-white/20 rounded-full overflow-hidden mb-2 relative">
+                  <div className="w-full h-[2px] bg-white/15 rounded-full overflow-hidden mb-2 relative">
                     {isActive ? (
                       <div
-                        className="h-full bg-white transition-all ease-linear"
+                        className="h-full bg-gradient-to-r from-[#d4af37] to-[#f3e5ab] transition-all ease-linear"
                         style={{
                           width: isPlaying && !isHovered ? '100%' : '100%',
                           transitionDuration: `${SLIDE_DURATION}ms`,
                         }}
                       />
                     ) : (
-                      <div className="h-full w-0 group-hover:w-full bg-white/40 transition-all duration-300" />
+                      <div className="h-full w-0 group-hover:w-full bg-[#d4af37]/50 transition-all duration-300" />
                     )}
                   </div>
 
                   {/* Tab Label */}
                   <div className="flex items-center gap-1.5">
-                    <span className={`text-[10px] font-mono font-bold ${isActive ? 'text-white' : 'text-zinc-500'}`}>
+                    <span className={`text-[10px] font-mono font-bold ${isActive ? 'text-[#d4af37]' : 'text-zinc-500'}`}>
                       0{idx + 1}
                     </span>
                     <span

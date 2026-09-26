@@ -22,11 +22,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id" className="h-full">
-      <body className="min-h-full flex flex-col bg-white text-slate-900 antialiased selection:bg-blue-100 selection:text-blue-900">
+      <body className="min-h-full flex flex-col bg-[#050505] text-[#fafafa] antialiased selection:bg-[#d4af37] selection:text-black">
         {/* Skip to Content Link (WCAG 2.1 AA §03.8) */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2.5 focus:bg-blue-600 focus:text-white focus:font-semibold focus:rounded-lg focus:shadow-xl focus:outline-none focus:ring-2 focus:ring-white"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2.5 focus:bg-[#d4af37] focus:text-black focus:font-semibold focus:rounded-lg focus:shadow-xl focus:outline-none focus:ring-2 focus:ring-white"
         >
           Lewati ke Konten Utama
         </a>

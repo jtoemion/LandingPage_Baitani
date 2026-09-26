@@ -67,7 +67,7 @@ export default function GivingSection() {
               >
                 <div className="mb-4">
                   <div className="flex items-center justify-between gap-4 mb-3">
-                    <span className="text-xs font-bold tracking-wider uppercase text-blue-400">
+                    <span className="text-xs font-bold tracking-wider uppercase text-[#d4af37]">
                       {account.bankName}
                     </span>
                     <span className="text-[10px] bg-white/5 text-zinc-400 border border-white/10 px-2.5 py-0.5 rounded">
@@ -87,16 +87,16 @@ export default function GivingSection() {
 
                 <div className="pt-4 border-t border-white/10 flex items-center justify-between">
                   <span className="text-xs text-zinc-500 flex items-center gap-1.5">
-                    <ShieldCheck className="w-4 h-4 text-green-400" />
+                    <ShieldCheck className="w-4 h-4 text-emerald-400" />
                     <span>Rekening Gereja Resmi</span>
                   </span>
                   <button
                     type="button"
                     onClick={() => handleCopy(account.accountNumber, account.id)}
-                    className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all min-h-[44px] ${
+                    className={`btn-magnetic inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all min-h-[44px] ${
                       copiedAccount === account.id
-                        ? 'bg-green-600 text-white'
-                        : 'bg-white hover:bg-zinc-200 text-black active:scale-95'
+                        ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-900/30'
+                        : 'bg-white hover:bg-[#f3e5ab] text-black active:scale-95'
                     }`}
                     aria-label={`Salin nomor rekening ${account.bankName}`}
                   >

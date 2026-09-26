@@ -105,9 +105,9 @@ export default function CampusLocator() {
               aria-label="Gunakan lokasi saya"
             >
               {isLocating ? (
-                <Loader2 className="w-4 h-4 animate-spin text-blue-400" />
+                <Loader2 className="w-4 h-4 animate-spin text-[#d4af37]" />
               ) : (
-                <LocateFixed className="w-4 h-4 text-blue-400" />
+                <LocateFixed className="w-4 h-4 text-[#d4af37]" />
               )}
               <span>Gunakan Lokasi Saya</span>
             </button>
@@ -115,7 +115,7 @@ export default function CampusLocator() {
         </div>
 
         {geoMessage && (
-          <div className="mb-6 p-3 rounded-lg bg-zinc-900 border border-white/10 text-xs text-blue-300">
+          <div className="mb-6 p-3 rounded-lg bg-zinc-900 border border-[#d4af37]/30 text-xs text-[#e5c07b]">
             {geoMessage}
           </div>
         )}
@@ -195,9 +195,9 @@ export default function CampusLocator() {
               }}
             >
               <div className="relative flex items-center justify-center">
-                <span className="w-8 h-8 rounded-full bg-blue-500/30 animate-ping absolute" />
-                <span className="w-4 h-4 rounded-full bg-blue-500 border-2 border-white shadow-lg relative z-10 flex items-center justify-center" />
-                <div className="absolute top-6 left-1/2 -translate-x-1/2 bg-black/90 border border-white/20 text-white text-[10px] font-bold px-2 py-0.5 rounded whitespace-nowrap shadow-xl">
+                <span className="w-8 h-8 rounded-full bg-[#d4af37]/35 animate-ping absolute" />
+                <span className="w-4 h-4 rounded-full bg-[#d4af37] border-2 border-white shadow-lg relative z-10 flex items-center justify-center" />
+                <div className="absolute top-6 left-1/2 -translate-x-1/2 bg-black/90 border border-[#d4af37]/40 text-[#f3e5ab] text-[10px] font-bold px-2 py-0.5 rounded whitespace-nowrap shadow-xl">
                   {currentCampus.city}
                 </div>
               </div>
@@ -213,7 +213,7 @@ export default function CampusLocator() {
           <div className="lg:col-span-5 bg-zinc-950 border border-white/10 rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-4">
-                <span className="text-[10px] font-black tracking-[0.25em] uppercase text-blue-400 bg-blue-950/80 px-2.5 py-1 rounded border border-blue-800/60">
+                <span className="text-[10px] font-black tracking-[0.25em] uppercase text-[#d4af37] bg-[#d4af37]/10 px-2.5 py-1 rounded border border-[#d4af37]/30">
                   {currentCampus.city}
                 </span>
                 <span className="text-xs text-zinc-500 font-mono">
@@ -226,13 +226,13 @@ export default function CampusLocator() {
               </h3>
 
               <div className="flex items-start gap-2.5 text-xs text-zinc-400 mb-6 leading-relaxed">
-                <MapPin className="w-4 h-4 text-zinc-300 flex-shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[#d4af37] flex-shrink-0 mt-0.5" />
                 <span>{currentCampus.address}</span>
               </div>
 
               <div className="space-y-3 mb-6">
                 <p className="text-xs font-bold text-zinc-300 uppercase tracking-wider flex items-center gap-1.5">
-                  <Clock className="w-3.5 h-3.5 text-blue-400" />
+                  <Clock className="w-3.5 h-3.5 text-[#d4af37]" />
                   <span>Jadwal Ibadah Onsite:</span>
                 </p>
                 <ul className="space-y-1.5 text-xs text-zinc-400 pl-5 list-disc">
@@ -250,7 +250,7 @@ export default function CampusLocator() {
                 href="https://maps.google.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 inline-flex items-center justify-center gap-2 py-3 rounded-full bg-white text-black font-bold text-xs tracking-wider uppercase hover:bg-zinc-200 transition-all min-h-[44px]"
+                className="btn-magnetic flex-1 inline-flex items-center justify-center gap-2 py-3 rounded-full bg-white text-black font-bold text-xs tracking-wider uppercase hover:bg-[#f3e5ab] transition-all min-h-[44px]"
               >
                 <Navigation className="w-3.5 h-3.5" />
                 <span>PETUNJUK ARAH</span>

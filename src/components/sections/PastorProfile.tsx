@@ -21,7 +21,7 @@ export default function PastorProfile() {
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
               
               <div className="absolute bottom-6 left-6 right-6">
-                <span className="text-[10px] font-black tracking-[0.25em] uppercase text-blue-400 block mb-1">
+                <span className="text-[10px] font-black tracking-[0.25em] uppercase text-[#d4af37] block mb-1">
                   GEMBALA SIDANG
                 </span>
                 <h3 className="text-xl font-bold text-white tracking-wide">
@@ -53,7 +53,7 @@ export default function PastorProfile() {
             <div className="flex flex-wrap items-center gap-6 pt-6 border-t border-white/10">
               <a
                 href="#koneksi"
-                className="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-white hover:text-blue-400 transition-colors py-2"
+                className="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-white hover:text-[#d4af37] transition-colors py-2"
               >
                 <span>LIHAT SELENGKAPNYA</span>
                 <ArrowUpRight className="w-4 h-4" />

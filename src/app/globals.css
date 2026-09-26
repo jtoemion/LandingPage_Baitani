@@ -1,24 +1,27 @@
 @import "tailwindcss";
 
 :root {
-  --color-bg-dark: #000000;
-  --color-bg-surface: #09090b;
-  --color-bg-card: #121215;
+  --color-bg-dark: #050505;
+  --color-bg-surface: #0e0e11;
+  --color-bg-card: #141418;
   --color-border: rgba(255, 255, 255, 0.08);
-  --color-accent: #2563eb;
-  --color-accent-glow: rgba(37, 99, 235, 0.35);
-  --color-text-main: #ffffff;
-  --color-text-muted: #a1a1aa;
+  --color-accent: #d4af37;
+  --color-accent-hover: #e5c07b;
+  --color-accent-glow: rgba(212, 175, 55, 0.28);
+  --color-text-main: #fafafa;
+  --color-text-muted: #99999f;
 }
 
 @theme {
-  --color-gms-black: #000000;
-  --color-gms-obsidian: #09090b;
-  --color-gms-surface: #121215;
-  --color-gms-card: #18181b;
+  --color-gms-black: #050505;
+  --color-gms-obsidian: #0b0b0e;
+  --color-gms-surface: #121216;
+  --color-gms-card: #18181e;
   --color-gms-border: rgba(255, 255, 255, 0.08);
-  --color-gms-accent: #2563eb;
-  --color-gms-muted: #a1a1aa;
+  --color-gms-gold: #d4af37;
+  --color-gms-gold-light: #e5c07b;
+  --color-gms-accent: #d4af37;
+  --color-gms-muted: #99999f;
 }
 
 html {
@@ -69,6 +72,44 @@ body {
     width: auto !important;
     overflow-x: auto !important;
   }
+}
+
+/* Magnetic Button Sliding Background Layer */
+.btn-magnetic {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+}
+
+.btn-magnetic:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.btn-magnetic:active {
+  transform: translateY(0px) scale(0.98);
+}
+
+.btn-sliding-gold {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-sliding-gold::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 100%);
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+
+.btn-sliding-gold:hover::before {
+  transform: translateY(0%);
 }
 
 /* Custom Scrollbar */
