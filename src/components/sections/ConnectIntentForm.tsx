@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { UserCheck, HandHeart, HeartHandshake, HelpCircle, Send, CheckCircle2, MessageSquare, Lock } from 'lucide-react';
+import Link from 'next/link';
+import { UserCheck, HandHeart, HeartHandshake, HelpCircle, Send, CheckCircle2, MessageSquare, Lock, ArrowUpRight } from 'lucide-react';
 import { IntentType } from '@/types';
 
 export default function ConnectIntentForm() {
@@ -64,9 +65,16 @@ export default function ConnectIntentForm() {
           <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase mb-4">
             Connect With Us
           </h2>
-          <p className="text-zinc-400 text-sm sm:text-base leading-relaxed font-light">
+          <p className="text-zinc-400 text-sm sm:text-base leading-relaxed font-light mb-6">
             Pilihlah salah satu kebutuhan Anda di bawah ini agar tim pastoral kami dapat melayani dan terhubung secara pribadi.
           </p>
+          <Link
+            href="/koneksi"
+            className="inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-amber-400 hover:text-amber-300 border-b border-amber-400/40 pb-1 transition-colors"
+          >
+            <span>PANDUAN JEMAAT BARU & 4 LANGKAH PERTUMBUHAN</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </Link>
         </div>
 
         {/* 4 Intent Cards Grid */}

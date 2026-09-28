@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useRef } from 'react';
-import { ChevronLeft, ChevronRight, ArrowRight, HeartHandshake } from 'lucide-react';
+import Link from 'next/link';
+import { ChevronLeft, ChevronRight, ArrowRight, HeartHandshake, ArrowUpRight } from 'lucide-react';
 
 export default function ConnectGroupSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -119,14 +120,23 @@ export default function ConnectGroupSection() {
           <p className="text-zinc-300 text-base sm:text-lg font-light leading-relaxed mb-8">
             Connect Group (CG) adalah kelompok sel gereja, sebuah komunitas hangat di mana Anda menemukan keluarga rohani dengan tujuan untuk bertumbuh dan dimuridkan menjadi semakin serupa dengan Kristus. Setiap anggota saling menguatkan melalui firman, doa, dan kesaksian hidup.
           </p>
-          <a
-            href="#koneksi"
-            className="btn-magnetic inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-white hover:bg-[#f3e5ab] text-black font-bold text-xs tracking-[0.18em] uppercase transition-all shadow-xl active:scale-95 min-h-[48px]"
-          >
-            <HeartHandshake className="w-4 h-4" />
-            <span>BERGABUNG DENGAN CONNECT GROUP</span>
-            <ArrowRight className="w-4 h-4" />
-          </a>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <a
+              href="#koneksi"
+              className="btn-magnetic inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-white hover:bg-[#f3e5ab] text-black font-bold text-xs tracking-[0.18em] uppercase transition-all shadow-xl active:scale-95 min-h-[48px]"
+            >
+              <HeartHandshake className="w-4 h-4" />
+              <span>GABUNG CONNECT GROUP</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </a>
+            <Link
+              href="/connect-group"
+              className="btn-magnetic inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/20 hover:border-[#d4af37] text-white hover:text-[#d4af37] text-xs font-bold tracking-[0.16em] uppercase transition-all min-h-[48px]"
+            >
+              <span>JELAJAHI 5 KATEGORI SEL</span>
+              <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
+            </Link>
+          </div>
         </div>
 
       </div>

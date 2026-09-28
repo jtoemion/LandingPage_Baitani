@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 
 export default function PastorProfile() {
@@ -51,13 +52,13 @@ export default function PastorProfile() {
 
             {/* Read More & Social Media Row (§2.7 spec) */}
             <div className="flex flex-wrap items-center gap-6 pt-6 border-t border-white/10">
-              <a
-                href="#koneksi"
-                className="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-white hover:text-[#d4af37] transition-colors py-2"
+              <Link
+                href="/gembala"
+                className="btn-magnetic inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-white hover:text-[#d4af37] transition-colors py-2"
               >
-                <span>LIHAT SELENGKAPNYA</span>
+                <span>PROFIL LENGKAP & DEWAN PENATUA</span>
                 <ArrowUpRight className="w-4 h-4" />
-              </a>
+              </Link>
 
               <div className="flex items-center gap-4 text-xs font-semibold tracking-wider text-zinc-400">
                 <span className="text-zinc-600">|</span>

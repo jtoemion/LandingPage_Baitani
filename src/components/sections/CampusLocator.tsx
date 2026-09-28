@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { MapPin, Navigation, Video, Clock, LocateFixed, Loader2 } from 'lucide-react';
+import Link from 'next/link';
+import { MapPin, Navigation, Video, Clock, LocateFixed, Loader2, ArrowUpRight } from 'lucide-react';
 
 interface CampusInfo {
   id: string;
@@ -95,8 +96,16 @@ export default function CampusLocator() {
             </h2>
           </div>
 
-          {/* Use My Location Button (§2.5 spec) */}
-          <div className="flex items-center gap-3">
+          {/* Action Buttons */}
+          <div className="flex flex-wrap items-center gap-3">
+            <Link
+              href="/lokasi"
+              className="btn-magnetic inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full border border-white/20 hover:border-[#d4af37] text-white hover:text-[#d4af37] text-xs font-bold tracking-wider uppercase transition-colors min-h-[44px]"
+            >
+              <span>INFO LENGKAP KAMPUS</span>
+              <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
+            </Link>
+
             <button
               type="button"
               onClick={handleUseLocation}

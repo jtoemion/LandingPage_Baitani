@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Landmark, QrCode, Copy, Check, MessageSquare, ShieldCheck } from 'lucide-react';
+import Link from 'next/link';
+import { Landmark, QrCode, Copy, Check, MessageSquare, ShieldCheck, ArrowUpRight } from 'lucide-react';
 
 export default function GivingSection() {
   const [copiedAccount, setCopiedAccount] = useState<string | null>(null);
@@ -167,6 +168,16 @@ export default function GivingSection() {
           <cite className="text-[11px] font-bold text-zinc-400 uppercase tracking-widest not-italic">
             — 2 KORINTUS 9:7
           </cite>
+        </div>
+
+        <div className="mt-8 text-center">
+          <Link
+            href="/persembahan"
+            className="btn-magnetic inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-white/20 hover:border-[#d4af37] text-white hover:text-[#d4af37] text-xs font-bold tracking-wider uppercase transition-colors"
+          >
+            <span>INFO LENGKAP & FAQ PERSEMBAHAN</span>
+            <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
+          </Link>
         </div>
 
       </div>

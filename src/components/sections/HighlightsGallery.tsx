@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useRef } from 'react';
-import { ChevronLeft, ChevronRight, Camera } from 'lucide-react';
+import Link from 'next/link';
+import { ChevronLeft, ChevronRight, Camera, ArrowUpRight } from 'lucide-react';
 
 export default function HighlightsGallery() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -60,23 +61,33 @@ export default function HighlightsGallery() {
             </h2>
           </div>
 
-          <div className="flex items-center gap-3">
-            <button
-              type="button"
-              onClick={() => scroll('left')}
-              className="w-12 h-12 rounded-full border border-white/20 hover:border-white text-zinc-300 hover:text-white flex items-center justify-center transition-all min-w-[44px] min-h-[44px] active:scale-95"
-              aria-label="Sorotan sebelumnya"
+          <div className="flex items-center gap-4">
+            <Link
+              href="/sorotan"
+              className="btn-magnetic hidden sm:inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full border border-white/20 hover:border-[#d4af37] text-white hover:text-[#d4af37] text-xs font-bold tracking-wider uppercase transition-colors"
             >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              type="button"
-              onClick={() => scroll('right')}
-              className="w-12 h-12 rounded-full border border-white/20 hover:border-white text-zinc-300 hover:text-white flex items-center justify-center transition-all min-w-[44px] min-h-[44px] active:scale-95"
-              aria-label="Sorotan berikutnya"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
+              <span>SEMUA GALERI</span>
+              <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
+            </Link>
+
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => scroll('left')}
+                className="w-12 h-12 rounded-full border border-white/20 hover:border-white text-zinc-300 hover:text-white flex items-center justify-center transition-all min-w-[44px] min-h-[44px] active:scale-95"
+                aria-label="Sorotan sebelumnya"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                type="button"
+                onClick={() => scroll('right')}
+                className="w-12 h-12 rounded-full border border-white/20 hover:border-white text-zinc-300 hover:text-white flex items-center justify-center transition-all min-w-[44px] min-h-[44px] active:scale-95"
+                aria-label="Sorotan berikutnya"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
           </div>
         </div>
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { ArrowRight, BookOpen, Compass, Target } from 'lucide-react';
 
 export default function IdentitySection() {
@@ -77,14 +78,14 @@ export default function IdentitySection() {
               </p>
             </div>
           </div>
-          <a
-            href="#koneksi"
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-white/30 hover:border-white text-xs font-bold tracking-wider uppercase text-white hover:bg-white hover:text-black transition-all whitespace-nowrap min-h-[44px]"
-            aria-label="Lihat Selengkapnya: Pengakuan Iman"
+          <Link
+            href="/tentang-kami"
+            className="btn-magnetic inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-white/30 hover:border-[#d4af37] text-xs font-bold tracking-wider uppercase text-white hover:bg-white hover:text-black transition-all whitespace-nowrap min-h-[44px]"
+            aria-label="Lihat Selengkapnya: Pengakuan Iman & Profil Gereja"
           >
-            <span>BACA CREDO</span>
+            <span>BACA CREDO & PROFIL LENGKAP</span>
             <ArrowRight className="w-3.5 h-3.5" />
-          </a>
+          </Link>
         </div>
 
       </div>
