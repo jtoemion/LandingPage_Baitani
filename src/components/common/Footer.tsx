@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 
 export default function Footer() {
@@ -104,39 +105,49 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2 text-xs">
               <li>
-                <a href="#hero" className="hover:text-white transition-colors inline-block py-1">
+                <Link href="/" className="hover:text-[#d4af37] transition-colors inline-block py-1">
                   Beranda Utama
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#identitas" className="hover:text-white transition-colors inline-block py-1">
+                <Link href="/tentang-kami" className="hover:text-[#d4af37] transition-colors inline-block py-1">
                   Tentang Kami & Visi Misi
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#acara" className="hover:text-white transition-colors inline-block py-1">
+                <Link href="/acara" className="hover:text-[#d4af37] transition-colors inline-block py-1">
                   Acara & Agenda Kegiatan
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#lokasi" className="hover:text-white transition-colors inline-block py-1">
+                <Link href="/lokasi" className="hover:text-[#d4af37] transition-colors inline-block py-1">
                   Lokasi Kampus & Peta Ibadah
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#connect-group" className="hover:text-white transition-colors inline-block py-1">
+                <Link href="/connect-group" className="hover:text-[#d4af37] transition-colors inline-block py-1">
                   Connect Group Sel Jemaat
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#pastor" className="hover:text-white transition-colors inline-block py-1">
+                <Link href="/gembala" className="hover:text-[#d4af37] transition-colors inline-block py-1">
                   Gembala Sidang & Pastoral
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#persembahan" className="hover:text-white transition-colors inline-block py-1">
+                <Link href="/sorotan" className="hover:text-[#d4af37] transition-colors inline-block py-1">
+                  Sorotan & Galeri Momen
+                </Link>
+              </li>
+              <li>
+                <Link href="/persembahan" className="hover:text-[#d4af37] transition-colors inline-block py-1">
                   Persembahan & QRIS
-                </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/koneksi" className="hover:text-[#d4af37] transition-colors inline-block py-1 font-semibold text-white">
+                  Saya Jemaat Baru
+                </Link>
               </li>
             </ul>
           </div>
