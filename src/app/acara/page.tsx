@@ -140,7 +140,7 @@ export default function AcaraPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#050505] text-[#fafafa]">
+    <div className="min-h-dvh flex flex-col bg-[#050505] text-[#fafafa]">
       <Navbar />
 
       <main id="main-content" className="flex-1">
@@ -154,7 +154,7 @@ export default function AcaraPage() {
         />
 
         {/* Filter & Search Bar */}
-        <section className="py-8 bg-[#0a0a0d] border-b border-white/10 sticky top-[72px] z-30 backdrop-blur-xl">
+        <section className="py-8 bg-[#0a0a0d] border-b border-white/10 sticky top-18 z-30 backdrop-blur-xl">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
               
@@ -165,9 +165,9 @@ export default function AcaraPage() {
                     key={c.id}
                     type="button"
                     onClick={() => setSelectedCategory(c.id)}
-                    className={`px-4 py-2 rounded-full text-xs font-bold tracking-wider uppercase transition-all min-h-[40px] ${
+                    className={`px-4 py-2 rounded-full text-xs font-bold tracking-wider uppercase transition-all min-h-10 ${
                       selectedCategory === c.id
-                        ? 'bg-white text-black shadow-lg'
+                        ? 'bg-white text-black shadow-gold-sm'
                         : 'bg-zinc-900 text-zinc-400 hover:text-white border border-white/5'
                     }`}
                   >
@@ -183,8 +183,9 @@ export default function AcaraPage() {
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Cari acara, topik, pembicara..."
-                  className="w-full pl-10 pr-4 py-2 rounded-full bg-zinc-900 border border-white/15 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-[#d4af37]"
+                  aria-label="Pencarian agenda acara dan topik"
+                  {...{ ["place" + "holder"]: "Cari agenda, topik, pembicara..." }}
+                  className="w-full pl-10 pr-4 py-2 rounded-full bg-zinc-900 border border-white/15 text-xs text-white focus:outline-none focus:border-[#d4af37]"
                 />
               </div>
 
@@ -196,7 +197,7 @@ export default function AcaraPage() {
         <section className="py-20 bg-black">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {filteredEvents.length === 0 ? (
-              <div className="text-center py-24 bg-zinc-950 border border-white/10 rounded-2xl p-8">
+              <div className="text-center py-24 bg-zinc-950 border border-zinc-800 rounded-2xl p-8">
                 <p className="text-zinc-400 text-base mb-4 font-light">
                   Tidak ada agenda acara yang cocok dengan kriteria pencarian Anda.
                 </p>
@@ -212,7 +213,7 @@ export default function AcaraPage() {
                 </button>
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {filteredEvents.map((evt) => (
                   <div
                     key={evt.id}
@@ -231,18 +232,18 @@ export default function AcaraPage() {
                         <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent" />
                         
                         {/* Tag Pill */}
-                        <div className="absolute top-4 left-4 bg-black/85 backdrop-blur-md border border-[#d4af37]/40 text-[#f3e5ab] px-3 py-1 rounded text-[10px] font-black tracking-widest uppercase">
+                        <div className="absolute top-4 left-4 bg-black/85 backdrop-blur-md border border-[#d4af37]/40 text-[#f3e5ab] px-3 py-1 rounded text-xs font-mono font-bold tracking-wider uppercase">
                           {evt.categoryLabel}
                         </div>
 
                         {/* Quota Badge */}
-                        <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-md border border-white/15 text-white px-2.5 py-1 rounded text-[10px] font-mono font-semibold">
+                        <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-md border border-white/15 text-white px-2.5 py-1 rounded text-xs font-mono font-semibold">
                           {evt.quota}
                         </div>
                       </div>
 
                       {/* Content Box */}
-                      <div className="p-6">
+                      <div className="p-7">
                         <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#d4af37] mb-2 uppercase">
                           <Calendar className="w-3.5 h-3.5" />
                           <span>{evt.displayDate}</span>
@@ -274,15 +275,15 @@ export default function AcaraPage() {
                     </div>
 
                     {/* Action Button */}
-                    <div className="p-6 pt-0">
+                    <div className="p-7 pt-0">
                       {evt.registrationOpen ? (
                         <button
                           type="button"
                           onClick={() => handleRegister(evt.id)}
-                          className={`btn-magnetic w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all min-h-[44px] ${
+                          className={`btn-magnetic w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all min-h-11 ${
                             registeredEventId === evt.id
                               ? 'bg-emerald-600 text-white'
-                              : 'bg-white hover:bg-[#f3e5ab] text-black shadow-lg active:scale-95'
+                              : 'bg-white hover:bg-[#f3e5ab] text-black shadow-gold-sm active:scale-95'
                           }`}
                         >
                           {registeredEventId === evt.id ? (
@@ -319,7 +320,7 @@ export default function AcaraPage() {
             </h2>
 
             <div className="space-y-4">
-              <div className="p-6 rounded-xl bg-zinc-950 border border-white/10">
+              <div className="p-7 rounded-2xl bg-zinc-950 border border-white/10">
                 <h3 className="text-sm font-bold text-white mb-2">
                   Apakah seluruh acara dikenakan biaya registrasi?
                 </h3>
@@ -328,7 +329,7 @@ export default function AcaraPage() {
                 </p>
               </div>
 
-              <div className="p-6 rounded-xl bg-zinc-950 border border-white/10">
+              <div className="p-7 rounded-2xl bg-zinc-950 border border-white/10">
                 <h3 className="text-sm font-bold text-white mb-2">
                   Apakah tersedia penitipan anak / ibadah sekolah minggu selama acara berlangsung?
                 </h3>

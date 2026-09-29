@@ -20,13 +20,13 @@ export default function EventsCarousel() {
   };
 
   return (
-    <section id="acara" className="py-24 bg-zinc-950 text-white relative border-b border-white/5">
+    <section id="acara" className="py-24 bg-zinc-950 text-white relative border-b border-zinc-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header: GMS Style */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
           <div>
-            <span className="text-[11px] font-bold tracking-[0.3em] uppercase text-zinc-400 block mb-2">
+            <span className="text-xs font-bold tracking-widest uppercase text-zinc-400 block mb-2">
               AGENDA & KEGIATAN MENDATANG
             </span>
             <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase">
@@ -48,7 +48,7 @@ export default function EventsCarousel() {
               <button
                 type="button"
                 onClick={() => scroll('left')}
-                className="w-12 h-12 rounded-full border border-white/20 hover:border-white text-zinc-300 hover:text-white flex items-center justify-center transition-all min-w-[44px] min-h-[44px] active:scale-95"
+                className="w-12 h-12 rounded-full border border-white/20 hover:border-white text-zinc-300 hover:text-white flex items-center justify-center transition-all min-w-11 min-h-11 active:scale-95"
                 aria-label="Event sebelumnya"
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -56,7 +56,7 @@ export default function EventsCarousel() {
               <button
                 type="button"
                 onClick={() => scroll('right')}
-                className="w-12 h-12 rounded-full border border-white/20 hover:border-white text-zinc-300 hover:text-white flex items-center justify-center transition-all min-w-[44px] min-h-[44px] active:scale-95"
+                className="w-12 h-12 rounded-full border border-white/20 hover:border-white text-zinc-300 hover:text-white flex items-center justify-center transition-all min-w-11 min-h-11 active:scale-95"
                 aria-label="Event berikutnya"
               >
                 <ChevronRight className="w-5 h-5" />
@@ -73,7 +73,7 @@ export default function EventsCarousel() {
           {eventsData.map((event) => (
             <div
               key={event.id}
-              className="flex-shrink-0 w-[290px] sm:w-[340px] lg:w-[380px] snap-start bg-zinc-900/60 border border-white/10 rounded-xl overflow-hidden hover:border-white/30 transition-all duration-300 group flex flex-col justify-between"
+              className="flex-shrink-0 w-72 sm:w-80 lg:w-96 snap-start bg-zinc-900/60 border border-zinc-800 rounded-xl overflow-hidden hover:border-white/30 transition-all duration-300 group flex flex-col justify-between"
             >
               {/* Event Image */}
               <div className="relative aspect-[4/3] w-full overflow-hidden bg-black">
@@ -87,7 +87,7 @@ export default function EventsCarousel() {
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent" />
                 
                 {/* Global Tag Pill */}
-                <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-md border border-white/20 text-white px-3 py-1 rounded text-[10px] font-black tracking-widest uppercase">
+                <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-md border border-white/20 text-white px-3 py-1 rounded text-xs font-black tracking-widest uppercase">
                   GLOBAL
                 </div>
 
@@ -108,13 +108,13 @@ export default function EventsCarousel() {
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+                <div className="pt-4 border-t border-zinc-800 flex items-center justify-between">
                   <span className="text-xs text-zinc-400 font-medium">
                     {event.location}
                   </span>
                   <a
                     href="#koneksi"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold tracking-wider uppercase text-white hover:text-[#d4af37] transition-colors min-h-[44px]"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold tracking-wider uppercase text-white hover:text-[#d4af37] transition-colors min-h-11"
                   >
                     <span>DAFTAR</span>
                     <ArrowUpRight className="w-4 h-4" />

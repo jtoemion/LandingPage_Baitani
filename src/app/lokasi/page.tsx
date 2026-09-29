@@ -120,7 +120,7 @@ export default function LokasiPage() {
   const activeCampus = campusDetails.find((c) => c.id === selectedCampusId) || campusDetails[0];
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#050505] text-[#fafafa]">
+    <div className="min-h-dvh flex flex-col bg-[#050505] text-[#fafafa]">
       <Navbar />
 
       <main id="main-content" className="flex-1">
@@ -140,7 +140,7 @@ export default function LokasiPage() {
         <section className="py-24 bg-black border-b border-white/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-12">
-              <span className="text-[11px] font-black tracking-[0.3em] uppercase text-zinc-400 block mb-2">
+              <span className="text-xs font-black tracking-widest uppercase text-zinc-400 block mb-2">
                 DETAIL FASILITAS & TRANSPORTASI
               </span>
               <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight">
@@ -155,10 +155,10 @@ export default function LokasiPage() {
                   key={campus.id}
                   type="button"
                   onClick={() => setSelectedCampusId(campus.id)}
-                  className={`px-6 py-3 rounded-full text-xs font-bold tracking-wider uppercase transition-all min-h-[44px] ${
+                  className={`px-6 py-3 rounded-full text-xs font-bold tracking-wider uppercase transition-all min-h-11 ${
                     selectedCampusId === campus.id
                       ? 'bg-white text-black shadow-xl ring-2 ring-[#d4af37]'
-                      : 'bg-zinc-950 text-zinc-400 hover:text-white border border-white/10'
+                      : 'bg-zinc-950 text-zinc-400 hover:text-white border border-zinc-800'
                   }`}
                 >
                   {campus.city} — {campus.badge}
@@ -173,7 +173,7 @@ export default function LokasiPage() {
                 {/* Left: General Info & Schedule (7 cols) */}
                 <div className="lg:col-span-7 space-y-6">
                   <div>
-                    <div className="inline-block px-3 py-1 rounded bg-[#d4af37]/10 text-[#d4af37] border border-[#d4af37]/30 text-xs font-mono font-bold uppercase tracking-wider mb-3">
+                    <div className="inline-block px-3 py-1 rounded bg-[#d4af37]/40 text-[#f3e5ab] border border-[#d4af37]/50 text-xs font-mono font-bold uppercase tracking-wider mb-3">
                       {activeCampus.badge}
                     </div>
                     <h3 className="text-2xl sm:text-3xl font-black text-white mb-2">
@@ -192,8 +192,8 @@ export default function LokasiPage() {
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {activeCampus.schedule.map((item, idx) => (
-                        <div key={`sch-${idx}`} className="p-4 rounded-xl bg-black border border-white/10">
-                          <span className="text-[10px] font-mono text-[#d4af37] font-bold block mb-1">
+                        <div key={`sch-${idx}`} className="p-4 rounded-lg bg-black border border-white/10">
+                          <span className="text-xs font-mono text-[#d4af37] font-bold block mb-1">
                             {item.target}
                           </span>
                           <p className="text-sm font-bold text-white mb-1">{item.session}</p>
@@ -207,7 +207,7 @@ export default function LokasiPage() {
                   </div>
 
                   {/* Public Transit Guide */}
-                  <div className="p-4 rounded-xl bg-white/5 border border-white/10 flex items-start gap-3">
+                  <div className="p-4 rounded-lg bg-white/5 border border-white/10 flex items-start gap-3">
                     <Bus className="w-5 h-5 text-[#d4af37] flex-shrink-0 mt-0.5" />
                     <div>
                       <h5 className="text-xs font-bold text-white uppercase tracking-wider mb-1">
@@ -221,7 +221,7 @@ export default function LokasiPage() {
                 </div>
 
                 {/* Right: Facilities & Action (5 cols) */}
-                <div className="lg:col-span-5 bg-black/60 border border-white/10 rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+                <div className="lg:col-span-5 bg-black/60 border border-white/10 rounded-2xl p-7 sm:p-8 flex flex-col justify-between">
                   <div>
                     <h4 className="text-xs font-bold uppercase tracking-widest text-zinc-300 mb-4">
                       Fasilitas Gedung Ibadah:
@@ -236,7 +236,7 @@ export default function LokasiPage() {
                     </ul>
 
                     <div className="mt-8 pt-6 border-t border-white/10">
-                      <p className="text-[11px] text-zinc-500 uppercase tracking-widest font-mono mb-1">
+                      <p className="text-xs text-zinc-400 uppercase tracking-widest font-mono mb-1">
                         GEMBALA WILAYAH
                       </p>
                       <p className="text-sm font-bold text-white">{activeCampus.leadPastor}</p>

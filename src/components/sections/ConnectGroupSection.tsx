@@ -47,13 +47,13 @@ export default function ConnectGroupSection() {
   };
 
   return (
-    <section id="connect-group" className="py-24 bg-zinc-950 text-white border-b border-white/5 relative">
+    <section id="connect-group" className="py-24 bg-zinc-950 text-white border-b border-zinc-800 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header with Controls */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
           <div>
-            <span className="text-[11px] font-bold tracking-[0.3em] uppercase text-zinc-400 block mb-2">
+            <span className="text-xs font-bold tracking-widest uppercase text-zinc-400 block mb-2">
               KOMUNITAS SEL JEMAAT
             </span>
             <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase">
@@ -68,7 +68,7 @@ export default function ConnectGroupSection() {
             <button
               type="button"
               onClick={() => scroll('left')}
-              className="w-12 h-12 rounded-full border border-white/20 hover:border-white text-zinc-300 hover:text-white flex items-center justify-center transition-all min-w-[44px] min-h-[44px] active:scale-95"
+              className="w-12 h-12 rounded-full border border-white/20 hover:border-white text-zinc-300 hover:text-white flex items-center justify-center transition-all min-w-11 min-h-11 active:scale-95"
               aria-label="Foto Connect Group sebelumnya"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -76,7 +76,7 @@ export default function ConnectGroupSection() {
             <button
               type="button"
               onClick={() => scroll('right')}
-              className="w-12 h-12 rounded-full border border-white/20 hover:border-white text-zinc-300 hover:text-white flex items-center justify-center transition-all min-w-[44px] min-h-[44px] active:scale-95"
+              className="w-12 h-12 rounded-full border border-white/20 hover:border-white text-zinc-300 hover:text-white flex items-center justify-center transition-all min-w-11 min-h-11 active:scale-95"
               aria-label="Foto Connect Group berikutnya"
             >
               <ChevronRight className="w-5 h-5" />
@@ -92,7 +92,7 @@ export default function ConnectGroupSection() {
           {cgPhotos.map((item, idx) => (
             <div
               key={`cg-photo-${idx}`}
-              className="flex-shrink-0 w-[260px] sm:w-[320px] aspect-square snap-start rounded-2xl overflow-hidden relative group bg-black border border-white/10"
+              className="flex-shrink-0 w-64 sm:w-80 aspect-square snap-start rounded-2xl overflow-hidden relative group bg-black border border-zinc-800"
             >
               <img
                 src={item.image}
@@ -104,7 +104,7 @@ export default function ConnectGroupSection() {
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
               
               <div className="absolute bottom-4 left-4 right-4">
-                <span className="text-[10px] font-bold tracking-widest uppercase text-[#d4af37] block mb-1">
+                <span className="text-xs font-bold tracking-widest uppercase text-[#d4af37] block mb-1">
                   {item.category}
                 </span>
                 <h3 className="text-sm sm:text-base font-bold text-white leading-tight">
@@ -123,7 +123,7 @@ export default function ConnectGroupSection() {
           <div className="flex flex-wrap items-center justify-center gap-4">
             <a
               href="#koneksi"
-              className="btn-magnetic inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-white hover:bg-[#f3e5ab] text-black font-bold text-xs tracking-[0.18em] uppercase transition-all shadow-xl active:scale-95 min-h-[48px]"
+              className="btn-magnetic inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-white hover:bg-[#f3e5ab] text-black font-bold text-xs tracking-wider uppercase transition-all shadow-xl active:scale-95 min-h-12"
             >
               <HeartHandshake className="w-4 h-4" />
               <span>GABUNG CONNECT GROUP</span>
@@ -131,7 +131,7 @@ export default function ConnectGroupSection() {
             </a>
             <Link
               href="/connect-group"
-              className="btn-magnetic inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/20 hover:border-[#d4af37] text-white hover:text-[#d4af37] text-xs font-bold tracking-[0.16em] uppercase transition-all min-h-[48px]"
+              className="btn-magnetic inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/20 hover:border-[#d4af37] text-white hover:text-[#d4af37] text-xs font-bold tracking-wider uppercase transition-all min-h-12"
             >
               <span>JELAJAHI 5 KATEGORI SEL</span>
               <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />

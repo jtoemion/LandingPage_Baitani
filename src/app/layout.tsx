@@ -1,5 +1,18 @@
 import type { Metadata } from 'next';
+import { Cinzel, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
+
+const cinzel = Cinzel({
+  subsets: ['latin'],
+  variable: '--font-cinzel',
+  display: 'swap',
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-plus-jakarta-sans',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'Gereja Baitani — Rumah Kasih, Pemulihan, & Pertumbuhan Rohani',
@@ -21,8 +34,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="id" className="h-full">
-      <body className="min-h-full flex flex-col bg-[#050505] text-[#fafafa] antialiased selection:bg-[#d4af37] selection:text-black">
+    <html lang="id" className={`h-full ${cinzel.variable} ${plusJakartaSans.variable}`}>
+      <body className="min-h-dvh flex flex-col bg-[#050505] text-[#fafafa] antialiased selection:bg-[#d4af37] selection:text-black">
         {/* Skip to Content Link (WCAG 2.1 AA §03.8) */}
         <a
           href="#main-content"

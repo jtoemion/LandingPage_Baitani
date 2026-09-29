@@ -18,7 +18,7 @@ export default function PageHero({
   breadcrumbCurrent,
 }: PageHeroProps) {
   return (
-    <section className="relative pt-36 pb-20 sm:pt-44 sm:pb-28 overflow-hidden bg-black text-white border-b border-white/10 select-none">
+    <section className="relative pt-36 pb-20 sm:pt-44 sm:pb-28 overflow-hidden bg-black text-white border-b border-zinc-800 select-none">
       {/* Deep Atmospheric Gradient & Glow */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,rgba(212,175,55,0.12),rgba(5,5,5,0))]" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
@@ -36,7 +36,7 @@ export default function PageHero({
         {/* Category Badge Pill */}
         <div className="mb-6 inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-white/15 bg-white/5 backdrop-blur-md">
           <span className="w-1.5 h-1.5 rounded-full bg-[#d4af37] animate-pulse" />
-          <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.28em] text-[#e5c07b] uppercase">
+          <span className="text-xs font-bold tracking-widest text-[#e5c07b] uppercase">
             {category}
           </span>
         </div>
@@ -47,7 +47,7 @@ export default function PageHero({
             {title}
           </span>
           {titleAccent && (
-            <span className="block text-[#d4af37] mt-1 font-serif italic tracking-normal drop-shadow-[0_12px_40px_rgba(212,175,55,0.2)]">
+            <span className="block text-[#d4af37] mt-1 font-serif italic tracking-normal drop-shadow-lg">
               {titleAccent}
             </span>
           )}

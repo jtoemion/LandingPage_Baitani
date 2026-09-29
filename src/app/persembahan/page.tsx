@@ -65,7 +65,7 @@ export default function PersembahanPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#050505] text-[#fafafa]">
+    <div className="min-h-dvh flex flex-col bg-[#050505] text-[#fafafa]">
       <Navbar />
 
       <main id="main-content" className="flex-1">
@@ -95,14 +95,14 @@ export default function PersembahanPage() {
                 {bankAccounts.map((account) => (
                   <div
                     key={account.id}
-                    className="bg-zinc-950 border border-white/10 rounded-2xl p-6 sm:p-8 hover:border-[#d4af37]/40 transition-all shadow-xl flex flex-col justify-between"
+                    className="bg-zinc-950 border border-white/10 rounded-2xl p-8 hover:border-[#d4af37]/40 transition-all shadow-xl flex flex-col justify-between"
                   >
                     <div className="mb-4">
                       <div className="flex items-center justify-between gap-4 mb-3">
                         <span className="text-xs font-bold tracking-wider uppercase text-[#d4af37]">
                           {account.bankName}
                         </span>
-                        <span className="text-[10px] bg-white/5 text-zinc-400 border border-white/10 px-2.5 py-0.5 rounded font-mono">
+                        <span className="text-xs bg-white/5 text-zinc-300 border border-zinc-800 px-2.5 py-0.5 rounded font-mono">
                           TERVERIFIKASI
                         </span>
                       </div>
@@ -118,16 +118,16 @@ export default function PersembahanPage() {
                     </div>
 
                     <div className="pt-4 border-t border-white/10 flex items-center justify-between">
-                      <span className="text-xs text-zinc-500 flex items-center gap-1.5 font-light">
+                      <span className="text-xs text-zinc-400 flex items-center gap-1.5 font-light">
                         <ShieldCheck className="w-4 h-4 text-emerald-400" />
                         <span>Rekening Bank Resmi Gereja</span>
                       </span>
                       <button
                         type="button"
                         onClick={() => handleCopy(account.accountNumber, account.id)}
-                        className={`btn-magnetic inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all min-h-[44px] ${
+                        className={`btn-magnetic inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all min-h-11 ${
                           copiedId === account.id
-                            ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-900/30'
+                            ? 'bg-emerald-600 text-white shadow-md shadow-emerald-950/40'
                             : 'bg-white hover:bg-[#f3e5ab] text-black active:scale-95'
                         }`}
                       >
@@ -149,7 +149,7 @@ export default function PersembahanPage() {
               </div>
 
               {/* Right Column: QRIS Frame (5 cols) */}
-              <div className="lg:col-span-5 bg-zinc-950 border border-white/10 rounded-2xl p-6 sm:p-8 flex flex-col items-center text-center">
+              <div className="lg:col-span-5 bg-zinc-950 border border-white/10 rounded-2xl p-8 flex flex-col items-center text-center">
                 <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-[#d4af37] mb-4">
                   <QrCode className="w-6 h-6" />
                 </div>
@@ -163,16 +163,16 @@ export default function PersembahanPage() {
 
                 {/* QR Code Presentation */}
                 <div className="bg-white p-4 rounded-2xl shadow-2xl border border-zinc-300 mb-6 w-52 h-52 flex flex-col items-center justify-center">
-                  <div className="w-44 h-44 bg-black rounded-xl flex flex-col items-center justify-center p-2 text-white text-center">
+                  <div className="w-44 h-44 bg-black rounded-lg flex flex-col items-center justify-center p-2 text-white text-center">
                     <QrCode className="w-28 h-28 text-white" />
-                    <span className="text-[10px] font-mono tracking-widest text-zinc-300 mt-1 font-bold">
+                    <span className="text-xs font-mono tracking-widest text-zinc-300 mt-1 font-bold">
                       GEREJA BAITANI
                     </span>
-                    <span className="text-[8px] text-zinc-500 font-mono">NMID: ID1029384756</span>
+                    <span className="text-xs text-zinc-400 font-mono">NMID: ID1029384756</span>
                   </div>
                 </div>
 
-                <div className="text-[11px] text-zinc-400 space-y-1 mb-6 font-light">
+                <div className="text-xs text-zinc-400 space-y-1 mb-6 font-light">
                   <p className="font-semibold text-zinc-300">Mendukung Seluruh Layanan Pembayaran:</p>
                   <p>BCA • Mandiri • BRI • BNI • GoPay • OVO • DANA • ShopeePay • LinkAja</p>
                 </div>
@@ -181,7 +181,7 @@ export default function PersembahanPage() {
                   href="https://wa.me/6281234567890?text=Halo%20Sekretariat%20Gereja%20Baitani,%20saya%20ingin%20mengonfirmasi%20bukti%20transfer%20persembahan."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-magnetic w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-full border border-white/20 hover:border-white text-white text-xs font-bold tracking-wider uppercase transition-colors min-h-[44px]"
+                  className="btn-magnetic w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-full border border-white/20 hover:border-white text-white text-xs font-bold tracking-wider uppercase transition-colors min-h-11"
                 >
                   <MessageSquare className="w-4 h-4 text-emerald-400" />
                   <span>KONFIRMASI BUKTI TRANSFER VIA WA</span>
@@ -196,7 +196,7 @@ export default function PersembahanPage() {
         <section className="py-24 bg-[#070709] border-b border-white/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="text-[11px] font-bold tracking-[0.3em] uppercase text-zinc-400 block mb-2">
+              <span className="text-xs font-bold tracking-widest uppercase text-zinc-400 block mb-2">
                 PEMAHAMAN ALKITABIAH
               </span>
               <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase mb-4">
@@ -231,7 +231,7 @@ export default function PersembahanPage() {
         </section>
 
         {/* Scriptural Promise */}
-        <section className="py-20 bg-black text-center border-b border-white/10">
+        <section className="py-20 bg-black text-center border-b border-zinc-800">
           <div className="max-w-3xl mx-auto px-4">
             <blockquote className="text-base sm:text-lg text-zinc-200 italic font-serif leading-relaxed mb-4">
               &ldquo;Muliakanlah TUHAN dengan hartamu dan dengan hasil pertama dari segala penghasilanmu, maka lumbung-lumbungmu akan diisi penuh sampai melimpah-limpah.&rdquo;

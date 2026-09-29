@@ -88,7 +88,7 @@ export default function CampusLocator() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
-            <span className="text-[11px] font-bold tracking-[0.3em] uppercase text-zinc-400 block mb-2">
+            <span className="text-xs font-bold tracking-widest uppercase text-zinc-400 block mb-2">
               JARINGAN GEREJA LOKAL
             </span>
             <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase">
@@ -100,7 +100,7 @@ export default function CampusLocator() {
           <div className="flex flex-wrap items-center gap-3">
             <Link
               href="/lokasi"
-              className="btn-magnetic inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full border border-white/20 hover:border-[#d4af37] text-white hover:text-[#d4af37] text-xs font-bold tracking-wider uppercase transition-colors min-h-[44px]"
+              className="btn-magnetic inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full border border-white/20 hover:border-[#d4af37] text-white hover:text-[#d4af37] text-xs font-bold tracking-wider uppercase transition-colors min-h-11"
             >
               <span>INFO LENGKAP KAMPUS</span>
               <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
@@ -110,7 +110,7 @@ export default function CampusLocator() {
               type="button"
               onClick={handleUseLocation}
               disabled={isLocating}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/20 hover:border-white text-xs font-bold tracking-wider uppercase text-zinc-300 hover:text-white transition-all min-h-[44px]"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/20 hover:border-white text-xs font-bold tracking-wider uppercase text-zinc-300 hover:text-white transition-all min-h-11"
               aria-label="Gunakan lokasi saya"
             >
               {isLocating ? (
@@ -136,9 +136,9 @@ export default function CampusLocator() {
               key={c.id}
               type="button"
               onClick={() => setSelectedCity(c.city)}
-              className={`px-5 py-2 rounded-full text-xs font-bold tracking-widest uppercase transition-all min-h-[40px] ${
+              className={`px-5 py-2 rounded-full text-xs font-bold tracking-widest uppercase transition-all min-h-10 ${
                 selectedCity === c.city
-                  ? 'bg-white text-black shadow-lg'
+                  ? 'bg-white text-black shadow-gold-sm'
                   : 'bg-zinc-900 text-zinc-400 hover:text-white border border-white/5'
               }`}
             >
@@ -151,11 +151,11 @@ export default function CampusLocator() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           {/* Stylized Indonesia Archipelago Vector SVG Map (7 cols) */}
-          <div className="lg:col-span-7 bg-zinc-950 border border-white/10 rounded-2xl p-6 sm:p-8 relative overflow-hidden min-h-[360px] flex items-center justify-center">
+          <div className="lg:col-span-7 bg-zinc-950 border border-white/10 rounded-2xl p-7 sm:p-8 relative overflow-hidden min-h-96 flex items-center justify-center">
             
             {/* Minimalist Archipelago Map Illustration */}
             <svg
-              className="w-full h-auto max-h-[300px] text-zinc-800"
+              className="w-full h-auto max-h-72 text-zinc-800"
               viewBox="0 0 1000 450"
               fill="none"
               stroke="currentColor"
@@ -205,27 +205,27 @@ export default function CampusLocator() {
             >
               <div className="relative flex items-center justify-center">
                 <span className="w-8 h-8 rounded-full bg-[#d4af37]/35 animate-ping absolute" />
-                <span className="w-4 h-4 rounded-full bg-[#d4af37] border-2 border-white shadow-lg relative z-10 flex items-center justify-center" />
-                <div className="absolute top-6 left-1/2 -translate-x-1/2 bg-black/90 border border-[#d4af37]/40 text-[#f3e5ab] text-[10px] font-bold px-2 py-0.5 rounded whitespace-nowrap shadow-xl">
+                <span className="w-4 h-4 rounded-full bg-[#d4af37] border-2 border-white shadow-gold-md relative z-10 flex items-center justify-center" />
+                <div className="absolute top-6 left-1/2 -translate-x-1/2 bg-black/90 border border-[#d4af37]/40 text-[#f3e5ab] text-xs font-bold px-2 py-0.5 rounded whitespace-nowrap shadow-xl">
                   {currentCampus.city}
                 </div>
               </div>
             </div>
 
             {/* Map Legend */}
-            <div className="absolute bottom-4 left-6 text-[10px] tracking-widest uppercase text-zinc-500 font-mono">
+            <div className="absolute bottom-4 left-6 text-xs tracking-widest uppercase text-zinc-500 font-mono">
               INDONESIA ARCHIPELAGO NETWORK • 4 REGIONS
             </div>
           </div>
 
           {/* Active Campus Details Card (5 cols) */}
-          <div className="lg:col-span-5 bg-zinc-950 border border-white/10 rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+          <div className="lg:col-span-5 bg-zinc-950 border border-white/10 rounded-2xl p-7 sm:p-8 flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-4">
-                <span className="text-[10px] font-black tracking-[0.25em] uppercase text-[#d4af37] bg-[#d4af37]/10 px-2.5 py-1 rounded border border-[#d4af37]/30">
+                <span className="text-xs font-black tracking-wider uppercase text-[#d4af37] bg-[#d4af37]/40 px-2.5 py-1 rounded border border-[#d4af37]/50">
                   {currentCampus.city}
                 </span>
-                <span className="text-xs text-zinc-500 font-mono">
+                <span className="text-xs text-zinc-400 font-mono">
                   {currentCampus.phone}
                 </span>
               </div>
@@ -259,7 +259,7 @@ export default function CampusLocator() {
                 href="https://maps.google.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-magnetic flex-1 inline-flex items-center justify-center gap-2 py-3 rounded-full bg-white text-black font-bold text-xs tracking-wider uppercase hover:bg-[#f3e5ab] transition-all min-h-[44px]"
+                className="btn-magnetic flex-1 inline-flex items-center justify-center gap-2 py-3 rounded-full bg-white text-black font-bold text-xs tracking-wider uppercase hover:bg-[#f3e5ab] transition-all min-h-11"
               >
                 <Navigation className="w-3.5 h-3.5" />
                 <span>PETUNJUK ARAH</span>
@@ -268,7 +268,7 @@ export default function CampusLocator() {
                 href="https://youtube.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center p-3 rounded-full border border-white/20 text-white hover:bg-white/10 transition-colors min-h-[44px] min-w-[44px]"
+                className="inline-flex items-center justify-center p-3 rounded-full border border-zinc-700 hover:bg-white/10 text-white transition-colors min-h-11 min-w-11"
                 aria-label="Tonton Ibadah Live"
               >
                 <Video className="w-4 h-4" />

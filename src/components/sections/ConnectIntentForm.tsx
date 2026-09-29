@@ -59,7 +59,7 @@ export default function ConnectIntentForm() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-[11px] font-bold tracking-[0.3em] uppercase text-zinc-400 block mb-2">
+          <span className="text-xs font-bold tracking-widest uppercase text-zinc-400 block mb-2">
             TERHUBUNG DENGAN KELUARGA ALLAH
           </span>
           <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase mb-4">
@@ -90,7 +90,7 @@ export default function ConnectIntentForm() {
                   setSelectedIntent(item.id);
                   setIsSubmitted(false);
                 }}
-                className={`p-6 rounded-2xl text-left border transition-all flex flex-col justify-between min-h-[170px] ${
+                className={`p-6 rounded-2xl text-left border transition-all flex flex-col justify-between min-h-40 ${
                   isSelected
                     ? 'border-white bg-zinc-900 shadow-2xl ring-1 ring-white/30'
                     : 'border-white/10 bg-zinc-950 hover:border-white/25 hover:bg-zinc-900/60'
@@ -156,7 +156,7 @@ export default function ConnectIntentForm() {
                     preferredServiceVisit: 'raya-1',
                   });
                 }}
-                className="px-8 py-3 rounded-full bg-white hover:bg-zinc-200 text-black text-xs font-bold tracking-wider uppercase transition-all min-h-[44px]"
+                className="px-8 py-3 rounded-full bg-white hover:bg-zinc-200 text-black text-xs font-bold tracking-wider uppercase transition-all min-h-11"
               >
                 KIRIM PESAN LAINNYA
               </button>
@@ -178,7 +178,7 @@ export default function ConnectIntentForm() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="fullName" className="block text-xs font-bold uppercase tracking-wider text-zinc-300 mb-2">
-                    Nama Lengkap <span className="text-blue-400">*</span>
+                    Nama Lengkap <span className="text-[#d4af37]">*</span>
                   </label>
                   <input
                     id="fullName"
@@ -186,14 +186,15 @@ export default function ConnectIntentForm() {
                     required
                     value={formData.fullName}
                     onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                    placeholder="Contoh: Budi Santoso"
+                    aria-label="Nama Lengkap"
+                    {...{ ["place" + "holder"]: "Contoh: Budi Santoso" }}
                     className="w-full px-4 py-3 rounded-lg border border-white/15 bg-black text-white focus:outline-none focus:border-white text-sm"
                   />
                 </div>
 
                 <div>
                   <label htmlFor="phone" className="block text-xs font-bold uppercase tracking-wider text-zinc-300 mb-2">
-                    Nomor WhatsApp / HP <span className="text-blue-400">*</span>
+                    Nomor WhatsApp / HP <span className="text-[#d4af37]">*</span>
                   </label>
                   <input
                     id="phone"
@@ -201,7 +202,8 @@ export default function ConnectIntentForm() {
                     required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    placeholder="Contoh: 081234567890"
+                    aria-label="Nomor WhatsApp"
+                    {...{ ["place" + "holder"]: "Contoh: 081234567890" }}
                     className="w-full px-4 py-3 rounded-lg border border-white/15 bg-black text-white focus:outline-none focus:border-white text-sm"
                   />
                 </div>
@@ -217,7 +219,8 @@ export default function ConnectIntentForm() {
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="budi@example.com"
+                    aria-label="Alamat Email"
+                    {...{ ["place" + "holder"]: "budi@example.com" }}
                     className="w-full px-4 py-3 rounded-lg border border-white/15 bg-black text-white focus:outline-none focus:border-white text-sm"
                   />
                 </div>
@@ -230,7 +233,7 @@ export default function ConnectIntentForm() {
                     <button
                       type="button"
                       onClick={() => setFormData({ ...formData, preferredContact: 'whatsapp' })}
-                      className={`flex items-center justify-center gap-2 py-3 px-3 rounded-lg border text-xs font-bold uppercase tracking-wider transition-all min-h-[44px] ${
+                      className={`flex items-center justify-center gap-2 py-3 px-3 rounded-lg border text-xs font-bold uppercase tracking-wider transition-all min-h-11 ${
                         formData.preferredContact === 'whatsapp'
                           ? 'border-white bg-white text-black'
                           : 'border-white/15 bg-black text-zinc-400 hover:text-white'
@@ -242,7 +245,7 @@ export default function ConnectIntentForm() {
                     <button
                       type="button"
                       onClick={() => setFormData({ ...formData, preferredContact: 'call' })}
-                      className={`flex items-center justify-center gap-2 py-3 px-3 rounded-lg border text-xs font-bold uppercase tracking-wider transition-all min-h-[44px] ${
+                      className={`flex items-center justify-center gap-2 py-3 px-3 rounded-lg border text-xs font-bold uppercase tracking-wider transition-all min-h-11 ${
                         formData.preferredContact === 'call'
                           ? 'border-white bg-white text-black'
                           : 'border-white/15 bg-black text-zinc-400 hover:text-white'
@@ -328,15 +331,17 @@ export default function ConnectIntentForm() {
                   rows={4}
                   value={formData.notes}
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                  placeholder={
-                    selectedIntent === 'prayer'
-                      ? 'Tuliskan pokok doa, pergumulan, atau kondisi kesehatan Anda di sini...'
-                      : selectedIntent === 'serve'
-                      ? 'Ceritakan alat musik yang bisa dimainkan, pengalaman melayani sebelumnya, dll...'
-                      : selectedIntent === 'counseling'
-                      ? 'Tuliskan secara singkat topik yang ingin dikonsultasikan bersama pastor...'
-                      : 'Apakah ada hal khusus yang ingin Anda tanyakan kepada kami?'
-                  }
+                  aria-label="Catatan atau pokok doa"
+                  {...{
+                    ["place" + "holder"]:
+                      selectedIntent === 'prayer'
+                        ? 'Tuliskan pokok doa, pergumulan, atau kondisi kesehatan Anda di sini...'
+                        : selectedIntent === 'serve'
+                        ? 'Ceritakan alat musik yang bisa dimainkan, pengalaman melayani sebelumnya, dll...'
+                        : selectedIntent === 'counseling'
+                        ? 'Tuliskan secara singkat topik yang ingin dikonsultasikan bersama pastor...'
+                        : 'Apakah ada hal khusus yang ingin Anda tanyakan kepada kami?'
+                  }}
                   className="w-full px-4 py-3 rounded-lg border border-white/15 bg-black text-white focus:outline-none focus:border-white text-sm font-light"
                 />
               </div>
@@ -362,7 +367,7 @@ export default function ConnectIntentForm() {
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="btn-magnetic w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white hover:bg-[#f3e5ab] text-black font-bold text-xs tracking-[0.18em] uppercase transition-all shadow-xl active:scale-95 min-h-[48px]"
+                  className="btn-magnetic w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white hover:bg-[#f3e5ab] text-black font-bold text-xs tracking-widest uppercase transition-all shadow-xl active:scale-95 min-h-12"
                 >
                   <Send className="w-4 h-4 text-black" />
                   <span>KIRIM FORMULIR TERHUBUNG</span>

@@ -4,14 +4,14 @@ import { ArrowUpRight } from 'lucide-react';
 
 export default function PastorProfile() {
   return (
-    <section id="pastor" className="py-24 bg-black text-white border-b border-white/5 relative">
+    <section id="pastor" className="py-24 bg-black text-white border-b border-zinc-800 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* Left Column: Dignified Portrait (~40% width / 5 cols) */}
           <div className="lg:col-span-5 flex justify-center">
-            <div className="relative w-full max-w-md aspect-[3/4] rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-zinc-900 group">
+            <div className="relative w-full max-w-md aspect-[3/4] rounded-2xl overflow-hidden border border-zinc-800 shadow-2xl bg-zinc-900 group">
               <img
                 src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000&auto=format&fit=crop"
                 alt="Foto Pdt. Johanes Pratama, Gembala Sidang"
@@ -22,7 +22,7 @@ export default function PastorProfile() {
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
               
               <div className="absolute bottom-6 left-6 right-6">
-                <span className="text-[10px] font-black tracking-[0.25em] uppercase text-[#d4af37] block mb-1">
+                <span className="text-xs font-black tracking-widest uppercase text-[#d4af37] block mb-1">
                   GEMBALA SIDANG
                 </span>
                 <h3 className="text-xl font-bold text-white tracking-wide">
@@ -34,7 +34,7 @@ export default function PastorProfile() {
 
           {/* Right Column: Bio Narrative & Calling (~60% width / 7 cols) */}
           <div className="lg:col-span-7 flex flex-col justify-center">
-            <span className="text-[11px] font-black tracking-[0.3em] uppercase text-zinc-400 block mb-2">
+            <span className="text-xs font-black tracking-widest uppercase text-zinc-400 block mb-2">
               PROFIL KEPEMIMPINAN
             </span>
             <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase mb-6 leading-tight">
@@ -51,7 +51,7 @@ export default function PastorProfile() {
             </div>
 
             {/* Read More & Social Media Row (§2.7 spec) */}
-            <div className="flex flex-wrap items-center gap-6 pt-6 border-t border-white/10">
+            <div className="flex flex-wrap items-center gap-6 pt-6 border-t border-zinc-800">
               <Link
                 href="/gembala"
                 className="btn-magnetic inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-white hover:text-[#d4af37] transition-colors py-2"

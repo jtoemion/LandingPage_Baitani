@@ -38,7 +38,7 @@ export default function GivingSection() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-[11px] font-bold tracking-[0.3em] uppercase text-zinc-400 block mb-2">
+          <span className="text-xs font-bold tracking-widest uppercase text-zinc-400 block mb-2">
             PENATALAYANAN & PERSEMBAHAN KASIH
           </span>
           <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase mb-4">
@@ -71,7 +71,7 @@ export default function GivingSection() {
                     <span className="text-xs font-bold tracking-wider uppercase text-[#d4af37]">
                       {account.bankName}
                     </span>
-                    <span className="text-[10px] bg-white/5 text-zinc-400 border border-white/10 px-2.5 py-0.5 rounded">
+                    <span className="text-xs bg-white/5 text-zinc-300 border border-zinc-800 px-2.5 py-0.5 rounded font-mono">
                       VERIFIKASI
                     </span>
                   </div>
@@ -81,22 +81,22 @@ export default function GivingSection() {
                   <div className="text-xs font-semibold text-zinc-300 uppercase tracking-wider">
                     A.N. {account.accountHolder}
                   </div>
-                  <p className="text-xs text-zinc-500 mt-3 font-light">
+                  <p className="text-xs text-zinc-400 mt-3 font-light">
                     Peruntukan: <span className="text-zinc-300">{account.purpose}</span>
                   </p>
                 </div>
 
                 <div className="pt-4 border-t border-white/10 flex items-center justify-between">
-                  <span className="text-xs text-zinc-500 flex items-center gap-1.5">
+                  <span className="text-xs text-zinc-400 flex items-center gap-1.5">
                     <ShieldCheck className="w-4 h-4 text-emerald-400" />
                     <span>Rekening Gereja Resmi</span>
                   </span>
                   <button
                     type="button"
                     onClick={() => handleCopy(account.accountNumber, account.id)}
-                    className={`btn-magnetic inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all min-h-[44px] ${
+                    className={`btn-magnetic inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all min-h-11 ${
                       copiedAccount === account.id
-                        ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-900/30'
+                        ? 'bg-emerald-600 text-white shadow-md shadow-emerald-950/40'
                         : 'bg-white hover:bg-[#f3e5ab] text-black active:scale-95'
                     }`}
                     aria-label={`Salin nomor rekening ${account.bankName}`}
@@ -119,7 +119,7 @@ export default function GivingSection() {
           </div>
 
           {/* Right Column: QRIS Digital Payment (5 cols) */}
-          <div className="lg:col-span-5 bg-zinc-950 border border-white/10 rounded-2xl p-6 sm:p-8 flex flex-col items-center text-center">
+          <div className="lg:col-span-5 bg-zinc-950 border border-white/10 rounded-2xl p-8 flex flex-col items-center text-center">
             <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white mb-4">
               <QrCode className="w-6 h-6" />
             </div>
@@ -132,17 +132,17 @@ export default function GivingSection() {
             </p>
 
             {/* QR Code Presentation */}
-            <div className="bg-white p-4 rounded-xl shadow-2xl border border-zinc-300 mb-6 w-48 h-48 flex flex-col items-center justify-center relative">
+            <div className="bg-white p-4 rounded-2xl shadow-2xl border border-zinc-300 mb-6 w-48 h-48 flex flex-col items-center justify-center relative">
               <div className="w-40 h-40 bg-black rounded-lg flex flex-col items-center justify-center p-2 text-white text-center">
                 <QrCode className="w-24 h-24 text-white" />
-                <span className="text-[10px] font-mono tracking-widest text-zinc-300 mt-1">
+                <span className="text-xs font-mono tracking-widest text-zinc-300 mt-1 font-bold">
                   QRIS GEREJA BAITANI
                 </span>
-                <span className="text-[8px] text-zinc-500">NMID: ID1029384756</span>
+                <span className="text-xs text-zinc-400 font-mono">NMID: ID1029384756</span>
               </div>
             </div>
 
-            <div className="text-[11px] text-zinc-400 space-y-1 mb-6 font-light">
+            <div className="text-xs text-zinc-400 space-y-1 mb-6 font-light">
               <p className="font-semibold text-zinc-300">Mendukung Seluruh E-Wallet & M-Banking</p>
               <p>BCA • Mandiri • BRI • BNI • GoPay • OVO • DANA • ShopeePay</p>
             </div>
@@ -151,7 +151,7 @@ export default function GivingSection() {
               href="https://wa.me/6281234567890?text=Halo%20Sekretariat%20Gereja%20Baitani,%20saya%20ingin%20mengonfirmasi%20bukti%20transfer%20persembahan."
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-full border border-white/20 hover:border-white text-white text-xs font-bold tracking-wider uppercase transition-colors min-h-[44px]"
+              className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-full border border-zinc-700 hover:border-white text-white text-xs font-bold tracking-wider uppercase transition-colors min-h-11"
             >
               <MessageSquare className="w-4 h-4 text-green-400" />
               <span>KONFIRMASI VIA WHATSAPP</span>
@@ -161,11 +161,11 @@ export default function GivingSection() {
         </div>
 
         {/* Scriptural Quote Card */}
-        <div className="p-6 rounded-xl bg-zinc-950 border border-white/10 text-center max-w-3xl mx-auto">
+        <div className="p-7 rounded-2xl bg-zinc-950 border border-zinc-800 text-center max-w-3xl mx-auto">
           <blockquote className="text-xs sm:text-sm text-zinc-300 italic leading-relaxed mb-2 font-light">
             &ldquo;Hendaklah masing-masing memberikan menurut kerelaan hatinya, jangan dengan sedih hati atau karena paksaan, sebab Allah mengasihi orang yang memberi dengan sukacita.&rdquo;
           </blockquote>
-          <cite className="text-[11px] font-bold text-zinc-400 uppercase tracking-widest not-italic">
+          <cite className="text-xs font-bold text-zinc-400 uppercase tracking-widest not-italic">
             — 2 KORINTUS 9:7
           </cite>
         </div>

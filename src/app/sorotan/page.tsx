@@ -109,7 +109,7 @@ export default function SorotanPage() {
   );
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#050505] text-[#fafafa]">
+    <div className="min-h-dvh flex flex-col bg-[#050505] text-[#fafafa]">
       <Navbar />
 
       <main id="main-content" className="flex-1">
@@ -123,7 +123,7 @@ export default function SorotanPage() {
         />
 
         {/* Filter Bar */}
-        <section className="py-8 bg-[#0a0a0d] border-b border-white/10 sticky top-[72px] z-30 backdrop-blur-xl">
+        <section className="py-8 bg-[#0a0a0d] border-b border-white/10 sticky top-18 z-30 backdrop-blur-xl">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-wrap items-center gap-2">
               {categories.map((c) => (
@@ -131,9 +131,9 @@ export default function SorotanPage() {
                   key={c.id}
                   type="button"
                   onClick={() => setSelectedFilter(c.id)}
-                  className={`px-4 py-2 rounded-full text-xs font-bold tracking-wider uppercase transition-all min-h-[40px] ${
+                  className={`px-4 py-2 rounded-full text-xs font-bold tracking-wider uppercase transition-all min-h-10 ${
                     selectedFilter === c.id
-                      ? 'bg-white text-black shadow-lg ring-2 ring-[#d4af37]'
+                      ? 'bg-white text-black shadow-gold-sm ring-2 ring-[#d4af37]'
                       : 'bg-zinc-900 text-zinc-400 hover:text-white border border-white/5'
                   }`}
                 >
@@ -147,7 +147,7 @@ export default function SorotanPage() {
         {/* Gallery Grid */}
         <section className="py-20 bg-black border-b border-white/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {filteredGallery.map((item) => (
                 <div
                   key={item.id}
@@ -163,7 +163,7 @@ export default function SorotanPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent" />
                     
-                    <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-md border border-[#d4af37]/40 text-[#f3e5ab] px-3 py-1 rounded text-[10px] font-black tracking-widest uppercase">
+                    <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-md border border-[#d4af37]/40 text-[#f3e5ab] px-3 py-1 rounded text-xs font-mono font-bold tracking-wider uppercase">
                       {item.categoryLabel}
                     </div>
 
@@ -172,7 +172,7 @@ export default function SorotanPage() {
                     </div>
                   </div>
 
-                  <div className="p-6">
+                  <div className="p-7">
                     <h3 className="text-lg font-bold text-white mb-2 leading-snug group-hover:text-[#d4af37] transition-colors">
                       {item.title}
                     </h3>
@@ -190,7 +190,7 @@ export default function SorotanPage() {
         <section className="py-24 bg-[#070709] border-b border-white/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="text-[11px] font-bold tracking-[0.3em] uppercase text-zinc-400 block mb-2">
+              <span className="text-xs font-bold tracking-widest uppercase text-zinc-400 block mb-2">
                 KESAKSIAN JEMAAT
               </span>
               <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase mb-4">
@@ -201,19 +201,19 @@ export default function SorotanPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
               {testimonials.map((testi, idx) => (
                 <div
                   key={`testi-${idx}`}
                   className="p-8 rounded-2xl bg-zinc-950 border border-white/10 flex flex-col justify-between relative shadow-xl"
                 >
-                  <Quote className="w-10 h-10 text-[#d4af37]/20 mb-4" />
+                  <Quote className="w-10 h-10 text-[#d4af37]/60 mb-4" aria-hidden="true" />
                   <p className="text-xs sm:text-sm text-zinc-300 font-light leading-relaxed mb-6 italic">
                     &ldquo;{testi.quote}&rdquo;
                   </p>
                   <div className="pt-4 border-t border-white/10">
                     <h4 className="text-sm font-bold text-white">{testi.name}</h4>
-                    <span className="text-[11px] text-[#d4af37] font-mono">{testi.title}</span>
+                    <span className="text-xs text-[#d4af37] font-mono">{testi.title}</span>
                   </div>
                 </div>
               ))}

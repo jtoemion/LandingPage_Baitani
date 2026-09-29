@@ -46,13 +46,13 @@ export default function HighlightsGallery() {
   };
 
   return (
-    <section id="sorotan" className="py-24 bg-zinc-950 text-white border-b border-white/5 relative">
+    <section id="sorotan" className="py-24 bg-zinc-950 text-white border-b border-zinc-800 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
           <div>
-            <span className="text-[11px] font-bold tracking-[0.3em] uppercase text-zinc-400 block mb-2">
+            <span className="text-xs font-bold tracking-widest uppercase text-zinc-400 block mb-2">
               DOKUMENTASI & PERJALANAN IMAN
             </span>
             <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase flex items-center gap-3">
@@ -74,7 +74,7 @@ export default function HighlightsGallery() {
               <button
                 type="button"
                 onClick={() => scroll('left')}
-                className="w-12 h-12 rounded-full border border-white/20 hover:border-white text-zinc-300 hover:text-white flex items-center justify-center transition-all min-w-[44px] min-h-[44px] active:scale-95"
+                className="w-12 h-12 rounded-full border border-white/20 hover:border-white text-zinc-300 hover:text-white flex items-center justify-center transition-all min-w-11 min-h-11 active:scale-95"
                 aria-label="Sorotan sebelumnya"
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -82,7 +82,7 @@ export default function HighlightsGallery() {
               <button
                 type="button"
                 onClick={() => scroll('right')}
-                className="w-12 h-12 rounded-full border border-white/20 hover:border-white text-zinc-300 hover:text-white flex items-center justify-center transition-all min-w-[44px] min-h-[44px] active:scale-95"
+                className="w-12 h-12 rounded-full border border-white/20 hover:border-white text-zinc-300 hover:text-white flex items-center justify-center transition-all min-w-11 min-h-11 active:scale-95"
                 aria-label="Sorotan berikutnya"
               >
                 <ChevronRight className="w-5 h-5" />
@@ -99,7 +99,7 @@ export default function HighlightsGallery() {
           {highlights.map((item, idx) => (
             <div
               key={`highlight-${idx}`}
-              className="flex-shrink-0 w-[220px] sm:w-[260px] aspect-square snap-start rounded-xl overflow-hidden relative group bg-black border border-white/10"
+              className="flex-shrink-0 w-56 sm:w-64 aspect-square snap-start rounded-xl overflow-hidden relative group bg-black border border-zinc-800"
             >
               <img
                 src={item.image}
@@ -111,7 +111,7 @@ export default function HighlightsGallery() {
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
               
               <div className="absolute bottom-4 left-4 right-4">
-                <span className="text-[11px] font-extrabold tracking-wider uppercase text-white block drop-shadow-md">
+                <span className="text-xs font-extrabold tracking-wider uppercase text-white block drop-shadow-md">
                   {item.label}
                 </span>
               </div>

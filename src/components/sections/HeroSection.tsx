@@ -68,7 +68,7 @@ export default function HeroSection() {
       onMouseLeave={() => setIsHovered(false)}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden bg-black text-white select-none"
+      className="relative min-h-dvh w-full flex items-center justify-center overflow-hidden bg-black text-white select-none"
     >
       {/* Background Slides Track with Ken Burns & Smooth Crossfade */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -110,7 +110,7 @@ export default function HeroSection() {
               {/* Slide Badge Pill */}
               <div className="mb-6 inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-md">
                 <span className="w-2 h-2 rounded-full bg-[#d4af37] animate-ping" />
-                <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.25em] text-[#e5c07b] uppercase">
+                <span className="text-xs font-bold tracking-widest text-[#e5c07b] uppercase">
                   {slide.badge}
                 </span>
               </div>
@@ -121,7 +121,7 @@ export default function HeroSection() {
                   {slide.title}
                 </span>
                 {slide.titleAccent && (
-                  <span className="block text-white mt-1 drop-shadow-[0_12px_40px_rgba(255,255,255,0.2)]">
+                  <span className="block text-white mt-1 drop-shadow-lg">
                     {slide.titleAccent}
                   </span>
                 )}
@@ -136,7 +136,7 @@ export default function HeroSection() {
               <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
                 <a
                   href={slide.primaryCtaHref}
-                  className="btn-magnetic w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-white hover:bg-[#f3e5ab] text-black font-extrabold text-xs tracking-[0.16em] uppercase shadow-2xl transition-all duration-300 active:scale-95 min-h-[50px]"
+                  className="btn-magnetic w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-white hover:bg-[#f3e5ab] text-black font-extrabold text-xs tracking-wider uppercase shadow-2xl transition-all duration-300 active:scale-95 min-h-12"
                 >
                   <Compass className="w-4 h-4 text-black" />
                   <span>{slide.primaryCtaText}</span>
@@ -146,7 +146,7 @@ export default function HeroSection() {
                     href={slide.secondaryCtaHref || '#'}
                     target={slide.secondaryCtaHref?.startsWith('http') ? '_blank' : undefined}
                     rel={slide.secondaryCtaHref?.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-transparent hover:bg-white/10 text-white border border-white/20 font-bold text-xs tracking-[0.16em] uppercase backdrop-blur-sm transition-all duration-300 min-h-[50px]"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-transparent border border-zinc-700 hover:bg-zinc-800 text-white font-bold text-xs tracking-wider uppercase backdrop-blur-sm transition-all duration-300 min-h-12"
                   >
                     <span>{slide.secondaryCtaText}</span>
                     <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
@@ -211,11 +211,11 @@ export default function HeroSection() {
 
                   {/* Tab Label */}
                   <div className="flex items-center gap-1.5">
-                    <span className={`text-[10px] font-mono font-bold ${isActive ? 'text-[#d4af37]' : 'text-zinc-500'}`}>
+                    <span className={`text-xs font-mono font-bold ${isActive ? 'text-[#d4af37]' : 'text-zinc-500'}`}>
                       0{idx + 1}
                     </span>
                     <span
-                      className={`text-[11px] font-bold tracking-wider uppercase truncate ${
+                      className={`text-xs font-bold tracking-wider uppercase truncate ${
                         isActive ? 'text-white' : 'text-zinc-500 group-hover:text-zinc-300'
                       }`}
                     >
@@ -228,7 +228,7 @@ export default function HeroSection() {
           </div>
 
           {/* Autoplay Play/Pause Toggle */}
-          <div className="hidden sm:flex items-center pl-2 border-l border-white/10">
+          <div className="hidden sm:flex items-center pl-2 border-l border-zinc-800">
             <button
               type="button"
               onClick={() => setIsPlaying(!isPlaying)}

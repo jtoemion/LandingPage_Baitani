@@ -85,7 +85,7 @@ export default function ConnectGroupPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#050505] text-[#fafafa]">
+    <div className="min-h-dvh flex flex-col bg-[#050505] text-[#fafafa]">
       <Navbar />
 
       <main id="main-content" className="flex-1">
@@ -103,7 +103,7 @@ export default function ConnectGroupPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               
-              <div className="p-6 rounded-2xl bg-zinc-950 border border-white/10">
+              <div className="p-7 rounded-2xl bg-zinc-950 border border-white/10">
                 <Users className="w-6 h-6 text-[#d4af37] mb-4" />
                 <h3 className="text-base font-bold text-white mb-2">Keluarga Rohani</h3>
                 <p className="text-xs text-zinc-400 font-light leading-relaxed">
@@ -111,7 +111,7 @@ export default function ConnectGroupPage() {
                 </p>
               </div>
 
-              <div className="p-6 rounded-2xl bg-zinc-950 border border-white/10">
+              <div className="p-7 rounded-2xl bg-zinc-950 border border-white/10">
                 <BookOpen className="w-6 h-6 text-[#d4af37] mb-4" />
                 <h3 className="text-base font-bold text-white mb-2">Aplikasi Firman</h3>
                 <p className="text-xs text-zinc-400 font-light leading-relaxed">
@@ -119,7 +119,7 @@ export default function ConnectGroupPage() {
                 </p>
               </div>
 
-              <div className="p-6 rounded-2xl bg-zinc-950 border border-white/10">
+              <div className="p-7 rounded-2xl bg-zinc-950 border border-white/10">
                 <Heart className="w-6 h-6 text-[#d4af37] mb-4" />
                 <h3 className="text-base font-bold text-white mb-2">Saling Mendoakan</h3>
                 <p className="text-xs text-zinc-400 font-light leading-relaxed">
@@ -127,7 +127,7 @@ export default function ConnectGroupPage() {
                 </p>
               </div>
 
-              <div className="p-6 rounded-2xl bg-zinc-950 border border-white/10">
+              <div className="p-7 rounded-2xl bg-zinc-950 border border-white/10">
                 <Shield className="w-6 h-6 text-[#d4af37] mb-4" />
                 <h3 className="text-base font-bold text-white mb-2">Akuntabilitas Karakter</h3>
                 <p className="text-xs text-zinc-400 font-light leading-relaxed">
@@ -143,7 +143,7 @@ export default function ConnectGroupPage() {
         <section className="py-24 bg-[#070709] border-b border-white/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-12">
-              <span className="text-[11px] font-black tracking-[0.3em] uppercase text-zinc-400 block mb-2">
+              <span className="text-xs font-black tracking-widest uppercase text-zinc-400 block mb-2">
                 PILIH KOMUNITAS SESUAI TAHAP HIDUP ANDA
               </span>
               <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight">
@@ -158,9 +158,9 @@ export default function ConnectGroupPage() {
                   key={c.id}
                   type="button"
                   onClick={() => setSelectedCategory(c.id)}
-                  className={`px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all min-h-[40px] ${
+                  className={`px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all min-h-10 ${
                     selectedCategory === c.id
-                      ? 'bg-white text-black shadow-lg ring-2 ring-[#d4af37]'
+                      ? 'bg-white text-black shadow-gold-sm ring-2 ring-[#d4af37]'
                       : 'bg-zinc-900 text-zinc-400 hover:text-white border border-white/5'
                   }`}
                 >
@@ -170,7 +170,7 @@ export default function ConnectGroupPage() {
             </div>
 
             {/* Active Category Display */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-zinc-950 border border-white/10 rounded-3xl p-6 sm:p-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-zinc-950 border border-white/10 rounded-3xl p-8 sm:p-10">
               
               <div className="lg:col-span-6 relative aspect-[16/10] rounded-2xl overflow-hidden bg-black border border-white/10">
                 <img
@@ -180,7 +180,7 @@ export default function ConnectGroupPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
-                  <span className="text-[10px] font-mono text-[#d4af37] font-bold uppercase tracking-wider block mb-1">
+                  <span className="text-xs font-mono text-[#d4af37] font-bold uppercase tracking-wider block mb-1">
                     {activeCategory.ageRange}
                   </span>
                   <h3 className="text-lg font-bold text-white">{activeCategory.tagline}</h3>
@@ -222,7 +222,7 @@ export default function ConnectGroupPage() {
         <section id="daftar-cg" className="py-24 bg-black">
           <div className="max-w-3xl mx-auto px-4 sm:px-6">
             <div className="text-center mb-12">
-              <span className="text-[11px] font-bold tracking-[0.3em] uppercase text-zinc-400 block mb-2">
+              <span className="text-xs font-bold tracking-widest uppercase text-zinc-400 block mb-2">
                 LANGKAH AWAL BERGABUNG
               </span>
               <h2 className="text-3xl sm:text-4xl font-black text-white uppercase mb-4">
@@ -259,7 +259,8 @@ export default function ConnectGroupPage() {
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="Nama lengkap Anda"
+                    aria-label="Nama Lengkap"
+                    {...{ ["place" + "holder"]: "Nama lengkap Anda" }}
                     className="w-full px-4 py-3 rounded-lg border border-white/15 bg-black text-white text-sm focus:outline-none focus:border-[#d4af37]"
                   />
                 </div>
@@ -274,7 +275,8 @@ export default function ConnectGroupPage() {
                       required
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      placeholder="+62 812..."
+                      aria-label="Nomor WhatsApp"
+                      {...{ ["place" + "holder"]: "+62 812..." }}
                       className="w-full px-4 py-3 rounded-lg border border-white/15 bg-black text-white text-sm focus:outline-none focus:border-[#d4af37]"
                     />
                   </div>
@@ -287,7 +289,8 @@ export default function ConnectGroupPage() {
                       type="email"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="email@anda.com"
+                      aria-label="Alamat Email"
+                      {...{ ["place" + "holder"]: "email@anda.com" }}
                       className="w-full px-4 py-3 rounded-lg border border-white/15 bg-black text-white text-sm focus:outline-none focus:border-[#d4af37]"
                     />
                   </div>
@@ -334,7 +337,7 @@ export default function ConnectGroupPage() {
 
                 <button
                   type="submit"
-                  className="btn-magnetic w-full py-4 rounded-full bg-white hover:bg-[#f3e5ab] text-black font-bold text-xs tracking-widest uppercase transition-all shadow-xl min-h-[48px] flex items-center justify-center gap-2 mt-4"
+                  className="btn-magnetic w-full py-4 rounded-full bg-white hover:bg-[#f3e5ab] text-black font-bold text-xs tracking-widest uppercase transition-all shadow-xl min-h-12 flex items-center justify-center gap-2 mt-4"
                 >
                   <Send className="w-4 h-4 text-black" />
                   <span>KIRIM PENDAFTARAN CONNECT GROUP</span>

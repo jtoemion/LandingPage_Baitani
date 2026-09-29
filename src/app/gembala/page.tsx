@@ -44,7 +44,7 @@ export default function GembalaPage() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#050505] text-[#fafafa]">
+    <div className="min-h-dvh flex flex-col bg-[#050505] text-[#fafafa]">
       <Navbar />
 
       <main id="main-content" className="flex-1">
@@ -73,7 +73,7 @@ export default function GembalaPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
                   
                   <div className="absolute bottom-6 left-6 right-6">
-                    <span className="text-[10px] font-black tracking-[0.25em] uppercase text-[#d4af37] block mb-1">
+                    <span className="text-xs font-black tracking-wider uppercase text-[#d4af37] block mb-1">
                       GEMBALA SIDANG
                     </span>
                     <h3 className="text-2xl font-bold text-white tracking-wide">
@@ -88,7 +88,7 @@ export default function GembalaPage() {
 
               {/* Bio & Story (7 cols) */}
               <div className="lg:col-span-7 space-y-6">
-                <span className="text-[11px] font-black tracking-[0.3em] uppercase text-zinc-400 block mb-2">
+                <span className="text-xs font-black tracking-widest uppercase text-zinc-400 block mb-2">
                   BIOGRAFI GEMBALA SIDANG
                 </span>
                 <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight leading-tight">
@@ -128,10 +128,10 @@ export default function GembalaPage() {
         {/* Renungan Penggembalaan Bulan Ini */}
         <section className="py-20 bg-[#070709] border-b border-white/10">
           <div className="max-w-4xl mx-auto px-4 sm:px-6">
-            <div className="p-8 sm:p-12 rounded-3xl bg-zinc-950 border border-[#d4af37]/30 shadow-2xl relative overflow-hidden">
-              <Quote className="w-16 h-16 text-[#d4af37]/10 absolute -right-2 -bottom-2 pointer-events-none" />
+            <div className="p-8 sm:p-12 rounded-3xl bg-zinc-950 border border-[#d4af37]/40 shadow-2xl relative overflow-hidden">
+              <Quote className="w-16 h-16 text-[#d4af37]/50 absolute -right-2 -bottom-2 pointer-events-none" aria-hidden="true" />
               
-              <div className="inline-block px-3 py-1 rounded bg-[#d4af37]/10 text-[#d4af37] border border-[#d4af37]/30 text-xs font-mono font-bold uppercase tracking-wider mb-4">
+              <div className="inline-block px-3 py-1 rounded bg-[#d4af37]/40 text-[#f3e5ab] border border-[#d4af37]/50 text-xs font-mono font-bold uppercase tracking-wider mb-4">
                 PESAN BULAN INI // SEPTEMBER 2026
               </div>
 
@@ -156,7 +156,7 @@ export default function GembalaPage() {
         <section className="py-24 bg-black border-b border-white/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="text-[11px] font-bold tracking-[0.3em] uppercase text-zinc-400 block mb-2">
+              <span className="text-xs font-bold tracking-widest uppercase text-zinc-400 block mb-2">
                 DEWAN PENGGEMBALAAN & BIDANG
               </span>
               <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase mb-4">
@@ -184,7 +184,7 @@ export default function GembalaPage() {
                     </div>
 
                     <div className="p-6">
-                      <span className="text-[10px] font-bold tracking-widest uppercase text-[#d4af37] block mb-1">
+                      <span className="text-xs font-bold tracking-wider uppercase text-[#d4af37] block mb-1">
                         {pastor.role}
                       </span>
                       <h3 className="text-base font-bold text-white mb-3 group-hover:text-[#d4af37] transition-colors">

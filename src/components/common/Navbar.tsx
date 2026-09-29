@@ -142,13 +142,13 @@ export default function Navbar() {
                   key={link.label}
                   href={pathname === '/' ? `#${link.sectionId}` : `/#${link.sectionId}`}
                   onClick={(e) => handleNavClick(e, link.sectionId)}
-                  className={`text-[11px] xl:text-[12px] font-semibold tracking-[0.16em] transition-colors py-1 relative group cursor-pointer ${
+                  className={`text-xs font-semibold tracking-wider transition-colors py-1 relative group cursor-pointer ${
                     isActive ? 'text-[#d4af37]' : 'text-zinc-300 hover:text-white'
                   }`}
                 >
                   <span>{link.label}</span>
                   <span
-                    className={`absolute bottom-0 left-0 h-[2px] bg-[#d4af37] transition-all duration-300 ${
+                    className={`absolute bottom-0 left-0 h-0.5 bg-[#d4af37] transition-all duration-300 ${
                       isActive ? 'w-full' : 'w-0 group-hover:w-full'
                     }`}
                   />
@@ -165,29 +165,29 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={() => setIsPagesDropdownOpen(!isPagesDropdownOpen)}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 text-xs text-zinc-300 hover:text-white font-mono tracking-wider transition-all min-h-[38px]"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 text-xs text-zinc-300 hover:text-white font-mono tracking-wider transition-all min-h-10"
                 aria-expanded={isPagesDropdownOpen}
                 aria-label="Buka menu halaman lengkap"
               >
                 <Layers className="w-3.5 h-3.5 text-[#d4af37]" />
-                <span className="text-[11px] font-semibold">HALAMAN</span>
+                <span className="text-xs font-semibold">HALAMAN</span>
                 <ChevronDown className={`w-3.5 h-3.5 text-zinc-400 transition-transform duration-200 ${isPagesDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
 
               {isPagesDropdownOpen && (
                 <div className="absolute right-0 mt-2 w-80 rounded-2xl bg-zinc-950/95 border border-white/15 p-3 shadow-2xl backdrop-blur-2xl animate-in fade-in zoom-in-95 duration-200 z-50">
-                  <div className="px-3 py-2 border-b border-white/10 mb-2">
-                    <p className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#d4af37]">
+                  <div className="px-3 py-2 border-b border-zinc-800 mb-2">
+                    <p className="text-xs font-mono font-bold uppercase tracking-wider text-[#d4af37]">
                       8 HALAMAN MANDIRI DEDIKASI
                     </p>
                   </div>
-                  <div className="space-y-1 max-h-[380px] overflow-y-auto no-scrollbar">
+                  <div className="space-y-1 max-h-96 overflow-y-auto no-scrollbar">
                     {dedicatedPages.map((page) => (
                       <Link
                         key={page.href}
                         href={page.href}
                         onClick={() => setIsPagesDropdownOpen(false)}
-                        className={`flex flex-col p-2.5 rounded-xl hover:bg-white/10 transition-colors group ${
+                        className={`flex flex-col p-2.5 rounded-lg hover:bg-white/10 transition-colors group ${
                           pathname === page.href ? 'bg-[#d4af37]/10 border border-[#d4af37]/30' : ''
                         }`}
                       >
@@ -197,7 +197,7 @@ export default function Navbar() {
                           </span>
                           <ArrowUpRight className="w-3.5 h-3.5 text-zinc-500 group-hover:text-white transition-colors" />
                         </div>
-                        <span className="text-[11px] text-zinc-400 font-light mt-0.5 line-clamp-1">
+                        <span className="text-xs text-zinc-400 font-light mt-0.5 line-clamp-1">
                           {page.desc}
                         </span>
                       </Link>
@@ -208,7 +208,7 @@ export default function Navbar() {
             </div>
 
             {/* Language Pill */}
-            <div className="hidden xl:flex items-center gap-1.5 text-xs text-zinc-400 font-semibold px-2 py-1 border border-white/10 rounded">
+            <div className="hidden xl:flex items-center gap-1.5 text-xs text-zinc-400 font-semibold px-2 py-1 border border-zinc-800 rounded">
               <Globe className="w-3.5 h-3.5 text-[#d4af37]" />
               <span>ID</span>
             </div>
@@ -217,7 +217,7 @@ export default function Navbar() {
             <a
               href={pathname === '/' ? '#koneksi' : '/#koneksi'}
               onClick={(e) => handleNavClick(e, 'koneksi')}
-              className="btn-magnetic inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white hover:bg-[#f3e5ab] text-black text-xs font-bold tracking-wider uppercase transition-all shadow-lg active:scale-95"
+              className="btn-magnetic inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white hover:bg-[#f3e5ab] text-black text-xs font-bold tracking-wider uppercase transition-all shadow-gold-sm active:scale-95"
             >
               <span>SAYA BARU</span>
               <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
@@ -242,7 +242,7 @@ export default function Navbar() {
         <div className="lg:hidden bg-black/95 backdrop-blur-2xl border-b border-white/10 px-6 pt-4 pb-8 space-y-4 animate-in slide-in-from-top duration-300 max-h-[85vh] overflow-y-auto">
           
           <div className="pb-2 border-b border-white/10">
-            <span className="text-[10px] font-mono text-[#d4af37] font-bold uppercase tracking-widest block mb-2">
+            <span className="text-xs font-mono text-[#d4af37] font-bold uppercase tracking-wider block mb-2">
               SEKSI HALAMAN DEPAN (SINGLEPAGE)
             </span>
             <div className="space-y-1">
@@ -260,7 +260,7 @@ export default function Navbar() {
           </div>
 
           <div>
-            <span className="text-[10px] font-mono text-[#d4af37] font-bold uppercase tracking-widest block mb-2">
+            <span className="text-xs font-mono text-[#d4af37] font-bold uppercase tracking-wider block mb-2">
               HALAMAN LENGKAP MANDIRI
             </span>
             <div className="grid grid-cols-2 gap-2">
@@ -269,7 +269,7 @@ export default function Navbar() {
                   key={page.href}
                   href={page.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="p-2.5 rounded-lg bg-zinc-900 border border-white/5 text-[11px] font-semibold text-zinc-200 hover:text-[#d4af37]"
+                  className="p-2.5 rounded-lg bg-zinc-900 border border-white/5 text-xs font-semibold text-zinc-200 hover:text-[#d4af37]"
                 >
                   {page.name}
                 </Link>

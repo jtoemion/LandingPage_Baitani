@@ -13,7 +13,7 @@ import ConnectIntentForm from '@/components/sections/ConnectIntentForm';
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-black text-white selection:bg-white selection:text-black">
+    <div className="min-h-dvh flex flex-col bg-black text-white selection:bg-white selection:text-black">
       {/* 1. Global Minimalist Sticky Header */}
       <Navbar />
 

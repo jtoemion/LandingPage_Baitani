@@ -40,7 +40,7 @@ export default function KoneksiPage() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#050505] text-[#fafafa]">
+    <div className="min-h-dvh flex flex-col bg-[#050505] text-[#fafafa]">
       <Navbar />
 
       <main id="main-content" className="flex-1">
@@ -57,7 +57,7 @@ export default function KoneksiPage() {
         <section className="py-20 bg-black border-b border-white/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="text-[11px] font-bold tracking-[0.3em] uppercase text-zinc-400 block mb-2">
+              <span className="text-xs font-bold tracking-widest uppercase text-zinc-400 block mb-2">
                 LANGKAH PERTUMBUHAN
               </span>
               <h2 className="text-3xl sm:text-4xl font-black text-white uppercase tracking-tight">
@@ -73,7 +73,7 @@ export default function KoneksiPage() {
                     key={st.step}
                     className="p-8 rounded-2xl bg-zinc-950 border border-white/10 relative overflow-hidden"
                   >
-                    <span className="text-3xl font-black font-mono text-[#d4af37]/30 absolute top-4 right-4">
+                    <span className="text-3xl font-black font-mono text-[#d4af37]/60 absolute top-4 right-4" aria-hidden="true">
                       {st.step}
                     </span>
                     <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#d4af37] mb-6">

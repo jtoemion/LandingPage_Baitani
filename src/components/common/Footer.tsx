@@ -12,12 +12,12 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-black text-zinc-400 pt-16 pb-12 border-t border-white/10 select-none">
+    <footer className="bg-black text-zinc-400 pt-16 pb-12 border-t border-zinc-800 select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Affiliations Strip (§2.9 spec) */}
-        <div className="pb-16 mb-16 border-b border-white/10 text-center">
-          <span className="text-[10px] font-black tracking-[0.35em] uppercase text-zinc-500 block mb-8">
+        <div className="pb-16 mb-16 border-b border-zinc-800 text-center">
+          <span className="text-xs font-bold tracking-widest uppercase text-zinc-400 block mb-8">
             AFILIASI & JARINGAN PELAYANAN
           </span>
           <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-14 opacity-60 hover:opacity-100 transition-opacity">
@@ -29,7 +29,7 @@ export default function Footer() {
                 <span className="font-mono text-xs sm:text-sm font-bold tracking-widest text-zinc-300 group-hover:text-white transition-colors">
                   {item.abbr}
                 </span>
-                <span className="text-[9px] tracking-wider uppercase text-zinc-600 mt-0.5">
+                <span className="text-xs tracking-wider uppercase text-zinc-400 mt-0.5">
                   {item.name}
                 </span>
               </div>
@@ -47,10 +47,10 @@ export default function Footer() {
                 B
               </div>
               <div className="flex flex-col">
-                <span className="font-extrabold text-sm tracking-[0.22em] text-white uppercase leading-none">
+                <span className="font-extrabold text-sm tracking-widest text-white uppercase leading-none">
                   BAITANI
                 </span>
-                <span className="text-[9px] tracking-[0.35em] text-zinc-500 font-semibold uppercase mt-0.5">
+                <span className="text-xs tracking-widest text-zinc-400 font-semibold uppercase mt-0.5">
                   CHURCH
                 </span>
               </div>
@@ -63,7 +63,7 @@ export default function Footer() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-zinc-900 hover:bg-white hover:text-black text-zinc-400 flex items-center justify-center transition-all min-h-[44px] min-w-[44px]"
+                className="w-9 h-9 rounded-full bg-zinc-900 hover:bg-white hover:text-black text-zinc-400 flex items-center justify-center transition-all min-h-11 min-w-11"
                 aria-label="Instagram Baitani"
               >
                 <svg className="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
@@ -76,7 +76,7 @@ export default function Footer() {
                 href="https://youtube.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-zinc-900 hover:bg-white hover:text-black text-zinc-400 flex items-center justify-center transition-all min-h-[44px] min-w-[44px]"
+                className="w-9 h-9 rounded-full bg-zinc-900 hover:bg-white hover:text-black text-zinc-400 flex items-center justify-center transition-all min-h-11 min-w-11"
                 aria-label="YouTube Baitani"
               >
                 <svg className="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
@@ -88,7 +88,7 @@ export default function Footer() {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-zinc-900 hover:bg-white hover:text-black text-zinc-400 flex items-center justify-center transition-all min-h-[44px] min-w-[44px]"
+                className="w-9 h-9 rounded-full bg-zinc-900 hover:bg-white hover:text-black text-zinc-400 flex items-center justify-center transition-all min-h-11 min-w-11"
                 aria-label="Facebook Baitani"
               >
                 <svg className="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
@@ -100,7 +100,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-white text-xs font-bold tracking-[0.2em] uppercase mb-4">
+            <h3 className="text-white text-xs font-bold tracking-widest uppercase mb-4">
               JELAJAHI
             </h3>
             <ul className="space-y-2 text-xs">
@@ -154,7 +154,7 @@ export default function Footer() {
 
           {/* Services & Timing */}
           <div>
-            <h3 className="text-white text-xs font-bold tracking-[0.2em] uppercase mb-4">
+            <h3 className="text-white text-xs font-bold tracking-widest uppercase mb-4">
               WAKTU IBADAH
             </h3>
             <div className="space-y-3 text-xs">
@@ -185,7 +185,7 @@ export default function Footer() {
 
           {/* Contact & Location */}
           <div>
-            <h3 className="text-white text-xs font-bold tracking-[0.2em] uppercase mb-4">
+            <h3 className="text-white text-xs font-bold tracking-widest uppercase mb-4">
               LOKASI & KONTAK
             </h3>
             <div className="space-y-3 text-xs leading-relaxed">
@@ -221,9 +221,9 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between text-[11px] text-zinc-600 gap-4 font-mono">
+        <div className="pt-8 border-t border-zinc-800 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-4 font-mono">
           <p>© {new Date().getFullYear()} BAITANI CHURCH. ALL RIGHTS RESERVED.</p>
-          <p className="tracking-widest uppercase text-zinc-500">
+          <p className="tracking-widest uppercase text-zinc-400">
             A HOME FOR EVERYONE
           </p>
         </div>

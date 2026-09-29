@@ -4,7 +4,7 @@ import { ArrowRight, BookOpen, Compass, Target } from 'lucide-react';
 
 export default function IdentitySection() {
   return (
-    <section id="identitas" className="py-24 bg-black text-white border-b border-white/5 relative">
+    <section id="identitas" className="py-24 bg-black text-white border-b border-zinc-800 relative">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
         
         {/* Short Logo Mark */}
@@ -26,12 +26,12 @@ export default function IdentitySection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl mb-16 text-left">
           
           {/* Visi Block */}
-          <div className="p-8 rounded-xl bg-zinc-950 border border-white/10 hover:border-white/20 transition-all flex flex-col justify-between">
+          <div className="p-8 rounded-2xl bg-zinc-950 border border-white/10 hover:border-white/20 transition-all flex flex-col justify-between">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white">
                 <Compass className="w-4 h-4" />
               </div>
-              <span className="text-xs font-black tracking-[0.25em] uppercase text-zinc-400">
+              <span className="text-xs font-black tracking-widest uppercase text-zinc-400">
                 VISI
               </span>
             </div>
@@ -44,12 +44,12 @@ export default function IdentitySection() {
           </div>
 
           {/* Misi Block */}
-          <div className="p-8 rounded-xl bg-zinc-950 border border-white/10 hover:border-white/20 transition-all flex flex-col justify-between">
+          <div className="p-8 rounded-2xl bg-zinc-950 border border-white/10 hover:border-white/20 transition-all flex flex-col justify-between">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white">
                 <Target className="w-4 h-4" />
               </div>
-              <span className="text-xs font-black tracking-[0.25em] uppercase text-zinc-400">
+              <span className="text-xs font-black tracking-widest uppercase text-zinc-400">
                 MISI
               </span>
             </div>
@@ -64,7 +64,7 @@ export default function IdentitySection() {
         </div>
 
         {/* Credo CTA Block (Pengakuan Iman) */}
-        <div className="w-full max-w-2xl p-6 sm:p-8 rounded-xl border border-white/15 bg-zinc-950 flex flex-col sm:flex-row items-center justify-between gap-6 text-left">
+        <div className="w-full max-w-2xl p-6 sm:p-8 rounded-2xl border border-zinc-800 bg-zinc-950 flex flex-col sm:flex-row items-center justify-between gap-6 text-left">
           <div className="flex items-center gap-4">
             <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-white flex-shrink-0">
               <BookOpen className="w-5 h-5" />
@@ -80,7 +80,7 @@ export default function IdentitySection() {
           </div>
           <Link
             href="/tentang-kami"
-            className="btn-magnetic inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-white/30 hover:border-[#d4af37] text-xs font-bold tracking-wider uppercase text-white hover:bg-white hover:text-black transition-all whitespace-nowrap min-h-[44px]"
+            className="btn-magnetic inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-white/30 hover:border-[#d4af37] text-xs font-bold tracking-wider uppercase text-white hover:bg-white hover:text-black transition-all whitespace-nowrap min-h-11"
             aria-label="Lihat Selengkapnya: Pengakuan Iman & Profil Gereja"
           >
             <span>BACA CREDO & PROFIL LENGKAP</span>

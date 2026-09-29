@@ -97,7 +97,7 @@ export default function TentangKamiPage() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#050505] text-[#fafafa]">
+    <div className="min-h-dvh flex flex-col bg-[#050505] text-[#fafafa]">
       <Navbar />
 
       <main id="main-content" className="flex-1">
@@ -128,7 +128,7 @@ export default function TentangKamiPage() {
                 <p className="text-zinc-300 text-sm sm:text-base leading-relaxed font-light mb-6">
                   Visi kami adalah melihat setiap individu mengalami perjumpaan pribadi dengan kasih Kristus, dipulihkan dari masa lalu, dan bertumbuh menjadi murid yang memperluas Kerajaan Allah di mana pun mereka ditempatkan.
                 </p>
-                <div className="p-4 rounded-xl bg-white/5 border border-white/10">
+                <div className="p-4 rounded-lg bg-white/5 border border-white/10">
                   <span className="text-xs font-mono text-[#e5c07b] font-bold block mb-1">TARGET 2030</span>
                   <p className="text-xs text-zinc-300 font-light">
                     Melahirkan 1,000 pemimpin kelompok sel dan memperlengkapi 100,000 jemaat di seluruh wilayah kepulauan Indonesia.
@@ -138,7 +138,7 @@ export default function TentangKamiPage() {
 
               {/* Right Column: 4 Misi Strategis */}
               <div className="lg:col-span-7 space-y-6">
-                <span className="text-[11px] font-black tracking-[0.3em] uppercase text-zinc-400 block mb-2">
+                <span className="text-xs font-black tracking-widest uppercase text-zinc-400 block mb-2">
                   4 PILAR STRATEGIS
                 </span>
                 <h2 className="text-3xl sm:text-4xl font-black text-white uppercase tracking-tight mb-8">
@@ -146,7 +146,7 @@ export default function TentangKamiPage() {
                 </h2>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="p-6 rounded-xl bg-zinc-950/80 border border-white/10">
+                  <div className="p-7 rounded-2xl bg-zinc-950/80 border border-white/10">
                     <span className="text-2xl font-black font-mono text-[#d4af37] block mb-2">01</span>
                     <h3 className="text-base font-bold text-white mb-2">Pekabaran Injil</h3>
                     <p className="text-xs text-zinc-400 font-light leading-relaxed">
@@ -154,7 +154,7 @@ export default function TentangKamiPage() {
                     </p>
                   </div>
 
-                  <div className="p-6 rounded-xl bg-zinc-950/80 border border-white/10">
+                  <div className="p-7 rounded-2xl bg-zinc-950/80 border border-white/10">
                     <span className="text-2xl font-black font-mono text-[#d4af37] block mb-2">02</span>
                     <h3 className="text-base font-bold text-white mb-2">Pemuridan Sel</h3>
                     <p className="text-xs text-zinc-400 font-light leading-relaxed">
@@ -162,7 +162,7 @@ export default function TentangKamiPage() {
                     </p>
                   </div>
 
-                  <div className="p-6 rounded-xl bg-zinc-950/80 border border-white/10">
+                  <div className="p-7 rounded-2xl bg-zinc-950/80 border border-white/10">
                     <span className="text-2xl font-black font-mono text-[#d4af37] block mb-2">03</span>
                     <h3 className="text-base font-bold text-white mb-2">Aksi Kasih Diakonia</h3>
                     <p className="text-xs text-zinc-400 font-light leading-relaxed">
@@ -170,7 +170,7 @@ export default function TentangKamiPage() {
                     </p>
                   </div>
 
-                  <div className="p-6 rounded-xl bg-zinc-950/80 border border-white/10">
+                  <div className="p-7 rounded-2xl bg-zinc-950/80 border border-white/10">
                     <span className="text-2xl font-black font-mono text-[#d4af37] block mb-2">04</span>
                     <h3 className="text-base font-bold text-white mb-2">Pemberdayaan Generasi</h3>
                     <p className="text-xs text-zinc-400 font-light leading-relaxed">
@@ -188,7 +188,7 @@ export default function TentangKamiPage() {
         <section className="py-24 border-b border-white/10 bg-[#070709]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="text-[11px] font-bold tracking-[0.3em] uppercase text-zinc-400 block mb-2">
+              <span className="text-xs font-bold tracking-widest uppercase text-zinc-400 block mb-2">
                 FONDASI KEHIDUPAN JEMAAT
               </span>
               <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase mb-4">
@@ -208,7 +208,7 @@ export default function TentangKamiPage() {
                     className="p-8 rounded-2xl bg-zinc-950 border border-white/10 hover:border-[#d4af37]/40 transition-all duration-300 group flex flex-col justify-between"
                   >
                     <div>
-                      <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#d4af37] mb-6 group-hover:scale-110 group-hover:border-[#d4af37]/50 transition-all">
+                      <div className="w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-[#d4af37] mb-6 group-hover:scale-110 group-hover:border-[#d4af37]/50 transition-all">
                         <Icon className="w-6 h-6" />
                       </div>
                       <h3 className="text-lg font-bold text-white mb-3 group-hover:text-[#d4af37] transition-colors">
@@ -229,7 +229,7 @@ export default function TentangKamiPage() {
         <section className="py-24 border-b border-white/10 bg-black">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mb-16">
-              <span className="text-[11px] font-bold tracking-[0.3em] uppercase text-zinc-400 block mb-2">
+              <span className="text-xs font-bold tracking-widest uppercase text-zinc-400 block mb-2">
                 DOKTRIN ALKITABIAH
               </span>
               <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase mb-4">
@@ -240,7 +240,7 @@ export default function TentangKamiPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {doctrines.map((doc) => (
                 <div
                   key={doc.no}
@@ -267,7 +267,7 @@ export default function TentangKamiPage() {
         <section className="py-24 border-b border-white/10 bg-[#070709]">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="text-[11px] font-bold tracking-[0.3em] uppercase text-zinc-400 block mb-2">
+              <span className="text-xs font-bold tracking-widest uppercase text-zinc-400 block mb-2">
                 JEJAK KESETIAAN TUHAN
               </span>
               <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase mb-4">
@@ -285,7 +285,7 @@ export default function TentangKamiPage() {
                   className="relative flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-12"
                 >
                   <div className="flex-1 sm:text-right">
-                    <span className="inline-block px-3 py-1 rounded-full text-xs font-mono font-bold bg-[#d4af37]/10 text-[#d4af37] border border-[#d4af37]/30 mb-2">
+                    <span className="inline-block px-3 py-1 rounded-full text-xs font-mono font-bold bg-[#d4af37]/40 text-[#f3e5ab] border border-[#d4af37]/50 mb-2">
                       TAHUN {item.year}
                     </span>
                     <h3 className="text-lg font-bold text-white mb-1">{item.title}</h3>
