@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Navbar from '@/components/common/Navbar';
 import Footer from '@/components/common/Footer';
-import PageHero from '@/components/common/PageHero';
-import { Compass, ShieldCheck, HeartHandshake, BookOpen, Flame, Users, Sparkles, ArrowUpRight } from 'lucide-react';
+import IdentitySection from '@/components/sections/IdentitySection';
+import { BookOpen, Flame, Users, HeartHandshake, Sparkles, ArrowUpRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Tentang Kami — Gereja Baitani',
@@ -100,89 +100,25 @@ export default function TentangKamiPage() {
     <div className="min-h-dvh flex flex-col bg-[#050505] text-[#fafafa]">
       <Navbar />
 
-      <main id="main-content" className="flex-1">
-        {/* Page Hero Header */}
-        <PageHero
-          category="PROFIL & IDENTITAS"
-          title="TENTANG GEREJA BAITANI"
-          titleAccent="A Family Founded on Faith"
-          subtitle="Sebuah keluarga rohani yang dipanggil untuk menyatakan kasih, pemulihan, dan kuasa transformasi Kristus bagi setiap generasi di Indonesia dan bangsa-bangsa."
-          breadcrumbCurrent="Tentang Kami"
-        />
-
-        {/* Visi & Misi Editorial Section */}
-        <section className="py-24 border-b border-white/10 relative overflow-hidden bg-black">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-              
-              {/* Left Column: Visi */}
-              <div className="lg:col-span-5 bg-zinc-950 border border-white/10 rounded-2xl p-8 sm:p-10 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-48 h-48 bg-[#d4af37]/5 rounded-full blur-3xl pointer-events-none" />
-                <div className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-[#d4af37] mb-4">
-                  <Sparkles className="w-4 h-4" />
-                  <span>VISI KERAJAAN ALLAH</span>
-                </div>
-                <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight uppercase mb-6 leading-tight">
-                  Membangun Keluarga Allah yang Dewasa, Relevan, dan Berdampak Luas.
-                </h2>
-                <p className="text-zinc-300 text-sm sm:text-base leading-relaxed font-light mb-6">
-                  Visi kami adalah melihat setiap individu mengalami perjumpaan pribadi dengan kasih Kristus, dipulihkan dari masa lalu, dan bertumbuh menjadi murid yang memperluas Kerajaan Allah di mana pun mereka ditempatkan.
-                </p>
-                <div className="p-4 rounded-lg bg-white/5 border border-white/10">
-                  <span className="text-xs font-mono text-[#e5c07b] font-bold block mb-1">TARGET 2030</span>
-                  <p className="text-xs text-zinc-300 font-light">
-                    Melahirkan 1,000 pemimpin kelompok sel dan memperlengkapi 100,000 jemaat di seluruh wilayah kepulauan Indonesia.
-                  </p>
-                </div>
-              </div>
-
-              {/* Right Column: 4 Misi Strategis */}
-              <div className="lg:col-span-7 space-y-6">
-                <span className="text-xs font-black tracking-widest uppercase text-zinc-400 block mb-2">
-                  4 PILAR STRATEGIS
-                </span>
-                <h2 className="text-3xl sm:text-4xl font-black text-white uppercase tracking-tight mb-8">
-                  Misi Pelayanan Kami
-                </h2>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="p-7 rounded-2xl bg-zinc-950/80 border border-white/10">
-                    <span className="text-2xl font-black font-mono text-[#d4af37] block mb-2">01</span>
-                    <h3 className="text-base font-bold text-white mb-2">Pekabaran Injil</h3>
-                    <p className="text-xs text-zinc-400 font-light leading-relaxed">
-                      Memberitakan kabar keselamatan Kristus melalui berbagai media, ibadah kreatif, dan kesaksian hidup sehari-hari.
-                    </p>
-                  </div>
-
-                  <div className="p-7 rounded-2xl bg-zinc-950/80 border border-white/10">
-                    <span className="text-2xl font-black font-mono text-[#d4af37] block mb-2">02</span>
-                    <h3 className="text-base font-bold text-white mb-2">Pemuridan Sel</h3>
-                    <p className="text-xs text-zinc-400 font-light leading-relaxed">
-                      Menanamkan firman dan membina karakter Kristiani yang berakar kuat lewat kelompok sel Connect Group.
-                    </p>
-                  </div>
-
-                  <div className="p-7 rounded-2xl bg-zinc-950/80 border border-white/10">
-                    <span className="text-2xl font-black font-mono text-[#d4af37] block mb-2">03</span>
-                    <h3 className="text-base font-bold text-white mb-2">Aksi Kasih Diakonia</h3>
-                    <p className="text-xs text-zinc-400 font-light leading-relaxed">
-                      Menjadi saluran berkat bagi masyarakat yang membutuhkan melalui program Baitani Care, bantuan sembako, dan beasiswa.
-                    </p>
-                  </div>
-
-                  <div className="p-7 rounded-2xl bg-zinc-950/80 border border-white/10">
-                    <span className="text-2xl font-black font-mono text-[#d4af37] block mb-2">04</span>
-                    <h3 className="text-base font-bold text-white mb-2">Pemberdayaan Generasi</h3>
-                    <p className="text-xs text-zinc-400 font-light leading-relaxed">
-                      Menyiapkan anak-anak dan pemuda menjadi pemimpin masa depan yang berintegritas tinggi di ranah publik dan profesional.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-            </div>
+      <main id="main-content" className="flex-1 pt-24">
+        {/* Header Khusus Halaman Tentang Kami */}
+        <section className="py-16 sm:py-24 bg-gradient-to-b from-zinc-900 to-black border-b border-white/10 text-center relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,rgba(212,175,55,0.15),rgba(5,5,5,0))]" />
+          <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <span className="text-xs font-mono font-bold tracking-widest uppercase text-[#d4af37] mb-3 block">
+              PROFIL & IDENTITAS
+            </span>
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight mb-4">
+              TENTANG GEREJA BAITANI
+            </h1>
+            <p className="text-zinc-400 text-sm sm:text-base font-light max-w-2xl mx-auto leading-relaxed">
+              Sebuah keluarga rohani yang dipanggil untuk menyatakan kasih, pemulihan, dan kuasa transformasi Kristus bagi setiap generasi di Indonesia dan bangsa-bangsa.
+            </p>
           </div>
         </section>
+
+        {/* Identity Section (Komponen Visi, Misi & Credo) */}
+        <IdentitySection />
 
         {/* Nilai-Nilai Inti (Core Values) */}
         <section className="py-24 border-b border-white/10 bg-[#070709]">
@@ -294,7 +230,6 @@ export default function TentangKamiPage() {
                     </p>
                   </div>
 
-                  {/* Node Circle */}
                   <div className="w-8 h-8 rounded-full bg-black border-2 border-[#d4af37] flex items-center justify-center relative z-10 flex-shrink-0">
                     <div className="w-2 h-2 rounded-full bg-[#d4af37]" />
                   </div>

@@ -4,8 +4,7 @@ import React, { useState } from 'react';
 import Navbar from '@/components/common/Navbar';
 import Footer from '@/components/common/Footer';
 import PageHero from '@/components/common/PageHero';
-import { Calendar, Clock, MapPin, User, ArrowUpRight, CheckCircle2, Search, Filter } from 'lucide-react';
-import Link from 'next/link';
+import { Calendar, Clock, MapPin, User, ArrowUpRight, CheckCircle2, Search } from 'lucide-react';
 
 interface ChurchEventDetail {
   id: string;
@@ -144,7 +143,7 @@ export default function AcaraPage() {
       <Navbar />
 
       <main id="main-content" className="flex-1">
-        {/* Page Hero Header */}
+        {/* Page Hero Header - Dirapikan */}
         <PageHero
           category="AGENDA & KALENDER GEREJA"
           title="ACARA KITA"
@@ -154,7 +153,7 @@ export default function AcaraPage() {
         />
 
         {/* Filter & Search Bar */}
-        <section className="py-8 bg-[#0a0a0d] border-b border-white/10 sticky top-18 z-30 backdrop-blur-xl">
+        <section className="py-5 bg-[#0a0a0d] border-b border-white/10 sticky top-16 z-30 backdrop-blur-xl">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
               
@@ -165,7 +164,7 @@ export default function AcaraPage() {
                     key={c.id}
                     type="button"
                     onClick={() => setSelectedCategory(c.id)}
-                    className={`px-4 py-2 rounded-full text-xs font-bold tracking-wider uppercase transition-all min-h-10 ${
+                    className={`px-3.5 py-1.5 rounded-full text-[11px] font-bold tracking-wider uppercase transition-all ${
                       selectedCategory === c.id
                         ? 'bg-white text-black shadow-gold-sm'
                         : 'bg-zinc-900 text-zinc-400 hover:text-white border border-white/5'
@@ -177,15 +176,15 @@ export default function AcaraPage() {
               </div>
 
               {/* Search Box */}
-              <div className="relative w-full lg:w-72">
-                <Search className="w-4 h-4 text-zinc-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <div className="relative w-full lg:w-64">
+                <Search className="w-3.5 h-3.5 text-zinc-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   aria-label="Pencarian agenda acara dan topik"
-                  {...{ ["place" + "holder"]: "Cari agenda, topik, pembicara..." }}
-                  className="w-full pl-10 pr-4 py-2 rounded-full bg-zinc-900 border border-white/15 text-xs text-white focus:outline-none focus:border-[#d4af37]"
+                  placeholder="Cari agenda, topik, pembicara..."
+                  className="w-full pl-9 pr-3.5 py-1.5 rounded-full bg-zinc-900 border border-white/15 text-xs text-white focus:outline-none focus:border-[#d4af37]"
                 />
               </div>
 
@@ -194,70 +193,70 @@ export default function AcaraPage() {
         </section>
 
         {/* Events Grid Section */}
-        <section className="py-20 bg-black">
+        <section className="py-12 md:py-16 bg-black">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {filteredEvents.length === 0 ? (
-              <div className="text-center py-24 bg-zinc-950 border border-zinc-800 rounded-2xl p-8">
-                <p className="text-zinc-400 text-base mb-4 font-light">
+              <div className="text-center py-16 bg-zinc-950 border border-zinc-800 rounded-xl p-6">
+                <p className="text-zinc-400 text-sm mb-4 font-light">
                   Tidak ada agenda acara yang cocok dengan kriteria pencarian Anda.
                 </p>
                 <button
                   type="button"
                   onClick={() => {
                     setSelectedCategory('all');
-                    setSearchQuery('');
+                    searchQuery && setSearchQuery('');
                   }}
-                  className="px-6 py-2.5 rounded-full bg-white text-black text-xs font-bold uppercase tracking-wider"
+                  className="px-5 py-2 rounded-full bg-white text-black text-xs font-bold uppercase tracking-wider"
                 >
                   Reset Filter
                 </button>
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {filteredEvents.map((evt) => (
                   <div
                     key={evt.id}
-                    className="bg-zinc-950 border border-white/10 rounded-2xl overflow-hidden hover:border-[#d4af37]/40 transition-all duration-300 flex flex-col justify-between group shadow-xl"
+                    className="bg-zinc-950 border border-white/10 rounded-xl overflow-hidden hover:border-[#d4af37]/40 transition-all duration-300 flex flex-col justify-between group shadow-lg"
                   >
                     <div>
                       {/* Image Frame */}
-                      <div className="relative aspect-[16/10] w-full overflow-hidden bg-black">
+                      <div className="relative aspect-[16/9] w-full overflow-hidden bg-black">
                         <img
                           src={evt.imageUrl}
                           alt={evt.title}
                           loading="lazy"
                           decoding="async"
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-85 group-hover:opacity-100"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent" />
                         
                         {/* Tag Pill */}
-                        <div className="absolute top-4 left-4 bg-black/85 backdrop-blur-md border border-[#d4af37]/40 text-[#f3e5ab] px-3 py-1 rounded text-xs font-mono font-bold tracking-wider uppercase">
+                        <div className="absolute top-3 left-3 bg-black/85 backdrop-blur-md border border-[#d4af37]/40 text-[#f3e5ab] px-2.5 py-0.5 rounded text-[10px] font-mono font-bold tracking-wider uppercase">
                           {evt.categoryLabel}
                         </div>
 
                         {/* Quota Badge */}
-                        <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-md border border-white/15 text-white px-2.5 py-1 rounded text-xs font-mono font-semibold">
+                        <div className="absolute top-3 right-3 bg-white/10 backdrop-blur-md border border-white/15 text-white px-2 py-0.5 rounded text-[10px] font-mono font-semibold">
                           {evt.quota}
                         </div>
                       </div>
 
                       {/* Content Box */}
-                      <div className="p-7">
-                        <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#d4af37] mb-2 uppercase">
+                      <div className="p-5">
+                        <div className="flex items-center gap-1.5 text-[11px] font-mono font-bold text-[#d4af37] mb-1.5 uppercase">
                           <Calendar className="w-3.5 h-3.5" />
                           <span>{evt.displayDate}</span>
                         </div>
 
-                        <h3 className="text-xl font-bold text-white mb-3 leading-snug group-hover:text-[#d4af37] transition-colors">
+                        <h3 className="text-lg sm:text-xl font-bold text-white mb-2 leading-snug group-hover:text-[#d4af37] transition-colors">
                           {evt.title}
                         </h3>
 
-                        <p className="text-xs sm:text-sm text-zinc-400 font-light leading-relaxed mb-6 line-clamp-3">
+                        <p className="text-xs text-zinc-400 font-light leading-relaxed mb-4 line-clamp-2">
                           {evt.description}
                         </p>
 
-                        <div className="space-y-2 pt-4 border-t border-white/10 text-xs text-zinc-400 font-light">
+                        <div className="space-y-1.5 pt-3 border-t border-white/10 text-xs text-zinc-400 font-light">
                           <div className="flex items-center gap-2">
                             <Clock className="w-3.5 h-3.5 text-zinc-500 flex-shrink-0" />
                             <span>{evt.time}</span>
@@ -275,12 +274,12 @@ export default function AcaraPage() {
                     </div>
 
                     {/* Action Button */}
-                    <div className="p-7 pt-0">
+                    <div className="p-5 pt-0">
                       {evt.registrationOpen ? (
                         <button
                           type="button"
                           onClick={() => handleRegister(evt.id)}
-                          className={`btn-magnetic w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all min-h-11 ${
+                          className={`btn-magnetic w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all ${
                             registeredEventId === evt.id
                               ? 'bg-emerald-600 text-white'
                               : 'bg-white hover:bg-[#f3e5ab] text-black shadow-gold-sm active:scale-95'
@@ -294,12 +293,12 @@ export default function AcaraPage() {
                           ) : (
                             <>
                               <span>DAFTAR SEKARANG</span>
-                              <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
+                              <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
                             </>
                           )}
                         </button>
                       ) : (
-                        <div className="w-full py-3.5 rounded-full border border-white/10 text-center text-xs text-zinc-500 font-bold uppercase tracking-wider">
+                        <div className="w-full py-2.5 rounded-full border border-white/10 text-center text-xs text-zinc-500 font-bold uppercase tracking-wider">
                           Terbuka Tanpa Registrasi
                         </div>
                       )}
@@ -313,15 +312,15 @@ export default function AcaraPage() {
         </section>
 
         {/* FAQ Strip */}
-        <section className="py-20 border-t border-white/10 bg-[#070709]">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6">
-            <h2 className="text-2xl sm:text-3xl font-black text-white uppercase text-center mb-12">
+        <section className="py-12 md:py-16 border-t border-white/10 bg-[#070709]">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6">
+            <h2 className="text-xl sm:text-2xl font-black text-white uppercase text-center mb-8">
               Pertanyaan Seputar Pendaftaran Acara
             </h2>
 
-            <div className="space-y-4">
-              <div className="p-7 rounded-2xl bg-zinc-950 border border-white/10">
-                <h3 className="text-sm font-bold text-white mb-2">
+            <div className="space-y-3">
+              <div className="p-5 rounded-xl bg-zinc-950 border border-white/10">
+                <h3 className="text-xs sm:text-sm font-bold text-white mb-1.5">
                   Apakah seluruh acara dikenakan biaya registrasi?
                 </h3>
                 <p className="text-xs text-zinc-400 font-light leading-relaxed">
@@ -329,8 +328,8 @@ export default function AcaraPage() {
                 </p>
               </div>
 
-              <div className="p-7 rounded-2xl bg-zinc-950 border border-white/10">
-                <h3 className="text-sm font-bold text-white mb-2">
+              <div className="p-5 rounded-xl bg-zinc-950 border border-white/10">
+                <h3 className="text-xs sm:text-sm font-bold text-white mb-1.5">
                   Apakah tersedia penitipan anak / ibadah sekolah minggu selama acara berlangsung?
                 </h3>
                 <p className="text-xs text-zinc-400 font-light leading-relaxed">

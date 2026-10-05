@@ -1,24 +1,21 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, ArrowUpRight, Globe, ChevronDown, Layers, ExternalLink } from 'lucide-react';
+import { Menu, X, ArrowUpRight, Globe } from 'lucide-react';
 
 interface NavItem {
   label: string;
   sectionId: string;
   pageHref: string;
-  icon?: string;
 }
 
 export default function Navbar() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isPagesDropdownOpen, setIsPagesDropdownOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
-  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const navLinks: NavItem[] = [
     { label: 'BERANDA', sectionId: 'hero', pageHref: '/' },
@@ -31,25 +28,22 @@ export default function Navbar() {
     { label: 'PERSEMBAHAN', sectionId: 'persembahan', pageHref: '/persembahan' },
   ];
 
-  const dedicatedPages = [
-    { name: 'Tentang Gereja Baitani', href: '/tentang-kami', desc: 'Visi 2030, Misi, Core Values, Credo & Sejarah' },
-    { name: 'Acara & Agenda Kegiatan', href: '/acara', desc: 'Kalender lengkap, filter kategori, registrasi' },
-    { name: 'Lokasi Kampus & Jadwal', href: '/lokasi', desc: 'Detail cabang, fasilitas anak/disabilitas, KRL' },
-    { name: 'Connect Group (Komunitas Sel)', href: '/connect-group', desc: '5 kategori sel jemaat & form pendaftaran' },
-    { name: 'Gembala Sidang & Pastoral', href: '/gembala', desc: 'Profil Pdt. Johanes Pratama & dewan penatua' },
-    { name: 'Sorotan & Galeri Momen', href: '/sorotan', desc: 'Dokumentasi baptisan, youth, & kesaksian' },
-    { name: 'Persembahan & QRIS', href: '/persembahan', desc: 'Rekening resmi BCA/Mandiri & barcode QRIS' },
-    { name: 'Saya Jemaat Baru / Koneksi', href: '/koneksi', desc: 'Langkah awal bergabung & form doa rahasia' },
-  ];
-
-  // Scroll detection & ScrollSpy for Single-Page Homepage
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 40);
 
-      // Active Section ScrollSpy on Homepage
       if (pathname === '/') {
-        const sections = ['hero', 'identitas', 'acara', 'lokasi', 'connect-group', 'pastor', 'sorotan', 'persembahan', 'koneksi'];
+        const sections = [
+          'hero',
+          'identitas',
+          'acara',
+          'lokasi',
+          'connect-group',
+          'pastor',
+          'sorotan',
+          'persembahan',
+          'koneksi',
+        ];
         const scrollPosition = window.scrollY + 200;
 
         for (const sectionId of sections) {
@@ -70,30 +64,6 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [pathname]);
 
-  // Close dropdown on outside click
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setIsPagesDropdownOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
-    if (pathname === '/') {
-      e.preventDefault();
-      const el = document.getElementById(sectionId);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-        window.history.pushState(null, '', `#${sectionId}`);
-        setActiveSection(sectionId);
-        setIsMobileMenuOpen(false);
-      }
-    }
-  };
-
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -105,15 +75,9 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
-          {/* GMS-style Typographic Minimalist Brand */}
+          {/* Logo Brand */}
           <Link
             href="/"
-            onClick={(e) => {
-              if (pathname === '/') {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }
-            }}
             className="flex items-center gap-3 group transition-transform active:scale-95"
             aria-label="Gereja Baitani Home"
           >
@@ -130,18 +94,15 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Nav - Single-Page Smooth Scroll + Active Highlight */}
+          {/* Navigasi Utama */}
           <nav className="hidden lg:flex items-center gap-5 xl:gap-7" aria-label="Main Navigation">
             {navLinks.map((link) => {
-              const isSectionActive = pathname === '/' && activeSection === link.sectionId;
-              const isPageActive = pathname !== '/' && pathname.startsWith(link.pageHref);
-              const isActive = isSectionActive || isPageActive;
+              const isActive = pathname === link.pageHref;
 
               return (
-                <a
+                <Link
                   key={link.label}
-                  href={pathname === '/' ? `#${link.sectionId}` : `/#${link.sectionId}`}
-                  onClick={(e) => handleNavClick(e, link.sectionId)}
+                  href={link.pageHref}
                   className={`text-xs font-semibold tracking-wider transition-colors py-1 relative group cursor-pointer ${
                     isActive ? 'text-[#d4af37]' : 'text-zinc-300 hover:text-white'
                   }`}
@@ -152,76 +113,28 @@ export default function Navbar() {
                       isActive ? 'w-full' : 'w-0 group-hover:w-full'
                     }`}
                   />
-                </a>
+                </Link>
               );
             })}
           </nav>
 
-          {/* Right Action: Explore Dedicated Pages Dropdown & CTA */}
+          {/* Right Action */}
           <div className="hidden sm:flex items-center gap-3">
             
-            {/* Dedicated Pages Dropdown Menu */}
-            <div className="relative" ref={dropdownRef}>
-              <button
-                type="button"
-                onClick={() => setIsPagesDropdownOpen(!isPagesDropdownOpen)}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 text-xs text-zinc-300 hover:text-white font-mono tracking-wider transition-all min-h-10"
-                aria-expanded={isPagesDropdownOpen}
-                aria-label="Buka menu halaman lengkap"
-              >
-                <Layers className="w-3.5 h-3.5 text-[#d4af37]" />
-                <span className="text-xs font-semibold">HALAMAN</span>
-                <ChevronDown className={`w-3.5 h-3.5 text-zinc-400 transition-transform duration-200 ${isPagesDropdownOpen ? 'rotate-180' : ''}`} />
-              </button>
-
-              {isPagesDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-80 rounded-2xl bg-zinc-950/95 border border-white/15 p-3 shadow-2xl backdrop-blur-2xl animate-in fade-in zoom-in-95 duration-200 z-50">
-                  <div className="px-3 py-2 border-b border-zinc-800 mb-2">
-                    <p className="text-xs font-mono font-bold uppercase tracking-wider text-[#d4af37]">
-                      8 HALAMAN MANDIRI DEDIKASI
-                    </p>
-                  </div>
-                  <div className="space-y-1 max-h-96 overflow-y-auto no-scrollbar">
-                    {dedicatedPages.map((page) => (
-                      <Link
-                        key={page.href}
-                        href={page.href}
-                        onClick={() => setIsPagesDropdownOpen(false)}
-                        className={`flex flex-col p-2.5 rounded-lg hover:bg-white/10 transition-colors group ${
-                          pathname === page.href ? 'bg-[#d4af37]/10 border border-[#d4af37]/30' : ''
-                        }`}
-                      >
-                        <div className="flex items-center justify-between">
-                          <span className={`text-xs font-bold ${pathname === page.href ? 'text-[#d4af37]' : 'text-white group-hover:text-[#d4af37]'}`}>
-                            {page.name}
-                          </span>
-                          <ArrowUpRight className="w-3.5 h-3.5 text-zinc-500 group-hover:text-white transition-colors" />
-                        </div>
-                        <span className="text-xs text-zinc-400 font-light mt-0.5 line-clamp-1">
-                          {page.desc}
-                        </span>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-
             {/* Language Pill */}
             <div className="hidden xl:flex items-center gap-1.5 text-xs text-zinc-400 font-semibold px-2 py-1 border border-zinc-800 rounded">
               <Globe className="w-3.5 h-3.5 text-[#d4af37]" />
               <span>ID</span>
             </div>
 
-            {/* SAYA BARU Button */}
-            <a
-              href={pathname === '/' ? '#koneksi' : '/#koneksi'}
-              onClick={(e) => handleNavClick(e, 'koneksi')}
+            {/* CTA Saya Baru */}
+            <Link
+              href="/koneksi"
               className="btn-magnetic inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white hover:bg-[#f3e5ab] text-black text-xs font-bold tracking-wider uppercase transition-all shadow-gold-sm active:scale-95"
             >
               <span>SAYA BARU</span>
               <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -230,62 +143,31 @@ export default function Navbar() {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="lg:hidden p-2 text-zinc-300 hover:text-white focus:outline-none"
             aria-label="Toggle navigation menu"
-            aria-expanded={isMobileMenuOpen}
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu Drawer */}
+      {/* Mobile Drawer */}
       {isMobileMenuOpen && (
         <div className="lg:hidden bg-black/95 backdrop-blur-2xl border-b border-white/10 px-6 pt-4 pb-8 space-y-4 animate-in slide-in-from-top duration-300 max-h-[85vh] overflow-y-auto">
-          
           <div className="pb-2 border-b border-white/10">
             <span className="text-xs font-mono text-[#d4af37] font-bold uppercase tracking-wider block mb-2">
-              SEKSI HALAMAN DEPAN (SINGLEPAGE)
+              MENU UTAMA
             </span>
             <div className="space-y-1">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.label}
-                  href={pathname === '/' ? `#${link.sectionId}` : `/#${link.sectionId}`}
-                  onClick={(e) => handleNavClick(e, link.sectionId)}
+                  href={link.pageHref}
+                  onClick={() => setIsMobileMenuOpen(false)}
                   className="block py-2 text-sm font-semibold tracking-wider text-zinc-300 hover:text-white"
                 >
                   {link.label}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <span className="text-xs font-mono text-[#d4af37] font-bold uppercase tracking-wider block mb-2">
-              HALAMAN LENGKAP MANDIRI
-            </span>
-            <div className="grid grid-cols-2 gap-2">
-              {dedicatedPages.map((page) => (
-                <Link
-                  key={page.href}
-                  href={page.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="p-2.5 rounded-lg bg-zinc-900 border border-white/5 text-xs font-semibold text-zinc-200 hover:text-[#d4af37]"
-                >
-                  {page.name}
                 </Link>
               ))}
             </div>
-          </div>
-
-          <div className="pt-2">
-            <a
-              href={pathname === '/' ? '#koneksi' : '/#koneksi'}
-              onClick={(e) => handleNavClick(e, 'koneksi')}
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-full bg-white text-black text-xs font-bold tracking-wider uppercase"
-            >
-              <span>SAYA JEMAAT BARU</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </a>
           </div>
         </div>
       )}
