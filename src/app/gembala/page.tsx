@@ -66,7 +66,7 @@ export default function GembalaPage() {
               <div className="lg:col-span-5 flex justify-center">
                 <div className="relative w-full max-w-md aspect-[3/4] rounded-3xl overflow-hidden border border-white/15 shadow-2xl bg-zinc-950 group">
                   <img
-                    src="/gembala.jpg"
+                    src="/gembala.jpeg"
                     alt="Pdt. Johanes Pratama, M.Th — Gembala Sidang Gereja Baitani"
                     className="w-full h-full object-cover object-center grayscale-[20%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
                   />
