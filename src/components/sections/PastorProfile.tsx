@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 import InstagramIcon from '@/components/common/InstagramIcon';
 
@@ -13,14 +14,14 @@ export default function PastorProfile() {
           {/* Left Column: Dignified Portrait (~40% width / 5 cols) */}
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative w-full max-w-md aspect-[3/4] sm:aspect-[4/5] rounded-2xl overflow-hidden border border-zinc-800 shadow-2xl bg-zinc-900 group">
-              <img
+              <Image
                 src="/images/gembala/pdt-kristianto-ibu-mexy.jpeg"
                 alt="Foto Pdt. Kristianto dan Ibu Mexy JT — Gembala Gereja Baptis Indonesia Baitani Sukabumi"
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover object-top grayscale-[10%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                fill
+                sizes="(max-width: 768px) 100vw, 500px"
+                className="object-cover object-top grayscale-[10%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent pointer-events-none" />
               
               <div className="absolute bottom-6 left-6 right-6">
                 <span className="text-xs font-black tracking-widest uppercase text-[#d4af37] block mb-1">
@@ -44,10 +45,10 @@ export default function PastorProfile() {
 
             <div className="space-y-4 text-zinc-300 text-sm sm:text-base leading-relaxed font-light mb-8">
               <p>
-                Pelayanan penggembalaan di Gereja Baptis Indonesia Baitani, Sukabumi dipimpin oleh Pdt. Kristianto bersama Ibu Mexy JT dengan ketulusan hati, kesetiaan pada kebenaran Firman Tuhan, dan kasih persaudaraan bagi seluruh jemaat.
+                Pdt. Kristianto adalah Gembala Jemaat Gereja Baptis Indonesia Baitani, Sukabumi; Ibu Mexy JT adalah istrinya.
               </p>
               <p>
-                Bersama panitia dan seluruh pelayan jemaat, fokus pelayanan diarahkan untuk memelihara persekutuan yang sehat, menuntun pertumbuhan iman jemaat dalam Kristus, dan menghadirkan kesaksian kasih Tuhan yang nyata di Kota Sukabumi.
+                Informasi lebih lanjut mengenai profil dan aktivitas pelayanan dapat dilihat melalui akun Instagram resmi gereja.
               </p>
             </div>
 

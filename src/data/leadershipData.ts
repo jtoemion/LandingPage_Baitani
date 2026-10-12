@@ -5,7 +5,7 @@ export const leadershipData: Leader[] = [
     id: 'pdt-kristianto',
     name: 'Pdt. Kristianto',
     role: 'Gembala Jemaat',
-    bio: 'Gembala Jemaat Gereja Baptis Indonesia Baitani, Sukabumi yang melayani jemaat dengan ketulusan dan kesetiaan dalam pengajaran Firman Tuhan.',
+    bio: 'Gembala Jemaat Gereja Baptis Indonesia Baitani, Sukabumi.',
     imageUrl: '/images/gembala/pdt-kristianto.jpeg',
     socials: {
       instagram: '@gbibaitanisukabumi',
@@ -15,7 +15,7 @@ export const leadershipData: Leader[] = [
     id: 'ibu-mexy-jt',
     name: 'Ibu Mexy JT',
     role: 'Istri Gembala Jemaat',
-    bio: 'Mendampingi pelayanan penggembalaan jemaat di Gereja Baptis Indonesia Baitani, Sukabumi dalam kasih dan kebersamaan pelayanan.',
+    bio: 'Istri dari Pdt. Kristianto, Gembala Jemaat Gereja Baptis Indonesia Baitani, Sukabumi.',
     imageUrl: '/images/gembala/pdt-kristianto-ibu-mexy.jpeg',
     socials: {
       instagram: '@gbibaitanisukabumi',

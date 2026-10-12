@@ -7,6 +7,7 @@ import { Quote, MapPin, Users } from 'lucide-react';
 import SiteIcon from '@/components/common/SiteIcon';
 import InstagramIcon from '@/components/common/InstagramIcon';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Gembala Jemaat & Pelayanan — Gereja Baptis Indonesia Baitani, Sukabumi',
@@ -63,12 +64,13 @@ export default function GembalaPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full">
                   {/* Photo 1: Pdt. Kristianto & Ibu Mexy JT */}
                   <div className="relative aspect-[3/4] sm:aspect-[4/5] rounded-3xl overflow-hidden border border-[#e8e2d5] shadow-2xl bg-white group">
-                    <img
+                    <Image
                       src="/images/gembala/pdt-kristianto-ibu-mexy.jpeg"
                       alt="Foto Pdt. Kristianto dan Ibu Mexy JT — Gembala Gereja Baptis Indonesia Baitani Sukabumi"
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                      fill
+                      sizes="(max-width: 640px) 100vw, 350px"
+                      className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                      priority
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />
                     <div className="absolute bottom-5 left-5 right-5 text-white">
@@ -86,12 +88,12 @@ export default function GembalaPage() {
 
                   {/* Photo 2: Pdt. Kristianto Solo */}
                   <div className="relative aspect-[3/4] sm:aspect-[4/5] rounded-3xl overflow-hidden border border-[#e8e2d5] shadow-2xl bg-white group">
-                    <img
+                    <Image
                       src="/images/gembala/pdt-kristianto.jpeg"
                       alt="Foto Pdt. Kristianto — Gembala Jemaat Gereja Baptis Indonesia Baitani Sukabumi"
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                      fill
+                      sizes="(max-width: 640px) 100vw, 350px"
+                      className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />
                     <div className="absolute bottom-5 left-5 right-5 text-white">
@@ -120,13 +122,10 @@ export default function GembalaPage() {
 
                 <div className="space-y-4 text-[#625e54] text-sm sm:text-base font-light leading-relaxed">
                   <p>
-                    Pelayanan penggembalaan jemaat di Gereja Baptis Indonesia Baitani, Kota Sukabumi diemban oleh <strong className="font-semibold text-[#1b1c1a]">Pdt. Kristianto</strong> sebagai Gembala Jemaat, didampingi dengan penuh kesetiaan oleh sang istri, <strong className="font-semibold text-[#1b1c1a]">Ibu Mexy JT</strong>.
+                    <strong className="font-semibold text-[#1b1c1a]">Pdt. Kristianto</strong> adalah Gembala Jemaat Gereja Baptis Indonesia Baitani di Kota Sukabumi, ditemani oleh <strong className="font-semibold text-[#1b1c1a]">Ibu Mexy JT</strong> sebagai istri gembala.
                   </p>
                   <p>
-                    Keluarga gembala melayani jemaat dengan ketulusan hati, membimbing kehidupan rohani jemaat agar berakar teguh dalam pengajaran Firman Tuhan yang murni, serta menumbuhkan persekutuan kasih persaudaraan yang erat di antara seluruh warga jemaat.
-                  </p>
-                  <p>
-                    Dengan teladan kerendahan hati dan komitmen doa, mereka senantiasa mendampingi jemaat dalam setiap musim kehidupan, memperkuat dasar iman keluarga, dan menghadirkan kesaksian kasih Kristus yang nyata bagi masyarakat di Sukabumi.
+                    Untuk informasi lebih lanjut mengenai kegiatan dan pelayanan jemaat, silakan hubungi sekretariat gereja atau kunjungi akun Instagram resmi GBI Baitani Sukabumi.
                   </p>
                 </div>
 
@@ -148,7 +147,7 @@ export default function GembalaPage() {
                     rel="noopener noreferrer"
                     className="btn-magnetic inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#785600] hover:bg-[#5a4000] text-white font-bold text-xs tracking-wider uppercase shadow-xl"
                   >
-                    <InstagramIcon className="w-4 h-4 text-pink-400" />
+                    <InstagramIcon className="w-4 h-4 text-white" />
                     <span>INSTAGRAM @GBIBAITANISUKABUMI</span>
                   </a>
                   <Link
@@ -201,13 +200,10 @@ export default function GembalaPage() {
                 </h2>
                 <div className="space-y-3 text-[#625e54] text-sm sm:text-base font-light leading-relaxed">
                   <p>
-                    Kepengurusan Panitia Perancang Periode 2025–2027 Gereja Baptis Indonesia Baitani, Sukabumi merupakan badan pelayanan jemaat yang dipercayakan untuk merancang, mengkoordinasikan, dan mendukung kelancaran program-program persekutuan, ibadah, serta kegiatan pembinaan iman jemaat.
-                  </p>
-                  <p>
-                    Panitia ini bekerja sama dengan pelayanan penggembalaan jemaat untuk memastikan seluruh kegiatan rohani dan tata kelola jemaat berjalan dengan tertib, penuh dedikasi, serta memuliakan nama Tuhan.
+                    Panitia Perancang Periode 2025–2027 adalah kepengurusan pelayanan tersendiri di Gereja Baptis Indonesia Baitani, Sukabumi.
                   </p>
                   <p className="text-xs text-[#625e54]/80 font-mono">
-                    * Susunan kepengurusan lengkap dan warta panitia dapat dikonfirmasi langsung melalui sekretariat gedung gereja atau warta jemaat mingguan.
+                    * Susunan kepengurusan lengkap dapat dikonfirmasi langsung melalui sekretariat gedung gereja atau akun Instagram resmi GBI Baitani Sukabumi.
                   </p>
                 </div>
               </div>
