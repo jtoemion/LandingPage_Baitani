@@ -21,55 +21,62 @@ export default function Navbar() {
     { label: 'BERANDA', sectionId: 'hero', pageHref: '/' },
     { label: 'TENTANG KAMI', sectionId: 'identitas', pageHref: '/tentang-kami' },
     { label: 'ACARA KITA', sectionId: 'acara', pageHref: '/acara' },
-    { label: 'LOKASI & JADWAL', sectionId: 'lokasi', pageHref: '/lokasi' },
-    { label: 'CONNECT GROUP', sectionId: 'connect-group', pageHref: '/connect-group' },
+    { label: 'LOKASI & IBADAH', sectionId: 'lokasi', pageHref: '/#lokasi' },
+    { label: 'KOI', sectionId: 'connect-group', pageHref: '/connect-group' },
     { label: 'GEMBALA', sectionId: 'pastor', pageHref: '/gembala' },
     { label: 'SOROTAN', sectionId: 'sorotan', pageHref: '/sorotan' },
     { label: 'PERSEMBAHAN', sectionId: 'persembahan', pageHref: '/persembahan' },
   ];
 
+  // Scrollspy & Scrolled background effect
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      setIsScrolled(window.scrollY > 30);
 
       if (pathname === '/') {
-        const sections = [
-          'hero',
-          'identitas',
-          'acara',
-          'lokasi',
-          'connect-group',
-          'pastor',
-          'sorotan',
-          'persembahan',
-          'koneksi',
-        ];
-        const scrollPosition = window.scrollY + 200;
+        const sections = ['hero', 'acara', 'sorotan', 'lokasi'];
+        const scrollPosition = window.scrollY + 250;
 
-        for (const sectionId of sections) {
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const sectionId = sections[i];
           const el = document.getElementById(sectionId);
-          if (el) {
-            const top = el.offsetTop;
-            const height = el.offsetHeight;
-            if (scrollPosition >= top && scrollPosition < top + height) {
-              setActiveSection(sectionId);
-              break;
-            }
+          if (el && scrollPosition >= el.offsetTop) {
+            setActiveSection(sectionId);
+            break;
           }
         }
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, [pathname]);
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, link: NavItem) => {
+    if (pathname === '/') {
+      if (link.sectionId === 'hero') {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setActiveSection('hero');
+      } else if (link.sectionId === 'lokasi') {
+        e.preventDefault();
+        const el = document.getElementById('lokasi');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+          setActiveSection('lokasi');
+        }
+      }
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-black/90 backdrop-blur-xl border-b border-white/10 py-3.5 shadow-2xl'
-          : 'bg-gradient-to-b from-black/95 via-black/50 to-transparent py-5'
+          ? 'bg-[#fbf9f6]/95 backdrop-blur-xl border-b border-[#e8e2d5] py-3.5 shadow-[0_4px_20px_rgba(27,28,26,0.06)]'
+          : 'bg-[#fbf9f6]/90 backdrop-blur-md border-b border-[#e8e2d5]/60 py-4.5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -78,38 +85,54 @@ export default function Navbar() {
           {/* Logo Brand */}
           <Link
             href="/"
-            className="flex items-center gap-3 group transition-transform active:scale-95"
-            aria-label="Gereja Baitani Home"
+            onClick={(e) => {
+              if (pathname === '/') {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                setActiveSection('hero');
+              }
+            }}
+            className="flex items-center gap-3 group transition-transform active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#785600] rounded-lg p-1"
+            aria-label="Gereja Baptis Indonesia Baitani Sukabumi Home"
           >
-            <div className="w-9 h-9 rounded-sm bg-white text-black flex items-center justify-center font-black text-lg tracking-tighter shadow-md group-hover:bg-[#d4af37] transition-colors">
-              B
+            <div className="w-9 h-9 rounded-full bg-[#e8e2d5] text-[#785600] flex items-center justify-center font-bold text-xs tracking-tighter shadow-xs group-hover:bg-[#785600] group-hover:text-white transition-all">
+              GBI
             </div>
             <div className="flex flex-col">
-              <span className="font-extrabold text-base tracking-[0.22em] text-white uppercase leading-none">
+              <span className="font-extrabold text-sm tracking-[0.18em] text-[#1b1c1a] uppercase leading-none group-hover:text-[#785600] transition-colors">
                 BAITANI
               </span>
-              <span className="text-[9px] tracking-[0.35em] text-zinc-400 font-semibold uppercase mt-1 group-hover:text-[#d4af37] transition-colors">
-                CHURCH
+              <span className="text-[9px] tracking-[0.25em] text-[#817563] font-semibold uppercase mt-1 group-hover:text-[#785600] transition-colors">
+                SUKABUMI
               </span>
             </div>
           </Link>
 
           {/* Navigasi Utama */}
-          <nav className="hidden lg:flex items-center gap-5 xl:gap-7" aria-label="Main Navigation">
+          <nav className="hidden xl:flex items-center gap-5 2xl:gap-8" aria-label="Main Navigation">
             {navLinks.map((link) => {
-              const isActive = pathname === link.pageHref;
+              const isActive =
+                pathname === '/'
+                  ? activeSection === link.sectionId
+                  : pathname === link.pageHref;
+
+              const targetHref =
+                pathname === '/' && link.sectionId === 'lokasi'
+                  ? '#lokasi'
+                  : link.pageHref;
 
               return (
                 <Link
                   key={link.label}
-                  href={link.pageHref}
-                  className={`text-xs font-semibold tracking-wider transition-colors py-1 relative group cursor-pointer ${
-                    isActive ? 'text-[#d4af37]' : 'text-zinc-300 hover:text-white'
+                  href={targetHref}
+                  onClick={(e) => handleNavClick(e, link)}
+                  className={`text-[11px] font-semibold tracking-wider transition-colors py-1 relative group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#785600] rounded-sm px-0.5 ${
+                    isActive ? 'text-[#785600] font-bold' : 'text-[#625e54] hover:text-[#1b1c1a]'
                   }`}
                 >
                   <span>{link.label}</span>
                   <span
-                    className={`absolute bottom-0 left-0 h-0.5 bg-[#d4af37] transition-all duration-300 ${
+                    className={`absolute bottom-0 left-0 h-0.5 bg-[#785600] transition-all duration-300 ${
                       isActive ? 'w-full' : 'w-0 group-hover:w-full'
                     }`}
                   />
@@ -119,18 +142,18 @@ export default function Navbar() {
           </nav>
 
           {/* Right Action */}
-          <div className="hidden sm:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-3">
             
             {/* Language Pill */}
-            <div className="hidden xl:flex items-center gap-1.5 text-xs text-zinc-400 font-semibold px-2 py-1 border border-zinc-800 rounded">
-              <Globe className="w-3.5 h-3.5 text-[#d4af37]" />
+            <div className="hidden xl:flex items-center gap-1.5 text-xs text-[#625e54] font-semibold px-2 py-1 border border-[#d3c4af] rounded">
+              <Globe className="w-3.5 h-3.5 text-[#785600]" />
               <span>ID</span>
             </div>
 
             {/* CTA Saya Baru */}
             <Link
               href="/koneksi"
-              className="btn-magnetic inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white hover:bg-[#f3e5ab] text-black text-xs font-bold tracking-wider uppercase transition-all shadow-gold-sm active:scale-95"
+              className="btn-magnetic inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#785600] hover:bg-[#986d00] text-white text-[11px] font-bold tracking-wider uppercase transition-all shadow-[0_4px_14px_rgba(120,86,0,0.22)] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#785600]"
             >
               <span>SAYA BARU</span>
               <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
@@ -141,8 +164,10 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 text-zinc-300 hover:text-white focus:outline-none"
+            className="lg:hidden p-2 text-[#4f4535] hover:text-[#1b1c1a] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#785600] rounded-lg"
             aria-label="Toggle navigation menu"
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-nav-drawer"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -151,23 +176,53 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-black/95 backdrop-blur-2xl border-b border-white/10 px-6 pt-4 pb-8 space-y-4 animate-in slide-in-from-top duration-300 max-h-[85vh] overflow-y-auto">
-          <div className="pb-2 border-b border-white/10">
-            <span className="text-xs font-mono text-[#d4af37] font-bold uppercase tracking-wider block mb-2">
+        <div
+          id="mobile-nav-drawer"
+          className="lg:hidden bg-[#fbf9f6]/98 backdrop-blur-2xl border-b border-[#e8e2d5] px-6 pt-4 pb-8 space-y-4 animate-in slide-in-from-top duration-300 max-h-[85vh] overflow-y-auto shadow-xl"
+        >
+          <div className="pb-2 border-b border-[#e8e2d5]">
+            <span className="text-xs font-mono text-[#785600] font-bold uppercase tracking-wider block mb-2">
               MENU UTAMA
             </span>
             <div className="space-y-1">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.pageHref}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block py-2 text-sm font-semibold tracking-wider text-zinc-300 hover:text-white"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const isActive =
+                  pathname === '/'
+                    ? activeSection === link.sectionId
+                    : pathname === link.pageHref;
+
+                const targetHref =
+                  pathname === '/' && link.sectionId === 'lokasi'
+                    ? '#lokasi'
+                    : link.pageHref;
+
+                return (
+                  <Link
+                    key={link.label}
+                    href={targetHref}
+                    onClick={(e) => handleNavClick(e, link)}
+                    className={`block py-3 px-2 text-sm font-semibold tracking-wider transition-colors rounded-lg min-h-[44px] flex items-center ${
+                      isActive
+                        ? 'text-[#785600] font-bold bg-[#f5f3f0]'
+                        : 'text-[#4f4535] hover:text-[#1b1c1a] hover:bg-[#f5f3f0]/60'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
             </div>
+          </div>
+
+          <div className="pt-2">
+            <Link
+              href="/koneksi"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="btn-magnetic w-full flex items-center justify-center gap-2 py-3 rounded-full bg-[#785600] text-white text-xs font-bold tracking-wider uppercase shadow-md"
+            >
+              <span>SAYA JEMAAT BARU</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       )}

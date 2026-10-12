@@ -1,226 +1,166 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Navbar from '@/components/common/Navbar';
 import Footer from '@/components/common/Footer';
 import PageHero from '@/components/common/PageHero';
-import { Landmark, QrCode, Copy, Check, MessageSquare, ShieldCheck, Heart, Download, HelpCircle } from 'lucide-react';
+import { Landmark, ShieldCheck } from 'lucide-react';
+import SiteIcon from '@/components/common/SiteIcon';
+import InstagramIcon from '@/components/common/InstagramIcon';
 
 export default function PersembahanPage() {
-  const [copiedId, setCopiedId] = useState<string | null>(null);
-
-  const bankAccounts = [
+  const givingPrinciples = [
     {
-      id: 'bca-umum',
-      bankName: 'BCA (Bank Central Asia)',
-      accountNumber: '1234567890',
-      accountHolder: 'GEREJA BAITANI INDONESIA',
-      purpose: 'Persembahan Umum, Persepuluhan & Operasional Ibadah Mingguan',
-    },
-    {
-      id: 'mandiri-diakonia',
-      bankName: 'Bank Mandiri',
-      accountNumber: '9876543210123',
-      accountHolder: 'GEREJA BAITANI PEDULI SESAMA',
-      purpose: 'Dana Kasih Diakonia, Tanggap Bencana & Program Sembako Baitani Care',
-    },
-    {
-      id: 'bni-misi',
-      bankName: 'Bank BNI',
-      accountNumber: '556677889900',
-      accountHolder: 'YAYASAN MISI GEREJA BAITANI',
-      purpose: 'Perintisan Jemaat Baru, Beasiswa Hamba Tuhan & Misi Lintas Budaya',
-    },
-  ];
-
-  const givingTypes = [
-    {
-      title: 'Persepuluhan (Tithe)',
+      title: 'Persepuluhan',
       verse: 'Maleakhi 3:10',
-      desc: 'Sepuluh persen dari seluruh penghasilan yang dikembalikan kepada Tuhan sebagai wujud ketaatan dan pengakuan bahwa Allah adalah pemilik sejati hidup kita.',
+      desc: 'Wujud ketaatan dan pengakuan iman bahwa segala berkat dan rezeki bersumber dari Tuhan semata.',
     },
     {
-      title: 'Persembahan Syukur (Offering)',
+      title: 'Persembahan Syukur',
       verse: 'Mazmur 100:4',
-      desc: 'Pemberian sukarela atas anugerah, pemeliharaan, kesembuhan, atau momentum istimewa seperti ulang tahun, kelahiran, atau kelulusan.',
+      desc: 'Pemberian sukarela atas kasih setia pemeliharaan Allah dalam kehidupan pribadi dan keluarga.',
     },
     {
-      title: 'Dana Kasih Diakonia',
+      title: 'Dana Diakonia & Kasih',
       verse: 'Amsal 19:17',
-      desc: 'Pemberian kasih untuk menolong jemaat prasejahtera, yatim piatu, janda-duda, dan warga sekitar yang terkena dampak musibah atau bencana alam.',
+      desc: 'Pemberian kasih untuk menolong sesama yang berkekurangan, jemaat prasejahtera, dan bantuan sosial di Sukabumi.',
     },
     {
-      title: 'Persembahan Misi & Pembangunan',
-      verse: 'Matius 28:19-20',
-      desc: 'Menopang pendanaan hamba Tuhan di ladang misi perintisan daerah terpencil serta perawatan dan pelunasan sarana ibadah jemaat.',
+      title: 'Pemeliharaan Sarana Ibadah',
+      verse: '2 Korintus 9:7',
+      desc: 'Menopang pemeliharaan rumah Tuhan dan operasional pelayanan jemaat agar ibadah berjalan tertib.',
     },
   ];
-
-  const handleCopy = (number: string, id: string) => {
-    navigator.clipboard.writeText(number);
-    setCopiedId(id);
-    setTimeout(() => {
-      setCopiedId(null);
-    }, 2500);
-  };
 
   return (
-    <div className="min-h-dvh flex flex-col bg-[#050505] text-[#fafafa]">
+    <div className="min-h-dvh flex flex-col bg-[#fbf9f6] text-[#1b1c1a]">
       <Navbar />
 
       <main id="main-content" className="flex-1">
         {/* Page Hero */}
         <PageHero
-          category="PENATALAYANAN & PERSEMBAHAN KASIH"
-          title="GIVING & PERSEMBAHAN"
-          titleAccent="Honoring God with Our Substance"
-          subtitle="Setiap benih yang Anda tabur mendanai pekabaran Injil, pemeliharaan jemaat, perintisan gereja baru, dan aksi kasih bagi sesama yang membutuhkan pertolongan."
+          category="PENATALAYANAN & PERSEMBAHAN"
+          title="PERSEMBAHAN JEMAAT"
+          titleAccent="Memberi Dengan Sukacita Hati"
+          subtitle="Pelayanan persembahan jemaat di Gereja Baptis Indonesia Baitani, Sukabumi diperuntukkan bagi kelangsungan pelayanan firman, pembinaan jemaat, dan kepedulian diakonia bagi sesama."
           breadcrumbCurrent="Persembahan"
+          imageSrc="/images/page-hero/persembahan.jpg"
+          imageAlt="Foto ilustrasi: relawan memindahkan kotak bantuan."
         />
 
-        {/* Giving Console: Bank Accounts & QRIS */}
-        <section className="py-24 bg-black border-b border-white/10">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-              
-              {/* Left Column: Bank Accounts (7 cols) */}
-              <div className="lg:col-span-7 space-y-6">
-                <div className="flex items-center gap-2 mb-2">
-                  <Landmark className="w-5 h-5 text-[#d4af37]" />
-                  <h3 className="text-sm font-bold text-white tracking-widest uppercase">
-                    Rekening Resmi Gereja Baitani
-                  </h3>
+        {/* Factual Giving Guidance Section */}
+        <section className="py-24 bg-[#f5f3f0] border-b border-[#e8e2d5]">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+
+            <div className="text-center space-y-3">
+              <span className="text-xs font-mono font-bold tracking-widest uppercase text-[#785600] block">
+                PANDUAN PENATALAYANAN
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-[#1b1c1a]">
+                Saluran Persembahan Resmi
+              </h2>
+              <p className="text-[#625e54] text-sm font-light leading-relaxed max-w-2xl mx-auto">
+                Demi menjaga akuntabilitas dan ketepatan penyaluran, jemaat dapat memberikan persembahan melalui kanal resmi berikut.
+              </p>
+            </div>
+
+            {/* Verification Notice Card */}
+            <div className="bg-[#fff] border border-[#785600]/30 rounded-3xl p-8 sm:p-10 space-y-6 shadow-warm-md">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-[#f5f3f0] border border-[#e8e2d5] flex items-center justify-center text-[#785600] flex-shrink-0">
+                  <Landmark className="w-5 h-5" />
                 </div>
-
-                {bankAccounts.map((account) => (
-                  <div
-                    key={account.id}
-                    className="bg-zinc-950 border border-white/10 rounded-2xl p-8 hover:border-[#d4af37]/40 transition-all shadow-xl flex flex-col justify-between"
-                  >
-                    <div className="mb-4">
-                      <div className="flex items-center justify-between gap-4 mb-3">
-                        <span className="text-xs font-bold tracking-wider uppercase text-[#d4af37]">
-                          {account.bankName}
-                        </span>
-                        <span className="text-xs bg-white/5 text-zinc-300 border border-zinc-800 px-2.5 py-0.5 rounded font-mono">
-                          TERVERIFIKASI
-                        </span>
-                      </div>
-                      <div className="text-2xl sm:text-4xl font-black font-mono tracking-wider text-white mb-1">
-                        {account.accountNumber}
-                      </div>
-                      <div className="text-xs font-semibold text-zinc-300 uppercase tracking-wider">
-                        A.N. {account.accountHolder}
-                      </div>
-                      <p className="text-xs text-zinc-400 mt-3 font-light leading-relaxed">
-                        Peruntukan: <span className="text-zinc-200">{account.purpose}</span>
-                      </p>
-                    </div>
-
-                    <div className="pt-4 border-t border-white/10 flex items-center justify-between">
-                      <span className="text-xs text-zinc-400 flex items-center gap-1.5 font-light">
-                        <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                        <span>Rekening Bank Resmi Gereja</span>
-                      </span>
-                      <button
-                        type="button"
-                        onClick={() => handleCopy(account.accountNumber, account.id)}
-                        className={`btn-magnetic inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all min-h-11 ${
-                          copiedId === account.id
-                            ? 'bg-emerald-600 text-white shadow-md shadow-emerald-950/40'
-                            : 'bg-white hover:bg-[#f3e5ab] text-black active:scale-95'
-                        }`}
-                      >
-                        {copiedId === account.id ? (
-                          <>
-                            <Check className="w-4 h-4" />
-                            <span>Tersalin!</span>
-                          </>
-                        ) : (
-                          <>
-                            <Copy className="w-4 h-4" />
-                            <span>Salin No. Rekening</span>
-                          </>
-                        )}
-                      </button>
-                    </div>
-                  </div>
-                ))}
+                <div>
+                  <h3 className="text-lg sm:text-xl font-bold text-[#1b1c1a]">
+                    Transfer Rekening Bank Resmi Gereja
+                  </h3>
+                  <p className="text-xs text-[#625e54]">
+                    Konfirmasi Nomor Rekening Melalui Sekretariat Gereja
+                  </p>
+                </div>
               </div>
 
-              {/* Right Column: QRIS Frame (5 cols) */}
-              <div className="lg:col-span-5 bg-zinc-950 border border-white/10 rounded-2xl p-8 flex flex-col items-center text-center">
-                <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-[#d4af37] mb-4">
-                  <QrCode className="w-6 h-6" />
-                </div>
-
-                <h3 className="text-lg font-bold text-white uppercase tracking-wider mb-1">
-                  QRIS Persembahan Digital
-                </h3>
-                <p className="text-xs text-zinc-400 max-w-xs mb-6 font-light leading-relaxed">
-                  Pindai barcode menggunakan aplikasi m-banking atau e-wallet apa pun di seluruh Indonesia.
+              <div className="space-y-4 text-xs sm:text-sm text-[#625e54] leading-relaxed font-light pt-4 border-t border-[#e8e2d5]">
+                <p>
+                  Untuk memastikan keabsahan nomor rekening dan menghindari potensi kekeliruan transfer, <strong className="text-[#1b1c1a]">nomor rekening bank resmi Gereja Baptis Indonesia Baitani, Sukabumi dapat dikonfirmasikan langsung kepada sekretariat/bendahara jemaat di gedung gereja</strong> atau melalui akun Instagram resmi gereja.
                 </p>
-
-                {/* QR Code Presentation */}
-                <div className="bg-white p-4 rounded-2xl shadow-2xl border border-zinc-300 mb-6 w-52 h-52 flex flex-col items-center justify-center">
-                  <div className="w-44 h-44 bg-black rounded-lg flex flex-col items-center justify-center p-2 text-white text-center">
-                    <QrCode className="w-28 h-28 text-white" />
-                    <span className="text-xs font-mono tracking-widest text-zinc-300 mt-1 font-bold">
-                      GEREJA BAITANI
-                    </span>
-                    <span className="text-xs text-zinc-400 font-mono">NMID: ID1029384756</span>
-                  </div>
+                <div className="p-4 rounded-xl bg-[#f5f3f0] border border-[#e8e2d5] text-xs text-[#625e54] space-y-1">
+                  <p className="font-semibold text-[#1b1c1a] flex items-center gap-1.5">
+                    <ShieldCheck className="w-4 h-4 text-[#785600]" />
+                    <span>Prinsip Kehati-hatian &amp; Transparansi:</span>
+                  </p>
+                  <p>
+                    Gereja tidak mempublikasikan nomor rekening pihak ketiga atau nomor placeholder di situs publik tanpa verifikasi resmi majelis gereja. Pastikan rekening tujuan mengatasnamakan resmi rekening gereja.
+                  </p>
                 </div>
+              </div>
 
-                <div className="text-xs text-zinc-400 space-y-1 mb-6 font-light">
-                  <p className="font-semibold text-zinc-300">Mendukung Seluruh Layanan Pembayaran:</p>
-                  <p>BCA • Mandiri • BRI • BNI • GoPay • OVO • DANA • ShopeePay • LinkAja</p>
-                </div>
-
+              <div className="pt-2 flex flex-wrap items-center gap-4">
                 <a
-                  href="https://wa.me/6281234567890?text=Halo%20Sekretariat%20Gereja%20Baitani,%20saya%20ingin%20mengonfirmasi%20bukti%20transfer%20persembahan."
+                  href="https://www.instagram.com/gbibaitanisukabumi/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-magnetic w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-full border border-white/20 hover:border-white text-white text-xs font-bold tracking-wider uppercase transition-colors min-h-11"
+                  className="btn-magnetic inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#785600] hover:bg-[#ffdea6] text-white hover:text-[#1b1c1a] font-bold text-xs tracking-wider uppercase transition-all shadow-warm-sm"
                 >
-                  <MessageSquare className="w-4 h-4 text-emerald-400" />
-                  <span>KONFIRMASI BUKTI TRANSFER VIA WA</span>
+                  <InstagramIcon className="w-4 h-4 text-pink-500" />
+                  <span>KONFIRMASI VIA INSTAGRAM @GBIBAITANISUKABUMI</span>
                 </a>
               </div>
-
             </div>
+
+            {/* Onsite Giving Card */}
+            <div className="bg-[#fff] border border-[#e8e2d5] rounded-3xl p-8 sm:p-10 space-y-4 shadow-warm-sm">
+              <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-[#f5f3f0] border border-[#e8e2d5] flex items-center justify-center text-white flex-shrink-0">
+                  <SiteIcon name="church-location" className="w-5 h-5 text-[#785600]" />
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-bold text-[#1b1c1a]">
+                    Persembahan Onsite di Gedung Gereja
+                  </h3>
+                  <p className="text-xs text-[#625e54]">
+                    Jl. R.E. Martadinata No. 86, Sukabumi
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-xs sm:text-sm text-[#625e54] leading-relaxed font-light pt-2">
+                Persembahan tunai, persembahan persepuluhan, dan amplop syukur dapat dimasukkan langsung ke dalam kantong atau kotak persembahan yang disediakan saat ibadah onsite berlangsung di gedung gereja.
+              </p>
+            </div>
+
           </div>
         </section>
 
-        {/* 4 Jenis Persembahan */}
-        <section className="py-24 bg-[#070709] border-b border-white/10">
+        {/* 4 Landasan Firman Persembahan */}
+        <section className="py-24 bg-[#fff] border-b border-[#e8e2d5]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="text-xs font-bold tracking-widest uppercase text-zinc-400 block mb-2">
-                PEMAHAMAN ALKITABIAH
+              <span className="text-xs font-mono font-bold tracking-widest uppercase text-[#785600] block mb-2">
+                LANDASAN ALKITABIAH
               </span>
-              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase mb-4">
-                4 Jenis Pos Persembahan
+              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-[#1b1c1a] mb-4">
+                Dasar Memberi Bagi Tuhan
               </h2>
-              <p className="text-zinc-400 text-sm sm:text-base leading-relaxed font-light">
-                Setiap bentuk persembahan memiliki tujuan dan landasan rohani yang jelas bagi kemajuan pekerjaan Tuhan.
+              <p className="text-[#625e54] text-sm sm:text-base leading-relaxed font-light">
+                Persembahan adalah bentuk ibadah dan ucapan syukur atas kasih karunia Allah yang telah melimpah atas hidup kita.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {givingTypes.map((type, idx) => (
+              {givingPrinciples.map((type, idx) => (
                 <div
                   key={`type-${idx}`}
-                  className="p-8 rounded-2xl bg-zinc-950 border border-white/10 flex flex-col justify-between"
+                  className="p-8 rounded-2xl bg-[#fff] border border-[#e8e2d5] flex flex-col justify-between shadow-warm-sm"
                 >
                   <div>
-                    <span className="text-xs font-mono font-bold text-[#d4af37] block mb-2">
+                    <span className="text-xs font-mono font-bold text-[#785600] block mb-2">
                       {type.verse}
                     </span>
-                    <h3 className="text-lg font-bold text-white mb-3">
+                    <h3 className="text-lg font-bold text-[#1b1c1a] mb-3">
                       {type.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-zinc-400 font-light leading-relaxed">
+                    <p className="text-xs sm:text-sm text-[#625e54] font-light leading-relaxed">
                       {type.desc}
                     </p>
                   </div>
@@ -231,13 +171,13 @@ export default function PersembahanPage() {
         </section>
 
         {/* Scriptural Promise */}
-        <section className="py-20 bg-black text-center border-b border-zinc-800">
+        <section className="py-20 bg-[#f5f3f0] text-center border-b border-[#e8e2d5]">
           <div className="max-w-3xl mx-auto px-4">
-            <blockquote className="text-base sm:text-lg text-zinc-200 italic font-serif leading-relaxed mb-4">
-              &ldquo;Muliakanlah TUHAN dengan hartamu dan dengan hasil pertama dari segala penghasilanmu, maka lumbung-lumbungmu akan diisi penuh sampai melimpah-limpah.&rdquo;
+            <blockquote className="text-base sm:text-lg text-[#1b1c1a] italic leading-relaxed mb-4 font-serif">
+              &ldquo;Hendaklah masing-masing memberikan menurut kerelaan hatinya, jangan dengan sedih hati atau karena paksaan, sebab Allah mengasihi orang yang memberi dengan sukacita.&rdquo;
             </blockquote>
-            <cite className="text-xs font-mono font-bold text-[#d4af37] uppercase tracking-widest not-italic">
-              — AMSAL 3:9-10
+            <cite className="text-xs font-mono font-bold text-[#785600] uppercase tracking-widest not-italic">
+              — 2 KORINTUS 9:7
             </cite>
           </div>
         </section>

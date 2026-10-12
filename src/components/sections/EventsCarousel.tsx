@@ -1,128 +1,127 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { eventsData } from '@/data/eventsData';
-import { ChevronLeft, ChevronRight, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, ExternalLink } from 'lucide-react';
+import InstagramIcon from '@/components/common/InstagramIcon';
+import SiteIcon from '@/components/common/SiteIcon';
 
 export default function EventsCarousel() {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-  const scroll = (direction: 'left' | 'right') => {
-    if (scrollContainerRef.current) {
-      const { scrollLeft, clientWidth } = scrollContainerRef.current;
-      const scrollAmount = clientWidth * 0.75;
-      scrollContainerRef.current.scrollTo({
-        left: direction === 'left' ? scrollLeft - scrollAmount : scrollLeft + scrollAmount,
-        behavior: 'smooth',
-      });
-    }
-  };
-
   return (
-    <section id="acara" className="py-24 bg-zinc-950 text-white relative border-b border-zinc-800">
+    <section id="acara" className="py-20 lg:py-24 bg-[#fbf9f6] text-[#1b1c1a] relative border-b border-[#e8e2d5]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header: GMS Style */}
+        {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
           <div>
-            <span className="text-xs font-bold tracking-widest uppercase text-zinc-400 block mb-2">
-              AGENDA & KEGIATAN MENDATANG
+            <span className="text-xs font-bold tracking-widest uppercase text-[#785600] block mb-2 font-mono">
+              AGENDA & WARTA PELAYANAN
             </span>
-            <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase">
-              Acara Kita
+            <h2 className="font-serif text-3xl sm:text-5xl font-medium tracking-tight text-[#1b1c1a]">
+              Acara & Kegiatan Jemaat
             </h2>
           </div>
 
-          {/* Minimalist Circular Arrows & View All Link */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <Link
               href="/acara"
-              className="btn-magnetic hidden sm:inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full border border-white/20 hover:border-[#d4af37] text-white hover:text-[#d4af37] text-xs font-bold tracking-wider uppercase transition-colors"
+              className="btn-magnetic inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full border border-[#d3c4af] hover:border-[#785600] text-[#785600] hover:bg-[#e8e2d5]/40 text-xs font-bold tracking-wider uppercase transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#785600]"
             >
-              <span>SEMUA ACARA</span>
+              <span>PUSAT INFORMASI ACARA</span>
               <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
             </Link>
-
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={() => scroll('left')}
-                className="w-12 h-12 rounded-full border border-white/20 hover:border-white text-zinc-300 hover:text-white flex items-center justify-center transition-all min-w-11 min-h-11 active:scale-95"
-                aria-label="Event sebelumnya"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                type="button"
-                onClick={() => scroll('right')}
-                className="w-12 h-12 rounded-full border border-white/20 hover:border-white text-zinc-300 hover:text-white flex items-center justify-center transition-all min-w-11 min-h-11 active:scale-95"
-                aria-label="Event berikutnya"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </div>
           </div>
         </div>
 
-        {/* Scroll-Snap Track: GMS Fashion Cards */}
-        <div
-          ref={scrollContainerRef}
-          className="flex gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-6"
-        >
-          {eventsData.map((event) => (
-            <div
-              key={event.id}
-              className="flex-shrink-0 w-72 sm:w-80 lg:w-96 snap-start bg-zinc-900/60 border border-zinc-800 rounded-xl overflow-hidden hover:border-white/30 transition-all duration-300 group flex flex-col justify-between"
-            >
-              {/* Event Image */}
-              <div className="relative aspect-[4/3] w-full overflow-hidden bg-black">
-                <img
-                  src={event.imageUrl}
-                  alt={event.title}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent" />
-                
-                {/* Global Tag Pill */}
-                <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-md border border-white/20 text-white px-3 py-1 rounded text-xs font-black tracking-widest uppercase">
-                  GLOBAL
-                </div>
+        {/* Announcement Grid (Truthful Church Information Hub) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
 
-                {/* Date String */}
-                <div className="absolute bottom-3 left-4 text-xs font-bold text-zinc-300 uppercase tracking-wider">
-                  {event.displayDate}
-                </div>
+          {/* Card 1: Warta Jemaat Mingguan */}
+          <div className="bg-white border border-[#e8e2d5] rounded-2xl p-7 sm:p-8 flex flex-col justify-between shadow-xs hover:border-[#d3c4af] transition-all">
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-xl bg-[#f5f3f0] border border-[#e8e2d5] flex items-center justify-center text-[#785600]">
+                <SiteIcon name="event-announcement" className="w-6 h-6" />
               </div>
-
-              {/* Event Content */}
-              <div className="p-6 flex-1 flex flex-col justify-between">
-                <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2 leading-snug group-hover:text-[#d4af37] transition-colors">
-                    {event.title}
-                  </h3>
-                  <p className="text-zinc-400 text-xs sm:text-sm line-clamp-3 leading-relaxed mb-6 font-light">
-                    {event.description}
-                  </p>
-                </div>
-
-                <div className="pt-4 border-t border-zinc-800 flex items-center justify-between">
-                  <span className="text-xs text-zinc-400 font-medium">
-                    {event.location}
-                  </span>
-                  <a
-                    href="#koneksi"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold tracking-wider uppercase text-white hover:text-[#d4af37] transition-colors min-h-11"
-                  >
-                    <span>DAFTAR</span>
-                    <ArrowUpRight className="w-4 h-4" />
-                  </a>
-                </div>
+              <div>
+                <span className="text-xs font-mono font-bold tracking-wider uppercase text-[#785600] block mb-1">
+                  WARTA LISAN & TERTULIS
+                </span>
+                <h3 className="font-serif text-xl sm:text-2xl font-medium text-[#1b1c1a] mb-2">
+                  Warta Jemaat Mingguan
+                </h3>
+                <p className="text-[#625e54] text-[13px] sm:text-sm leading-relaxed font-normal">
+                  Seluruh agenda kebaktian khusus, persekutuan doa, kegiatan pemuda, dan program pelayanan jemaat diumumkan secara berkala saat Ibadah Raya hari Minggu atau melalui kanal resmi gereja.
+                </p>
               </div>
             </div>
-          ))}
+
+            <div className="pt-6 mt-6 border-t border-[#e8e2d5] flex items-center justify-between">
+              <span className="text-xs text-[#817563] flex items-center gap-1.5 font-medium">
+                <SiteIcon name="church-location" className="w-3.5 h-3.5" />
+                <span>Gedung Gereja Sukabumi</span>
+              </span>
+              <Link
+                href="/#lokasi"
+                className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-[#785600] hover:text-[#986d00] transition-colors"
+              >
+                <span>Informasi Ibadah & Lokasi</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Card 2: Saluran Media Sosial Resmi */}
+          <div className="bg-white border border-[#e8e2d5] rounded-2xl p-7 sm:p-8 flex flex-col justify-between shadow-xs hover:border-[#d3c4af] transition-all">
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-xl bg-pink-50 border border-pink-200 flex items-center justify-center text-pink-600">
+                <InstagramIcon className="w-6 h-6" />
+              </div>
+              <div>
+                <span className="text-xs font-mono font-bold tracking-wider uppercase text-pink-700 block mb-1">
+                  SIARAN DIGITAL TERKINI
+                </span>
+                <h3 className="font-serif text-xl sm:text-2xl font-medium text-[#1b1c1a] mb-2">
+                  Instagram @gbibaitanisukabumi
+                </h3>
+                <p className="text-[#625e54] text-[13px] sm:text-sm leading-relaxed font-normal">
+                  Untuk pemberitahuan kegiatan mendesak, dokumentasi foto pelayanan, dan pengumuman rohani terkini, silakan ikuti akun media sosial resmi Gereja Baptis Indonesia Baitani Sukabumi.
+                </p>
+              </div>
+            </div>
+
+            <div className="pt-6 mt-6 border-t border-[#e8e2d5] flex items-center justify-between">
+              <span className="text-xs text-[#817563] font-medium font-mono">
+                @gbibaitanisukabumi
+              </span>
+              <a
+                href="https://www.instagram.com/gbibaitanisukabumi/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#785600] hover:text-[#986d00] transition-colors"
+              >
+                <span>Buka Instagram</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Informative Guidance Strip */}
+        <div className="bg-[#f2efe9] border border-[#e8e2d5] rounded-xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-start sm:items-center gap-3">
+            <SiteIcon name="event-announcement" className="w-5 h-5 flex-shrink-0 mt-0.5 sm:mt-0" />
+            <p className="text-[13px] text-[#625e54] leading-relaxed">
+              <strong className="text-[#1b1c1a]">Pemberitahuan Resmi:</strong> Silakan periksa pengumuman terbaru pada akun Instagram resmi @gbibaitanisukabumi atau tanyakan langsung saat hadir beribadah di gereja.
+            </p>
+          </div>
+          <Link
+            href="/acara"
+            className="text-xs font-bold tracking-wider uppercase text-[#785600] hover:text-[#986d00] inline-flex items-center gap-1 flex-shrink-0"
+          >
+            <span>Selengkapnya di Halaman Acara</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </Link>
         </div>
 
       </div>

@@ -1,0 +1,32 @@
+{
+  "count": 16,
+  "sizes_px": [
+    20,
+    24,
+    32
+  ],
+  "themes": [
+    "alabaster-light",
+    "ink-dark"
+  ],
+  "render_checks": 96,
+  "results": "PASS",
+  "files": [
+    "church-location.svg",
+    "worship.svg",
+    "service-information.svg",
+    "prayer.svg",
+    "bible-study.svg",
+    "faith-community.svg",
+    "sunday-school.svg",
+    "youth.svg",
+    "baptism.svg",
+    "pastoral-care.svg",
+    "serving.svg",
+    "outreach.svg",
+    "event-announcement.svg",
+    "photo-documentation.svg",
+    "giving.svg",
+    "contact.svg"
+  ]
+}

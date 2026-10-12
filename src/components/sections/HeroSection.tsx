@@ -1,15 +1,62 @@
 'use client';
 
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback, useRef, useSyncExternalStore } from 'react';
 import { heroSlidesData } from '@/data/heroSlidesData';
 import { ChevronLeft, ChevronRight, Play, Pause, Compass, ArrowUpRight } from 'lucide-react';
 
 const SLIDE_DURATION = 6500; // 6.5s per slide
 
+function subscribeReducedMotion(callback: () => void) {
+  if (typeof window === 'undefined') return () => {};
+  const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  mediaQuery.addEventListener('change', callback);
+  return () => mediaQuery.removeEventListener('change', callback);
+}
+
+function getReducedMotionSnapshot() {
+  if (typeof window === 'undefined') return false;
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+function getReducedMotionServerSnapshot() {
+  return false;
+}
+
+/**
+ * Resolves hero slide CTA anchors to valid existing sections or page routes:
+ * - #jadwal -> #lokasi (section lokasi & jadwal di beranda)
+ * - #identitas -> /tentang-kami
+ * - #connect-group -> /connect-group
+ * - #koneksi -> /koneksi
+ * - #lokasi -> #lokasi (smooth scroll)
+ */
+function resolveHeroCtaHref(href: string | undefined): string {
+  if (!href) return '#';
+  switch (href) {
+    case '#jadwal':
+      return '#lokasi';
+    case '#identitas':
+      return '/tentang-kami';
+    case '#connect-group':
+      return '/connect-group';
+    case '#koneksi':
+      return '/koneksi';
+    case '#lokasi':
+      return '#lokasi';
+    default:
+      return href;
+  }
+}
+
 export default function HeroSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
+  const prefersReducedMotion = useSyncExternalStore(
+    subscribeReducedMotion,
+    getReducedMotionSnapshot,
+    getReducedMotionServerSnapshot
+  );
   const touchStartX = useRef<number | null>(null);
 
   const totalSlides = heroSlidesData.length;
@@ -26,14 +73,14 @@ export default function HeroSection() {
     setCurrentIndex(index);
   };
 
-  // Autoplay timer
+  // Autoplay timer with pause on hover, manual pause, or prefers-reduced-motion
   useEffect(() => {
-    if (!isPlaying || isHovered) return;
+    if (!isPlaying || isHovered || prefersReducedMotion) return;
     const timer = setInterval(() => {
       nextSlide();
     }, SLIDE_DURATION);
     return () => clearInterval(timer);
-  }, [isPlaying, isHovered, nextSlide, currentIndex]);
+  }, [isPlaying, isHovered, prefersReducedMotion, nextSlide, currentIndex]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -60,6 +107,21 @@ export default function HeroSection() {
     touchStartX.current = null;
   };
 
+  const currentSlide = heroSlidesData[currentIndex];
+  const primaryHref = resolveHeroCtaHref(currentSlide.primaryCtaHref);
+  const secondaryHref = resolveHeroCtaHref(currentSlide.secondaryCtaHref);
+
+  const handleCtaClick = (e: React.MouseEvent<HTMLAnchorElement>, targetHref: string) => {
+    if (targetHref.startsWith('#')) {
+      const targetId = targetHref.substring(1);
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        e.preventDefault();
+        targetEl.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <section
       id="hero"
@@ -68,178 +130,222 @@ export default function HeroSection() {
       onMouseLeave={() => setIsHovered(false)}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className="relative min-h-dvh w-full flex items-center justify-center overflow-hidden bg-black text-white select-none"
+      className="relative bg-[#fbf9f6] text-[#1b1c1a] overflow-hidden pt-24 pb-12 sm:pt-28 sm:pb-16 select-none"
     >
-      {/* Background Slides Track with Ken Burns & Smooth Crossfade */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        {heroSlidesData.map((slide, idx) => {
-          const isActive = idx === currentIndex;
-          return (
-            <div
-              key={slide.id}
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                isActive ? 'opacity-100 z-10' : 'opacity-0 z-0'
-              }`}
-            >
-              <img
-                src={slide.imageUrl}
-                alt={slide.altText}
-                loading={idx === 0 ? 'eager' : 'lazy'}
-                decoding="async"
-                className={`w-full h-full object-cover object-center transform transition-transform duration-[8000ms] ease-out ${
-                  isActive ? 'scale-110' : 'scale-100'
-                } opacity-40`}
-              />
-              {/* Deep cinematic layered gradients for guaranteed WCAG AAA contrast */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/80" />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-transparent to-black/85" />
-            </div>
-          );
-        })}
+      {/* Atmospheric Ambient Glow */}
+      <div className="absolute inset-0 pointer-events-none opacity-50">
+        <div className="absolute -top-32 -right-24 w-96 h-96 rounded-full bg-[#ffdea6]/35 blur-3xl" />
+        <div className="absolute top-1/2 -left-20 w-80 h-80 rounded-full bg-[#e8e2d5]/50 blur-3xl" />
       </div>
 
-      {/* Slide Content Overlay */}
-      <div className="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-28 pb-32 flex flex-col items-center">
-        {heroSlidesData.map((slide, idx) => {
-          if (idx !== currentIndex) return null;
-          return (
-            <div
-              key={`content-${slide.id}`}
-              className="flex flex-col items-center animate-in fade-in zoom-in-95 duration-700"
-            >
-              {/* Slide Badge Pill */}
-              <div className="mb-6 inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-md">
-                <span className="w-2 h-2 rounded-full bg-[#d4af37] animate-ping" />
-                <span className="text-xs font-bold tracking-widest text-[#e5c07b] uppercase">
-                  {slide.badge}
-                </span>
-              </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-              {/* Massive Brutalist Display Headline */}
-              <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter uppercase leading-[0.88] mb-6">
-                <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white via-zinc-100 to-zinc-400">
-                  {slide.title}
-                </span>
-                {slide.titleAccent && (
-                  <span className="block text-white mt-1 drop-shadow-lg">
-                    {slide.titleAccent}
-                  </span>
-                )}
-              </h1>
+        {/* Top Eyebrow & Status Row */}
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-4 sm:mb-6">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#e8e2d5]/80 border border-[#d3c4af]/50 shadow-xs">
+            <span className="w-2 h-2 rounded-full bg-[#785600] animate-pulse" />
+            <span className="font-mono text-[11px] sm:text-xs font-bold tracking-widest text-[#785600] uppercase">
+              {currentSlide.badge}
+            </span>
+          </div>
 
-              {/* Slide Description Paragraph */}
-              <p className="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-zinc-300 font-light leading-relaxed mb-10">
-                {slide.description}
-              </p>
+          {/* Slide Progress Indicator & Autoplay Toggle */}
+          <div className="flex items-center gap-3 font-mono text-xs text-[#625e54] bg-white px-3.5 py-1.5 rounded-full shadow-xs border border-[#e8e2d5]">
+            <span className="font-bold text-[#785600] text-sm">
+              0{currentIndex + 1}
+            </span>
+            <span className="text-[#d3c4af]">/</span>
+            <span>0{totalSlides}</span>
 
-              {/* Dual Action CTA Buttons */}
-              <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-                <a
-                  href={slide.primaryCtaHref}
-                  className="btn-magnetic w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-white hover:bg-[#f3e5ab] text-black font-extrabold text-xs tracking-wider uppercase shadow-2xl transition-all duration-300 active:scale-95 min-h-12"
-                >
-                  <Compass className="w-4 h-4 text-black" />
-                  <span>{slide.primaryCtaText}</span>
-                </a>
-                {slide.secondaryCtaText && (
-                  <a
-                    href={slide.secondaryCtaHref || '#'}
-                    target={slide.secondaryCtaHref?.startsWith('http') ? '_blank' : undefined}
-                    rel={slide.secondaryCtaHref?.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-transparent border border-zinc-700 hover:bg-zinc-800 text-white font-bold text-xs tracking-wider uppercase backdrop-blur-sm transition-all duration-300 min-h-12"
-                  >
-                    <span>{slide.secondaryCtaText}</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
-                  </a>
-                )}
-              </div>
+            {/* Quick Dot Controls */}
+            <div className="flex gap-1 ml-2">
+              {heroSlidesData.map((_, idx) => (
+                <button
+                  key={`dot-${idx}`}
+                  type="button"
+                  onClick={() => goToSlide(idx)}
+                  className={`h-1.5 rounded-full transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#785600] ${
+                    idx === currentIndex
+                      ? 'w-5 bg-[#785600]'
+                      : 'w-1.5 bg-[#d3c4af] hover:bg-[#817563]'
+                  }`}
+                  aria-label={`Slide ${idx + 1}`}
+                />
+              ))}
             </div>
-          );
-        })}
-      </div>
 
-      {/* Prev / Next Floating Arrows */}
-      <button
-        type="button"
-        onClick={prevSlide}
-        className="hidden md:flex absolute left-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full border border-white/20 hover:border-white bg-black/40 backdrop-blur-md text-white items-center justify-center transition-all duration-200 active:scale-90 hover:scale-105"
-        aria-label="Slide sebelumnya"
-      >
-        <ChevronLeft className="w-6 h-6" />
-      </button>
+            {/* Play/Pause Button */}
+            <div className="pl-2 border-l border-[#e8e2d5] ml-1">
+              <button
+                type="button"
+                onClick={() => setIsPlaying(!isPlaying)}
+                className="p-1 text-[#625e54] hover:text-[#1b1c1a] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#785600] rounded"
+                aria-label={isPlaying ? 'Jeda carousel otomatis' : 'Mulai carousel otomatis'}
+              >
+                {isPlaying && !prefersReducedMotion ? (
+                  <Pause className="w-3.5 h-3.5" />
+                ) : (
+                  <Play className="w-3.5 h-3.5 fill-current" />
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
 
-      <button
-        type="button"
-        onClick={nextSlide}
-        className="hidden md:flex absolute right-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full border border-white/20 hover:border-white bg-black/40 backdrop-blur-md text-white items-center justify-center transition-all duration-200 active:scale-90 hover:scale-105"
-        aria-label="Slide berikutnya"
-      >
-        <ChevronRight className="w-6 h-6" />
-      </button>
-
-      {/* High-Fashion Timeline Bar & Slide Indicators at Bottom */}
-      <div className="absolute bottom-6 left-0 right-0 z-30 px-4 sm:px-8">
-        <div className="max-w-5xl mx-auto flex items-center justify-between gap-4">
+        {/* Main Carousel Frame */}
+        <div className="relative rounded-3xl overflow-hidden bg-[#efeeeb] shadow-xl min-h-[480px] sm:min-h-[540px] lg:min-h-[600px] flex items-end border border-[#e8e2d5]">
           
-          {/* Interactive Slide Timeline Tabs */}
-          <div className="flex-1 grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4">
+          {/* Background Slides Track with Ken Burns & Smooth Crossfade */}
+          <div className="absolute inset-0 z-0">
             {heroSlidesData.map((slide, idx) => {
               const isActive = idx === currentIndex;
               return (
-                <button
-                  key={`tab-${slide.id}`}
-                  type="button"
-                  onClick={() => goToSlide(idx)}
-                  className="text-left group focus:outline-none py-2"
-                  aria-label={`Pindah ke slide ${idx + 1}: ${slide.subtitle}`}
-                  aria-current={isActive}
+                <div
+                  key={slide.id}
+                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                    isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
+                  }`}
                 >
-                  {/* Progress Line */}
-                  <div className="w-full h-[2px] bg-white/15 rounded-full overflow-hidden mb-2 relative">
-                    {isActive ? (
-                      <div
-                        className="h-full bg-gradient-to-r from-[#d4af37] to-[#f3e5ab] transition-all ease-linear"
-                        style={{
-                          width: isPlaying && !isHovered ? '100%' : '100%',
-                          transitionDuration: `${SLIDE_DURATION}ms`,
-                        }}
-                      />
-                    ) : (
-                      <div className="h-full w-0 group-hover:w-full bg-[#d4af37]/50 transition-all duration-300" />
-                    )}
-                  </div>
-
-                  {/* Tab Label */}
-                  <div className="flex items-center gap-1.5">
-                    <span className={`text-xs font-mono font-bold ${isActive ? 'text-[#d4af37]' : 'text-zinc-500'}`}>
-                      0{idx + 1}
-                    </span>
-                    <span
-                      className={`text-xs font-bold tracking-wider uppercase truncate ${
-                        isActive ? 'text-white' : 'text-zinc-500 group-hover:text-zinc-300'
-                      }`}
-                    >
-                      {slide.subtitle}
-                    </span>
-                  </div>
-                </button>
+                  <img
+                    src={slide.imageUrl}
+                    alt={slide.altText}
+                    loading={idx === 0 ? 'eager' : 'lazy'}
+                    decoding="async"
+                    className={`w-full h-full object-cover object-center transform transition-transform duration-[8000ms] ease-out ${
+                      isActive && !prefersReducedMotion ? 'scale-105' : 'scale-100'
+                    }`}
+                  />
+                  {/* Rich warm sanctuary layered gradients for guaranteed high-contrast legibility */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1b1c1a]/95 via-[#1b1c1a]/60 to-[#1b1c1a]/25" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#1b1c1a]/75 via-[#1b1c1a]/30 to-transparent" />
+                </div>
               );
             })}
           </div>
 
-          {/* Autoplay Play/Pause Toggle */}
-          <div className="hidden sm:flex items-center pl-2 border-l border-zinc-800">
+          {/* Prev / Next Floating Overlay Controls */}
+          <div className="absolute top-6 right-6 z-20 hidden sm:flex items-center gap-2">
             <button
               type="button"
-              onClick={() => setIsPlaying(!isPlaying)}
-              className="p-2 text-zinc-400 hover:text-white transition-colors"
-              aria-label={isPlaying ? 'Jeda carousel otomatis' : 'Mulai carousel otomatis'}
+              onClick={prevSlide}
+              className="w-10 h-10 rounded-full bg-white/85 hover:bg-white text-[#1b1c1a] shadow-md flex items-center justify-center transition-all hover:scale-105 active:scale-95 backdrop-blur border border-[#e8e2d5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#785600]"
+              aria-label="Slide sebelumnya"
             >
-              {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 fill-current" />}
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              type="button"
+              onClick={nextSlide}
+              className="w-10 h-10 rounded-full bg-white/85 hover:bg-white text-[#1b1c1a] shadow-md flex items-center justify-center transition-all hover:scale-105 active:scale-95 backdrop-blur border border-[#e8e2d5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#785600]"
+              aria-label="Slide berikutnya"
+            >
+              <ChevronRight className="w-5 h-5" />
             </button>
           </div>
 
+          {/* Slide Content Overlay */}
+          <div className="relative z-10 p-6 sm:p-10 lg:p-14 max-w-3xl space-y-4 text-white">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#785600]/85 backdrop-blur text-white text-[11px] sm:text-xs font-bold tracking-wider uppercase shadow-xs">
+              <span>{currentSlide.subtitle}</span>
+            </div>
+
+            {/* Display Headline */}
+            <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal leading-[1.12] tracking-tight text-white drop-shadow-sm">
+              <span>{currentSlide.title}</span>
+              {currentSlide.titleAccent && (
+                <span className="italic text-[#ffdea6] ml-2.5">
+                  {currentSlide.titleAccent}
+                </span>
+              )}
+            </h1>
+
+            {/* Slide Description Paragraph */}
+            <p className="text-sm sm:text-base lg:text-lg text-[#eae8e5] max-w-2xl font-normal leading-relaxed">
+              {currentSlide.description}
+            </p>
+
+            {/* Dual Action CTA Buttons */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
+              <a
+                href={primaryHref}
+                onClick={(e) => handleCtaClick(e, primaryHref)}
+                className="btn-magnetic inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full text-[13px] sm:text-sm font-bold text-white bg-[#785600] hover:bg-[#986d00] shadow-md shadow-[#785600]/30 transition-all transform hover:-translate-y-0.5 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              >
+                <Compass className="w-4 h-4 text-white" />
+                <span>{currentSlide.primaryCtaText}</span>
+              </a>
+
+              {currentSlide.secondaryCtaText && (
+                <a
+                  href={secondaryHref}
+                  onClick={(e) => handleCtaClick(e, secondaryHref)}
+                  target={secondaryHref.startsWith('http') ? '_blank' : undefined}
+                  rel={secondaryHref.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-full text-[13px] sm:text-sm font-bold text-white bg-white/15 hover:bg-white/25 backdrop-blur border border-white/25 shadow-xs transition-all transform hover:-translate-y-0.5 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                >
+                  <span>{currentSlide.secondaryCtaText}</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
+                </a>
+              )}
+            </div>
+          </div>
         </div>
+
+        {/* Interactive Slide Timeline Tabs below frame */}
+        <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
+          {heroSlidesData.map((slide, idx) => {
+            const isActive = idx === currentIndex;
+            return (
+              <button
+                key={`tab-${slide.id}`}
+                type="button"
+                onClick={() => goToSlide(idx)}
+                className={`p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white shadow-xs text-left transition-all border-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#785600] ${
+                  isActive
+                    ? 'border-[#785600] ring-1 ring-[#785600]/20 shadow-sm'
+                    : 'border-transparent hover:border-[#d3c4af] bg-white/80 hover:bg-white'
+                }`}
+                aria-label={`Pindah ke slide ${idx + 1}: ${slide.subtitle}`}
+                aria-current={isActive}
+              >
+                {/* Progress Line */}
+                <div className="w-full h-1 bg-[#e8e2d5] rounded-full overflow-hidden mb-2 relative">
+                  {isActive && (
+                    <div
+                      key={`progress-${idx}-${isPlaying}-${isHovered}`}
+                      className="h-full bg-gradient-to-r from-[#785600] to-[#c59b27] origin-left"
+                      style={
+                        prefersReducedMotion || !isPlaying || isHovered
+                          ? { width: '100%' }
+                          : {
+                              animation: `heroProgress ${SLIDE_DURATION}ms linear forwards`,
+                            }
+                      }
+                    />
+                  )}
+                </div>
+
+                {/* Tab Label */}
+                <div className="flex items-center gap-1.5 mb-0.5">
+                  <span className={`font-mono text-[11px] font-bold ${isActive ? 'text-[#785600]' : 'text-[#817563]'}`}>
+                    0{idx + 1}
+                  </span>
+                  <span
+                    className={`font-bold text-[13px] sm:text-xs uppercase tracking-wider truncate block ${
+                      isActive ? 'text-[#1b1c1a]' : 'text-[#625e54]'
+                    }`}
+                  >
+                    {slide.title}
+                  </span>
+                </div>
+                <p className="font-serif text-[11px] sm:text-xs text-[#817563] truncate hidden sm:block">
+                  {slide.subtitle}
+                </p>
+              </button>
+            );
+          })}
+        </div>
+
       </div>
     </section>
   );
