@@ -14,17 +14,17 @@ export default function MarqueeTicker({
 
   return (
     <aside
-      className="bg-black border-y border-white/10 text-white py-3.5 overflow-hidden select-none relative z-20"
+      className="bg-[#efeeeb] border-y border-[#e8e2d5] text-[#1b1c1a] py-3.5 overflow-hidden select-none relative z-20"
       aria-label="Tema Tahunan Gereja"
     >
       <div className="overflow-hidden flex items-center">
-        <div className="animate-marquee-gms flex items-center gap-6 text-xs sm:text-sm font-black tracking-[0.25em] uppercase text-zinc-300">
+        <div className="animate-marquee-gms flex items-center gap-6 text-xs sm:text-sm font-bold tracking-[0.22em] uppercase text-[#625e54]">
           {repeatedText.map((text, idx) => (
             <span key={`theme-item-${idx}`} className="flex items-center gap-6 flex-shrink-0">
-              <span className="hover:text-white transition-colors">
+              <span className="hover:text-[#1b1c1a] transition-colors">
                 {text}
               </span>
-              <span className="text-zinc-600 font-normal">━</span>
+              <span className="text-[#785600] font-normal">✦</span>
             </span>
           ))}
         </div>

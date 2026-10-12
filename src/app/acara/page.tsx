@@ -1,342 +1,218 @@
-'use client';
-
-import React, { useState } from 'react';
+import React from 'react';
+import type { Metadata } from 'next';
+import Link from 'next/link';
 import Navbar from '@/components/common/Navbar';
 import Footer from '@/components/common/Footer';
 import PageHero from '@/components/common/PageHero';
-import { Calendar, Clock, MapPin, User, ArrowUpRight, CheckCircle2, Search, Filter } from 'lucide-react';
-import Link from 'next/link';
+import { Bell, ExternalLink, ShieldCheck, HelpCircle, ArrowUpRight } from 'lucide-react';
+import SiteIcon from '@/components/common/SiteIcon';
+import InstagramIcon from '@/components/common/InstagramIcon';
 
-interface ChurchEventDetail {
-  id: string;
-  title: string;
-  category: 'all' | 'special' | 'youth' | 'family' | 'prayer' | 'social';
-  categoryLabel: string;
-  displayDate: string;
-  time: string;
-  location: string;
-  speaker: string;
-  imageUrl: string;
-  description: string;
-  registrationOpen: boolean;
-  quota: string;
-}
+export const metadata: Metadata = {
+  title: 'Agenda & Pengumuman Acara — Gereja Baptis Indonesia Baitani, Sukabumi',
+  description: 'Pusat informasi resmi agenda kegiatan rohani, ibadah khusus, dan warta pelayanan jemaat Gereja Baptis Indonesia Baitani di Sukabumi.',
+};
 
 export default function AcaraPage() {
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [registeredEventId, setRegisteredEventId] = useState<string | null>(null);
-
-  const events: ChurchEventDetail[] = [
+  const announcementChannels = [
     {
-      id: 'event-1',
-      title: 'Sorga Terbuka Conference 2026',
-      category: 'special',
-      categoryLabel: 'KONFERENSI TAHUNAN',
-      displayDate: '15 - 17 MEI 2026',
-      time: '18:00 - 21:30 WIB',
-      location: 'Main Sanctuary Baitani Jakarta',
-      speaker: 'Pdt. Johanes Pratama & Pembicara Tamu',
-      imageUrl: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1200&auto=format&fit=crop',
-      description: 'Konferensi rohani akbar 3 malam untuk membakar kembali api doa, pemulihan jubah profetik, dan pembekalan kuasa Roh Kudus bagi kepemimpinan jemaat.',
-      registrationOpen: true,
-      quota: 'Sisa 240 Kursi',
+      title: 'Warta Persekutuan & Ibadah',
+      badge: 'WARTA LISAN & MIMBAR',
+      icon: 'event-announcement' as const,
+      description: 'Seluruh agenda kebaktian khusus, persekutuan doa, kegiatan pemuda, dan program pelayanan jemaat diumumkan secara berkala saat Ibadah Raya hari Minggu atau melalui komunikasi langsung dengan gereja.',
+      location: 'Gedung Gereja: Jl. R.E. Martadinata No. 86, Sukabumi',
+      scheduleNote: 'Konfirmasi jam ibadah dapat ditanyakan langsung ke sekretariat gereja atau akun Instagram resmi',
+      actionLink: '/#lokasi',
+      actionText: 'Informasi Kunjungan & Lokasi',
+      isExternal: false,
     },
     {
-      id: 'event-2',
-      title: 'Limitless Youth Camp: Unshakable',
-      category: 'youth',
-      categoryLabel: 'YOUTH MOVEMENT',
-      displayDate: '26 - 28 JUNI 2026',
-      time: '3 Hari 2 Malam',
-      location: 'Highland Camp Resort, Puncak',
-      speaker: 'Pdm. Michael Christian & Tim Youth',
-      imageUrl: 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=1200&auto=format&fit=crop',
-      description: 'Retreat tahunan khusus siswa SMP, SMA, dan mahasiswa. Membangun fondasi iman yang tak tergoyahkan di tengah arus tren dunia modern.',
-      registrationOpen: true,
-      quota: 'Sisa 65 Peserta',
-    },
-    {
-      id: 'event-3',
-      title: 'Seminar Pernikahan: Covenant of Love',
-      category: 'family',
-      categoryLabel: 'FAMILY MINISTRY',
-      displayDate: '11 JULI 2026',
-      time: '09:00 - 15:00 WIB',
-      location: 'Grace Fellowship Hall Lt. 3',
-      speaker: 'Pdt. Johanes Pratama & Ibu Maria',
-      imageUrl: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop',
-      description: 'Lokakarya interaktif bagi pasangan suami-istri dan tunangan untuk memperdalam komunikasi, resolusi konflik Alkitabiah, dan keintiman keluarga.',
-      registrationOpen: true,
-      quota: 'Sisa 20 Pasang',
-    },
-    {
-      id: 'event-4',
-      title: 'Malam Doa & Kesembuhan Ilahi',
-      category: 'prayer',
-      categoryLabel: 'MEZBAH DOA',
-      displayDate: 'SETIAP RABU MINGGU KE-1',
-      time: '19:00 - 21:00 WIB',
-      location: 'Main Sanctuary & Live YouTube',
-      speaker: 'Tim Pastoral & Syafaat Baitani',
-      imageUrl: 'https://images.unsplash.com/photo-1544427920-c49ccfb85579?q=80&w=1200&auto=format&fit=crop',
-      description: 'Momen hening mencari hadirat Tuhan, menaikkan syafaat bagi bangsa dan kota, serta pelayanan doa tumpang tangan bagi jemaat yang sakit.',
-      registrationOpen: false,
-      quota: 'Terbuka untuk Umum',
-    },
-    {
-      id: 'event-5',
-      title: 'Baitani Care: Bakti Sosial Kesehatan & Sembako',
-      category: 'social',
-      categoryLabel: 'BAITANI PEDULI',
-      displayDate: '08 AGUSTUS 2026',
-      time: '08:00 - 14:00 WIB',
-      location: 'Kawasan Komunitas Binaan Jakarta Barat',
-      speaker: 'Tim Dokter & Relawan Baitani Care',
-      imageUrl: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200&auto=format&fit=crop',
-      description: 'Pemeriksaan kesehatan gratis, pengobatan umum, dan penyaluran 1.000 paket sembako cinta kasih bagi warga pra-sejahtera di sekitar gedung gereja.',
-      registrationOpen: true,
-      quota: 'Terbuka Relawan',
-    },
-    {
-      id: 'event-6',
-      title: 'Baptisan Kudus & Kelas Fondasi Iman',
-      category: 'special',
-      categoryLabel: 'SAKRAMEN KUDUS',
-      displayDate: '23 AGUSTUS 2026',
-      time: '13:00 - 15:30 WIB',
-      location: 'Baptistry Room Gedung Baitani',
-      speaker: 'Pdt. Andreas Wicaksono',
-      imageUrl: 'https://images.unsplash.com/photo-1507692049790-de58290a4334?q=80&w=1200&auto=format&fit=crop',
-      description: 'Deklarasi iman publik melalui sakramen baptisan selam setelah menyelesaikan 3 sesi pembekalan doktrin keselamatan dasar.',
-      registrationOpen: true,
-      quota: 'Pendaftaran Dibuka',
+      title: 'Media Sosial Resmi Gereja',
+      badge: 'PUBLIKASI DIGITAL RESMI',
+      icon: InstagramIcon,
+      description: 'Untuk pengumuman kegiatan rohani terkini, poster pengumuman hari raya, perubahan jadwal, dan dokumentasi pelayanan jemaat, gereja menyiarkannya secara berkala melalui akun media sosial resmi.',
+      location: 'Akun Instagram Resmi: @gbibaitanisukabumi',
+      scheduleNote: 'Diperbarui berkala melalui akun resmi @gbibaitanisukabumi',
+      actionLink: 'https://www.instagram.com/gbibaitanisukabumi/',
+      actionText: 'Buka Instagram Resmi',
+      isExternal: true,
     },
   ];
 
-  const categories = [
-    { id: 'all', label: 'Semua Acara' },
-    { id: 'special', label: 'Konferensi & Khusus' },
-    { id: 'youth', label: 'Youth & Young Adult' },
-    { id: 'family', label: 'Keluarga & Pasangan' },
-    { id: 'prayer', label: 'Doa Syafaat' },
-    { id: 'social', label: 'Bakti Sosial' },
+  const faqs = [
+    {
+      question: 'Bagaimana cara mengetahui jadwal ibadah perayaan khusus (Paskah, HUT Gereja, Natal)?',
+      answer: 'Jadwal dan tema perayaan rohani khusus diumumkan menjelang pelaksanaan melalui pengumuman di gereja dan postingan resmi Instagram @gbibaitanisukabumi.',
+    },
+    {
+      question: 'Apakah jemaat baru atau tamu dapat menghadiri acara dan kebaktian khusus?',
+      answer: 'Ya, seluruh ibadah raya, persekutuan doa, dan kebaktian penyegaran rohani terbuka bagi masyarakat umum, jemaat musafir, dan warga kota Sukabumi tanpa syarat pendaftaran tertutup.',
+    },
+    {
+      question: 'Bagaimana cara berkoordinasi jika ingin menyelenggarakan penyerahan anak atau baptisan?',
+      answer: 'Koordinasi sakramen baptisan kudus dan penyerahan anak dilayani secara langsung melalui konsultasi dengan hamba Tuhan/pembina jemaat di gedung gereja atau mengirim pesan via DM Instagram resmi.',
+    },
   ];
-
-  const filteredEvents = events.filter((e) => {
-    const matchCategory = selectedCategory === 'all' || e.category === selectedCategory;
-    const matchSearch =
-      e.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      e.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      e.speaker.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchCategory && matchSearch;
-  });
-
-  const handleRegister = (id: string) => {
-    setRegisteredEventId(id);
-    setTimeout(() => {
-      setRegisteredEventId(null);
-    }, 3000);
-  };
 
   return (
-    <div className="min-h-dvh flex flex-col bg-[#050505] text-[#fafafa]">
+    <div className="min-h-dvh flex flex-col bg-[#fbf9f6] text-[#1b1c1a]">
       <Navbar />
 
       <main id="main-content" className="flex-1">
-        {/* Page Hero Header */}
+        {/* Page Hero */}
         <PageHero
-          category="AGENDA & KALENDER GEREJA"
-          title="ACARA KITA"
-          titleAccent="Moments of Encounter & Fellowship"
-          subtitle="Temukan jadwal ibadah khusus, konferensi tahunan, pembekalan keluarga, dan pelayanan sosial yang dirancang untuk memperlengkapi pertumbuhan rohani Anda."
-          breadcrumbCurrent="Acara Kita"
+          category="AGENDA & PENGUMUMAN RESMI"
+          title="ACARA & WARTA JEMAAT"
+          titleAccent="Informasi Terverifikasi Pelayanan Jemaat"
+          subtitle="Pusat rujukan resmi agenda kegiatan rohani, ibadah khusus, dan warta pelayanan jemaat Gereja Baptis Indonesia Baitani, Sukabumi."
+          breadcrumbCurrent="Acara & Warta"
+          imageSrc="/images/page-hero/acara.jpg"
+          imageAlt="Foto ilustrasi: mikrofon di atas panggung."
         />
 
-        {/* Filter & Search Bar */}
-        <section className="py-8 bg-[#0a0a0d] border-b border-white/10 sticky top-18 z-30 backdrop-blur-xl">
+        {/* Notice of Transparency Strip */}
+        <section className="py-6 bg-[#fff] border-b border-[#e8e2d5]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
-              
-              {/* Category Filter Pills */}
-              <div className="flex flex-wrap items-center gap-2 w-full lg:w-auto">
-                {categories.map((c) => (
-                  <button
-                    key={c.id}
-                    type="button"
-                    onClick={() => setSelectedCategory(c.id)}
-                    className={`px-4 py-2 rounded-full text-xs font-bold tracking-wider uppercase transition-all min-h-10 ${
-                      selectedCategory === c.id
-                        ? 'bg-white text-black shadow-gold-sm'
-                        : 'bg-zinc-900 text-zinc-400 hover:text-white border border-white/5'
-                    }`}
-                  >
-                    {c.label}
-                  </button>
-                ))}
-              </div>
-
-              {/* Search Box */}
-              <div className="relative w-full lg:w-72">
-                <Search className="w-4 h-4 text-zinc-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  aria-label="Pencarian agenda acara dan topik"
-                  {...{ ["place" + "holder"]: "Cari agenda, topik, pembicara..." }}
-                  className="w-full pl-10 pr-4 py-2 rounded-full bg-zinc-900 border border-white/15 text-xs text-white focus:outline-none focus:border-[#d4af37]"
-                />
-              </div>
-
+            <div className="flex items-start sm:items-center gap-3 text-xs text-[#625e54]">
+              <ShieldCheck className="w-5 h-5 text-[#785600] flex-shrink-0 mt-0.5 sm:mt-0" />
+              <p className="leading-relaxed font-light">
+                <strong className="text-[#1b1c1a] font-medium">Kebijakan Faktual:</strong> Seluruh agenda kegiatan jemaat diumumkan secara resmi melalui saluran terkonfirmasi di bawah ini. Kami tidak mempublikasikan jadwal atau formulir pendaftaran spekulatif yang belum disahkan oleh gereja.
+              </p>
             </div>
           </div>
         </section>
 
-        {/* Events Grid Section */}
-        <section className="py-20 bg-black">
+        {/* Announcement Hub Cards */}
+        <section className="py-16 md:py-20 bg-[#f5f3f0]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {filteredEvents.length === 0 ? (
-              <div className="text-center py-24 bg-zinc-950 border border-zinc-800 rounded-2xl p-8">
-                <p className="text-zinc-400 text-base mb-4 font-light">
-                  Tidak ada agenda acara yang cocok dengan kriteria pencarian Anda.
-                </p>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSelectedCategory('all');
-                    setSearchQuery('');
-                  }}
-                  className="px-6 py-2.5 rounded-full bg-white text-black text-xs font-bold uppercase tracking-wider"
-                >
-                  Reset Filter
-                </button>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {filteredEvents.map((evt) => (
-                  <div
-                    key={evt.id}
-                    className="bg-zinc-950 border border-white/10 rounded-2xl overflow-hidden hover:border-[#d4af37]/40 transition-all duration-300 flex flex-col justify-between group shadow-xl"
-                  >
-                    <div>
-                      {/* Image Frame */}
-                      <div className="relative aspect-[16/10] w-full overflow-hidden bg-black">
-                        <img
-                          src={evt.imageUrl}
-                          alt={evt.title}
-                          loading="lazy"
-                          decoding="async"
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent" />
-                        
-                        {/* Tag Pill */}
-                        <div className="absolute top-4 left-4 bg-black/85 backdrop-blur-md border border-[#d4af37]/40 text-[#f3e5ab] px-3 py-1 rounded text-xs font-mono font-bold tracking-wider uppercase">
-                          {evt.categoryLabel}
-                        </div>
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <span className="text-xs font-mono font-bold tracking-widest uppercase text-[#785600] block mb-2">
+                SALURAN PENGUMUMAN RESMI
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-[#1b1c1a]">
+                Pusat Informasi Kegiatan Jemaat
+              </h2>
+              <p className="text-[#625e54] text-sm font-light leading-relaxed mt-2">
+                Untuk memastikan keakuratan waktu, lokasi, dan teknis kegiatan, silakan merujuk pada dua saluran informasi resmi jemaat berikut:
+              </p>
+            </div>
 
-                        {/* Quota Badge */}
-                        <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-md border border-white/15 text-white px-2.5 py-1 rounded text-xs font-mono font-semibold">
-                          {evt.quota}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+              {announcementChannels.map((channel, idx) => {
+                const Icon = channel.icon;
+                return (
+                  <div
+                    key={idx}
+                    className="p-8 sm:p-10 rounded-2xl bg-[#fff] border border-[#e8e2d5] flex flex-col justify-between shadow-warm-md hover:border-[#785600]/30 transition-all"
+                  >
+                    <div className="space-y-5">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[11px] font-mono font-bold text-[#785600] uppercase tracking-wider bg-[#f5f3f0] border border-[#e8e2d5] px-3 py-1 rounded-full">
+                          {channel.badge}
+                        </span>
+                        <div className="w-10 h-10 rounded-xl bg-[#f5f3f0] border border-[#e8e2d5] flex items-center justify-center text-[#785600]">
+                          {typeof Icon === 'string' ? (
+                            <SiteIcon name={Icon} className="w-5 h-5" />
+                          ) : (
+                            <Icon className="w-5 h-5" />
+                          )}
                         </div>
                       </div>
 
-                      {/* Content Box */}
-                      <div className="p-7">
-                        <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#d4af37] mb-2 uppercase">
-                          <Calendar className="w-3.5 h-3.5" />
-                          <span>{evt.displayDate}</span>
-                        </div>
-
-                        <h3 className="text-xl font-bold text-white mb-3 leading-snug group-hover:text-[#d4af37] transition-colors">
-                          {evt.title}
+                      <div>
+                        <h3 className="text-xl sm:text-2xl font-bold text-[#1b1c1a] mb-2">
+                          {channel.title}
                         </h3>
-
-                        <p className="text-xs sm:text-sm text-zinc-400 font-light leading-relaxed mb-6 line-clamp-3">
-                          {evt.description}
+                        <p className="text-[#625e54] text-xs sm:text-sm font-light leading-relaxed">
+                          {channel.description}
                         </p>
+                      </div>
 
-                        <div className="space-y-2 pt-4 border-t border-white/10 text-xs text-zinc-400 font-light">
-                          <div className="flex items-center gap-2">
-                            <Clock className="w-3.5 h-3.5 text-zinc-500 flex-shrink-0" />
-                            <span>{evt.time}</span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <MapPin className="w-3.5 h-3.5 text-zinc-500 flex-shrink-0" />
-                            <span className="truncate">{evt.location}</span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <User className="w-3.5 h-3.5 text-zinc-500 flex-shrink-0" />
-                            <span className="truncate">{evt.speaker}</span>
-                          </div>
+                      <div className="space-y-2 pt-4 border-t border-[#e8e2d5] text-xs text-[#625e54] font-light">
+                        <div className="flex items-start gap-2">
+                          <SiteIcon name="church-location" className="w-4 h-4 text-[#785600] flex-shrink-0 mt-0.5" />
+                          <span>{channel.location}</span>
+                        </div>
+                        <div className="flex items-start gap-2">
+                          <Bell className="w-4 h-4 text-[#a09888] flex-shrink-0 mt-0.5" />
+                          <span>{channel.scheduleNote}</span>
                         </div>
                       </div>
                     </div>
 
-                    {/* Action Button */}
-                    <div className="p-7 pt-0">
-                      {evt.registrationOpen ? (
-                        <button
-                          type="button"
-                          onClick={() => handleRegister(evt.id)}
-                          className={`btn-magnetic w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all min-h-11 ${
-                            registeredEventId === evt.id
-                              ? 'bg-emerald-600 text-white'
-                              : 'bg-white hover:bg-[#f3e5ab] text-black shadow-gold-sm active:scale-95'
-                          }`}
+                    <div className="pt-6 mt-6 border-t border-[#e8e2d5]">
+                      {channel.isExternal ? (
+                        <a
+                          href={channel.actionLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn-magnetic w-full inline-flex items-center justify-center gap-2 py-3 rounded-full bg-[#785600] hover:bg-[#ffdea6] text-white hover:text-[#1b1c1a] font-bold text-xs tracking-wider uppercase transition-all shadow-warm-sm active:scale-95"
                         >
-                          {registeredEventId === evt.id ? (
-                            <>
-                              <CheckCircle2 className="w-4 h-4" />
-                              <span>Pendaftaran Berhasil!</span>
-                            </>
-                          ) : (
-                            <>
-                              <span>DAFTAR SEKARANG</span>
-                              <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
-                            </>
-                          )}
-                        </button>
+                          <span>{channel.actionText}</span>
+                          <ExternalLink className="w-3.5 h-3.5" />
+                        </a>
                       ) : (
-                        <div className="w-full py-3.5 rounded-full border border-white/10 text-center text-xs text-zinc-500 font-bold uppercase tracking-wider">
-                          Terbuka Tanpa Registrasi
-                        </div>
+                        <Link
+                          href={channel.actionLink}
+                          className="btn-magnetic w-full inline-flex items-center justify-center gap-2 py-3 rounded-full border border-[#e8e2d5] hover:border-[#785600] text-[#1b1c1a] font-bold text-xs tracking-wider uppercase transition-all hover:bg-[#f5f3f0] active:scale-95"
+                        >
+                          <span>{channel.actionText}</span>
+                          <ArrowUpRight className="w-3.5 h-3.5" />
+                        </Link>
                       )}
                     </div>
-
                   </div>
-                ))}
+                );
+              })}
+            </div>
+
+            {/* Quick Action Strip */}
+            <div className="max-w-5xl mx-auto mt-12 p-6 rounded-2xl bg-[#fff] border border-[#e8e2d5] shadow-warm-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="text-center sm:text-left">
+                <h4 className="text-sm font-bold text-[#1b1c1a]">Ingin Mengetahui Informasi Ibadah & Persekutuan?</h4>
+                <p className="text-xs text-[#625e54] font-light mt-0.5">
+                  Ibadah Raya Minggu, Doa Bersama, dan Persekutuan Jemaat diadakan secara teratur di Sukabumi.
+                </p>
               </div>
-            )}
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  href="/#lokasi"
+                  className="px-5 py-2.5 rounded-full bg-[#785600] text-white font-bold text-xs tracking-wider uppercase hover:bg-[#ffdea6] hover:text-[#1b1c1a] transition-colors"
+                >
+                  Informasi Kunjungan & Lokasi
+                </Link>
+                <Link
+                  href="/connect-group"
+                  className="px-5 py-2.5 rounded-full border border-[#e8e2d5] text-[#1b1c1a] font-bold text-xs tracking-wider uppercase hover:border-[#785600] transition-colors"
+                >
+                  Komunitas Iman (KOI)
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* FAQ Strip */}
-        <section className="py-20 border-t border-white/10 bg-[#070709]">
+        {/* FAQ Section */}
+        <section className="py-16 md:py-20 border-t border-[#e8e2d5] bg-[#fff]">
           <div className="max-w-4xl mx-auto px-4 sm:px-6">
-            <h2 className="text-2xl sm:text-3xl font-black text-white uppercase text-center mb-12">
-              Pertanyaan Seputar Pendaftaran Acara
-            </h2>
+            <div className="text-center mb-10">
+              <HelpCircle className="w-6 h-6 text-[#785600] mx-auto mb-2" />
+              <h2 className="text-2xl sm:text-3xl font-black text-[#1b1c1a]">
+                Pertanyaan Seputar Warta & Kegiatan
+              </h2>
+            </div>
 
             <div className="space-y-4">
-              <div className="p-7 rounded-2xl bg-zinc-950 border border-white/10">
-                <h3 className="text-sm font-bold text-white mb-2">
-                  Apakah seluruh acara dikenakan biaya registrasi?
-                </h3>
-                <p className="text-xs text-zinc-400 font-light leading-relaxed">
-                  Sebagian besar ibadah raya, malam doa, dan persekutuan bulanan bersifat gratis dan terbuka untuk umum. Biaya pendaftaran hanya berlaku untuk event retreat/camp yang mencakup akomodasi dan konsumsi.
-                </p>
-              </div>
-
-              <div className="p-7 rounded-2xl bg-zinc-950 border border-white/10">
-                <h3 className="text-sm font-bold text-white mb-2">
-                  Apakah tersedia penitipan anak / ibadah sekolah minggu selama acara berlangsung?
-                </h3>
-                <p className="text-xs text-zinc-400 font-light leading-relaxed">
-                  Ya, pada setiap Ibadah Raya Minggu dan Konferensi Umum, tim Baitani Kids menyediakan ibadah anak yang interaktif dan aman bagi usia 2 hingga 12 tahun.
-                </p>
-              </div>
+              {faqs.map((faq, idx) => (
+                <div key={idx} className="p-6 rounded-xl bg-[#fff] border border-[#e8e2d5] shadow-warm-sm space-y-2">
+                  <h3 className="text-sm sm:text-base font-bold text-[#1b1c1a]">
+                    {faq.question}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#625e54] font-light leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </section>

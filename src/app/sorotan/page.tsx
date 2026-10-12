@@ -1,222 +1,216 @@
-'use client';
-
-import React, { useState } from 'react';
+import React from 'react';
+import type { Metadata } from 'next';
+import Link from 'next/link';
 import Navbar from '@/components/common/Navbar';
 import Footer from '@/components/common/Footer';
 import PageHero from '@/components/common/PageHero';
-import { Camera, Play, Quote, Calendar, ArrowUpRight } from 'lucide-react';
-import Link from 'next/link';
+import { ExternalLink, ShieldCheck, MapPin, HeartHandshake, ArrowUpRight } from 'lucide-react';
+import SiteIcon from '@/components/common/SiteIcon';
+import InstagramIcon from '@/components/common/InstagramIcon';
 
-interface HighlightItem {
-  id: string;
-  title: string;
-  category: 'all' | 'worship' | 'baptism' | 'youth' | 'social' | 'community';
-  categoryLabel: string;
-  date: string;
-  imageUrl: string;
-  description: string;
-}
+export const metadata: Metadata = {
+  title: 'Sorotan & Dokumentasi Resmi — Gereja Baptis Indonesia Baitani, Sukabumi',
+  description: 'Portal dokumentasi resmi foto dan video kegiatan persekutuan jemaat Gereja Baptis Indonesia Baitani di Sukabumi melalui kanal resmi terverifikasi.',
+};
 
 export default function SorotanPage() {
-  const [selectedFilter, setSelectedFilter] = useState('all');
-
-  const galleryItems: HighlightItem[] = [
+  const portalChannels = [
     {
-      id: 'g-1',
-      title: 'Praise & Worship Night: Hadirat yang Nyata',
-      category: 'worship',
-      categoryLabel: 'IBADAH RAYA',
-      date: 'SEPTEMBER 2026',
-      imageUrl: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1000&auto=format&fit=crop',
-      description: 'Ribuan jemaat bersatu hati menyembah Tuhan dalam suasana yang penuh lawatan dan kebebasan Roh.',
+      badge: 'DOKUMENTASI FOTO & VIDEO',
+      title: 'Dokumentasi Digital @gbibaitanisukabumi',
+      description: 'Seluruh dokumentasi kegiatan ibadah, pelayanan firman, pembinaan pemuda, kegiatan anak, dan persekutuan jemaat disajikan secara berkala dan terverifikasi pada feed serta sorotan cerita Instagram resmi kami.',
+      metaLabel: 'Kanal Resmi:',
+      metaValue: '@gbibaitanisukabumi',
+      icon: InstagramIcon,
+      actionText: 'Buka Dokumentasi di Instagram',
+      actionHref: 'https://www.instagram.com/gbibaitanisukabumi/',
+      isExternal: true,
     },
     {
-      id: 'g-2',
-      title: 'Sakramen Baptisan Selam 45 Jiwa Baru',
-      category: 'baptism',
-      categoryLabel: 'BAPTISAN KUDUS',
-      date: 'AGUSTUS 2026',
-      imageUrl: 'https://images.unsplash.com/photo-1507692049790-de58290a4334?q=80&w=1000&auto=format&fit=crop',
-      description: 'Momen sakral saat 45 orang mendeklarasikan iman percaya mereka kepada Kristus melalui baptisan air.',
+      badge: 'PERSEKUTUAN JEMAAT LOKAL',
+      title: 'Hadir & Bersekutu Secara Langsung',
+      description: 'Kehangatan kasih persaudaraan dan hadirat Tuhan paling nyata dialami saat kita berkumpul bersama dalam persekutuan di rumah Tuhan. Pintu gereja kami terbuka menyambut Anda dan keluarga di Sukabumi.',
+      metaLabel: 'Gedung Gereja:',
+      metaValue: 'Jl. R.E. Martadinata No. 86, Sukabumi',
+      icon: MapPin,
+      actionText: 'Informasi Lokasi & Kunjungan',
+      actionHref: '/#lokasi',
+      isExternal: false,
     },
     {
-      id: 'g-3',
-      title: 'Limitless Youth Night: Revival Generation',
-      category: 'youth',
-      categoryLabel: 'YOUTH MOVEMENT',
-      date: 'AGUSTUS 2026',
-      imageUrl: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1000&auto=format&fit=crop',
-      description: 'Anak-anak muda meresponi panggilan Tuhan untuk menjadi terang di sekolah dan kampus masing-masing.',
-    },
-    {
-      id: 'g-4',
-      title: 'Baitani Care: Pembagian 1,000 Paket Kasih',
-      category: 'social',
-      categoryLabel: 'BAITANI PEDULI',
-      date: 'JULI 2026',
-      imageUrl: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000&auto=format&fit=crop',
-      description: 'Menyalurkan bantuan bahan pokok dan pemeriksaan kesehatan cuma-cuma bagi warga sekitar gedung gereja.',
-    },
-    {
-      id: 'g-5',
-      title: 'Connect Group Leaders Gathering & Fellowship',
-      category: 'community',
-      categoryLabel: 'CONNECT GROUP',
-      date: 'JULI 2026',
-      imageUrl: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=1000&auto=format&fit=crop',
-      description: 'Pembekalan dan kebersamaan para pemimpin sel untuk saling menopang dan menguatkan visi pemuridan.',
-    },
-    {
-      id: 'g-6',
-      title: 'Sunday School Musical: Jesus My Hero',
-      category: 'worship',
-      categoryLabel: 'KIDS CHURCH',
-      date: 'JUNI 2026',
-      imageUrl: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1000&auto=format&fit=crop',
-      description: 'Pentas drama musikal anak-anak sekolah minggu yang penuh tawa, pujian sukacita, dan kebenaran firman.',
+      badge: 'KELUARGA ROHANI KECIL',
+      title: 'Bertumbuh di Komunitas Iman (KOI)',
+      description: 'Jalin persahabatan sejati, saling mendoakan, dan bertumbuh dalam kebenaran Firman Allah melalui kelompok-kelompok kecil Komunitas Iman (KOI) yang tersebar di wilayah Sukabumi.',
+      metaLabel: 'Persekutuan:',
+      metaValue: 'Kelompok Komunitas Iman (KOI)',
+      icon: 'faith-community' as const,
+      actionText: 'Pelajari Komunitas Iman (KOI)',
+      actionHref: '/connect-group',
+      isExternal: false,
     },
   ];
-
-  const testimonials = [
-    {
-      name: 'Budi Santoso',
-      title: 'Profesional & Anggota Pro-Connect',
-      quote: 'Dahulu saya datang ke gereja hanya sebagai rutinitas. Namun sejak bergabung di Connect Group, iman saya bertumbuh luar biasa. Saya belajar bagaimana menjadi teladan Kristus di tempat kerja dan memiliki sahabat-sahabat doa yang tulus.',
-    },
-    {
-      name: 'Jessica Amanda',
-      title: 'Mahasiswi & Limitless Youth',
-      quote: 'Di masa-masa terpuruk saat menghadapi depresi dan kesepian, tim pendoa Baitani setia menopang saya. Di sinilah saya menemukan identitas sejati di dalam Tuhan dan pemulihan luka batin yang nyata.',
-    },
-    {
-      name: 'Keluarga Hartono & Grace',
-      title: 'Jemaat Kingdom Family',
-      quote: 'Seminar pernikahan dan persekutuan pasutri di Baitani telah menyelamatkan rumah tangga kami yang sempat berada di ambang perpisahan. Kami belajar mengampuni dan membangun mezbah doa keluarga setiap hari.',
-    },
-  ];
-
-  const categories = [
-    { id: 'all', label: 'Semua Momen' },
-    { id: 'worship', label: 'Ibadah Raya' },
-    { id: 'baptism', label: 'Baptisan Kudus' },
-    { id: 'youth', label: 'Youth Movement' },
-    { id: 'social', label: 'Baitani Care' },
-    { id: 'community', label: 'Connect Group' },
-  ];
-
-  const filteredGallery = galleryItems.filter(
-    (item) => selectedFilter === 'all' || item.category === selectedFilter
-  );
 
   return (
-    <div className="min-h-dvh flex flex-col bg-[#050505] text-[#fafafa]">
+    <div className="min-h-dvh flex flex-col bg-[#fbf9f6] text-[#1b1c1a]">
       <Navbar />
 
       <main id="main-content" className="flex-1">
         {/* Page Hero */}
         <PageHero
-          category="DOKUMENTASI & KESAKSIAN"
-          title="SOROTAN & MOMEN GEREJA"
-          titleAccent="Witnessing His Faithfulness"
-          subtitle="Setiap senyuman, doa yang dijawab, dan jiwa yang dipulihkan adalah bukti kasih Tuhan yang nyata di tengah-tengah jemaat Gereja Baitani."
+          category="DOKUMENTASI & MEDIA RESMI"
+          title="PORTAL DOKUMENTASI RESMI"
+          titleAccent="Dokumentasi Terverifikasi Jemaat"
+          subtitle="Seluruh dokumentasi foto dan video kegiatan ibadah raya, persekutuan jemaat, dan pelayanan Gereja Baptis Indonesia Baitani, Sukabumi dipublikasikan secara resmi melalui akun Instagram resmi gereja."
           breadcrumbCurrent="Sorotan & Galeri"
+          imageSrc="/images/page-hero/sorotan.jpg"
+          imageAlt="Foto ilustrasi: jemaat mengangkat tangan dalam ibadah."
         />
 
-        {/* Filter Bar */}
-        <section className="py-8 bg-[#0a0a0d] border-b border-white/10 sticky top-18 z-30 backdrop-blur-xl">
+        {/* Notice of Transparency Strip */}
+        <section className="py-6 bg-[#fff] border-b border-[#e8e2d5]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-wrap items-center gap-2">
-              {categories.map((c) => (
-                <button
-                  key={c.id}
-                  type="button"
-                  onClick={() => setSelectedFilter(c.id)}
-                  className={`px-4 py-2 rounded-full text-xs font-bold tracking-wider uppercase transition-all min-h-10 ${
-                    selectedFilter === c.id
-                      ? 'bg-white text-black shadow-gold-sm ring-2 ring-[#d4af37]'
-                      : 'bg-zinc-900 text-zinc-400 hover:text-white border border-white/5'
-                  }`}
+            <div className="flex items-start sm:items-center gap-3 text-xs text-[#625e54]">
+              <ShieldCheck className="w-5 h-5 text-[#785600] flex-shrink-0 mt-0.5 sm:mt-0" />
+              <p className="leading-relaxed font-light">
+                <strong className="text-[#1b1c1a] font-medium">Integritas Dokumentasi:</strong> Kami berkomitmen menyajikan informasi yang jujur dan dapat dipertanggungjawabkan. Kami tidak menyajikan foto stok representasi sebagai dokumentasi kegiatan jemaat. Seluruh dokumentasi foto dan video asli dapat diakses langsung pada akun Instagram resmi{' '}
+                <a
+                  href="https://www.instagram.com/gbibaitanisukabumi/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#785600] underline font-medium hover:text-[#ffdea6]"
                 >
-                  {c.label}
-                </button>
-              ))}
+                  @gbibaitanisukabumi
+                </a>.
+              </p>
             </div>
           </div>
         </section>
 
-        {/* Gallery Grid */}
-        <section className="py-20 bg-black border-b border-white/10">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {filteredGallery.map((item) => (
-                <div
-                  key={item.id}
-                  className="bg-zinc-950 border border-white/10 rounded-2xl overflow-hidden hover:border-[#d4af37]/40 transition-all duration-300 flex flex-col justify-between group shadow-xl"
-                >
-                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-black">
-                    <img
-                      src={item.imageUrl}
-                      alt={item.title}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent" />
-                    
-                    <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-md border border-[#d4af37]/40 text-[#f3e5ab] px-3 py-1 rounded text-xs font-mono font-bold tracking-wider uppercase">
-                      {item.categoryLabel}
-                    </div>
-
-                    <div className="absolute bottom-3 left-4 text-xs font-mono font-bold text-zinc-400 uppercase">
-                      {item.date}
-                    </div>
-                  </div>
-
-                  <div className="p-7">
-                    <h3 className="text-lg font-bold text-white mb-2 leading-snug group-hover:text-[#d4af37] transition-colors">
-                      {item.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-zinc-400 font-light leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Testimonies Section */}
-        <section className="py-24 bg-[#070709] border-b border-white/10">
+        {/* Portal Documentation Hub Cards */}
+        <section className="py-20 bg-[#f5f3f0] border-b border-[#e8e2d5]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="text-xs font-bold tracking-widest uppercase text-zinc-400 block mb-2">
-                KESAKSIAN JEMAAT
+              <span className="text-xs font-mono font-bold tracking-widest uppercase text-[#785600] block mb-2">
+                SALURAN DOKUMENTASI &amp; PERSEKUTUAN
               </span>
-              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase mb-4">
-                Cerita Pemulihan Hidup
+              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-[#1b1c1a] mb-4">
+                Momen &amp; Warta Pelayanan
               </h2>
-              <p className="text-zinc-400 text-sm sm:text-base leading-relaxed font-light">
-                Kisah nyata tentang bagaimana kasih Tuhan mengubah masa lalu menjadi masa depan yang penuh pengharapan.
+              <p className="text-[#625e54] text-sm sm:text-base leading-relaxed font-light">
+                Silakan jelajahi dokumentasi visual kegiatan pelayanan kami atau hadir bersekutu langsung bersama jemaat di Sukabumi.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-              {testimonials.map((testi, idx) => (
-                <div
-                  key={`testi-${idx}`}
-                  className="p-8 rounded-2xl bg-zinc-950 border border-white/10 flex flex-col justify-between relative shadow-xl"
-                >
-                  <Quote className="w-10 h-10 text-[#d4af37]/60 mb-4" aria-hidden="true" />
-                  <p className="text-xs sm:text-sm text-zinc-300 font-light leading-relaxed mb-6 italic">
-                    &ldquo;{testi.quote}&rdquo;
-                  </p>
-                  <div className="pt-4 border-t border-white/10">
-                    <h4 className="text-sm font-bold text-white">{testi.name}</h4>
-                    <span className="text-xs text-[#d4af37] font-mono">{testi.title}</span>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {portalChannels.map((channel, idx) => {
+                const Icon = channel.icon;
+                return (
+                  <div
+                    key={`channel-${idx}`}
+                    className="p-8 rounded-2xl bg-[#fff] border border-[#e8e2d5] flex flex-col justify-between shadow-warm-md hover:border-[#785600]/30 transition-all duration-300 group"
+                  >
+                    <div className="space-y-5">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[11px] font-mono font-bold text-[#785600] uppercase tracking-wider bg-[#f5f3f0] border border-[#e8e2d5] px-3 py-1 rounded-full">
+                          {channel.badge}
+                        </span>
+                        <div className="w-10 h-10 rounded-xl bg-[#f5f3f0] border border-[#e8e2d5] flex items-center justify-center text-[#785600] group-hover:scale-110 transition-transform">
+                          {typeof Icon === 'string' ? (
+                            <SiteIcon name={Icon} className="w-5 h-5" />
+                          ) : (
+                            <Icon className="w-5 h-5" />
+                          )}
+                        </div>
+                      </div>
+
+                      <div>
+                        <h3 className="text-xl font-bold text-[#1b1c1a] mb-2 group-hover:text-[#785600] transition-colors">
+                          {channel.title}
+                        </h3>
+                        <p className="text-[#625e54] text-xs sm:text-sm font-light leading-relaxed">
+                          {channel.description}
+                        </p>
+                      </div>
+
+                      <div className="pt-4 border-t border-[#e8e2d5] text-xs text-[#625e54] font-light flex items-center gap-2">
+                        <span className="text-[#a09888] font-mono">{channel.metaLabel}</span>
+                        <span className="text-[#1b1c1a] font-medium">{channel.metaValue}</span>
+                      </div>
+                    </div>
+
+                    <div className="pt-6 mt-6 border-t border-[#e8e2d5]">
+                      {channel.isExternal ? (
+                        <a
+                          href={channel.actionHref}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn-magnetic w-full inline-flex items-center justify-center gap-2 py-3 rounded-full bg-[#785600] hover:bg-[#ffdea6] text-white hover:text-[#1b1c1a] font-bold text-xs tracking-wider uppercase transition-all shadow-warm-sm active:scale-95"
+                        >
+                          <span>{channel.actionText}</span>
+                          <ExternalLink className="w-3.5 h-3.5" />
+                        </a>
+                      ) : (
+                        <Link
+                          href={channel.actionHref}
+                          className="btn-magnetic w-full inline-flex items-center justify-center gap-2 py-3 rounded-full border border-[#e8e2d5] hover:border-[#785600] text-[#1b1c1a] font-bold text-xs tracking-wider uppercase transition-all hover:bg-[#f5f3f0] active:scale-95"
+                        >
+                          <span>{channel.actionText}</span>
+                          <ArrowUpRight className="w-3.5 h-3.5" />
+                        </Link>
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Authentic Congregational Testimony & Fellowship Guidance */}
+        <section className="py-24 bg-[#fff] border-b border-[#e8e2d5]">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+            <div className="w-12 h-12 rounded-2xl bg-[#f5f3f0] border border-[#e8e2d5] flex items-center justify-center text-[#785600] mx-auto">
+              <HeartHandshake className="w-6 h-6" />
+            </div>
+
+            <div className="space-y-3">
+              <span className="text-xs font-mono font-bold tracking-widest uppercase text-[#785600] block">
+                KESAKSIAN IMAN &amp; KASIH TUHAN
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-black text-[#1b1c1a] tracking-tight">
+                Berbagi Kasih &amp; Karya Kristus
+              </h2>
+              <p className="text-[#625e54] text-sm sm:text-base font-light leading-relaxed max-w-2xl mx-auto">
+                Setiap karya pemulihan, doa yang dijawab, dan kesetiaan Tuhan dalam kehidupan jemaat adalah berkat yang menguatkan seluruh persekutuan tubuh Kristus.
+              </p>
+            </div>
+
+            <div className="p-8 rounded-2xl bg-[#fff] border border-[#e8e2d5] text-left space-y-4 shadow-warm-md">
+              <h3 className="text-base sm:text-lg font-bold text-[#1b1c1a] flex items-center gap-2">
+                <SiteIcon name="photo-documentation" className="w-5 h-5 text-[#785600]" />
+                <span>Dokumentasi Kesaksian Jemaat</span>
+              </h3>
+              <p className="text-xs sm:text-sm text-[#625e54] font-light leading-relaxed">
+                Bagi warga jemaat yang rindu membagikan kesaksian bagaimana kasih Tuhan bekerja dalam kehidupan pribadi atau keluarga, kesaksian dapat disampaikan melalui pembina kelompok Komunitas Iman (KOI), mimbar persekutuan ibadah, atau melalui koordinasi dengan hamba Tuhan dan sekretariat gereja.
+              </p>
+              <div className="pt-4 border-t border-[#e8e2d5] flex flex-wrap items-center gap-3">
+                <a
+                  href="https://www.instagram.com/gbibaitanisukabumi/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-magnetic inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#785600] hover:bg-[#ffdea6] text-white hover:text-[#1b1c1a] font-bold text-xs tracking-wider uppercase transition-colors"
+                >
+                  <InstagramIcon className="w-3.5 h-3.5 text-pink-500" />
+                  <span>Kirim Pesan via DM Instagram</span>
+                </a>
+                <Link
+                  href="/#lokasi"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-[#e8e2d5] hover:border-[#785600] text-[#1b1c1a] text-xs font-bold tracking-wider uppercase transition-colors"
+                >
+                  <MapPin className="w-3.5 h-3.5 text-[#785600]" />
+                  <span>Kunjungi Gedung Gereja</span>
+                </Link>
+              </div>
             </div>
           </div>
         </section>

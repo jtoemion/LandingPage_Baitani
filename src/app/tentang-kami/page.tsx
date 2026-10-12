@@ -1,14 +1,15 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import Navbar from '@/components/common/Navbar';
 import Footer from '@/components/common/Footer';
-import PageHero from '@/components/common/PageHero';
-import { Compass, ShieldCheck, HeartHandshake, BookOpen, Flame, Users, Sparkles, ArrowUpRight } from 'lucide-react';
+import IdentitySection from '@/components/sections/IdentitySection';
+import { BookOpen, Flame, Users, HeartHandshake, ArrowUpRight, HelpCircle, ExternalLink } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Tentang Kami — Gereja Baitani',
-  description: 'Mengenal visi, misi, nilai-nilai inti, sejarah, dan pengakuan iman doktrinal Gereja Baitani.',
+  title: 'Tentang Kami — Gereja Baptis Indonesia Baitani, Sukabumi',
+  description: 'Mengenal identitas, visi, misi, nilai-nilai inti, catatan perjalanan iman, dan pengakuan iman doktrinal Gereja Baptis Indonesia Baitani di Sukabumi.',
 };
 
 export default function TentangKamiPage() {
@@ -20,18 +21,18 @@ export default function TentangKamiPage() {
     },
     {
       icon: Flame,
-      title: 'Penyembahan Autentik',
-      description: 'Mendorong penyembahan dalam roh dan kebenaran yang tidak sekadar ritual lahiriah, melainkan penyerahan hati yang mengalir dalam ketaatan setiap hari.',
+      title: 'Penyembahan yang Tulus',
+      description: 'Mendorong penyembahan dalam roh dan kebenaran yang tidak sekadar ritual lahiriah, melainkan penyerahan hati yang mengalir dalam ketaatan sehari-hari.',
     },
     {
       icon: Users,
-      title: 'Pemuridan Holistik',
-      description: 'Setiap jemaat tidak hanya hadir sebagai penonton, tetapi dimuridkan dalam kelompok sel kecil (Connect Group) agar berakar dan berbuah lebat bagi Kerajaan Allah.',
+      title: 'Pemuridan Komunitas Iman',
+      description: 'Setiap jemaat diajak untuk bertumbuh dan saling memperhatikan dalam Komunitas Iman (KOI) agar berakar teguh dalam ajaran Kristus.',
     },
     {
       icon: HeartHandshake,
-      title: 'Kasih yang Berkurban',
-      description: 'Menyatakan kasih Kristus yang nyata kepada sesama melalui aksi sosial, kepedulian diakonia, dan penjangkauan jiwa-jiwa yang terluka dan membutuhkan pengharapan.',
+      title: 'Kasih Persaudaraan',
+      description: 'Menyatakan kasih Kristus yang nyata kepada sesama melalui kepedulian jemaat, saling menopang dalam doa, dan pelayanan di tengah masyarakat Sukabumi.',
     },
   ];
 
@@ -49,153 +50,84 @@ export default function TentangKamiPage() {
     {
       no: '03',
       title: 'Ketuhanan Yesus Kristus',
-      desc: 'Kami percaya bahwa Yesus Kristus adalah Anak Tunggal Allah, dikandung dari Roh Kudus, lahir dari perawan Maria, hidup tanpa dosa, mati di kayu salib menebus dosa manusia, dan bangkit pada hari ketiga.',
+      desc: 'Kami percaya bahwa Yesus Kristus adalah Anak Tunggal Allah, dikandung dari Roh Kudus, lahir dari anak dara Maria, hidup tanpa dosa, mati di kayu salib menebus dosa manusia, dan bangkit pada hari ketiga.',
     },
     {
       no: '04',
       title: 'Keselamatan Hanya Oleh Anugerah',
-      desc: 'Kami percaya keselamatan manusia hanya diperoleh melalui anugerah Allah oleh iman kepada Yesus Kristus semata, bukan karena perbuatan baik manusia.',
+      desc: 'Kami percaya keselamatan manusia hanya diperoleh melalui anugerah Allah oleh iman kepada Yesus Kristus semata, bukan karena jasa atau perbuatan baik manusia.',
     },
     {
       no: '05',
-      title: 'Pekerjaan & Kuasa Roh Kudus',
-      desc: 'Kami percaya Roh Kudus menginsafkan dunia akan dosa, melahirbarukan orang percaya, mendiami jemaat, serta melengkapi dengan karunia-karunia rohani untuk membangun tubuh Kristus.',
+      title: 'Pekerjaan Roh Kudus',
+      desc: 'Kami percaya Roh Kudus menginsafkan manusia akan dosa, melahirkan-barukan orang percaya, memimpin dalam seluruh kebenaran, serta memperlengkapi jemaat untuk hidup berkenan kepada Allah.',
     },
     {
       no: '06',
-      title: 'Kedatangan Kristus yang Kedua',
-      desc: 'Kami percaya bahwa Tuhan Yesus Kristus akan datang kembali secara nyata dalam kemuliaan untuk menghakimi orang yang hidup dan mati serta menegakkan Kerajaan-Nya yang kekal.',
-    },
-  ];
-
-  const milestones = [
-    {
-      year: '1985',
-      title: 'Awal Mula di Ruang Doa',
-      desc: 'Dimulai dari persekutuan doa keluarga berjumlah 12 orang di garasi rumah dengan beban rohani untuk pemulihan generasi muda.',
-    },
-    {
-      year: '1998',
-      title: 'Perintisan Jemaat Mandiri',
-      desc: 'Resmi ditahbiskan sebagai jemaat lokal mandiri dengan jemaat perdana sebanyak 150 jiwa di wilayah Jakarta Barat.',
-    },
-    {
-      year: '2012',
-      title: 'Pembangunan Baitani Main Sanctuary',
-      desc: 'Dengan pertolongan anugerah Tuhan, didirikan gedung gereja pusat berkapasitas 2.500 kursi lengkap dengan fasilitas sekolah minggu modern.',
-    },
-    {
-      year: '2020',
-      title: 'Ekspansi Multi-Kampus & Pelayanan Digital',
-      desc: 'Membuka perintisan regional di Surabaya, Bali, dan Medan serta meluncurkan ibadah live streaming yang menjangkau jemaat di mancanegara.',
-    },
-    {
-      year: '2026',
-      title: 'Tahun Persatuan & Sorga Terbuka',
-      desc: 'Bergerak serempak memperluas jaringan 1,000 Connect Group dan memperkuat pelayanan sosial Baitani Care bagi masyarakat luas.',
+      title: 'Kedatangan Kristus Kembali',
+      desc: 'Kami percaya bahwa Tuhan Yesus Kristus akan datang kembali secara nyata dalam kemuliaan untuk menggenapi Kerajaan-Nya yang kekal.',
     },
   ];
 
   return (
-    <div className="min-h-dvh flex flex-col bg-[#050505] text-[#fafafa]">
+    <div className="min-h-dvh flex flex-col bg-[#fbf9f6] text-[#1b1c1a]">
       <Navbar />
 
-      <main id="main-content" className="flex-1">
-        {/* Page Hero Header */}
-        <PageHero
-          category="PROFIL & IDENTITAS"
-          title="TENTANG GEREJA BAITANI"
-          titleAccent="A Family Founded on Faith"
-          subtitle="Sebuah keluarga rohani yang dipanggil untuk menyatakan kasih, pemulihan, dan kuasa transformasi Kristus bagi setiap generasi di Indonesia dan bangsa-bangsa."
-          breadcrumbCurrent="Tentang Kami"
-        />
-
-        {/* Visi & Misi Editorial Section */}
-        <section className="py-24 border-b border-white/10 relative overflow-hidden bg-black">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-              
-              {/* Left Column: Visi */}
-              <div className="lg:col-span-5 bg-zinc-950 border border-white/10 rounded-2xl p-8 sm:p-10 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-48 h-48 bg-[#d4af37]/5 rounded-full blur-3xl pointer-events-none" />
-                <div className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-[#d4af37] mb-4">
-                  <Sparkles className="w-4 h-4" />
-                  <span>VISI KERAJAAN ALLAH</span>
-                </div>
-                <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight uppercase mb-6 leading-tight">
-                  Membangun Keluarga Allah yang Dewasa, Relevan, dan Berdampak Luas.
-                </h2>
-                <p className="text-zinc-300 text-sm sm:text-base leading-relaxed font-light mb-6">
-                  Visi kami adalah melihat setiap individu mengalami perjumpaan pribadi dengan kasih Kristus, dipulihkan dari masa lalu, dan bertumbuh menjadi murid yang memperluas Kerajaan Allah di mana pun mereka ditempatkan.
-                </p>
-                <div className="p-4 rounded-lg bg-white/5 border border-white/10">
-                  <span className="text-xs font-mono text-[#e5c07b] font-bold block mb-1">TARGET 2030</span>
-                  <p className="text-xs text-zinc-300 font-light">
-                    Melahirkan 1,000 pemimpin kelompok sel dan memperlengkapi 100,000 jemaat di seluruh wilayah kepulauan Indonesia.
-                  </p>
-                </div>
-              </div>
-
-              {/* Right Column: 4 Misi Strategis */}
-              <div className="lg:col-span-7 space-y-6">
-                <span className="text-xs font-black tracking-widest uppercase text-zinc-400 block mb-2">
-                  4 PILAR STRATEGIS
+      <main id="main-content" className="flex-1 pt-24">
+        {/* Header Khusus Halaman Tentang Kami */}
+        <section className="py-16 sm:py-24 bg-gradient-to-b from-[#f5f3f0] to-[#fbf9f6] border-b border-[#e8e2d5] relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,rgba(212,175,55,0.12),rgba(251,249,246,0))]" />
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center lg:items-start">
+              {/* Left: text content */}
+              <div className="flex-1 text-center lg:text-left">
+                <span className="text-xs font-mono font-bold tracking-widest uppercase text-[#785600] mb-3 block">
+                  IDENTITAS & PROFIL GEREJA LOKAL
                 </span>
-                <h2 className="text-3xl sm:text-4xl font-black text-white uppercase tracking-tight mb-8">
-                  Misi Pelayanan Kami
-                </h2>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="p-7 rounded-2xl bg-zinc-950/80 border border-white/10">
-                    <span className="text-2xl font-black font-mono text-[#d4af37] block mb-2">01</span>
-                    <h3 className="text-base font-bold text-white mb-2">Pekabaran Injil</h3>
-                    <p className="text-xs text-zinc-400 font-light leading-relaxed">
-                      Memberitakan kabar keselamatan Kristus melalui berbagai media, ibadah kreatif, dan kesaksian hidup sehari-hari.
-                    </p>
-                  </div>
-
-                  <div className="p-7 rounded-2xl bg-zinc-950/80 border border-white/10">
-                    <span className="text-2xl font-black font-mono text-[#d4af37] block mb-2">02</span>
-                    <h3 className="text-base font-bold text-white mb-2">Pemuridan Sel</h3>
-                    <p className="text-xs text-zinc-400 font-light leading-relaxed">
-                      Menanamkan firman dan membina karakter Kristiani yang berakar kuat lewat kelompok sel Connect Group.
-                    </p>
-                  </div>
-
-                  <div className="p-7 rounded-2xl bg-zinc-950/80 border border-white/10">
-                    <span className="text-2xl font-black font-mono text-[#d4af37] block mb-2">03</span>
-                    <h3 className="text-base font-bold text-white mb-2">Aksi Kasih Diakonia</h3>
-                    <p className="text-xs text-zinc-400 font-light leading-relaxed">
-                      Menjadi saluran berkat bagi masyarakat yang membutuhkan melalui program Baitani Care, bantuan sembako, dan beasiswa.
-                    </p>
-                  </div>
-
-                  <div className="p-7 rounded-2xl bg-zinc-950/80 border border-white/10">
-                    <span className="text-2xl font-black font-mono text-[#d4af37] block mb-2">04</span>
-                    <h3 className="text-base font-bold text-white mb-2">Pemberdayaan Generasi</h3>
-                    <p className="text-xs text-zinc-400 font-light leading-relaxed">
-                      Menyiapkan anak-anak dan pemuda menjadi pemimpin masa depan yang berintegritas tinggi di ranah publik dan profesional.
-                    </p>
+                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#1b1c1a] uppercase tracking-tight mb-4">
+                  Gereja Baptis Indonesia Baitani
+                </h1>
+                <p className="text-[#625e54] text-sm sm:text-base font-light max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                  Jemaat lokal Gereja Baptis Indonesia di Sukabumi, Jawa Barat. Berakar dalam Firman Allah, hidup dalam kasih persaudaraan, dan setia melayani di tengah masyarakat.
+                </p>
+              </div>
+              {/* Right: image pane */}
+              <div className="w-full lg:w-auto lg:flex-1 lg:max-w-lg xl:max-w-xl flex flex-col">
+                <div className="relative w-full aspect-[16/10] lg:aspect-[4/3] rounded-2xl overflow-hidden border border-[#e8e2d5] shadow-warm-md bg-[#f5f3f0]">
+                  <Image
+                    src="/images/page-hero/gembala.jpg"
+                    alt="Foto ilustrasi: tangan membuka Alkitab."
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                  {/* FOTO ILUSTRASI label */}
+                  <div className="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-[rgba(251,249,246,0.85)] backdrop-blur-sm border border-[#e8e2d5]">
+                    <span className="text-[9px] sm:text-[10px] font-mono font-semibold tracking-widest text-[#785600] uppercase select-none">
+                      FOTO ILUSTRASI
+                    </span>
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </section>
 
+        {/* Identity Section (Komponen Visi, Misi & Credo) */}
+        <IdentitySection />
+
         {/* Nilai-Nilai Inti (Core Values) */}
-        <section className="py-24 border-b border-white/10 bg-[#070709]">
+        <section className="py-24 border-b border-[#e8e2d5] bg-[#fff]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="text-xs font-bold tracking-widest uppercase text-zinc-400 block mb-2">
+              <span className="text-xs font-mono font-bold tracking-widest uppercase text-[#625e54] block mb-2">
                 FONDASI KEHIDUPAN JEMAAT
               </span>
-              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase mb-4">
-                Nilai-Nilai Inti (Core Values)
+              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-[#1b1c1a] uppercase mb-4">
+                Nilai-Nilai Inti
               </h2>
-              <p className="text-zinc-400 text-sm sm:text-base leading-relaxed font-light">
-                Empat nilai fundamental yang membentuk DNA rohani, budaya kebersamaan, dan cara hidup setiap jemaat Gereja Baitani.
+              <p className="text-[#625e54] text-sm sm:text-base leading-relaxed font-light">
+                Empat pilar nilai yang mendasari persekutuan, pertumbuhan rohani, dan cara hidup jemaat Gereja Baptis Indonesia Baitani di Sukabumi.
               </p>
             </div>
 
@@ -205,16 +137,16 @@ export default function TentangKamiPage() {
                 return (
                   <div
                     key={`val-${idx}`}
-                    className="p-8 rounded-2xl bg-zinc-950 border border-white/10 hover:border-[#d4af37]/40 transition-all duration-300 group flex flex-col justify-between"
+                    className="p-8 rounded-2xl bg-[#f5f3f0] border border-[#e8e2d5] hover:border-[#785600]/40 transition-all duration-300 group flex flex-col justify-between"
                   >
                     <div>
-                      <div className="w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-[#d4af37] mb-6 group-hover:scale-110 group-hover:border-[#d4af37]/50 transition-all">
+                      <div className="w-12 h-12 rounded-lg bg-[#fff] border border-[#e8e2d5] flex items-center justify-center text-[#785600] mb-6 group-hover:scale-110 group-hover:border-[#785600]/50 transition-all">
                         <Icon className="w-6 h-6" />
                       </div>
-                      <h3 className="text-lg font-bold text-white mb-3 group-hover:text-[#d4af37] transition-colors">
+                      <h3 className="text-lg font-bold text-[#1b1c1a] mb-3 group-hover:text-[#785600] transition-colors">
                         {val.title}
                       </h3>
-                      <p className="text-xs sm:text-sm text-zinc-400 font-light leading-relaxed">
+                      <p className="text-xs sm:text-sm text-[#625e54] font-light leading-relaxed">
                         {val.description}
                       </p>
                     </div>
@@ -226,16 +158,16 @@ export default function TentangKamiPage() {
         </section>
 
         {/* Pengakuan Iman Doktrinal (The Credo) */}
-        <section className="py-24 border-b border-white/10 bg-black">
+        <section className="py-24 border-b border-[#e8e2d5] bg-[#f5f3f0]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mb-16">
-              <span className="text-xs font-bold tracking-widest uppercase text-zinc-400 block mb-2">
+              <span className="text-xs font-mono font-bold tracking-widest uppercase text-[#625e54] block mb-2">
                 DOKTRIN ALKITABIAH
               </span>
-              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase mb-4">
+              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-[#1b1c1a] uppercase mb-4">
                 Pengakuan Iman Kami
               </h2>
-              <p className="text-zinc-400 text-sm sm:text-base leading-relaxed font-light">
+              <p className="text-[#625e54] text-sm sm:text-base leading-relaxed font-light">
                 Kami berpegang teguh pada warisan iman para rasul dan ajaran Firman Allah yang murni serta tidak berkompromi dengan pergeseran zaman.
               </p>
             </div>
@@ -244,16 +176,16 @@ export default function TentangKamiPage() {
               {doctrines.map((doc) => (
                 <div
                   key={doc.no}
-                  className="p-8 rounded-2xl bg-zinc-950 border border-white/10 flex flex-col justify-between"
+                  className="p-8 rounded-2xl bg-[#fff] border border-[#e8e2d5] flex flex-col justify-between"
                 >
                   <div>
-                    <span className="text-xs font-mono font-bold text-[#d4af37] block mb-3">
+                    <span className="text-xs font-mono font-bold text-[#785600] block mb-3">
                       ARTIKEL {doc.no}
                     </span>
-                    <h3 className="text-lg font-bold text-white mb-3">
+                    <h3 className="text-lg font-bold text-[#1b1c1a] mb-3">
                       {doc.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-zinc-400 font-light leading-relaxed">
+                    <p className="text-xs sm:text-sm text-[#625e54] font-light leading-relaxed">
                       {doc.desc}
                     </p>
                   </div>
@@ -263,71 +195,132 @@ export default function TentangKamiPage() {
           </div>
         </section>
 
-        {/* Sejarah & Garis Waktu Pertumbuhan */}
-        <section className="py-24 border-b border-white/10 bg-[#070709]">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Catatan Sejarah & Verifikasi Kronologi Tahun Berdiri */}
+        <section className="py-24 border-b border-[#e8e2d5] bg-[#fff]">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="text-xs font-bold tracking-widest uppercase text-zinc-400 block mb-2">
-                JEJAK KESETIAAN TUHAN
+              <span className="text-xs font-mono font-bold tracking-widest uppercase text-[#625e54] block mb-2">
+                JEJAK PERJALANAN IMAN
               </span>
-              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase mb-4">
-                Sejarah Perjalanan
+              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-[#1b1c1a] uppercase mb-4">
+                Perjalanan Sejarah Jemaat
               </h2>
-              <p className="text-zinc-400 text-sm sm:text-base leading-relaxed font-light">
-                Menyaksikan bagaimana Allah menuntun dan melipatgandakan pelayanan dari waktu ke waktu.
+              <p className="text-[#625e54] text-sm sm:text-base leading-relaxed font-light">
+                Menyaksikan bagaimana pemeliharaan Tuhan menyertai persekutuan jemaat di Sukabumi dari masa ke masa.
               </p>
             </div>
 
-            <div className="space-y-8 relative before:absolute before:inset-0 before:left-4 sm:before:left-1/2 before:w-[1px] before:bg-white/15">
-              {milestones.map((item, idx) => (
-                <div
-                  key={`mile-${idx}`}
-                  className="relative flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-12"
-                >
-                  <div className="flex-1 sm:text-right">
-                    <span className="inline-block px-3 py-1 rounded-full text-xs font-mono font-bold bg-[#d4af37]/40 text-[#f3e5ab] border border-[#d4af37]/50 mb-2">
-                      TAHUN {item.year}
+            <div className="space-y-6">
+              {/* Official Historical Archives & Church Anniversary Reference */}
+              <div className="p-8 sm:p-10 rounded-3xl bg-[#fbf9f6] border border-[#785600]/30 shadow-xl space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-full bg-[#785600]/15 flex items-center justify-center text-[#785600]">
+                    <HelpCircle className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#785600] block">
+                      RUJUKAN ARSIP & HARI JADI GEREJA
                     </span>
-                    <h3 className="text-lg font-bold text-white mb-1">{item.title}</h3>
-                    <p className="text-xs sm:text-sm text-zinc-400 font-light leading-relaxed">
-                      {item.desc}
-                    </p>
+                    <h3 className="text-lg sm:text-xl font-bold text-[#1b1c1a]">
+                      Catatan Hari Jadi & Tahun Berdiri Jemaat
+                    </h3>
                   </div>
-
-                  {/* Node Circle */}
-                  <div className="w-8 h-8 rounded-full bg-black border-2 border-[#d4af37] flex items-center justify-center relative z-10 flex-shrink-0">
-                    <div className="w-2 h-2 rounded-full bg-[#d4af37]" />
-                  </div>
-
-                  <div className="flex-1 hidden sm:block" />
                 </div>
-              ))}
+
+                <div className="text-[#625e54] text-xs sm:text-sm leading-relaxed space-y-4 font-light pt-2 border-t border-[#e8e2d5]">
+                  <p>
+                    Berdasarkan catatan dan publikasi resmi gereja di media sosial, perjalanan persekutuan jemaat dirangkum sebagai berikut:
+                  </p>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div className="p-4 rounded-xl bg-[#f5f3f0] border border-[#785600]/30 flex flex-col justify-between gap-3">
+                      <div>
+                        <span className="text-[11px] font-mono text-[#785600] uppercase font-bold block">
+                          Usia Pelayanan Gereja
+                        </span>
+                        <strong className="text-base sm:text-lg text-[#1b1c1a] font-bold block">
+                          HUT ke-63 Tahun (2026)
+                        </strong>
+                        <p className="text-[11px] text-[#625e54] mt-1 leading-snug">
+                          Merujuk pada publikasi resmi peringatan hari ulang tahun jemaat di Instagram.
+                        </p>
+                      </div>
+                      <a
+                        href="https://www.instagram.com/gbibaitanisukabumi/p/DcU3J25OW7J/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#785600] hover:bg-[#9a6b00] text-white text-[11px] font-bold uppercase tracking-wider transition-colors w-fit"
+                      >
+                        <span>Lihat Unggahan HUT ke-63</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    </div>
+
+                    <div className="p-4 rounded-xl bg-[#f5f3f0] border border-[#785600]/30 flex flex-col justify-between gap-3">
+                      <div>
+                        <span className="text-[11px] font-mono text-[#785600] uppercase font-bold block">
+                          Tanggal Peringatan Hari Jadi
+                        </span>
+                        <strong className="text-base sm:text-lg text-[#1b1c1a] font-bold block">
+                          1 September 1967
+                        </strong>
+                        <p className="text-[11px] text-[#625e54] mt-1 leading-snug">
+                          Tercantum pada bio profil media sosial resmi @gbibaitanisukabumi.
+                        </p>
+                      </div>
+                      <a
+                        href="https://www.instagram.com/gbibaitanisukabumi/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-[#e8e2d5] text-[#1b1c1a] text-[11px] font-bold uppercase tracking-wider hover:border-[#785600] transition-colors w-fit"
+                      >
+                        <span>Lihat Bio Instagram</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    </div>
+                  </div>
+
+                  <p className="text-[#625e54] text-xs italic pt-1">
+                    Gereja menyajikan catatan usia pelayanan (63 tahun) dan tanggal peringatan resmi ini secara terbuka dan terhubung langsung ke sumbernya, seraya penelusuran arsip historis jemaat terus disempurnakan.
+                  </p>
+                </div>
+              </div>
+
+              {/* Factual Local Church Context Card */}
+              <div className="p-8 sm:p-10 rounded-3xl bg-[#f5f3f0] border border-[#e8e2d5] space-y-4">
+                <h3 className="text-lg font-bold text-[#1b1c1a]">
+                  Pelayanan Jemaat Lokal di Sukabumi
+                </h3>
+                <p className="text-[#625e54] text-xs sm:text-sm leading-relaxed font-light">
+                  Gereja Baptis Indonesia Baitani berakar dan bertumbuh melayani warga jemaat di Kota Sukabumi, Jawa Barat. Beralamat di Jl. R.E. Martadinata No. 86, gereja senantiasa menjadi wadah persekutuan yang bersahaja, membina anak-anak dan generasi muda, serta menjadi saluran berkat bagi lingkungan sekitar.
+                </p>
+              </div>
             </div>
           </div>
         </section>
 
         {/* Bottom Call to Action */}
-        <section className="py-20 bg-black text-center">
+        <section className="py-20 bg-[#fbf9f6] text-center">
           <div className="max-w-4xl mx-auto px-4">
-            <h2 className="text-3xl sm:text-4xl font-black uppercase text-white mb-4">
-              Bergabunglah Dalam Keluarga Baitani
+            <h2 className="text-3xl sm:text-4xl font-black uppercase text-[#1b1c1a] mb-4">
+              Bergabunglah Dalam Persekutuan Kami
             </h2>
-            <p className="text-zinc-400 text-sm sm:text-base font-light mb-8 max-w-xl mx-auto">
-              Kami menyambut Anda dengan tangan terbuka. Hadiri ibadah minggu ini atau temukan kelompok sel terdekat di lingkungan Anda.
+            <p className="text-[#625e54] text-sm sm:text-base font-light mb-8 max-w-xl mx-auto">
+              Kami menyambut Anda dengan sukacita. Hadiri persekutuan ibadah di gedung gereja atau terhubung dengan Komunitas Iman (KOI).
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Link
                 href="/connect-group"
-                className="btn-magnetic inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white hover:bg-[#f3e5ab] text-black font-bold text-xs tracking-wider uppercase shadow-xl"
+                className="btn-magnetic inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#785600] hover:bg-[#9a6b00] text-white font-bold text-xs tracking-wider uppercase shadow-xl"
               >
-                <span>CARI CONNECT GROUP</span>
+                <span>KOMUNITAS IMAN (KOI)</span>
                 <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
               </Link>
               <Link
-                href="/lokasi"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-white/20 hover:border-white text-white font-bold text-xs tracking-wider uppercase transition-colors"
+                href="/#lokasi"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-[#e8e2d5] hover:border-[#785600] text-[#1b1c1a] font-bold text-xs tracking-wider uppercase transition-colors"
               >
-                <span>JADWAL & LOKASI IBADAH</span>
+                <span>LOKASI & INFORMASI IBADAH</span>
               </Link>
             </div>
           </div>

@@ -8,5 +8,15 @@
   - [x] Phase 1: Viewport & Token Hygiene (`min-h-dvh`, Cinzel & Plus Jakarta Sans)
   - [x] Phase 2: Accessibility & WCAG AA Contrast (40%+ opacity, aria-labels, border-zinc-800)
   - [x] Phase 3: Asymmetry, Rhythm & Token Hardening (0 arbitrary pixel units, tinted shadows, varied rhythm)
-- [x] Final Slop Audit Score: 0.0 / 100
-- [x] Build Exit Code: 0
+- [x] Agent D Contract: Factual Content Cutover & Trust Integrity:
+  - [x] Identity: Gereja Baptis Indonesia Baitani, Sukabumi (Jl. R.E. Martadinata No. 86)
+  - [x] Ministry Terminology: KOI = Komunitas Iman
+  - [x] Leadership: Authentic Panitia Perancang 2025–2027 photo; purged fake pastoral bios
+  - [x] History & Age: HUT ke-63 (2026) & 1 Sept 1967 transparently cited from official Instagram
+  - [x] Forms & Inputs: Removed unbacked forms and mock success toasts
+  - [x] Agendas & Events: Cleaned unverified events (`eventsData.ts: []`)
+  - [x] Schedules & Hours: Cleaned unverified hours (`scheduleData.ts: []`) and renamed CTAs
+  - [x] Documentation & Testimonials: Purged stock photo documentation and fake testimonials
+  - [x] Subagent Independent Verification: Verifier A (PASS) & Verifier B (PASS)
+- [x] Build Exit Code: 0 (11/11 static pages generated)
+- [x] ESLint: 0 errors

@@ -1,137 +1,63 @@
-'use client';
-
-import React, { useState } from 'react';
+import React from 'react';
 import Navbar from '@/components/common/Navbar';
 import Footer from '@/components/common/Footer';
 import PageHero from '@/components/common/PageHero';
-import { Users, Heart, BookOpen, Shield, Send, CheckCircle2, ArrowRight } from 'lucide-react';
-
-interface GroupCategory {
-  id: string;
-  name: string;
-  ageRange: string;
-  tagline: string;
-  description: string;
-  meetingTime: string;
-  imageUrl: string;
-}
+import { MapPin, ExternalLink, ShieldCheck } from 'lucide-react';
+import SiteIcon from '@/components/common/SiteIcon';
+import InstagramIcon from '@/components/common/InstagramIcon';
 
 export default function ConnectGroupPage() {
-  const [selectedCategory, setSelectedCategory] = useState('pro');
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    city: 'Jakarta',
-    category: 'pro',
-    preferredDay: 'Jumat Malam',
-  });
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const categories: GroupCategory[] = [
-    {
-      id: 'pro',
-      name: 'Pro-Connect (Young Professionals & Campus)',
-      ageRange: 'Usia 20 - 35 Tahun',
-      tagline: 'Faith in Career & Purpose in Life',
-      description: 'Komunitas bagi mahasiswa, fresh graduates, dan profesional muda. Berdiskusi seputar integritas kerja, karir, relasi pernikahan masa depan, dan menjadi garam di dunia kerja.',
-      meetingTime: 'Setiap Jumat pk 19:30 WIB',
-      imageUrl: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop',
-    },
-    {
-      id: 'youth',
-      name: 'Limitless Youth (Teens & High School)',
-      ageRange: 'Usia 13 - 19 Tahun',
-      tagline: 'Bold, Passionate, and Unashamed',
-      description: 'Wadah bagi generasi muda SMP dan SMA untuk menemukan jati diri dalam Kristus, mempererat pertemanan yang sehat, dan belajar firman Tuhan dengan cara yang relevan.',
-      meetingTime: 'Setiap Sabtu pk 15:00 WIB',
-      imageUrl: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1200&auto=format&fit=crop',
-    },
-    {
-      id: 'family',
-      name: 'Kingdom Family (Married Couples & Parents)',
-      ageRange: 'Keluarga & Pasangan Menikah',
-      tagline: 'Building Christ-Centered Homes',
-      description: 'Kelompok sel bagi pasutri muda dan orang tua untuk saling menguatkan dalam mendidik anak (parenting Alkitabiah), keintiman rumah tangga, dan pemuridan keluarga.',
-      meetingTime: 'Setiap Sabtu pk 18:00 WIB',
-      imageUrl: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=1200&auto=format&fit=crop',
-    },
-    {
-      id: 'kids',
-      name: 'Baitani Junior Kids Cell',
-      ageRange: 'Usia 5 - 12 Tahun',
-      tagline: 'Growing in Wisdom & Grace',
-      description: 'Pemuridan anak usia sekolah dasar yang dikemas lewat cerita Alkitab interaktif, pujian kreatif, aktivitas mewarnai, dan doa bersama mentor anak.',
-      meetingTime: 'Setiap Minggu pk 10:30 WIB (Saat Ibadah Raya 2)',
-      imageUrl: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1200&auto=format&fit=crop',
-    },
-    {
-      id: 'golden',
-      name: 'Golden Age Fellowship (Senior Jemaat)',
-      ageRange: 'Usia 55 Tahun ke Atas',
-      tagline: 'Evergreen Faith & Blessed Legacy',
-      description: 'Komunitas hangat bagi jemaat senior untuk menikmati masa pensiun dengan persekutuan yang intim, doa syafaat yang tekun, dan mewariskan teladan iman bagi anak cucu.',
-      meetingTime: 'Setiap Kamis pk 10:00 WIB',
-      imageUrl: 'https://images.unsplash.com/photo-1516307365426-bea591f05011?q=80&w=1200&auto=format&fit=crop',
-    },
-  ];
-
-  const activeCategory = categories.find((c) => c.id === selectedCategory) || categories[0];
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.name || !formData.phone) return;
-    setIsSubmitted(true);
-  };
 
   return (
-    <div className="min-h-dvh flex flex-col bg-[#050505] text-[#fafafa]">
+    <div className="min-h-dvh flex flex-col bg-[#fbf9f6] text-[#1b1c1a]">
       <Navbar />
 
       <main id="main-content" className="flex-1">
         {/* Page Hero */}
         <PageHero
-          category="KOMUNITAS SEL & PEMURIDAN"
-          title="CONNECT GROUP"
-          titleAccent="A Home for Everyone"
-          subtitle="Gereja bukanlah sekadar gedung atau acara seremonial mingguan. Connect Group adalah ruang hangat di mana Anda bertumbuh, berbagi kehidupan, dan dimuridkan bersama."
-          breadcrumbCurrent="Connect Group"
+          category="PERSEKUTUAN JEMAAT & PEMURIDAN"
+          title="KOMUNITAS IMAN (KOI)"
+          titleAccent="Bertumbuh Bersama Dalam Kristus"
+          subtitle="Komunitas Iman (KOI) adalah wadah persekutuan kelompok jemaat Gereja Baptis Indonesia Baitani, Sukabumi di mana jemaat saling menguatkan, mendalami Firman Tuhan, dan bertumbuh dalam kasih persaudaraan."
+          breadcrumbCurrent="Komunitas Iman (KOI)"
+          imageSrc="/images/page-hero/komunitas.jpg"
+          imageAlt="Foto ilustrasi: sekelompok teman duduk bersama di tepi air."
         />
 
         {/* 4 Pillars Section */}
-        <section className="py-20 bg-black border-b border-white/10">
+        <section className="py-20 bg-[#f5f3f0] border-b border-[#e8e2d5]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-              
-              <div className="p-7 rounded-2xl bg-zinc-950 border border-white/10">
-                <Users className="w-6 h-6 text-[#d4af37] mb-4" />
-                <h3 className="text-base font-bold text-white mb-2">Keluarga Rohani</h3>
-                <p className="text-xs text-zinc-400 font-light leading-relaxed">
-                  Tempat di mana nama Anda dikenal, pergumulan Anda didengar, dan sukacita Anda dirayakan bersama.
+
+              <div className="p-7 rounded-2xl bg-[#fff] border border-[#e8e2d5] shadow-warm-sm">
+                <SiteIcon name="faith-community" className="w-6 h-6 text-[#785600] mb-4" />
+                <h3 className="text-base font-bold text-[#1b1c1a] mb-2">Keluarga Rohani</h3>
+                <p className="text-xs text-[#625e54] font-light leading-relaxed">
+                  Ruang hangat di mana jemaat saling mengenal, saling memperhatikan, dan mengalami persekutuan yang akrab.
                 </p>
               </div>
 
-              <div className="p-7 rounded-2xl bg-zinc-950 border border-white/10">
-                <BookOpen className="w-6 h-6 text-[#d4af37] mb-4" />
-                <h3 className="text-base font-bold text-white mb-2">Aplikasi Firman</h3>
-                <p className="text-xs text-zinc-400 font-light leading-relaxed">
-                  Mendiskusikan khotbah minggu secara praktis agar firman Tuhan sungguh bekerja dalam kehidupan sehari-hari.
+              <div className="p-7 rounded-2xl bg-[#fff] border border-[#e8e2d5] shadow-warm-sm">
+                <SiteIcon name="bible-study" className="w-6 h-6 text-[#785600] mb-4" />
+                <h3 className="text-base font-bold text-[#1b1c1a] mb-2">Pendalaman Firman</h3>
+                <p className="text-xs text-[#625e54] font-light leading-relaxed">
+                  Membaca dan merenungkan kebenaran Alkitab bersama agar iman jemaat berakar kuat dalam kehidupan sehari-hari.
                 </p>
               </div>
 
-              <div className="p-7 rounded-2xl bg-zinc-950 border border-white/10">
-                <Heart className="w-6 h-6 text-[#d4af37] mb-4" />
-                <h3 className="text-base font-bold text-white mb-2">Saling Mendoakan</h3>
-                <p className="text-xs text-zinc-400 font-light leading-relaxed">
-                  Dukungan doa tanpa henti di saat Anda menghadapi masa sulit, sakit, kedukaan, atau keputusan penting.
+              <div className="p-7 rounded-2xl bg-[#fff] border border-[#e8e2d5] shadow-warm-sm">
+                <SiteIcon name="prayer" className="w-6 h-6 text-[#785600] mb-4" />
+                <h3 className="text-base font-bold text-[#1b1c1a] mb-2">Saling Mendoakan</h3>
+                <p className="text-xs text-[#625e54] font-light leading-relaxed">
+                  Saling menopang beban doa dalam permohonan pergumulan hidup, kesembuhan, maupun mengucap syukur bersama.
                 </p>
               </div>
 
-              <div className="p-7 rounded-2xl bg-zinc-950 border border-white/10">
-                <Shield className="w-6 h-6 text-[#d4af37] mb-4" />
-                <h3 className="text-base font-bold text-white mb-2">Akuntabilitas Karakter</h3>
-                <p className="text-xs text-zinc-400 font-light leading-relaxed">
-                  Membangun integritas dan menjaga hidup tetap kudus melalui persahabatan sejati yang saling mengoreksi dalam kasih.
+              <div className="p-7 rounded-2xl bg-[#fff] border border-[#e8e2d5] shadow-warm-sm">
+                <SiteIcon name="faith-community" className="w-6 h-6 text-[#785600] mb-4" />
+                <h3 className="text-base font-bold text-[#1b1c1a] mb-2">Kasih Persaudaraan</h3>
+                <p className="text-xs text-[#625e54] font-light leading-relaxed">
+                  Menjaga kesatuan hati dan saling mendukung sebagai satu tubuh Kristus di tengah masyarakat Sukabumi.
                 </p>
               </div>
 
@@ -139,211 +65,127 @@ export default function ConnectGroupPage() {
           </div>
         </section>
 
-        {/* Categories Showcase */}
-        <section className="py-24 bg-[#070709] border-b border-white/10">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="mb-12">
-              <span className="text-xs font-black tracking-widest uppercase text-zinc-400 block mb-2">
-                PILIH KOMUNITAS SESUAI TAHAP HIDUP ANDA
+        {/* Narrative Overview of KOI */}
+        <section className="py-24 bg-[#fff] border-b border-[#e8e2d5]">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div className="text-center space-y-3">
+              <span className="text-xs font-mono font-bold tracking-widest uppercase text-[#785600] block">
+                TENTANG KOI
               </span>
-              <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight">
-                5 Kategori Connect Group
+              <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-[#1b1c1a]">
+                Mengenal Komunitas Iman (KOI)
               </h2>
             </div>
 
-            {/* Category Selector Tabs */}
-            <div className="flex flex-wrap items-center gap-2 mb-10 border-b border-white/10 pb-4">
-              {categories.map((c) => (
-                <button
-                  key={c.id}
-                  type="button"
-                  onClick={() => setSelectedCategory(c.id)}
-                  className={`px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all min-h-10 ${
-                    selectedCategory === c.id
-                      ? 'bg-white text-black shadow-gold-sm ring-2 ring-[#d4af37]'
-                      : 'bg-zinc-900 text-zinc-400 hover:text-white border border-white/5'
-                  }`}
-                >
-                  {c.name.split(' (')[0]}
-                </button>
-              ))}
-            </div>
-
-            {/* Active Category Display */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-zinc-950 border border-white/10 rounded-3xl p-8 sm:p-10">
-              
-              <div className="lg:col-span-6 relative aspect-[16/10] rounded-2xl overflow-hidden bg-black border border-white/10">
-                <img
-                  src={activeCategory.imageUrl}
-                  alt={activeCategory.name}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4">
-                  <span className="text-xs font-mono text-[#d4af37] font-bold uppercase tracking-wider block mb-1">
-                    {activeCategory.ageRange}
-                  </span>
-                  <h3 className="text-lg font-bold text-white">{activeCategory.tagline}</h3>
-                </div>
-              </div>
-
-              <div className="lg:col-span-6 space-y-6">
-                <div>
-                  <span className="text-xs font-mono font-bold text-[#d4af37] block mb-2">
-                    KATEGORI KOMUNITAS
-                  </span>
-                  <h3 className="text-2xl sm:text-3xl font-black text-white uppercase mb-3">
-                    {activeCategory.name}
-                  </h3>
-                  <p className="text-sm sm:text-base text-zinc-300 font-light leading-relaxed">
-                    {activeCategory.description}
-                  </p>
-                </div>
-
-                <div className="p-4 rounded-xl bg-black border border-white/10 text-xs">
-                  <p className="text-zinc-400 font-mono mb-1 uppercase font-bold">WAKTU PERTEMUAN RUTIN:</p>
-                  <p className="text-white font-semibold">{activeCategory.meetingTime}</p>
-                </div>
-
+            <div className="p-8 sm:p-10 rounded-3xl bg-[#fff] border border-[#e8e2d5] shadow-warm-md space-y-4 text-[#625e54] text-sm leading-relaxed font-light">
+              <p>
+                Di Gereja Baptis Indonesia Baitani, Sukabumi, persekutuan tidak hanya berlangsung dalam ibadah umum, melainkan juga terpelihara melalui <strong className="text-[#1b1c1a] font-medium">Komunitas Iman (KOI)</strong>. Melalui KOI, setiap warga jemaat memiliki wadah untuk saling membagikan pengalaman iman, berdoa bersama, dan saling menopang dalam kasih Kristus.
+              </p>
+              <p>
+                Kelompok KOI diadakan untuk menjangkau keluarga, pemuda, dan warga jemaat di wilayah Sukabumi dan sekitarnya agar persekutuan tetap terjalin erat sepanjang minggu.
+              </p>
+              <div className="pt-4 border-t border-[#e8e2d5] flex flex-wrap items-center gap-4">
                 <a
-                  href="#daftar-cg"
-                  className="btn-magnetic inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-white hover:bg-[#f3e5ab] text-black font-bold text-xs tracking-wider uppercase shadow-xl"
+                  href="https://www.instagram.com/gbibaitanisukabumi/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-xs font-bold tracking-wider text-[#785600] hover:text-[#ffdea6] transition-colors"
                 >
-                  <span>GABUNG DENGAN CG INI</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <InstagramIcon className="w-4 h-4 text-pink-500" />
+                  <span>Informasi Pertemuan Melalui Instagram @gbibaitanisukabumi</span>
                 </a>
               </div>
-
             </div>
           </div>
         </section>
 
-        {/* Join Connect Group Form */}
-        <section id="daftar-cg" className="py-24 bg-black">
+        {/* Connect / Interest Section */}
+        <section id="daftar-koi" className="py-24 bg-[#f5f3f0]">
           <div className="max-w-3xl mx-auto px-4 sm:px-6">
             <div className="text-center mb-12">
-              <span className="text-xs font-bold tracking-widest uppercase text-zinc-400 block mb-2">
-                LANGKAH AWAL BERGABUNG
+              <span className="text-xs font-mono font-bold tracking-widest uppercase text-[#785600] block mb-2">
+                TERHUBUNG DENGAN KOI
               </span>
-              <h2 className="text-3xl sm:text-4xl font-black text-white uppercase mb-4">
-                Formulir Pendaftaran Connect Group
+              <h2 className="text-3xl sm:text-4xl font-black text-[#1b1c1a] mb-4">
+                Bergabung dengan Komunitas Iman
               </h2>
-              <p className="text-zinc-400 text-sm font-light leading-relaxed">
-                Isi data singkat Anda di bawah ini. Tim koordinator CG kami akan menghubungi Anda dalam waktu 1x24 jam untuk menghubungkan Anda dengan kelompok sel terdekat.
+              <p className="text-[#625e54] text-sm font-light leading-relaxed">
+                Rindu bertumbuh dan memiliki persekutuan rohani di Sukabumi? Sampaikan informasi kontak Anda atau kunjungi langsung persekutuan di gereja.
               </p>
             </div>
 
-            {isSubmitted ? (
-              <div className="p-8 sm:p-12 rounded-2xl bg-zinc-950 border border-emerald-500/30 text-center">
-                <CheckCircle2 className="w-12 h-12 text-emerald-400 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold text-white mb-2">Terima Kasih, {formData.name}!</h3>
-                <p className="text-zinc-300 text-sm font-light max-w-md mx-auto mb-6">
-                  Pendaftaran Connect Group Anda telah kami terima. Koordinator wilayah kami akan segera menghubungi nomor WhatsApp Anda.
+            <div className="p-8 sm:p-10 rounded-2xl bg-[#fff] border border-[#e8e2d5] shadow-warm-md space-y-6">
+              <div className="border-b border-[#e8e2d5] pb-5">
+                <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#785600] tracking-wider mb-2">
+                  <ShieldCheck className="w-4 h-4 text-[#785600]" />
+                  <span>PANDUAN TERHUBUNG LANGSUNG KE SEKRETARIAT</span>
+                </div>
+                <h3 className="text-xl font-bold text-[#1b1c1a]">
+                  Langkah Bergabung dengan Kelompok KOI
+                </h3>
+                <p className="text-xs sm:text-sm text-[#625e54] font-light mt-1 leading-relaxed">
+                  Untuk menjaga kenyamanan dan keamanan data Anda, penempatan kelompok KOI dikoordinasikan langsung oleh pengurus jemaat tanpa pengisian formulir pihak ketiga.
                 </p>
-                <button
-                  type="button"
-                  onClick={() => setIsSubmitted(false)}
-                  className="px-6 py-2.5 rounded-full border border-white/20 text-xs font-bold uppercase text-white hover:border-white transition-colors"
-                >
-                  Daftarkan Anggota Lain
-                </button>
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="p-8 sm:p-10 rounded-2xl bg-zinc-950 border border-white/10 space-y-5 shadow-2xl">
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-zinc-300 mb-2">
-                    Nama Lengkap <span className="text-[#d4af37]">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    aria-label="Nama Lengkap"
-                    {...{ ["place" + "holder"]: "Nama lengkap Anda" }}
-                    className="w-full px-4 py-3 rounded-lg border border-white/15 bg-black text-white text-sm focus:outline-none focus:border-[#d4af37]"
-                  />
-                </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="space-y-3.5 py-1 text-sm text-[#625e54] font-light">
+                <div className="flex items-start gap-3">
+                  <span className="w-6 h-6 rounded-full bg-[#f5f3f0] text-[#785600] flex items-center justify-center text-xs font-mono font-bold flex-shrink-0 mt-0.5 border border-[#e8e2d5]">
+                    1
+                  </span>
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-zinc-300 mb-2">
-                      Nomor WhatsApp / HP <span className="text-[#d4af37]">*</span>
-                    </label>
-                    <input
-                      type="tel"
-                      required
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      aria-label="Nomor WhatsApp"
-                      {...{ ["place" + "holder"]: "+62 812..." }}
-                      className="w-full px-4 py-3 rounded-lg border border-white/15 bg-black text-white text-sm focus:outline-none focus:border-[#d4af37]"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-zinc-300 mb-2">
-                      Alamat Email
-                    </label>
-                    <input
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      aria-label="Alamat Email"
-                      {...{ ["place" + "holder"]: "email@anda.com" }}
-                      className="w-full px-4 py-3 rounded-lg border border-white/15 bg-black text-white text-sm focus:outline-none focus:border-[#d4af37]"
-                    />
+                    <strong className="text-[#1b1c1a] block font-medium">Melalui Direct Message (DM) Instagram:</strong>
+                    <span className="text-xs leading-relaxed">
+                      Kirimkan pesan ke akun Instagram resmi gereja <strong className="text-[#1b1c1a]">@gbibaitanisukabumi</strong> mengenai minat Anda, wilayah domisili di Sukabumi, atau kelompok usia (pemuda, dewasa, keluarga).
+                    </span>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="flex items-start gap-3">
+                  <span className="w-6 h-6 rounded-full bg-[#f5f3f0] text-[#785600] flex items-center justify-center text-xs font-mono font-bold flex-shrink-0 mt-0.5 border border-[#e8e2d5]">
+                    2
+                  </span>
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-zinc-300 mb-2">
-                      Wilayah / Kota Tempat Tinggal
-                    </label>
-                    <select
-                      value={formData.city}
-                      onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg border border-white/15 bg-black text-white text-sm focus:outline-none focus:border-[#d4af37]"
-                    >
-                      <option value="Jakarta Barat">Jakarta Barat</option>
-                      <option value="Jakarta Pusat">Jakarta Pusat</option>
-                      <option value="Jakarta Selatan">Jakarta Selatan</option>
-                      <option value="Jakarta Utara / Timur">Jakarta Utara / Timur</option>
-                      <option value="Tangerang / BSD">Tangerang / BSD</option>
-                      <option value="Surabaya">Surabaya</option>
-                      <option value="Bali">Bali</option>
-                      <option value="Medan">Medan</option>
-                      <option value="Lainnya">Kota Lainnya / Online</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-zinc-300 mb-2">
-                      Kategori Pilihan
-                    </label>
-                    <select
-                      value={formData.category}
-                      onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg border border-white/15 bg-black text-white text-sm focus:outline-none focus:border-[#d4af37]"
-                    >
-                      <option value="pro">Pro-Connect (Mahasiswa & Profesional)</option>
-                      <option value="youth">Limitless Youth (Remaja)</option>
-                      <option value="family">Kingdom Family (Keluarga/Pasutri)</option>
-                      <option value="golden">Golden Age (Senior)</option>
-                    </select>
+                    <strong className="text-[#1b1c1a] block font-medium">Tatap Muka Seusai Ibadah Raya:</strong>
+                    <span className="text-xs leading-relaxed">
+                      Anda dapat menjumpai hamba Tuhan atau pengurus jemaat seusai Ibadah Raya hari Minggu di gedung gereja: Jl. R.E. Martadinata No. 86, Sukabumi. Tim kami akan dengan sukacita memperkenalkan Anda ke pemimpin KOI terdekat.
+                    </span>
                   </div>
                 </div>
+              </div>
 
-                <button
-                  type="submit"
-                  className="btn-magnetic w-full py-4 rounded-full bg-white hover:bg-[#f3e5ab] text-black font-bold text-xs tracking-widest uppercase transition-all shadow-xl min-h-12 flex items-center justify-center gap-2 mt-4"
-                >
-                  <Send className="w-4 h-4 text-black" />
-                  <span>KIRIM PENDAFTARAN CONNECT GROUP</span>
-                </button>
-              </form>
-            )}
+              <div className="pt-4 border-t border-[#e8e2d5] space-y-4">
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <a
+                    href="https://www.instagram.com/gbibaitanisukabumi/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-magnetic flex-1 inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl bg-[#785600] hover:bg-[#ffdea6] text-white hover:text-[#1b1c1a] font-bold text-xs tracking-wider uppercase transition-all shadow-warm-sm active:scale-95 min-h-12"
+                  >
+                    <InstagramIcon className="w-4 h-4 text-pink-500" />
+                    <span>HUBUNGI VIA INSTAGRAM (@GBIBAITANISUKABUMI)</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=Jl.+R.E.+Martadinata+No.+86+Sukabumi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-magnetic flex-1 inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl border border-[#e8e2d5] bg-[#fff] hover:bg-[#f5f3f0] text-[#1b1c1a] font-bold text-xs tracking-wider uppercase transition-all min-h-12"
+                  >
+                    <MapPin className="w-4 h-4 text-[#785600]" />
+                    <span>LOKASI: JL. R.E. MARTADINATA NO. 86</span>
+                    <ExternalLink className="w-3.5 h-3.5 text-[#625e54]" />
+                  </a>
+                </div>
+
+                <div className="p-4 rounded-xl bg-[#f5f3f0] border border-[#e8e2d5] text-center">
+                  <p className="text-xs text-[#625e54] font-light leading-relaxed">
+                    Kami tidak mengumpulkan nomor telepon atau data pribadi Anda melalui web ini. Seluruh persekutuan KOI bersifat sukarela, kekeluargaan, dan terbuka bagi setiap jiwa yang rindu berakar dalam Kristus.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </main>

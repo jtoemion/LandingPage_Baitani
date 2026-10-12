@@ -2,34 +2,33 @@ import { Leader } from '@/types';
 
 export const leadershipData: Leader[] = [
   {
-    id: 'senior-pastor',
-    name: 'Pdt. Johanes Pratama, M.Th',
-    role: 'Gembala Sidang (Senior Pastor)',
-    bio: 'Melayani jemaat Gereja Baitani dengan dedikasi lebih dari 20 tahun. Memiliki kerinduan mendalam melihat keluarga-keluarga dipulihkan dan mengalami kasih anugerah Allah sejati.',
-    imageUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop',
+    id: 'pdt-kristianto',
+    name: 'Pdt. Kristianto',
+    role: 'Gembala Jemaat',
+    bio: 'Gembala Jemaat Gereja Baptis Indonesia Baitani, Sukabumi yang melayani jemaat dengan ketulusan dan kesetiaan dalam pengajaran Firman Tuhan.',
+    imageUrl: '/images/gembala/pdt-kristianto.jpeg',
     socials: {
-      email: 'pastor.johanes@gerejabaitani.org',
+      instagram: '@gbibaitanisukabumi',
     },
   },
   {
-    id: 'associate-pastor',
-    name: 'Pdm. Ruth Hendrawan, S.Pd.K',
-    role: 'Wakil Gembala & Pembina Doa',
-    bio: 'Memimpin mezbah doa dan konseling keluarga jemaat. Aktif menggerakkan wanita bijak dan pendalaman firman lintas generasi.',
-    imageUrl: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop',
+    id: 'ibu-mexy-jt',
+    name: 'Ibu Mexy JT',
+    role: 'Istri Gembala Jemaat',
+    bio: 'Mendampingi pelayanan penggembalaan jemaat di Gereja Baptis Indonesia Baitani, Sukabumi dalam kasih dan kebersamaan pelayanan.',
+    imageUrl: '/images/gembala/pdt-kristianto-ibu-mexy.jpeg',
     socials: {
-      email: 'ruth.hendrawan@gerejabaitani.org',
+      instagram: '@gbibaitanisukabumi',
     },
   },
   {
-    id: 'youth-pastor',
-    name: 'Ps. Daniel Setiawan, S.Kom',
-    role: 'Pastor Youth & Creative Media',
-    bio: 'Menjangkau dan membimbing generasi muda untuk memiliki fondasi iman kokoh, berintegritas tinggi, dan relevan di ranah profesional.',
-    imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop',
+    id: 'panitia-perancang-2025-2027',
+    name: 'Panitia Perancang Periode 2025–2027',
+    role: 'Kepengurusan Pelayanan Jemaat',
+    bio: 'Badan kepengurusan dan panitia perancang pelayanan jemaat periode 2025–2027 yang merancang serta mengkoordinasikan program-program pelayanan dan persekutuan di Gereja Baptis Indonesia Baitani, Sukabumi.',
+    imageUrl: '/images/page-hero/gembala.jpg',
     socials: {
-      instagram: '@danieldest',
-      email: 'daniel@gerejabaitani.org',
+      instagram: '@gbibaitanisukabumi',
     },
   },
 ];

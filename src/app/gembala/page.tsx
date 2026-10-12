@@ -3,210 +3,285 @@ import type { Metadata } from 'next';
 import Navbar from '@/components/common/Navbar';
 import Footer from '@/components/common/Footer';
 import PageHero from '@/components/common/PageHero';
-import { ArrowUpRight, BookOpen, Heart, Mail, Phone, Calendar, Quote, Shield } from 'lucide-react';
+import { Quote, MapPin, Users } from 'lucide-react';
+import SiteIcon from '@/components/common/SiteIcon';
+import InstagramIcon from '@/components/common/InstagramIcon';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Gembala & Kepemimpinan — Gereja Baitani',
-  description: 'Mengenal profil Gembala Sidang Pdt. Johanes Pratama dan tim pastoral Gereja Baitani.',
+  title: 'Gembala Jemaat & Pelayanan — Gereja Baptis Indonesia Baitani, Sukabumi',
+  description: 'Mengenal Gembala Jemaat Pdt. Kristianto & Ibu Mexy JT serta kepengurusan dan pelayanan jemaat Gereja Baptis Indonesia Baitani di Sukabumi.',
 };
 
 export default function GembalaPage() {
-  const pastoralTeam = [
+  const ministryFocusAreas = [
     {
-      name: 'Pdt. Andreas Wicaksono, M.Div',
-      role: 'Gembala Bidang Pengajaran & Doktrin',
-      bio: 'Mengawasi kurikulum pemuridan, pembinaan calon baptisan, dan memastikan seluruh khotbah serta materi sel berakar teguh pada eksegesis Alkitabiah.',
-      email: 'andreas@gerejabaitani.org',
-      imageUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800&auto=format&fit=crop',
+      title: 'Pelayanan Firman & Pemuridan',
+      desc: 'Mendukung pendalaman Alkitab, kelas pembentukan iman, dan kelompok Komunitas Iman (KOI) agar jemaat berakar teguh dalam ajaran Alkitabiah.',
+      icon: 'bible-study' as const,
     },
     {
-      name: 'Ibu Maria Magdalena, S.Th',
-      role: 'Gembala Pelayanan Wanita & Baitani Care',
-      bio: 'Memimpin persekutuan wanita, pelayanan konseling keluarga, serta mengkoordinasikan aksi kemanusiaan tanggap bencana dan santunan sembako.',
-      email: 'maria@gerejabaitani.org',
-      imageUrl: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop',
+      title: 'Pelayanan Diakonia & Persekutuan',
+      desc: 'Menyatakan kasih persaudaraan melalui perhatian jemaat, saling menopang dalam kedukaan maupun sukacita, dan aksi kepedulian sosial di Sukabumi.',
+      icon: 'prayer' as const,
     },
     {
-      name: 'Pdm. Michael Christian',
-      role: 'Youth & Young Adult Pastor',
-      bio: 'Memiliki beban besar mengobarkan hati anak-anak muda SMP, SMA, dan mahasiswa untuk hidup kudus, berani bersaksi, dan mengejar panggilan Tuhan.',
-      email: 'michael@gerejabaitani.org',
-      imageUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop',
+      title: 'Pelayanan Generasi Muda & Anak',
+      desc: 'Wadah pembinaan rohani bagi anak-anak sekolah minggu dan pemuda-pemudi untuk bertumbuh dalam kasih Tuhan sejak dini.',
+      icon: 'youth' as const,
     },
     {
-      name: 'Pdm. Ruth Elisabeth, S.Pd',
-      role: 'Director of Baitani Kids Church',
-      bio: 'Mendedikasikan hidupnya melatih para guru sekolah minggu dan merancang kurikulum animasi kreatif agar anak-anak mengenal kasih Yesus sejak dini.',
-      email: 'ruth@gerejabaitani.org',
-      imageUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop',
+      title: 'Persekutuan Doa & Ibadah',
+      desc: 'Memelihara keintiman doa korporat jemaat, permohonan syafaat, dan ketertiban tata ibadah yang memuliakan Tuhan.',
+      icon: 'worship' as const,
     },
   ];
 
   return (
-    <div className="min-h-dvh flex flex-col bg-[#050505] text-[#fafafa]">
+    <div className="min-h-dvh flex flex-col bg-[#fbf9f6] text-[#1b1c1a]">
       <Navbar />
 
       <main id="main-content" className="flex-1">
         {/* Page Hero */}
         <PageHero
-          category="KEPEMIMPINAN & PENGGEMBALAAN"
-          title="TIM PENGGEMBALAAN"
-          titleAccent="Called to Shepherd with Integrity"
-          subtitle="Mengenal hati, visi, dan para pelayan Tuhan yang menggembalakan jemaat Gereja Baitani dengan ketulusan, doa yang tekun, dan pengajaran Alkitabiah yang murni."
-          breadcrumbCurrent="Gembala & Kepemimpinan"
+          category="GEMBALA JEMAAT & PELAYANAN"
+          title="GEMBALA JEMAAT"
+          titleAccent="Pdt. Kristianto & Ibu Mexy JT"
+          subtitle="Mengenal Gembala Jemaat Gereja Baptis Indonesia Baitani, Sukabumi dan komitmen pelayanan bersama bagi pertumbuhan rohani warga jemaat dalam kasih Kristus."
+          breadcrumbCurrent="Gembala & Pelayanan"
+          imageSrc="/images/page-hero/gembala.jpg"
+          imageAlt="Foto ilustrasi: tangan membuka Alkitab."
         />
 
-        {/* Lead Pastor Editorial Profile */}
-        <section className="py-24 bg-black border-b border-white/10">
+        {/* Main Pastoral Profile Section */}
+        <section className="py-24 bg-[#f5f3f0] border-b border-[#e8e2d5]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-              
-              {/* Portrait (5 cols) */}
-              <div className="lg:col-span-5 flex justify-center">
-                <div className="relative w-full max-w-md aspect-[3/4] rounded-3xl overflow-hidden border border-white/15 shadow-2xl bg-zinc-950 group">
-                  <img
-                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1200&auto=format&fit=crop"
-                    alt="Pdt. Johanes Pratama, M.Th — Gembala Sidang Gereja Baitani"
-                    className="w-full h-full object-cover object-center grayscale-[20%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
-                  
-                  <div className="absolute bottom-6 left-6 right-6">
-                    <span className="text-xs font-black tracking-wider uppercase text-[#d4af37] block mb-1">
-                      GEMBALA SIDANG
-                    </span>
-                    <h3 className="text-2xl font-bold text-white tracking-wide">
-                      Pdt. Johanes Pratama, M.Th
-                    </h3>
-                    <p className="text-xs text-zinc-400 mt-1 font-light">
-                      Senior Pastor & Founder Gereja Baitani
-                    </p>
-                  </div>
-                </div>
-              </div>
 
-              {/* Bio & Story (7 cols) */}
-              <div className="lg:col-span-7 space-y-6">
-                <span className="text-xs font-black tracking-widest uppercase text-zinc-400 block mb-2">
-                  BIOGRAFI GEMBALA SIDANG
-                </span>
-                <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight leading-tight">
-                  Pdt. Johanes Pratama
-                </h2>
-
-                <div className="space-y-4 text-zinc-300 text-sm sm:text-base font-light leading-relaxed">
-                  <p>
-                    Pdt. Johanes Pratama menyerahkan hidupnya untuk melayani Tuhan sejak usia muda. Setelah menempuh pendidikan Master of Theology (M.Th) di Seminari Alkitab terkemuka dan melayani di berbagai kota di Indonesia, ia menerima panggilan ilahi untuk merintis Gereja Baitani sebagai rumah pemulihan bagi jiwa-jiwa.
-                  </p>
-                  <p>
-                    Dalam kepemimpinannya, ia menekankan keseimbangan antara <strong>kuasa Firman yang tak berkompromi</strong> dan <strong>kepekaan akan karya Roh Kudus</strong>. Kerinduan terbesarnya adalah melahirkan generasi yang tidak hanya sekadar menjadi penonton gereja, melainkan murid Kristus yang berakar teguh, berkarakter mulia, dan berpengaruh nyata di tengah masyarakat.
-                  </p>
-                  <p>
-                    Bersama istrinya, Maria Magdalena, dan anak-anak mereka, keluarga penggembalaan berkomitmen melayani jemaat dengan hati seorang bapa rohani yang penuh belas kasihan.
-                  </p>
-                </div>
-
-                <div className="pt-6 border-t border-white/10 flex flex-wrap items-center gap-6">
-                  <Link
-                    href="/koneksi"
-                    className="btn-magnetic inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-white hover:bg-[#f3e5ab] text-black font-bold text-xs tracking-wider uppercase shadow-xl"
-                  >
-                    <span>JADWALKAN KONSELING PASTORAL</span>
-                    <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
-                  </Link>
-                  <span className="text-xs font-mono text-zinc-500">
-                    sekretariat@gerejabaitani.org
-                  </span>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-        {/* Renungan Penggembalaan Bulan Ini */}
-        <section className="py-20 bg-[#070709] border-b border-white/10">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6">
-            <div className="p-8 sm:p-12 rounded-3xl bg-zinc-950 border border-[#d4af37]/40 shadow-2xl relative overflow-hidden">
-              <Quote className="w-16 h-16 text-[#d4af37]/50 absolute -right-2 -bottom-2 pointer-events-none" aria-hidden="true" />
-              
-              <div className="inline-block px-3 py-1 rounded bg-[#d4af37]/40 text-[#f3e5ab] border border-[#d4af37]/50 text-xs font-mono font-bold uppercase tracking-wider mb-4">
-                PESAN BULAN INI // SEPTEMBER 2026
-              </div>
-
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">
-                &ldquo;Tahun Persatuan: Mengalami Kuasa Sorga yang Terbuka Melalui Kerendahan Hati&rdquo;
-              </h3>
-
-              <p className="text-zinc-300 text-sm sm:text-base font-light leading-relaxed mb-6">
-                Ketika jemaat sepakat dalam doa dan sehati dalam kasih, tidak ada tembok benteng musuh yang tidak diruntuhkan. Roh Kudus tidak dicurahkan di atas perselisihan, melainkan di atas persekutuan yang berakar dalam kerendahan hati Kristus. Mari kita melangkah di sisa tahun ini dengan tekad untuk saling mengampuni dan saling menopang.
-              </p>
-
-              <div className="flex items-center gap-3 pt-4 border-t border-white/10 text-xs text-zinc-400 font-mono">
-                <span className="text-white font-bold">Pdt. Johanes Pratama</span>
-                <span>•</span>
-                <span>Baitani Pastoral Letter</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Tim Pastoral & Dewan Penggembalaan */}
-        <section className="py-24 bg-black border-b border-white/10">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="text-xs font-bold tracking-widest uppercase text-zinc-400 block mb-2">
-                DEWAN PENGGEMBALAAN & BIDANG
-              </span>
-              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase mb-4">
-                Tim Pastoral Kami
-              </h2>
-              <p className="text-zinc-400 text-sm sm:text-base leading-relaxed font-light">
-                Para hamba Tuhan yang melayani dengan dedikasi penuh di setiap bidang pelayanan jemaat.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {pastoralTeam.map((pastor, idx) => (
-                <div
-                  key={`pastor-${idx}`}
-                  className="bg-zinc-950 border border-white/10 rounded-2xl overflow-hidden hover:border-[#d4af37]/40 transition-all duration-300 flex flex-col justify-between group shadow-xl"
-                >
-                  <div>
-                    <div className="relative aspect-[4/3] w-full overflow-hidden bg-black">
-                      <img
-                        src={pastor.imageUrl}
-                        alt={pastor.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent" />
-                    </div>
-
-                    <div className="p-6">
-                      <span className="text-xs font-bold tracking-wider uppercase text-[#d4af37] block mb-1">
-                        {pastor.role}
+              {/* Pastor & Wife Photos (6 cols on lg) */}
+              <div className="lg:col-span-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full">
+                  {/* Photo 1: Pdt. Kristianto & Ibu Mexy JT */}
+                  <div className="relative aspect-[3/4] sm:aspect-[4/5] rounded-3xl overflow-hidden border border-[#e8e2d5] shadow-2xl bg-white group">
+                    <img
+                      src="/images/gembala/pdt-kristianto-ibu-mexy.jpeg"
+                      alt="Foto Pdt. Kristianto dan Ibu Mexy JT — Gembala Gereja Baptis Indonesia Baitani Sukabumi"
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />
+                    <div className="absolute bottom-5 left-5 right-5 text-white">
+                      <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-[#d4af37] block mb-1">
+                        PELAYANAN BERSAMA
                       </span>
-                      <h3 className="text-base font-bold text-white mb-3 group-hover:text-[#d4af37] transition-colors">
-                        {pastor.name}
-                      </h3>
-                      <p className="text-xs text-zinc-400 font-light leading-relaxed mb-4">
-                        {pastor.bio}
+                      <h4 className="text-base font-bold leading-tight">
+                        Pdt. Kristianto &amp; Ibu Mexy JT
+                      </h4>
+                      <p className="text-xs text-white/80 font-light mt-0.5">
+                        Gembala Jemaat &amp; Istri Gembala
                       </p>
                     </div>
                   </div>
 
-                  <div className="p-6 pt-0">
-                    <a
-                      href={`mailto:${pastor.email}`}
-                      className="inline-flex items-center gap-2 text-xs font-mono text-zinc-400 hover:text-white transition-colors"
-                    >
-                      <Mail className="w-3.5 h-3.5 text-[#d4af37]" />
-                      <span className="truncate">{pastor.email}</span>
-                    </a>
+                  {/* Photo 2: Pdt. Kristianto Solo */}
+                  <div className="relative aspect-[3/4] sm:aspect-[4/5] rounded-3xl overflow-hidden border border-[#e8e2d5] shadow-2xl bg-white group">
+                    <img
+                      src="/images/gembala/pdt-kristianto.jpeg"
+                      alt="Foto Pdt. Kristianto — Gembala Jemaat Gereja Baptis Indonesia Baitani Sukabumi"
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />
+                    <div className="absolute bottom-5 left-5 right-5 text-white">
+                      <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-[#d4af37] block mb-1">
+                        GEMBALA JEMAAT
+                      </span>
+                      <h4 className="text-base font-bold leading-tight">
+                        Pdt. Kristianto
+                      </h4>
+                      <p className="text-xs text-white/80 font-light mt-0.5">
+                        GBI Baitani Sukabumi
+                      </p>
+                    </div>
                   </div>
                 </div>
-              ))}
+              </div>
+
+              {/* Bio & Story (6 cols on lg) */}
+              <div className="lg:col-span-6 space-y-6">
+                <span className="text-xs font-mono font-bold tracking-widest uppercase text-[#625e54] block mb-2">
+                  PROFIL GEMBALA JEMAAT
+                </span>
+                <h2 className="text-3xl sm:text-5xl font-black text-[#1b1c1a] uppercase tracking-tight leading-tight">
+                  Pdt. Kristianto &amp; Ibu Mexy JT
+                </h2>
+
+                <div className="space-y-4 text-[#625e54] text-sm sm:text-base font-light leading-relaxed">
+                  <p>
+                    Pelayanan penggembalaan jemaat di Gereja Baptis Indonesia Baitani, Kota Sukabumi diemban oleh <strong className="font-semibold text-[#1b1c1a]">Pdt. Kristianto</strong> sebagai Gembala Jemaat, didampingi dengan penuh kesetiaan oleh sang istri, <strong className="font-semibold text-[#1b1c1a]">Ibu Mexy JT</strong>.
+                  </p>
+                  <p>
+                    Keluarga gembala melayani jemaat dengan ketulusan hati, membimbing kehidupan rohani jemaat agar berakar teguh dalam pengajaran Firman Tuhan yang murni, serta menumbuhkan persekutuan kasih persaudaraan yang erat di antara seluruh warga jemaat.
+                  </p>
+                  <p>
+                    Dengan teladan kerendahan hati dan komitmen doa, mereka senantiasa mendampingi jemaat dalam setiap musim kehidupan, memperkuat dasar iman keluarga, dan menghadirkan kesaksian kasih Kristus yang nyata bagi masyarakat di Sukabumi.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-4 border-y border-[#e8e2d5]">
+                  <div className="p-4 rounded-xl bg-white border border-[#e8e2d5]">
+                    <span className="text-[11px] font-mono text-[#625e54] uppercase block mb-1">Gembala Jemaat</span>
+                    <p className="font-bold text-sm text-[#1b1c1a]">Pdt. Kristianto</p>
+                  </div>
+                  <div className="p-4 rounded-xl bg-white border border-[#e8e2d5]">
+                    <span className="text-[11px] font-mono text-[#625e54] uppercase block mb-1">Istri Gembala Jemaat</span>
+                    <p className="font-bold text-sm text-[#1b1c1a]">Ibu Mexy JT</p>
+                  </div>
+                </div>
+
+                <div className="pt-2 flex flex-wrap items-center gap-4">
+                  <a
+                    href="https://www.instagram.com/gbibaitanisukabumi/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-magnetic inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#785600] hover:bg-[#5a4000] text-white font-bold text-xs tracking-wider uppercase shadow-xl"
+                  >
+                    <InstagramIcon className="w-4 h-4 text-pink-400" />
+                    <span>INSTAGRAM @GBIBAITANISUKABUMI</span>
+                  </a>
+                  <Link
+                    href="/#lokasi"
+                    className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-[#e8e2d5] hover:border-[#785600] text-[#1b1c1a] text-xs font-bold tracking-wider uppercase transition-colors"
+                  >
+                    <MapPin className="w-4 h-4 text-[#785600]" />
+                    <span>LOKASI GEREJA DI SUKABUMI</span>
+                  </Link>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* Separate Section: Panitia Perancang Periode 2025–2027 */}
+        <section className="py-20 bg-white border-b border-[#e8e2d5]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+
+              {/* Left Badge / Icon Box */}
+              <div className="lg:col-span-4 flex justify-center">
+                <div className="w-full max-w-sm rounded-3xl border border-[#e8e2d5] bg-[#fbf9f6] p-8 text-center shadow-md">
+                  <div className="w-16 h-16 rounded-2xl bg-[#785600]/10 border border-[#785600]/30 flex items-center justify-center mx-auto mb-4 text-[#785600]">
+                    <Users className="w-8 h-8" />
+                  </div>
+                  <span className="text-[11px] font-mono font-bold tracking-widest uppercase text-[#785600] block mb-1">
+                    PERIODE 2025–2027
+                  </span>
+                  <h3 className="text-xl font-bold text-[#1b1c1a]">
+                    Panitia Perancang
+                  </h3>
+                  <p className="text-xs text-[#625e54] mt-1 font-light">
+                    Kepengurusan Pelayanan Jemaat
+                  </p>
+                  <div className="mt-4 pt-4 border-t border-[#e8e2d5] text-[11px] text-[#625e54]/80 font-mono">
+                    GBI BAITANI SUKABUMI
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Information */}
+              <div className="lg:col-span-8 space-y-4">
+                <span className="text-xs font-mono font-bold tracking-widest uppercase text-[#625e54] block">
+                  KEPENGURUSAN JEMAAT TERPISAH
+                </span>
+                <h2 className="text-2xl sm:text-4xl font-black text-[#1b1c1a] uppercase tracking-tight">
+                  Panitia Perancang Periode 2025–2027
+                </h2>
+                <div className="space-y-3 text-[#625e54] text-sm sm:text-base font-light leading-relaxed">
+                  <p>
+                    Kepengurusan Panitia Perancang Periode 2025–2027 Gereja Baptis Indonesia Baitani, Sukabumi merupakan badan pelayanan jemaat yang dipercayakan untuk merancang, mengkoordinasikan, dan mendukung kelancaran program-program persekutuan, ibadah, serta kegiatan pembinaan iman jemaat.
+                  </p>
+                  <p>
+                    Panitia ini bekerja sama dengan pelayanan penggembalaan jemaat untuk memastikan seluruh kegiatan rohani dan tata kelola jemaat berjalan dengan tertib, penuh dedikasi, serta memuliakan nama Tuhan.
+                  </p>
+                  <p className="text-xs text-[#625e54]/80 font-mono">
+                    * Susunan kepengurusan lengkap dan warta panitia dapat dikonfirmasi langsung melalui sekretariat gedung gereja atau warta jemaat mingguan.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* Biblical Foundation Card */}
+        <section className="py-20 bg-[#fbf9f6] border-b border-[#e8e2d5]">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6">
+            <div className="p-8 sm:p-12 rounded-3xl bg-white border border-[#e8e2d5] shadow-2xl relative overflow-hidden">
+              <Quote className="w-16 h-16 text-[#785600]/30 absolute -right-2 -bottom-2 pointer-events-none" aria-hidden="true" />
+
+              <div className="inline-block px-3 py-1 rounded bg-[#785600]/10 text-[#785600] border border-[#785600]/30 text-xs font-mono font-bold uppercase tracking-wider mb-4">
+                LANDASAN PELAYANAN
+              </div>
+
+              <h3 className="text-xl sm:text-2xl font-bold text-[#1b1c1a] mb-4">
+                &ldquo;Layanilah seorang akan yang lain, sesuai dengan karunia yang telah diperoleh tiap-tiap orang sebagai pengurus yang baik dari kasih karunia Allah.&rdquo;
+              </h3>
+
+              <div className="flex items-center gap-3 pt-4 border-t border-[#e8e2d5] text-xs text-[#625e54] font-mono">
+                <span className="text-[#785600] font-bold">1 PETRUS 4:10</span>
+                <span>•</span>
+                <span>Firman Tuhan Sebagai Panduan Pelayanan</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Bidang-Bidang Pelayanan Jemaat */}
+        <section className="py-24 bg-[#f5f3f0] border-b border-[#e8e2d5]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <span className="text-xs font-bold tracking-widest uppercase text-[#625e54] block mb-2 font-mono">
+                BIDANG PELAYANAN JEMAAT
+              </span>
+              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-[#1b1c1a] uppercase mb-4">
+                Fokus Pelayanan Bersama
+              </h2>
+              <p className="text-[#625e54] text-sm sm:text-base leading-relaxed font-light">
+                Bidang-bidang pelayanan yang diperuntukkan bagi pembinaan rohani, persekutuan, dan kepedulian kasih di tengah jemaat.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {ministryFocusAreas.map((area, idx) => {
+                return (
+                  <div
+                    key={`area-${idx}`}
+                    className="bg-white border border-[#e8e2d5] rounded-2xl p-7 hover:border-[#785600]/40 transition-all duration-300 flex flex-col justify-between group shadow-xl"
+                  >
+                    <div>
+                      <div className="w-12 h-12 rounded-xl bg-[#785600]/10 border border-[#785600]/20 flex items-center justify-center text-[#785600] mb-6 group-hover:scale-110 transition-transform">
+                        <SiteIcon name={area.icon} className="w-6 h-6" />
+                      </div>
+
+                      <h3 className="text-base font-bold text-[#1b1c1a] mb-3 group-hover:text-[#785600] transition-colors">
+                        {area.title}
+                      </h3>
+                      <p className="text-xs text-[#625e54] font-light leading-relaxed">
+                        {area.desc}
+                      </p>
+                    </div>
+
+                    <div className="pt-6 mt-6 border-t border-[#e8e2d5]">
+                      <span className="text-[11px] font-mono text-[#625e54]/70 uppercase">
+                        GBI Baitani Sukabumi
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
