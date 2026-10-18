@@ -10,6 +10,7 @@ interface PageHeroProps {
   breadcrumbCurrent: string;
   imageSrc: string;
   imageAlt: string;
+  imageLabel?: string;
 }
 
 export default function PageHero({
@@ -20,6 +21,7 @@ export default function PageHero({
   breadcrumbCurrent,
   imageSrc,
   imageAlt,
+  imageLabel = 'DOKUMENTASI RESMI',
 }: PageHeroProps) {
   return (
     <section className="relative pt-16 pb-10 sm:pt-20 sm:pb-12 overflow-hidden bg-[#fbf9f6] text-[#1b1c1a] border-b border-[#e8e2d5] select-none">
@@ -73,17 +75,20 @@ export default function PageHero({
                 src={imageSrc}
                 alt={imageAlt}
                 fill
+                priority
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
               {/* Warm unobtrusive overlay frame */}
               <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-[rgba(120,86,0,0.10)] pointer-events-none" />
-              {/* FOTO ILUSTRASI label */}
-              <div className="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-[rgba(251,249,246,0.85)] backdrop-blur-sm border border-[#e8e2d5]">
-                <span className="text-[9px] sm:text-[10px] font-mono font-semibold tracking-widest text-[#785600] uppercase select-none">
-                  FOTO ILUSTRASI
-                </span>
-              </div>
+              {/* Image label */}
+              {imageLabel && (
+                <div className="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-[rgba(251,249,246,0.85)] backdrop-blur-sm border border-[#e8e2d5]">
+                  <span className="text-[9px] sm:text-[10px] font-mono font-semibold tracking-widest text-[#785600] uppercase select-none">
+                    {imageLabel}
+                  </span>
+                </div>
+              )}
             </div>
           </div>
 

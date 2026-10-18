@@ -17,6 +17,32 @@
   - [x] Agendas & Events: Cleaned unverified events (`eventsData.ts: []`)
   - [x] Schedules & Hours: Cleaned unverified hours (`scheduleData.ts: []`) and renamed CTAs
   - [x] Documentation & Testimonials: Purged stock photo documentation and fake testimonials
+  - [x] Official Pastoral Profile: Pdt. Kristianto & Ibu Mexy JT integrated with real photos and separated Panitia Perancang 2025–2027 section
   - [x] Subagent Independent Verification: Verifier A (PASS) & Verifier B (PASS)
 - [x] Build Exit Code: 0 (11/11 static pages generated)
 - [x] ESLint: 0 errors
+- [x] Official Source Cutover & Historical Archives Integration (2026-10-18):
+  - [x] Canonical founding date: 1 September 1963 (58 charter signers) & HUT ke-63 (2026) "Disciple Maker"
+  - [x] Complete active schedules: Sunday 07.00 & 10.00 WIB, Wednesday Prayer 18.00 WIB, Seniors, Men, Women, Youth
+  - [x] 8 KOI groups directory published with coordinator Pdt. Hendi and privacy guard
+  - [x] Official ministry coordinators: Ibu Mexy, Sdri. Lily, Bpk. Ari, Pdt. Kristianto, Ibu Dhede
+  - [x] Giving channels (Cash, Bank Transfer, QRIS) with verification by Bp. Yulius (Treasurer)
+  - [x] Public secretariat contacts: WhatsApp 081295859490, email baptisbaitani232@gmail.com, hours Tue-Sun 08.00-16.00 WIB
+  - [x] 6-Era historical timeline & archival photo gallery (1963–2026) across `/tentang-kami` and `/sorotan`
+  - [x] Production build: Exit code 0 (11/11 static pages generated)
+  - [x] ESLint: 0 errors
+- [x] Visual Assets Overhaul & Authentic Photography Cutover (2026-10-18):
+  - [x] Ingested user photos: church exterior (`gedung-exterior.png`), kids group (`kids-ministry-group.png`), child praying (`kids-praying.jpg`)
+  - [x] Generated Warm-Sanctuary AI photos for `/gembala` cards (Bible on lectern, diakonia care)
+  - [x] Generated Warm-Sanctuary AI photos for Hero Carousel (sanctuary, prayer gathering, youth fellowship, KOI living room)
+  - [x] Ingested 6 authentic church WhatsApp photos: Diakonia (`diakonia-sembako.jpeg`, `diakonia-kegiatan.jpeg`), KOI (`koi-persekutuan.jpeg`), Youth & Kids (`youth-activity-1.jpeg`, `youth-activity-2.jpeg`), HUT ke-63 Ibadah Raya (`ibadah-raya.jpeg`)
+  - [x] 100% elimination of generic Unsplash placeholders across entire repository (0 remaining)
+  - [x] Ingested authentic Pemuridan photo: `pemuridan.jpeg` (Kelas Pendalaman Alkitab/Pemuridan bersama Ibu Mexy)
+  - [x] Ingested official GBI Baitani emblem logo: `logo-baitani.jpeg` and integrated into Navbar & Footer
+  - [x] Ingested congregation church facade photo: `acara-hero.jpeg` for `/acara` PageHero
+  - [x] Ingested 3 Mission Trip & Ministry photos: `mission-trip-1.jpeg`, `mission-trip-2.jpeg`, `mission-trip-3.jpeg`
+  - [x] Implemented interactive `AcaraActivitiesCarousel.tsx` featured in `/acara` center
+  - [x] Reinforced Delegation Protocol: Independent Verifier Subagent audit 100% PASS across 11 empirical criteria
+  - [x] Persembahan Card Header Enhancements: Attached compact small photo headers (`aspect-[16/9]` & `aspect-[16/10]`) on top of all 3 "Metode Persembahan Resmi" cards and all 4 "Dasar Memberi Bagi Tuhan" cards on `/persembahan`.
+  - [x] ESLint & Turbopack build: 0 errors, 0 warnings (11/11 static pages generated)
+

@@ -17,8 +17,8 @@ export const heroSlidesData: HeroSlide[] = [
     primaryCtaHref: '#lokasi',
     secondaryCtaText: 'INSTAGRAM RESMI',
     secondaryCtaHref: 'https://www.instagram.com/gbibaitanisukabumi/',
-    imageUrl: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=2200&auto=format&fit=crop',
-    altText: 'Suasana Ibadah Gereja Baptis Indonesia Baitani Sukabumi',
+    imageUrl: '/images/ibadah/ibadah-raya.jpeg',
+    altText: 'Ibadah Raya dan Puji-Pujian Gereja Baptis Indonesia Baitani Sukabumi',
   },
   {
     id: 'bertumbuh-bersama',
@@ -31,8 +31,8 @@ export const heroSlidesData: HeroSlide[] = [
     primaryCtaHref: '#lokasi',
     secondaryCtaText: 'PENGAKUAN IMAN KAMI',
     secondaryCtaHref: '/tentang-kami',
-    imageUrl: 'https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=2200&auto=format&fit=crop',
-    altText: 'Persekutuan Doa Jemaat Baitani Sukabumi',
+    imageUrl: '/images/diakonia/diakonia-kegiatan.jpeg',
+    altText: 'Persekutuan Keluarga & Jemaat Baitani Sukabumi',
   },
   {
     id: 'generasi-muda',
@@ -45,7 +45,7 @@ export const heroSlidesData: HeroSlide[] = [
     primaryCtaHref: '#lokasi',
     secondaryCtaText: 'KOMUNITAS IMAN (KOI)',
     secondaryCtaHref: '/connect-group',
-    imageUrl: 'https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=2200&auto=format&fit=crop',
+    imageUrl: '/images/pelayanan/youth-activity-1.jpeg',
     altText: 'Persekutuan Generasi Muda Baitani Sukabumi',
   },
   {
@@ -59,7 +59,7 @@ export const heroSlidesData: HeroSlide[] = [
     primaryCtaHref: '/connect-group',
     secondaryCtaText: 'SAYA JEMAAT BARU',
     secondaryCtaHref: '/koneksi',
-    imageUrl: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=2200&auto=format&fit=crop',
+    imageUrl: '/images/koi/koi-persekutuan.jpeg',
     altText: 'Persekutuan Komunitas Iman KOI Baitani Sukabumi',
   },
 ];

@@ -7,6 +7,7 @@ import PageHero from '@/components/common/PageHero';
 import { Bell, ExternalLink, ShieldCheck, HelpCircle, ArrowUpRight } from 'lucide-react';
 import SiteIcon from '@/components/common/SiteIcon';
 import InstagramIcon from '@/components/common/InstagramIcon';
+import AcaraActivitiesCarousel from '@/components/sections/AcaraActivitiesCarousel';
 
 export const metadata: Metadata = {
   title: 'Agenda & Pengumuman Acara — Gereja Baptis Indonesia Baitani, Sukabumi',
@@ -61,13 +62,13 @@ export default function AcaraPage() {
       <main id="main-content" className="flex-1">
         {/* Page Hero */}
         <PageHero
-          category="AGENDA & PENGUMUMAN RESMI"
+          category="AGENDA & DOKUMENTASI KEGIATAN"
           title="ACARA & WARTA JEMAAT"
-          titleAccent="Informasi Terverifikasi Pelayanan Jemaat"
-          subtitle="Pusat rujukan resmi agenda kegiatan rohani, ibadah khusus, dan warta pelayanan jemaat Gereja Baptis Indonesia Baitani, Sukabumi."
+          titleAccent="Persekutuan, Ibadah, & Pelayanan Misi"
+          subtitle="Pusat rujukan resmi agenda kegiatan rohani, ibadah khusus, dokumentasi pelayanan misi, dan warta jemaat Gereja Baptis Indonesia Baitani, Sukabumi."
           breadcrumbCurrent="Acara & Warta"
-          imageSrc="/images/page-hero/acara.jpg"
-          imageAlt="Foto ilustrasi: mikrofon di atas panggung."
+          imageSrc="/images/acara/acara-hero.jpeg"
+          imageAlt="Foto bersama seluruh warga jemaat di depan gedung Gereja Baptis Baitani Sukabumi."
         />
 
         {/* Notice of Transparency Strip */}
@@ -81,6 +82,9 @@ export default function AcaraPage() {
             </div>
           </div>
         </section>
+
+        {/* Featured Activity & Mission Carousel in the Center */}
+        <AcaraActivitiesCarousel />
 
         {/* Announcement Hub Cards */}
         <section className="py-16 md:py-20 bg-[#f5f3f0]">

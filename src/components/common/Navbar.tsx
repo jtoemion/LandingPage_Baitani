@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Menu, X, ArrowUpRight, Globe } from 'lucide-react';
 
@@ -95,8 +96,15 @@ export default function Navbar() {
             className="flex items-center gap-3 group transition-transform active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#785600] rounded-lg p-1"
             aria-label="Gereja Baptis Indonesia Baitani Sukabumi Home"
           >
-            <div className="w-9 h-9 rounded-full bg-[#e8e2d5] text-[#785600] flex items-center justify-center font-bold text-xs tracking-tighter shadow-xs group-hover:bg-[#785600] group-hover:text-white transition-all">
-              GBI
+            <div className="relative w-9 h-9 rounded-full overflow-hidden border border-[#d3c4af] bg-white shadow-xs group-hover:scale-105 transition-transform flex-shrink-0">
+              <Image
+                src="/images/logo/logo-baitani.jpeg"
+                alt="Logo Resmi Gereja Baptis Indonesia Baitani Sukabumi"
+                fill
+                className="object-cover"
+                sizes="36px"
+                priority
+              />
             </div>
             <div className="flex flex-col">
               <span className="font-extrabold text-sm tracking-[0.18em] text-[#1b1c1a] uppercase leading-none group-hover:text-[#785600] transition-colors">

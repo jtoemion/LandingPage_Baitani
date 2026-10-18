@@ -8,14 +8,21 @@ export default function IdentitySection() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
         
         {/* Short Logo Mark */}
-        <div className="w-12 h-12 rounded-sm bg-ink text-paper flex items-center justify-center font-black text-base tracking-tighter mb-8">
+        <div className="w-12 h-12 rounded-sm bg-ink text-paper flex items-center justify-center font-black text-base tracking-tighter mb-4">
           GBI
         </div>
 
+        {/* Founding Historic Motto */}
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#f5f3f0] border border-[#e8e2d5] text-[#785600] text-xs font-mono font-bold tracking-widest uppercase mb-8 shadow-xs">
+          <span>MOTTO SEJARAH</span>
+          <span className="text-[#785600]/60">✦</span>
+          <span className="italic">&ldquo;Dari Sukabumi sampai ke ujung bumi&rdquo;</span>
+        </div>
+
         {/* Narrative Description */}
-        <div className="space-y-6 max-w-3xl mx-auto mb-16 text-copy text-base sm:text-lg leading-relaxed font-light border border-outline rounded-2xl p-6 sm:p-8">
+        <div className="space-y-6 max-w-3xl mx-auto mb-16 text-copy text-base sm:text-lg leading-relaxed font-light border border-outline rounded-2xl p-6 sm:p-8 bg-white/60">
           <p>
-            Gereja Baptis Indonesia Baitani, Sukabumi adalah persekutuan jemaat lokal yang berakar kuat dalam kebenaran Firman Tuhan, bertumbuh dalam kasih Kristus, dan berpegang teguh pada doktrin Alkitabiah.
+            Gereja Baptis Indonesia Baitani, Sukabumi adalah persekutuan jemaat lokal yang berakar kuat dalam kebenaran Firman Tuhan, bertumbuh dalam kasih Kristus, dan berpegang teguh pada doktrin Alkitabiah dengan tekad misioner: <strong className="font-semibold text-ink">&ldquo;Dari Sukabumi sampai ke ujung bumi&rdquo;</strong>.
           </p>
           <p className="text-sm sm:text-base">
             Berlokasi di Jl. R.E. Martadinata No. 86, Sukabumi, kami rindu menjadi keluarga rohani yang hangat bagi setiap orang yang rindu mencari Tuhan, mengalami pemulihan, dan bertumbuh dalam persekutuan Komunitas Iman (KOI).
@@ -32,14 +39,14 @@ export default function IdentitySection() {
                 <Compass className="w-4 h-4" />
               </div>
               <span className="text-xs font-black tracking-widest uppercase text-copy font-mono">
-                VISI PERSEKUTUAN
+                VISI GEREJA
               </span>
             </div>
             <h3 className="text-xl sm:text-2xl font-bold text-ink leading-snug">
-              Jemaat yang Berakar, Bertumbuh, & Berbuah dalam Kristus
+              Gereja Misioner
             </h3>
             <p className="text-copy text-sm sm:text-base mt-3 font-light leading-relaxed">
-              Membangun keluarga rohani yang setia dalam doa, tekun mempelajari Firman Tuhan, dan memancarkan kasih Kristus di tengah masyarakat Kota Sukabumi.
+              Menjadi jemaat yang berakar pada Firman Allah, bertumbuh dalam persekutuan kasih, dan aktif diutus memberitakan kabar baik Kristus dari Sukabumi sampai ke ujung bumi.
             </p>
           </div>
 
@@ -54,10 +61,10 @@ export default function IdentitySection() {
               </span>
             </div>
             <h3 className="text-xl sm:text-2xl font-bold text-ink leading-snug">
-              Pemuridan Melalui Komunitas Iman (KOI)
+              Cinta Tuhan, Mengasihi Sesama, Menjangkau Dunia
             </h3>
             <p className="text-copy text-sm sm:text-base mt-3 font-light leading-relaxed">
-              Menumbuhkan warga jemaat yang saling memperhatikan dalam Komunitas Iman (KOI), membina anak-anak dan generasi muda, serta menyatakan kepedulian kasih di Sukabumi.
+              Membangun kehidupan yang setia mengasihi Tuhan dalam penyembahan, saling menopang dalam Komunitas Iman (KOI), dan tekun memuridkan jiwa-jiwa bagi Kerajaan Allah.
             </p>
           </div>
 

@@ -7,7 +7,7 @@ interface MarqueeTickerProps {
 }
 
 export default function MarqueeTicker({
-  campaignTheme = 'TAHUN PERSATUAN & SORGA YANG TERBUKA',
+  campaignTheme = 'HUT KE-63: DISCIPLE MAKER ✦ GEREJA MISIONER ✦ CINTA TUHAN, MENGASIHI SESAMA, MENJANGKAU DUNIA ✦ DARI SUKABUMI SAMPAI KE UJUNG BUMI',
 }: MarqueeTickerProps) {
   // Repeat the theme string to seamlessly loop
   const repeatedText = Array(12).fill(campaignTheme);

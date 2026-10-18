@@ -39,3 +39,17 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# graft's local graph cache — regenerable, not committed (run `graft build`).
+/graft/
+
+# local agent / IDE harness configs
+.claude/
+.gemini/
+.mcp.json
+opencode.json
+.ignore
+
+# large design mock zip archive
+.docs/stitch_bright_landing_page_redesign.zip
+.docs/stitch_bright_landing_page_redesign/

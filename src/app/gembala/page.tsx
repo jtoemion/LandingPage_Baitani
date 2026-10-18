@@ -20,21 +20,25 @@ export default function GembalaPage() {
       title: 'Pelayanan Firman & Pemuridan',
       desc: 'Mendukung pendalaman Alkitab, kelas pembentukan iman, dan kelompok Komunitas Iman (KOI) agar jemaat berakar teguh dalam ajaran Alkitabiah.',
       icon: 'bible-study' as const,
+      image: '/images/pelayanan/pemuridan.jpeg',
     },
     {
       title: 'Pelayanan Diakonia & Persekutuan',
       desc: 'Menyatakan kasih persaudaraan melalui perhatian jemaat, saling menopang dalam kedukaan maupun sukacita, dan aksi kepedulian sosial di Sukabumi.',
       icon: 'prayer' as const,
+      image: '/images/diakonia/diakonia-sembako.jpeg',
     },
     {
       title: 'Pelayanan Generasi Muda & Anak',
       desc: 'Wadah pembinaan rohani bagi anak-anak sekolah minggu dan pemuda-pemudi untuk bertumbuh dalam kasih Tuhan sejak dini.',
       icon: 'youth' as const,
+      image: '/images/pelayanan/youth-activity-1.jpeg',
     },
     {
       title: 'Persekutuan Doa & Ibadah',
       desc: 'Memelihara keintiman doa korporat jemaat, permohonan syafaat, dan ketertiban tata ibadah yang memuliakan Tuhan.',
       icon: 'worship' as const,
+      image: '/images/ibadah/ibadah-raya.jpeg',
     },
   ];
 
@@ -50,8 +54,9 @@ export default function GembalaPage() {
           titleAccent="Pdt. Kristianto & Ibu Mexy JT"
           subtitle="Mengenal Gembala Jemaat Gereja Baptis Indonesia Baitani, Sukabumi dan komitmen pelayanan bersama bagi pertumbuhan rohani warga jemaat dalam kasih Kristus."
           breadcrumbCurrent="Gembala & Pelayanan"
-          imageSrc="/images/page-hero/gembala.jpg"
-          imageAlt="Foto ilustrasi: tangan membuka Alkitab."
+          imageSrc="/images/page-hero/gembala-natural.jpg"
+          imageAlt="Meja pelayanan firman pastoral, Alkitab terbuka, dan catatan khotbah di ruang ibadah GBI Baitani Sukabumi."
+          imageLabel="PELAYANAN FIRMAN"
         />
 
         {/* Main Pastoral Profile Section */}
@@ -255,25 +260,39 @@ export default function GembalaPage() {
                 return (
                   <div
                     key={`area-${idx}`}
-                    className="bg-white border border-[#e8e2d5] rounded-2xl p-7 hover:border-[#785600]/40 transition-all duration-300 flex flex-col justify-between group shadow-xl"
+                    className="bg-white border border-[#e8e2d5] rounded-2xl overflow-hidden hover:border-[#785600]/40 transition-all duration-300 flex flex-col justify-between group shadow-xl"
                   >
                     <div>
-                      <div className="w-12 h-12 rounded-xl bg-[#785600]/10 border border-[#785600]/20 flex items-center justify-center text-[#785600] mb-6 group-hover:scale-110 transition-transform">
-                        <SiteIcon name={area.icon} className="w-6 h-6" />
+                      {/* Card Image Banner */}
+                      <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-[#e8e2d5] bg-[#f5f3f0]">
+                        <Image
+                          src={area.image}
+                          alt={area.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          sizes="(max-width: 768px) 100vw, 25vw"
+                        />
+                        <div className="absolute top-3 left-3 w-9 h-9 rounded-lg bg-[rgba(251,249,246,0.92)] backdrop-blur-sm border border-[#e8e2d5] flex items-center justify-center text-[#785600] shadow-xs">
+                          <SiteIcon name={area.icon} className="w-5 h-5" />
+                        </div>
                       </div>
 
-                      <h3 className="text-base font-bold text-[#1b1c1a] mb-3 group-hover:text-[#785600] transition-colors">
-                        {area.title}
-                      </h3>
-                      <p className="text-xs text-[#625e54] font-light leading-relaxed">
-                        {area.desc}
-                      </p>
+                      <div className="p-6">
+                        <h3 className="text-base font-bold text-[#1b1c1a] mb-2 group-hover:text-[#785600] transition-colors">
+                          {area.title}
+                        </h3>
+                        <p className="text-xs text-[#625e54] font-light leading-relaxed">
+                          {area.desc}
+                        </p>
+                      </div>
                     </div>
 
-                    <div className="pt-6 mt-6 border-t border-[#e8e2d5]">
-                      <span className="text-[11px] font-mono text-[#625e54]/70 uppercase">
-                        GBI Baitani Sukabumi
-                      </span>
+                    <div className="px-6 pb-6 pt-2">
+                      <div className="pt-4 border-t border-[#e8e2d5]">
+                        <span className="text-[11px] font-mono text-[#625e54]/70 uppercase">
+                          GBI Baitani Sukabumi
+                        </span>
+                      </div>
                     </div>
                   </div>
                 );

@@ -1,4 +1,4 @@
-export type DayOfWeek = 'Sunday' | 'Saturday' | 'Wednesday' | 'Friday';
+export type DayOfWeek = 'Sunday' | 'Saturday' | 'Wednesday' | 'Friday' | 'Tuesday' | 'Thursday';
 
 export interface HeroSlide {
   id: string;
@@ -76,3 +76,24 @@ export interface ConnectIntentSubmission {
   notes: string;
   preferredContact: 'whatsapp' | 'call' | 'email';
 }
+
+export interface KOIGroup {
+  id: string;
+  name: string;
+  day: string;
+  time?: string;
+  location: string;
+  host: string;
+  area?: string;
+  targetAudience?: string;
+}
+
+export interface HistoryMilestone {
+  year: string;
+  title: string;
+  subtitle?: string;
+  description: string;
+  photoUrl?: string;
+  photoCaption?: string;
+}
+

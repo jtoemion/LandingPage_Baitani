@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback, useRef, useSyncExternalStore } from 'react';
+import Image from 'next/image';
 import { heroSlidesData } from '@/data/heroSlidesData';
 import { ChevronLeft, ChevronRight, Play, Pause, Compass, ArrowUpRight } from 'lucide-react';
 
@@ -206,12 +207,13 @@ export default function HeroSection() {
                     isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
                   }`}
                 >
-                  <img
+                  <Image
                     src={slide.imageUrl}
                     alt={slide.altText}
-                    loading={idx === 0 ? 'eager' : 'lazy'}
-                    decoding="async"
-                    className={`w-full h-full object-cover object-center transform transition-transform duration-[8000ms] ease-out ${
+                    fill
+                    priority={idx === 0}
+                    sizes="100vw"
+                    className={`object-cover object-center transform transition-transform duration-[8000ms] ease-out ${
                       isActive && !prefersReducedMotion ? 'scale-105' : 'scale-100'
                     }`}
                   />

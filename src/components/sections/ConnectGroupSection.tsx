@@ -2,6 +2,7 @@
 
 import React, { useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ChevronLeft, ChevronRight, HeartHandshake, ArrowUpRight } from 'lucide-react';
 
 export default function ConnectGroupSection() {
@@ -9,29 +10,34 @@ export default function ConnectGroupSection() {
 
   const cgPhotos = [
     {
+      title: 'Persekutuan Komunitas Iman (KOI)',
+      image: '/images/koi/koi-persekutuan.jpeg',
+      category: 'Komunitas Iman (KOI)',
+    },
+    {
+      title: 'Kelas Pemuridan & Pendalaman Firman',
+      image: '/images/pelayanan/pemuridan.jpeg',
+      category: 'Pemuridan & Pengajaran',
+    },
+    {
+      title: 'Persekutuan Keluarga & Jemaat',
+      image: '/images/diakonia/diakonia-kegiatan.jpeg',
+      category: 'Keluarga & Sahabat Seiman',
+    },
+    {
       title: 'Youth & Young Generation Fellowship',
-      image: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=800&auto=format&fit=crop',
-      category: 'Pemuda & Remaja',
+      image: '/images/pelayanan/youth-activity-2.jpeg',
+      category: 'Pemuda & Remaja (PKMB/PKRB)',
     },
     {
-      title: 'Persekutuan Keluarga Jemaat',
-      image: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=800&auto=format&fit=crop',
-      category: 'Keluarga & Pasutri',
+      title: 'Kebersamaan Generasi Muda & Anak',
+      image: '/images/pelayanan/youth-activity-1.jpeg',
+      category: 'Retreat & Outdoor Fellowship',
     },
     {
-      title: 'Pembinaan Pekerja & Warga Jemaat',
-      image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop',
-      category: 'Warga Jemaat',
-    },
-    {
-      title: 'Persekutuan Doa & Pendalaman Alkitab',
-      image: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=800&auto=format&fit=crop',
-      category: 'Pendalaman Alkitab',
-    },
-    {
-      title: 'Kebersamaan & Aksi Kasih Jemaat',
-      image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=800&auto=format&fit=crop',
-      category: 'Kasih Persaudaraan',
+      title: 'Pelayanan Kasih & Pembinaan Jemaat',
+      image: '/images/diakonia/diakonia-sembako.jpeg',
+      category: 'Diakonia & Pelayanan',
     },
   ];
 
@@ -94,12 +100,12 @@ export default function ConnectGroupSection() {
               key={`cg-photo-${idx}`}
               className="flex-shrink-0 w-64 sm:w-80 aspect-square snap-start rounded-2xl overflow-hidden relative group bg-black border border-zinc-800"
             >
-              <img
+              <Image
                 src={item.image}
                 alt={item.title}
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100"
+                fill
+                sizes="(max-width: 640px) 256px, 320px"
+                className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
               

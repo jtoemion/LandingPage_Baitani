@@ -22,3 +22,84 @@
 - Purged stock Unsplash documentation claiming to be church events and 3 named testimonials from `/sorotan` and homepage `HighlightsGallery.tsx`.
 - Dispatched and passed 2 independent subagents: Verifier A (Factual Contract PASS) and Verifier B (Adversarial Visual QA PASS).
 - Verified Turbopack build (`11/11 static pages generated`, exit code 0) and ESLint (`0 errors`). Zero git mutations committed.
+
+## [Author: Antigravity] [Session: 68a64ba8] 2026-10-12
+- Executed updated Agent D Contract (`.docs/Agent_D_Contract..txt`) on `fitur-kamu` branch.
+- Added official pastoral identity: Gembala Jemaat **Pdt. Kristianto** and **Ibu Mexy JT**.
+- Integrated authentic high-res photographs:
+  - Solo portrait: `/images/gembala/pdt-kristianto.jpeg`
+  - Ministry couple portrait: `/images/gembala/pdt-kristianto-ibu-mexy.jpeg`
+- Implemented `object-cover object-top` with responsive container ratios (`aspect-[3/4]` & `aspect-[4/5]`) ensuring faces are 100% intact with zero cropping across desktop (1280x800) and mobile (390x844).
+- Kept **Panitia Perancang Periode 2025–2027** as a completely separate operational section with distinct UI branding, avoiding conflating pastoral photos with committee members.
+- Avoided all speculative biographies, degrees, ordination dates, or unverified roles.
+- Dispatched and passed 2 independent subagents: Verifier A (Factual Contract PASS) and Verifier B (Adversarial Visual QA PASS with DevTools screenshots).
+- ESLint: 0 errors; Turbopack build: Exit code 0 (11/11 static pages). Zero git mutations committed.
+
+## [Author: Antigravity] [Session: bd99a89c] 2026-10-18
+- Ingested and extracted two primary source documents: official Questionnaire (`FORMULIR DATA SITUS GEREJA BAPTIS INDONESIA BAITANI.docx` signed by Pdt. Kristianto) and official History document (`Sejarah Gereja Baptis Indonesia Baitani Sukabumi.doc`).
+- Extracted 28 authentic historical photographs to `public/images/sejarah/`.
+- Executed Reinforced Delegation with Native Subagent across 4 phases:
+  - Phase 1: Foundation Data (`types`, `scheduleData`, `koiData`, `ministryData`).
+  - Phase 2: Homepage & Shell Components (`MarqueeTicker`, `IdentitySection`, `HomeLocationSchedule`, `Footer`).
+  - Phase 3: Specialized Pages (`tentang-kami`, `connect-group`, `persembahan`, `sorotan`).
+- Resolved church founding date to 1 September 1963 (58 charter members), perfectly affirming the 63rd anniversary in 2026 (HUT ke-63 "Disciple Maker").
+- Published official 7 weekly schedules (Sunday 07.00 & 10.00 WIB, Wednesday prayer 18.00 WIB, Seniors, Men, Women, Youth).
+- Published 8 active KOI groups directory with coordinator Pdt. Hendi while strictly preserving private member phone numbers.
+- Published verified giving channels (Cash, Bank Transfer, QRIS) verified by Bp. Yulius (Treasurer).
+- Published public secretariat WhatsApp `081295859490` and official email `baptisbaitani232@gmail.com`.
+- Ingested authentic user-provided photos: `gedung-exterior.png`, `kids-ministry-group.png`, and `kids-praying.jpg`.
+- Generated 5 authentic, culturally tailored photographs in Warm Sanctuary aesthetic using native image-generator subagents:
+  - `firman-pemuridan.jpg` (Open Indonesian Bible on wooden lectern)
+  - `diakonia-persekutuan.jpg` (Compassionate diakonia care & grocery package)
+  - `hero-sanctuary.jpg` (Reverent sanctuary interior during Sunday morning service)
+  - `hero-prayer.jpg` (Reverent congregational prayer fellowship)
+  - `hero-youth.jpg` (Baitani Youth / PKMB fellowship study)
+  - `hero-koi.jpg` (Komunitas Iman living room fellowship)
+- Ingested 6 authentic church photos from user:
+  - Diakonia 1: `diakonia-sembako.jpeg` (Jemaat gathering with "BERTUMBUH DALAM KRISTUS, MELAYANI DENGAN SETIA" banner)
+  - Diakonia 2: `diakonia-kegiatan.jpeg` (Family fellowship in living room with grandmothers & youth)
+  - KOI: `koi-persekutuan.jpeg` (Komunitas Iman home fellowship with Pdt. Kristianto & Ibu Mexy)
+  - Youth & Kids 1: `youth-activity-1.jpeg` (Outdoor lawn retreat with youth & kids in white attire)
+  - Youth & Kids 2: `youth-activity-2.jpeg` (Baitani youth & worship team on stage with baby's breath flowers)
+  - Foto Ibadah: `ibadah-raya.jpeg` (HUT ke-63 Ibadah Raya with Pdt. Kristianto at pulpit, worship team, & choir)
+- Ingested authentic Pemuridan photo: `pemuridan.jpeg` (Bible study / discipleship table with open Bibles & notebooks led by Ibu Mexy).
+- Replaced AI-generated placeholder on `/gembala` Card 1 (*Pelayanan Firman & Pemuridan*); now 100% of all 4 focus cards on `/gembala` are authentic real church photographs.
+- Mounted `pemuridan.jpeg` into `ConnectGroupSection.tsx` photo carousel track.
+- Ingested official GBI Baitani emblem logo: `logo-baitani.jpeg` and integrated into `Navbar.tsx` and `Footer.tsx` (replacing text circle placeholder).
+- Ingested congregation church facade photo: `acara-hero.jpeg` and set as `PageHero` image on `/acara`.
+- Ingested 3 Mission Trip & Ministry photos: `mission-trip-1.jpeg` (Lampung), `mission-trip-2.jpeg` (Purwokerto), `mission-trip-3.jpeg` (Lomba Cerdas Cermat Alkitab).
+- Built interactive client component `AcaraActivitiesCarousel.tsx` featured prominently in `/acara`, with auto-play, timer, progress dots, and clickable thumbnail selector.
+- Executed Reinforced Delegation Gate:
+  - Step 0: Created baseline snapshot in `.docs/baseline_snapshot.txt`.
+  - Hardened `.docs/LIVING_BRIEF_FACTUAL_CUTOVER.md` and authored `.docs/VERIFIER_BRIEF.md`.
+  - Dispatched Independent Verifier Subagent (`f019acc0-7c83-4388-b444-714ff0f0e7fa`) for read-only audit.
+  - Verifier Result: 100% PASS across all 11 claims (build exit 0, 11 static routes, 0 lint errors, 0 Unsplash stock photos, 0 privacy leaks, all physical assets verified on disk, logo in Navbar/Footer, and 200 OK across all live server endpoints).
+  - Appended audit findings to `.docs/LESSONS_LOG_FACTUAL_CUTOVER.md`.
+- Executed Verifier B (Adversarial Visual QA) via Chrome DevTools Protocol across Desktop (1280x800) and Mobile (390x844):
+  - Audited Homepage, `/acara`, `/gembala`, and `/connect-group`.
+  - Caught and fixed bug A-03: `PageHero.tsx` had a hardcoded `"FOTO ILUSTRASI"` badge labeling real church documentation photos. Added dynamic `imageLabel` prop defaulting to `'DOKUMENTASI RESMI'`.
+  - Optimized LCP with `priority` attribute on `PageHero` images.
+  - Verified 0 horizontal overflow leaks on mobile (`scrollWidth <= innerWidth`).
+  - Captured 6 screenshot artifacts in `.docs/`.
+  - Published report in `.docs/ADVERSARIAL_QA_REPORT.md` (100% PASS).
+- Replaced unnatural/generic PageHero headers on `/gembala`, `/persembahan`, and `/sorotan`:
+  - `/gembala`: Replaced generic English KJV Bible with `gembala-natural.jpg` (authentic Indonesian pastoral teak lectern, open Alkitab, reading glasses, handwritten Indonesian sermon notes, and "PELAYANAN FIRMAN" badge).
+  - `/persembahan`: Replaced American strawberry truck with `persembahan-natural.jpg` (reverent Indonesian hands in batik placing a white envelope labeled "PERSEMBAHAN" into a dark teak wooden offering box on the communion table, with "PENATALAYANAN" badge).
+  - `/sorotan`: Replaced rock concert stage photo with `sorotan-natural.jpg` (vintage hardcover church archive album with 1964 founding photos alongside modern colorful ministry prints, brass magnifying glass, and "ARSIP & DOKUMENTASI" badge).
+  - Verified across Desktop (1280x800) and Mobile (390x844) viewports with DevTools (0 overflow, 0 console errors). Captured screenshots: `qa_desktop_gembala_natural.png`, `qa_desktop_persembahan_natural.png`, `qa_desktop_sorotan_natural.png`.
+- Attached small grid photo headers on top of `/persembahan` cards (same width as card, compact aspect ratio):
+  - 3 Metode Persembahan Resmi cards:
+    - Metode 01 (Persembahan Langsung): `persembahan-natural.jpg`
+    - Metode 02 (Transfer Rekening Bank): `gembala-natural.jpg`
+    - Metode 03 (QRIS Resmi Gereja): `metode-qris.jpg` (authentic photo of church member scanning QRIS acrylic standee on church foyer counter)
+  - 4 Dasar Memberi Bagi Tuhan cards:
+    - Persepuluhan (Maleakhi 3:10): `firman-pemuridan.jpg`
+    - Persembahan Syukur (Mazmur 100:4): `ibadah-raya.jpeg`
+    - Dana Diakonia & Kasih (Amsal 19:17): `diakonia-sembako.jpeg`
+    - Pemeliharaan Sarana Ibadah (2 Korintus 9:7): `gedung-exterior.png`
+  - Verified across Desktop and Mobile viewports via DevTools (0 overflow, 0 console errors). Captured: `qa_persembahan_3metode_cards.png`, `qa_persembahan_4principles_cards.png`, `qa_persembahan_cards_mobile.png`.
+- Dev server running on port 3005; all routes return HTTP 200 OK.
+- Build verified (`npm run build` exit code 0; 11/11 static routes generated).
+- Lint verified (`npm run lint` exit code 0; 0 errors, 0 warnings).
+- Zero git mutations committed.
+
