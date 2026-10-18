@@ -101,5 +101,5 @@
 - Dev server running on port 3005; all routes return HTTP 200 OK.
 - Build verified (`npm run build` exit code 0; 11/11 static routes generated).
 - Lint verified (`npm run lint` exit code 0; 0 errors, 0 warnings).
-- Zero git mutations committed.
+- Pushed to remote GitHub (`origin/fitur-kamu`, commit `fe6b190`). Working tree 100% clean.
 
