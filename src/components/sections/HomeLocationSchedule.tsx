@@ -36,7 +36,7 @@ export default function HomeLocationSchedule() {
     mapsQuery: 'https://www.google.com/maps/search/?api=1&query=Jl.+R.E.+Martadinata+No.+86+Sukabumi',
     whatsapp: '081295859490',
     whatsappUrl: 'https://wa.me/6281295859490',
-    email: 'baptisbaitani232@gmail.com',
+    email: 'gerejabaitani232@gmail.com',
   };
 
   const mainSchedules = [
@@ -47,6 +47,14 @@ export default function HomeLocationSchedule() {
       location: 'Gedung Gereja Baitani',
       audience: 'Semua Usia',
       badge: 'Utama',
+    },
+    {
+      name: 'Sekolah Minggu (Asuhan s.d. Senior 2)',
+      day: 'Setiap Minggu',
+      time: '08:30 WIB',
+      location: 'Ruang Kelas Kategorial Gereja',
+      audience: 'Asuhan s.d. Senior 2',
+      badge: 'Kategorial',
     },
     {
       name: 'Ibadah Raya 2 (Siang)',

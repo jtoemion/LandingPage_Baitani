@@ -217,10 +217,10 @@ export default function PersembahanPage() {
                       Penyampaian warta dan bukti transaksi digital:
                     </p>
                     <a
-                      href="mailto:baptisbaitani232@gmail.com"
+                      href="mailto:gerejabaitani232@gmail.com"
                       className="text-[#785600] font-medium text-xs hover:underline block pt-1"
                     >
-                      baptisbaitani232@gmail.com
+                      gerejabaitani232@gmail.com
                     </a>
                   </div>
                 </div>
@@ -238,7 +238,7 @@ export default function PersembahanPage() {
                 </a>
 
                 <a
-                  href="mailto:baptisbaitani232@gmail.com"
+                  href="mailto:gerejabaitani232@gmail.com"
                   className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white border border-[#e8e2d5] hover:border-[#785600] text-[#785600] text-xs font-bold tracking-wider uppercase transition-colors"
                 >
                   <Mail className="w-4 h-4 text-[#785600]" />

@@ -15,6 +15,18 @@ export const scheduleData: ScheduleItem[] = [
     audience: 'Semua Usia',
   },
   {
+    id: 'sekolah-minggu',
+    name: 'Sekolah Minggu (Asuhan s.d. Senior 2)',
+    dayOfWeek: 'Sunday',
+    dayNameIndo: 'Minggu',
+    time: '08:30 WIB',
+    targetHour: 8,
+    targetMinute: 30,
+    location: 'Gedung Gereja & Ruang Kelas Kategorial, Jl. R.E. Martadinata No. 86',
+    isMainService: true,
+    audience: 'Asuhan s.d. Senior 2 (Semua Usia)',
+  },
+  {
     id: 'raya-2',
     name: 'Ibadah Raya 2 (Siang)',
     dayOfWeek: 'Sunday',

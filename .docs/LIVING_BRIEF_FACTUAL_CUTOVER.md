@@ -17,7 +17,7 @@
 - `src/components/sections/ConnectGroupSection.tsx` — 100% real church photo scroll track (KOI, Pemuridan, Family, Youth, Retreat, Diakonia).
 - `src/components/sections/AcaraActivitiesCarousel.tsx` — Interactive activity & mission trip carousel component for `/acara`.
 - `src/components/common/Navbar.tsx` — Official GBI Baitani emblem logo.
-- `src/components/common/Footer.tsx` — Official GBI Baitani emblem logo, WA 081295859490, Email baptisbaitani232@gmail.com, FB, YouTube.
+- `src/components/common/Footer.tsx` — Official GBI Baitani emblem logo, WA 081295859490, Email gerejabaitani232@gmail.com, FB, YouTube.
 - `src/app/tentang-kami/page.tsx` — Official founding charter (1 Sept 1963, 58 charter members), HUT ke-63 (2026), 6 historical phases, historic photo gallery.
 - `src/app/connect-group/page.tsx` — 8 KOI groups directory, leader Pdt. Hendi, real KOI hero photo, privacy protection.
 - `src/app/persembahan/page.tsx` — Approved giving methods (Cash, Transfer, QRIS), verifier Bp. Yulius (Treasurer).
@@ -27,7 +27,7 @@
 
 ## MUST NOT CHANGE / MUST PRESERVE
 1. Zero Git Mutations: Do NOT run `git commit`, `git stash`, `git reset`, `git checkout`, or `git clean`.
-2. Privacy Policy Guard: Do NOT leak personal phone numbers of church members or KOI hosts. Only public secretariat WA `081295859490` and email `baptisbaitani232@gmail.com` are allowed.
+2. Privacy Policy Guard: Do NOT leak personal phone numbers of church members or KOI hosts. Only public secretariat WA `081295859490` and email `gerejabaitani232@gmail.com` are allowed.
 3. Warm Sanctuary visual theme intact: Keep EB Garamond display, Plus Jakarta Sans body, #fbf9f6 background, #785600 gold accents, zero face cropping.
 4. Zero Unsplash Policy: No `images.unsplash.com` references anywhere in `src/`.
 5. Production Build: `npm run build` must compile with exit code 0. `npm run lint` must have 0 errors.

@@ -27,7 +27,7 @@
   - [x] 8 KOI groups directory published with coordinator Pdt. Hendi and privacy guard
   - [x] Official ministry coordinators: Ibu Mexy, Sdri. Lily, Bpk. Ari, Pdt. Kristianto, Ibu Dhede
   - [x] Giving channels (Cash, Bank Transfer, QRIS) with verification by Bp. Yulius (Treasurer)
-  - [x] Public secretariat contacts: WhatsApp 081295859490, email baptisbaitani232@gmail.com, hours Tue-Sun 08.00-16.00 WIB
+  - [x] Public secretariat contacts: WhatsApp 081295859490, email gerejabaitani232@gmail.com, hours Tue-Sun 08.00-16.00 WIB
   - [x] 6-Era historical timeline & archival photo gallery (1963–2026) across `/tentang-kami` and `/sorotan`
   - [x] Production build: Exit code 0 (11/11 static pages generated)
   - [x] ESLint: 0 errors
@@ -45,4 +45,17 @@
   - [x] Reinforced Delegation Protocol: Independent Verifier Subagent audit 100% PASS across 11 empirical criteria
   - [x] Persembahan Card Header Enhancements: Attached compact small photo headers (`aspect-[16/9]` & `aspect-[16/10]`) on top of all 3 "Metode Persembahan Resmi" cards and all 4 "Dasar Memberi Bagi Tuhan" cards on `/persembahan`.
   - [x] ESLint & Turbopack build: 0 errors, 0 warnings (11/11 static pages generated)
+- [x] Jemaat Portal & Factual Hardening (2026-10-19):
+  - [x] Official email updated to `gerejabaitani232@gmail.com`
+  - [x] Sunday schedule updated with Sekolah Minggu (08:30 WIB)
+  - [x] Multi-res RGBA `icon.png` & `favicon.ico` tab bar logo
+  - [x] Master Excel `GBI_Baitani_Database_Master.xlsx` generated with 151 jemaat and 127 user accounts across 7 tabs
+  - [x] Google Apps Script backend `Code.gs` and setup guide created
+  - [x] 7 Jemaat Portal modules implemented (`/portal/*`)
+  - [x] Hero carousel slide 1 updated to "RUMAH KASIH BAGI SETIAP JIWA"
+  - [x] Portal icon ligature display fixed with Google Fonts Material Symbols
+  - [x] Next.js hydration mismatch resolved via `useSyncExternalStore`
+  - [x] Portal public links hidden from Navbar and Footer for continued internal development
+  - [x] Production build: Exit code 0 (19/19 routes generated)
+
 

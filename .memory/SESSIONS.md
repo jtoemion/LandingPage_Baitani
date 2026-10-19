@@ -46,7 +46,7 @@
 - Published official 7 weekly schedules (Sunday 07.00 & 10.00 WIB, Wednesday prayer 18.00 WIB, Seniors, Men, Women, Youth).
 - Published 8 active KOI groups directory with coordinator Pdt. Hendi while strictly preserving private member phone numbers.
 - Published verified giving channels (Cash, Bank Transfer, QRIS) verified by Bp. Yulius (Treasurer).
-- Published public secretariat WhatsApp `081295859490` and official email `baptisbaitani232@gmail.com`.
+- Published public secretariat WhatsApp `081295859490` and official email `gerejabaitani232@gmail.com`.
 - Ingested authentic user-provided photos: `gedung-exterior.png`, `kids-ministry-group.png`, and `kids-praying.jpg`.
 - Generated 5 authentic, culturally tailored photographs in Warm Sanctuary aesthetic using native image-generator subagents:
   - `firman-pemuridan.jpg` (Open Indonesian Bible on wooden lectern)
@@ -102,4 +102,17 @@
 - Build verified (`npm run build` exit code 0; 11/11 static routes generated).
 - Lint verified (`npm run lint` exit code 0; 0 errors, 0 warnings).
 - Pushed to remote GitHub (`origin/fitur-kamu`, commit `fe6b190`). Working tree 100% clean.
+
+## [Author: Antigravity] [Session: bd99a89c] 2026-10-19
+- Factual corrections: Replaced church contact email with canonical `gerejabaitani232@gmail.com` across all components, forms, and Google Apps Script documentation.
+- Sunday Worship Schedule: Added official Sekolah Minggu (Asuhan s.d. Senior 2) at 08:30 WIB per pastor's schedule message.
+- Multi-res RGBA Favicon & Tab Bar Logo: Converted church emblem to RGBA `icon.png` and `favicon.ico`, configured in `src/app/layout.tsx`.
+- Master Excel & Census Migration: Ingested 151 church members and 127 user accounts into master seeds and generated 7-tab master workbook `GBI_Baitani_Database_Master.xlsx`.
+- Google Apps Script Backend: Created `google-apps-script/Code.gs` and complete setup guide.
+- Jemaat Portal Implementation: Integrated 7 modules under `/portal/*` (Dasbor, Presensi, Pastoral, Sensus, Doa, Roster, Login).
+- Carousel Slide 1: Replaced generic "WELCOME HOME" with authentic Warm Sanctuary title "RUMAH KASIH BAGI SETIAP JIWA".
+- Portal Polish & Hydration Fix: Resolved ligature icon fallbacks by loading `Material Symbols Outlined` with explicit CSS, resolved Next.js hydration mismatch using React 18/19 `useSyncExternalStore` pattern.
+- Portal Stealth / Dev Mode: Hid public portal links from `Navbar.tsx` and `Footer.tsx` during development while keeping internal route `/portal/login` active.
+- Production build: Exit code 0 (19/19 routes compiled). Lint: 0 errors, 0 warnings.
+
 

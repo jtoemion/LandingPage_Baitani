@@ -165,6 +165,7 @@ export default function Footer() {
                   Saya Jemaat Baru
                 </Link>
               </li>
+
             </ul>
           </div>
 
@@ -231,10 +232,10 @@ export default function Footer() {
                 <div>
                   <span className="text-[#1b1c1a] font-semibold block">Email Resmi:</span>
                   <a
-                    href="mailto:baptisbaitani232@gmail.com"
+                    href="mailto:gerejabaitani232@gmail.com"
                     className="text-[#785600] hover:underline"
                   >
-                    baptisbaitani232@gmail.com
+                    gerejabaitani232@gmail.com
                   </a>
                 </div>
               </div>

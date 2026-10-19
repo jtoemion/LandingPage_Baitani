@@ -158,6 +158,8 @@ export default function Navbar() {
               <span>ID</span>
             </div>
 
+
+
             {/* CTA Saya Baru */}
             <Link
               href="/koneksi"
@@ -222,7 +224,8 @@ export default function Navbar() {
             </div>
           </div>
 
-          <div className="pt-2">
+          <div className="pt-2 space-y-2">
+
             <Link
               href="/koneksi"
               onClick={() => setIsMobileMenuOpen(false)}

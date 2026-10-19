@@ -53,3 +53,4 @@ opencode.json
 # large design mock zip archive
 .docs/stitch_bright_landing_page_redesign.zip
 .docs/stitch_bright_landing_page_redesign/
+.scratch/

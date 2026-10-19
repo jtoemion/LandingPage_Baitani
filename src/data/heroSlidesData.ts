@@ -7,12 +7,12 @@ import { HeroSlide } from '@/types';
  */
 export const heroSlidesData: HeroSlide[] = [
   {
-    id: 'welcome-home',
+    id: 'rumah-kasih',
     badge: 'GEREJA BAPTIS INDONESIA BAITANI',
-    title: 'WELCOME',
-    titleAccent: 'HOME',
-    subtitle: 'Sukabumi, Jawa Barat',
-    description: 'Sebuah keluarga rohani bagi setiap jiwa untuk bertumbuh dalam kasih Kristus, berakar dalam firman Tuhan, dan bersekutu dalam kasih persaudaraan.',
+    title: 'RUMAH KASIH',
+    titleAccent: 'BAGI SETIAP JIWA',
+    subtitle: 'Gereja Baptis Indonesia Baitani • Sukabumi',
+    description: 'Sebuah persekutuan keluarga beriman di Sukabumi untuk berakar dalam firman kebenaran, bertumbuh dalam anugerah, dan saling melayani dalam kasih persaudaraan Kristus.',
     primaryCtaText: 'LOKASI & INFORMASI IBADAH',
     primaryCtaHref: '#lokasi',
     secondaryCtaText: 'INSTAGRAM RESMI',
