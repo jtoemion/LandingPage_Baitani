@@ -57,5 +57,7 @@
   - [x] Next.js hydration mismatch resolved via `useSyncExternalStore`
   - [x] Portal public links hidden from Navbar and Footer for continued internal development
   - [x] Production build: Exit code 0 (19/19 routes generated)
+  - [x] Merge & Publish to `master`: Merged `fitur-kamu` into `master` (commit `2979a4a`), validated with `npm run lint` (0 errors) and `npm run build` (exit code 0; 19/19 routes), and pushed to `origin/master`.
+
 
 

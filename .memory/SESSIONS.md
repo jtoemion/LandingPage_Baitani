@@ -114,5 +114,7 @@
 - Portal Polish & Hydration Fix: Resolved ligature icon fallbacks by loading `Material Symbols Outlined` with explicit CSS, resolved Next.js hydration mismatch using React 18/19 `useSyncExternalStore` pattern.
 - Portal Stealth / Dev Mode: Hid public portal links from `Navbar.tsx` and `Footer.tsx` during development while keeping internal route `/portal/login` active.
 - Production build: Exit code 0 (19/19 routes compiled). Lint: 0 errors, 0 warnings.
+- Master Cutover & Deployment: Merged `fitur-kamu` into `master` via clean fast-forward (commit `2979a4a`), completed build and lint verification, and pushed to `origin/master`. Working tree 100% clean.
+
 
 
